@@ -32,6 +32,9 @@
     <CAbilMorph id="AssaultMode">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
+    <CAbilEffectTarget id="BuildAutoTurret">
+        <Range index="0" value="2"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="Corruption">
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
@@ -79,13 +82,17 @@
             <Button DefaultButtonFace="" Requirements=""/>
         </InfoArray>
     </CAbilResearch>
-    <CAbilBehavior id="GhostCloak">
-        <CmdButtonArray index="On" Requirements=""/>
-    </CAbilBehavior>
     <CAbilResearch id="HydraliskDenResearch">
+        <InfoArray index="Research1" Time="100" Upgrade="EvolveGroovedSpines">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="EvolveGroovedSpines" State="Restricted" Requirements="LearnEvolveGroovedSpines">
+                <Flags index="ShowInGlossary" value="1"/>
+            </Button>
+        </InfoArray>
         <InfoArray index="Research2" Time="100" Upgrade="EvolveMuscularAugments">
-            <Resource index="Minerals" value="150"/>
-            <Resource index="Vespene" value="150"/>
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
             <Button DefaultButtonFace="EvolveMuscularAugments" State="Restricted" Requirements="LearnEvolveMuscularAugments">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
@@ -185,6 +192,9 @@
         <!--UnloadCargoEffect value="MedivacUnloadCargoSetEffect"/-->
         <UnloadCargoEffect value="SiegeTankUnloadDelayAB"/>
     </CAbilTransport>
+    <CAbilMorph id="MorphBackToGateway">
+        <Alert value="TransformationComplete"/>
+    </CAbilMorph>
     <CAbilMorph id="MorphToBroodLord">
         <Flags index="WaitUntilStopped" value="0"/>
     </CAbilMorph>
@@ -239,6 +249,30 @@
     <CAbilTransport id="OverlordTransport">
         <CmdButtonArray index="Load" Requirements="UseSingleOverlordTransport"/>
         <!--UnloadCargoEffect value="DisruptorTransportUnloadPurificationNovaCooldownReset"/-->
+    </CAbilTransport>
+    <CAbilTransport id="OverlordSingleTransport">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <MaxCargoCount value="8"/>
+        <MaxCargoSize value="8"/>
+        <TotalCargoSpace value="8"/>
+        <LoadTransportBehavior value="OverlordTransport"/>
+        <UnloadPeriod value="1"/>
+        <CmdButtonArray index="Load" DefaultButtonFace="OverlordTransportLoad"/>
+        <CmdButtonArray index="UnloadAll">
+            <Flags index="Hidden" value="1"/>
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="UnloadAt" DefaultButtonFace="OverlordTransportUnload"/>
+        <CmdButtonArray index="UnloadUnit">
+            <Flags index="Hidden" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="LoadAll">
+            <Flags index="Hidden" value="1"/>
+        </CmdButtonArray>
+        <Flags index="CargoDeath" value="1"/>
+        <AbilSetId value="ULdM"/>
+        <TargetFilters value="Visible;Ally,Neutral,Enemy,Buried,UnderConstruction,Dead,Hidden"/>
+        <LoadValidatorArray value="NotWidowMineTarget"/>
     </CAbilTransport>
     <CAbilEffectTarget id="ParasiticBomb">
         <Cost index="0">
@@ -442,6 +476,20 @@
     <CAbilEffectTarget id="ViperConsumeStructure">
         <Flags index="WaitToSpend" value="1"/>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="ViperParasiticBombRelay">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ParasiticBombInitialSet"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ParasiticBomb"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ParasiticBombRelayDodge">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ParasiticBombCUDodge"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ParasiticBomb"/>
+    </CAbilEffectTarget>
     <CAbilWarpTrain id="WarpGateTrain">
         <InfoArray index="Train1" Time="16"/>
         <InfoArray index="Train2" Time="16"/>
@@ -453,7 +501,7 @@
     <CAbilTransport id="WarpPrismTransport">
         <Range value="6"/>
         <!--UnloadCargoEffect value="WarpPrismUnloadCargoSetEffect"/-->
-        <UnloadCargoEffect value="PurificationNovaTargettedCasterRB"/>
+        <UnloadCargoEffect value="WarpPrismUnloadCargoSetEffect"/>
         <LoadCargoEffect value="WarpPrismLoadDummy"/>
         <!--LoadCargoEffect value="PurificationNovaTransportPickupSet"/>
         <UnloadCargoEffect value="PurificationNovaMorphBackFromTransport"/-->
@@ -476,7 +524,7 @@
     </CAbilEffectTarget>
     <CAbilMorph id="MorphToTransportOverlord">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="MorphtoOverlordTransport" Requirements="HaveEvolutionChamber"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MorphtoOverlordTransport" Requirements="HaveLair"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
         <Flags index="BestUnit" value="1"/>
         <Flags index="DisableAbils" value="1"/>
@@ -635,8 +683,6 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="MorphtoObserver">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-        <Flags index="BestUnit" value="1"/>
-        <Flags index="DisableAbils" value="1"/>
         <Flags index="IgnoreFacing" value="1"/>
         <InfoArray Unit="Observer">
             <SectionArray index="Abils">
@@ -661,9 +707,9 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="MorphtoObserverSiege">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-        <Flags index="BestUnit" value="1"/>
         <Flags index="DisableAbils" value="1"/>
         <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="WaitUntilStopped" value="0"/>
         <InfoArray Unit="ObserverSiegeMode">
             <SectionArray index="Abils">
                 <DurationArray index="Duration" value="0.75"/>
@@ -687,9 +733,9 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="MorphtoOverseerSiege">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-        <Flags index="BestUnit" value="1"/>
         <Flags index="DisableAbils" value="1"/>
         <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="WaitUntilStopped" value="0"/>
         <InfoArray Unit="OverseerSiegeMode">
             <SectionArray index="Abils">
                 <DurationArray index="Duration" value="0.5"/>
@@ -713,8 +759,6 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="MorphtoOverseerNormal">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-        <Flags index="BestUnit" value="1"/>
-        <Flags index="DisableAbils" value="1"/>
         <Flags index="IgnoreFacing" value="1"/>
         <InfoArray Unit="Overseer">
             <SectionArray index="Abils">
@@ -738,10 +782,6 @@
         <Cost index="0">
             <Cooldown Link="Abil/PurificationNovaTargetted" TimeUse="20"/>
         </Cost>
-        <PrepTime value="1.4"/>
-        <ShowProgressArray index="Prep" value="1"/>
-        <UninterruptibleArray index="Prep" value="1"/>
-        <ProgressButtonArray index="Prep" value="PurificationNovaTargeted"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="RavenScramblerMissile">
         <Alignment value="Negative"/>
@@ -753,7 +793,7 @@
         <Cost>
             <Vital index="Energy" value="50"/>
         </Cost>
-        <TargetFilters value="Visible;Self,Player,Ally,Neutral,Structure,Missile,Dead"/>
+        <TargetFilters value="Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead"/>
         <Range value="9"/>
         <UninterruptibleArray index="Prep" value="1"/>
         <UninterruptibleArray index="Cast" value="1"/>
@@ -815,7 +855,7 @@
         <Effect index="0" value="RavenShredderMissileLaunchMissile"/>
         <Flags index="AllowMovement" value="1"/>
         <Cost>
-            <Vital index="Energy" value="100"/>
+            <Vital index="Energy" value="75"/>
         </Cost>
         <TargetFilters value="Visible;Self,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="10"/>

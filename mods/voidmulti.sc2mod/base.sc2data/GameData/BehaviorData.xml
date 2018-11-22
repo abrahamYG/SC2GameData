@@ -16,7 +16,6 @@
     <CBehaviorBuff id="CommandCenterKnockbackBehavior">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="1"/>
         <Period value="0.25"/>
         <PeriodicEffect value="CommandCenterKnockbackSE"/>
     </CBehaviorBuff>
@@ -35,10 +34,14 @@
         <Duration value="42"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ParasiticBomb">
-        <DisableValidatorArray value="HaveParasiticBombInitialDelay"/>
+        <DisableValidatorArray value="NoParasiticBombInitialDelay"/>
+        <FinalEffect value="ParasiticBombFinalSet"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="ParasiticBombTimer">
-        <Duration value="10.0625"/>
+    <CBehaviorBuff id="ParasiticBombDelayTimedLife">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="12"/>
+        <FinalEffect value="Suicide"/>
+        <KillCredit Value="Caster"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ParasiticBombUnitKU">
         <DisableValidatorArray index="0" value="NotHaveParasiticBombTimers"/>
@@ -46,7 +49,6 @@
     <CBehaviorBuff id="TerranStructuresKnockbackBehavior">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="1"/>
         <Period value="0.25"/>
         <PeriodicEffect value="TerranStructuresKnockbackSE"/>
     </CBehaviorBuff>
@@ -275,6 +277,8 @@
         <RemoveValidatorArray value="CasterIsNotMothershipCoreRecalling"/>
         <RemoveValidatorArray value="CasterIsNotMothershipRecalling"/>
         <RemoveValidatorArray value="CasterDoesNotHaveScramblerMissileBehavior"/>
+        <RemoveValidatorArray value="CasterIsNotMothershipMassRecalling"/>
+        <RemoveValidatorArray value="CasterIsNotNexusStrategicRecalling"/>
         <PeriodicEffect value="PurificationNovaPeriodicSet"/>
         <PeriodCount value="47"/>
         <Period value="0.0625"/>
@@ -328,9 +332,15 @@
     <CBehaviorBuff id="BarrierDamageResponse">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="BarrierNotOnCooldown"/>
         <DisableValidatorArray value="NotGravitonBeamd"/>
-        <DamageResponse Chance="1" Handled="DamageTakenBarrierAutocastSet"/>
+        <DamageResponse Chance="1" Handled="ImmortalOverloadAB">
+            <Cost>
+                <Cooldown TimeUse="45"/>
+            </Cost>
+        </DamageResponse>
+        <Cost>
+            <Cooldown TimeUse="45"/>
+        </Cost>
     </CBehaviorBuff>
     <CBehaviorBuff id="ImmortalBarrierSupressed">
         <Cost>
@@ -434,7 +444,7 @@
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-upgrade-terran-interferencematrix.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="8"/>
+        <Duration value="11"/>
         <ExpireEffect value="ImmortalBarrierCDFix"/>
         <Modification>
             <ModifyFlags index="DisableAbils" value="1"/>
@@ -443,6 +453,11 @@
             <StateFlags index="SuppressCloak" value="1"/>
             <BehaviorLinkDisableArray value="ImmortalBarrierSupressed"/>
         </Modification>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Neutral" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <RemoveValidatorArray value="NotOracleStasisTrapped"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="RavenRepairDroneTimedLife" parent="TimedLife">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -472,6 +487,7 @@
         <DisplayDuration index="Enemy" value="1"/>
         <Duration value="30"/>
         <Modification LifeArmorBonus="-3"/>
+        <RemoveValidatorArray value="NotOracleStasisTrapped"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="ChronoBoostEnergyCost">
         <Alignment value="Positive"/>
@@ -488,7 +504,7 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <Duration value="5"/>
-        <ExpireEffect value="NexusMassRecallTeleport"/>
+        <ExpireEffect value="NexusMassRecallSet"/>
         <Modification>
             <ModifyFlags index="DisableAbils" value="1"/>
             <StateFlags index="SuppressAttack" value="1"/>
@@ -510,6 +526,11 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="NotHaveScramblerMissileBehavior"/>
         <MaxStackCount value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NexusMassRecallTargetPhased">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsNexusMassRecallWarpingOutOrRecalled"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="NexusShieldRechargeOnPylonBehavior">
         <Alignment value="Positive"/>
@@ -575,6 +596,11 @@
         <Duration value="1"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="ParasiticBombGlazeMarker">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="NexusShieldOvercharge">
         <InfoIcon value="Assets\Textures\btn-upgrade-karax-fortificationbarrier.dds"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -598,9 +624,21 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="ParasiticBombDodgeTimer">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <Duration value="10"/>
+        <Duration value="12"/>
         <BehaviorFlags index="Permanent" value="1"/>
         <BehaviorFlags index="EnabledWhileDead" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NexusRecalled">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="1"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="Uncommandable" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
+        </Modification>
     </CBehaviorBuff>
 </Catalog>

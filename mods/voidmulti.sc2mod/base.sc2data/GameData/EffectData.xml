@@ -14,9 +14,12 @@
     </CEffectSet>
     <CEffectEnumArea id="CommandCenterKnockbackSE">
         <EditorCategories value=""/>
-        <SearchFilters value="Ground;Neutral,Structure,Missile,Dead,Hidden"/>
-        <AreaArray Radius="2" Effect="UnitKnockbackBy2"/>
+        <SearchFilters value="Ground;Self,Neutral,Structure,Missile,Dead,Hidden"/>
+        <AreaArray Radius="2" Effect="TerranBuildingKnockBack2Set"/>
     </CEffectEnumArea>
+    <CEffectSet id="FeedbackSet">
+        <ValidatorArray value="NotShieldBattery"/>
+    </CEffectSet>
     <CEffectDamage id="FungalGrowthSearchDummy">
         <AreaArray index="0" Radius="2.25" Fraction="1"/>
     </CEffectDamage>
@@ -26,6 +29,9 @@
     <CEffectDamage id="InfestedGuassRifle">
         <Amount value="6"/>
     </CEffectDamage>
+    <CEffectCreateUnit id="KD8Charge">
+        <SpawnRange value="3"/>
+    </CEffectCreateUnit>
     <CEffectDamage id="KD8ChargeExplodeDamage">
         <Amount value="5"/>
     </CEffectDamage>
@@ -57,24 +63,87 @@
     <CEffectCreateUnit id="ParasiticBombCU">
         <SpawnEffect value="ParasiticBombCUSpawnSwitch"/>
     </CEffectCreateUnit>
+    <CEffectCreateUnit id="ParasiticBombCURelay">
+        <EditorCategories value="Race:Zerg"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="ParasiticBombOrderRelaySet"/>
+        <SpawnUnit value="ParasiticBombRelayDummy"/>
+        <ValidatorArray value="ParasiticBombVikingFighterNotMorphing"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="ParasiticBombCURelayDodge">
+        <EditorCategories value="Race:Zerg"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="ParasiticBombOrderRelayDodgeSet"/>
+        <SpawnUnit value="ParasiticBombRelayDummy"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+    </CEffectCreateUnit>
+    <CEffectApplyBehavior id="ParasiticBombDelayTimedLife">
+        <EditorCategories value="Race:Zerg"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="ParasiticBombImpactSwitch">
+        <EditorCategories value="Race:Zerg"/>
+        <CaseArray Validator="ParasiticBombVikingFighterNotMorphing" Effect="ParasiticBombCURelay"/>
+        <CaseDefault value="ParasiticBombCURelayDodge"/>
+    </CEffectSwitch>
     <CEffectSet id="ParasiticBombInitialSet">
         <EffectArray index="1" value="ParasiticBombInitialDelayAB"/>
         <EffectArray value="ParasiticBombAB"/>
+        <EffectArray value="ParasiticBombGlazeMarkerAB"/>
     </CEffectSet>
     <CEffectLaunchMissile id="ParasiticBombLM">
-        <InterruptEffect value="ParasiticBombCUDodge"/>
+        <InterruptEffect value="ParasiticBombCURelayDodge"/>
+        <ImpactEffect value="ParasiticBombImpactSwitch"/>
     </CEffectLaunchMissile>
+    <CEffectIssueOrder id="ParasiticBombOrderRelay">
+        <EditorCategories value="Race:Zerg"/>
+        <Abil value="ViperParasiticBombRelay"/>
+        <Target Effect="ParasiticBombLM" Value="TargetUnit"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="ParasiticBombOrderRelayDodge">
+        <EditorCategories value="Race:Zerg"/>
+        <Abil value="ParasiticBombRelayDodge"/>
+        <Target Effect="ParasiticBombLM" Value="TargetUnitOrPoint"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="ParasiticBombOrderRelaySet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="ParasiticBombOrderRelay"/>
+        <EffectArray value="ParasiticBombDelayTimedLife"/>
+    </CEffectSet>
+    <CEffectSet id="ParasiticBombOrderRelayDodgeSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="ParasiticBombOrderRelayDodge"/>
+        <EffectArray value="ParasiticBombDelayTimedLife"/>
+    </CEffectSet>
+    <CEffectSet id="ParasiticBombFinalSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="ParasiticBombCU"/>
+        <EffectArray value="ParasiticBombGlazeMarkerRB"/>
+    </CEffectSet>
     <CEffectDamage id="ParticleDisruptorsU">
-        <AttributeBonus index="Armored" value="6"/>
-        <Amount value="15"/>
+        <AttributeBonus index="Armored" value="5"/>
+        <Amount value="13"/>
     </CEffectDamage>
     <CEffectRemoveBehavior id="PhaseFungalMovementRemove">
         <BehaviorLink value="FungalGrowthSlowMovement"/>
     </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="RevelationPersistent">
+        <ExpireDelay value="42"/>
+    </CEffectCreatePersistent>
+    <CEffectCreateUnit id="ReaperKD8Knockback">
+        <ValidatorArray value="IsNotRecallingNexus"/>
+    </CEffectCreateUnit>
     <CEffectEnumArea id="TerranStructuresKnockbackSE">
         <EditorCategories value=""/>
-        <SearchFilters value="Ground;Neutral,Structure,Missile,Dead,Hidden"/>
-        <AreaArray Radius="1" Effect="UnitKnockbackBy2"/>
+        <SearchFilters value="Ground;Self,Neutral,Structure,Missile,Dead,Hidden"/>
+        <AreaArray Radius="1" Effect="TerranBuildingKnockBack2Set"/>
     </CEffectEnumArea>
     <CEffectDamage id="CrucioShockCannonBlast">
         <AttributeBonus index="Armored" value="30"/>
@@ -255,10 +324,6 @@
         <EffectArray value="PunisherGrenadesLMLeft"/>
         <EffectArray value="PunisherGrenadesLMRight"/>
     </CEffectSet>
-    <CEffectDamage id="PunisherGrenadesU">
-        <AttributeBonus index="Armored" value="5"/>
-        <Amount value="5"/>
-    </CEffectDamage>
     <CEffectEnumArea id="PurificationNovaSearch">
         <AreaArray index="0" Radius="1.5" Effect="PurificationNovaDamage"/>
         <ImpactLocation Value="SourceUnitOrPoint"/>
@@ -282,6 +347,11 @@
     <CEffectDamage id="TempestDamageGround">
         <Amount value="40"/>
     </CEffectDamage>
+    <CEffectSet id="TerranBuildingKnockBack2Set">
+        <ValidatorArray value="TargetIsGround"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="UnitKnockbackBy2"/>
+    </CEffectSet>
     <CEffectRemoveBehavior id="VoidRaySwarmDamageBoostCancel">
         <BehaviorLink value="VoidRaySwarmDamageBoost"/>
     </CEffectRemoveBehavior>
@@ -484,6 +554,10 @@
     </CEffectApplyBehavior>
     <CEffectDamage id="90mmCannonsDummy" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="0"/>
+        <ResponseFlags index="Flee" value="0"/>
+        <Visibility value="Hidden"/>
+        <Flags index="Notification" value="0"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="SiegeTankMorphDisableDummyWeaponAB">
         <Behavior value="SiegeTankDummyWeaponDisable"/>
@@ -543,6 +617,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Amount value="8"/>
         <ValidatorArray value="ChargeDamageDistance"/>
+        <ValidatorArray value="ZealotChargeTargetNotHidden"/>
         <ImpactLocation Effect="Charge" Value="TargetUnit"/>
     </CEffectDamage>
     <!--       Cyclone Air Attack       -->
@@ -611,6 +686,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Amount value="8"/>
         <ValidatorArray value="ChargeTargetNotAlive"/>
+        <ValidatorArray value="NotHidden"/>
     </CEffectDamage>
     <CEffectSet id="ChargingPrimaryDamageSet">
         <EditorCategories value="Race:Protoss"/>
@@ -618,6 +694,7 @@
         <EffectArray value="ChargeCheckRemoveBuff"/>
         <EffectArray value="ChargeAttackRemoveBuff"/>
         <ValidatorArray value="ChargeTargetNotDead"/>
+        <ValidatorArray value="NotHidden"/>
     </CEffectSet>
     <CEffectRemoveBehavior id="ChargeCheckRemoveBuff">
         <EditorCategories value="Race:Protoss"/>
@@ -749,9 +826,6 @@
         <WhichUnit Effect="AdeptPhaseShiftTimerSpawnAB" Value="Caster"/>
         <BehaviorLink value="MothershipCoreRecalling"/>
     </CEffectRemoveBehavior>
-    <CEffectSet id="PurificationNovaTargettedInitialSet">
-        <EffectArray value="DisruptorAnimationControllerAB"/>
-    </CEffectSet>
     <CEffectApplyBehavior id="DisruptorAnimationControllerAB">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
@@ -904,7 +978,8 @@
         <ImpactLocation Value="SourceUnit"/>
     </CEffectEnumArea>
     <CEffectModifyUnit id="DisruptorTransportUnloadPurificationNovaCooldownReset">
-        <Cost Abil="PurificationNovaTargeted,Execute" CooldownOperation="Max" CooldownTimeUse="3"/>
+        <Cost Abil="PurificationNovaTargeted,Execute" CooldownOperation="Max" CooldownTimeUse="1"/>
+        <ValidatorArray value="PurificationNovaTargetedCooldownLT1"/>
     </CEffectModifyUnit>
     <CEffectSet id="MedivacUnloadCargoSetEffect">
         <EditorCategories value=""/>
@@ -1093,13 +1168,13 @@
     </CEffectSet>
     <CEffectDamage id="RavenShredderMissileDamage">
         <EditorCategories value="Race:Terran"/>
-        <Amount value="30"/>
+        <Amount value="15"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
         <Flags index="Notification" value="1"/>
-        <AreaArray Radius="0.6" Fraction="1"/>
-        <AreaArray Radius="1.2" Fraction="0.5"/>
-        <AreaArray Radius="2.4" Fraction="0.25"/>
+        <AreaArray Radius="0.72" Fraction="1"/>
+        <AreaArray Radius="1.44" Fraction="0.5"/>
+        <AreaArray Radius="2.88" Fraction="0.25"/>
         <ExcludeArray Value="Target"/>
         <SearchFlags index="SameCliff" value="0"/>
         <SearchFilters value="-;Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
@@ -1110,7 +1185,7 @@
     </CEffectDamage>
     <CEffectEnumArea id="RavenShredderMissileImpactSearchArea">
         <EditorCategories value=""/>
-        <AreaArray Radius="2.4" Effect="RavenShredderMissileImpactApplyBehavior"/>
+        <AreaArray Radius="2.88" Effect="RavenShredderMissileImpactApplyBehavior"/>
         <SearchFilters value="-;Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="RavenShredderMissileImpactApplyBehavior">
@@ -1145,14 +1220,20 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="NexusMassRecallCastingAB"/>
         <EffectArray value="NexusMassRecallWarpOutAB"/>
+        <EffectArray value="NexusMassRecallPhased"/>
         <ValidatorArray value="IsNotRecallingNexus"/>
         <ValidatorArray value="NotLarvaEgg"/>
         <ValidatorArray value="NotLarva"/>
         <ValidatorArray value="NotAbducted"/>
+        <ValidatorArray value="IsNotWarpingIn"/>
     </CEffectSet>
     <CEffectApplyBehavior id="NexusMassRecallWarpOutAB">
         <ValidatorArray index="0" removed="1"/>
         <Behavior value="NexusMassRecallWarpOut"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="NexusMassRecallPhased">
+        <ValidatorArray index="0" removed="1"/>
+        <Behavior value="NexusMassRecallTargetPhased"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="NexusMassRecallCastingAB">
         <Behavior value="NexusMassRecallCasting"/>
@@ -1384,11 +1465,28 @@
     </CEffectSet>
     <CEffectSwitch id="ParasiticBombCUSpawnSwitch">
         <EditorCategories value="Race:Zerg"/>
-        <CaseArray Validator="HaveParasiticBombInitialDelay" Effect="ParasiticBombCUSpawnSet"/>
+        <CaseArray Validator="HaveSourceParasiticBombInitialDelay" Effect="ParasiticBombCUSpawnSet"/>
         <CaseDefault value="ParasiticBombDodgeCUSpawnSet"/>
     </CEffectSwitch>
     <CEffectApplyBehavior id="ParasiticBombDodgeTimerAB">
         <EditorCategories value="Race:Zerg"/>
         <Behavior value="ParasiticBombDodgeTimer"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ParasiticBombGlazeMarkerAB">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="ParasiticBombGlazeMarker"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="ParasiticBombGlazeMarkerRB">
+        <EditorCategories value="Race:Zerg"/>
+        <BehaviorLink value="ParasiticBombGlazeMarker"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="NexusMassRecallSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="NexusMassRecallTeleport"/>
+        <EffectArray value="NexusMassRecallPostBehavior"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="NexusMassRecallPostBehavior">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="NexusRecalled"/>
     </CEffectApplyBehavior>
 </Catalog>
