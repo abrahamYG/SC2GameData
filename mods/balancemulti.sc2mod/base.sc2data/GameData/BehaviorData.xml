@@ -12,6 +12,24 @@
     <CBehaviorBuff id="AutoTurretTimedLife">
         <Duration value="14"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="BattlecruiserAttackTracker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <MaxStackCount value="65535"/>
+        <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BattlecruiserChasing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BattlecruiserTransientTracker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="BattlecruiserTargetWithinWeaponRange"/>
+        <MaxStackCount value="65535"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Duration value="0.3"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="Charging">
         <InitialEffect value="ChargeCheckApplyBuff"/>
         <FinalEffect value="ChargingPrimaryDamageSet"/>
@@ -30,12 +48,21 @@
             <StateFlags index="SuppressAttack" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="LarvaPauseWander">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="LarvaNotConjoined"/>
+        <Modification MoveSpeedMaximum="0"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="LiberatorInitialMovable">
         <Modification MoveSpeedBonus="0"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="MedivacSpeedBoost">
         <RemoveValidatorArray value="NotHaveScramblerMissileBehavior"/>
     </CBehaviorBuff>
+    <CBehaviorResource id="MineralFieldMinerals450">
+        <IdealHarvesterCount value="2"/>
+    </CBehaviorResource>
     <CBehaviorBuff id="NeuralParasite">
         <Modification>
             <StateFlags index="RevealProgress" value="1"/>
@@ -88,6 +115,9 @@
         <Modification LifeArmorBonus="-3" ShieldArmorBonus="-3"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorResource id="RawRichVespeneGeyserGas">
+        <HarvestAmount value="8"/>
+    </CBehaviorResource>
     <CBehaviorBuff id="TemporalField">
         <Modification AttackSpeedMultiplier="0.5"/>
     </CBehaviorBuff>
@@ -169,7 +199,7 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="IsConstructing"/>
-        <Modification LifeArmorBonus="5"/>
+        <Modification LifeArmorBonus="2"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="PointDefenseDroneTimedLife">
         <Duration value="20"/>
@@ -390,7 +420,7 @@
         <Period value="0.63"/>
     </CBehaviorCreepSource>
     <CBehaviorCreepSource id="makeCreep8x6">
-        <Period value="0.63"/>
+        <Period value="0.42"/>
     </CBehaviorCreepSource>
     <CBehaviorBuff id="BarrierDamageResponse">
         <InfoFlags index="Hidden" value="1"/>
@@ -565,8 +595,14 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <TimeScaleSource Value="Global"/>
         <Duration value="28"/>
-        <Modification TimeScale="1.5">
-            <VitalRegenArray index="Energy" value="-0.1406"/>
+        <Modification>
+            <RateMultiplierArray index="Charge" value="1.5"/>
+            <RateMultiplierArray index="Cooldown" value="1.5"/>
+            <RateMultiplierArray index="Morph" value="1.5"/>
+            <RateMultiplierArray index="Progress" value="1.5"/>
+            <RateMultiplierArray index="Queueable" value="1.5"/>
+            <RateMultiplierArray index="Spawn" value="1.5"/>
+            <RateMultiplierArray index="Creep" value="1.5"/>
         </Modification>
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>

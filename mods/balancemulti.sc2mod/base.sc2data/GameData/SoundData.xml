@@ -1,9 +1,335 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CSound id="AmbientEmitter_RainHardSurface_Loop">
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1500" Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1500"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1500" Volume="-96.000000"/>
+        <VolumeRolloffPoints index="1" Distance="30.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="AmbientEmitter_ThunderDistant_SoundDelayedLoop">
+        <DupeHistoryCount value="16"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1100" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="30.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="DOM_Fire_Large_NonLoop">
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1100" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="30.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_Elsecaro_Buoy" parent="Ambient_Emitter_ForDelayedOneshots">
+        <AssetArray File="Assets\Sounds\AmbEmitter_Nova04_BuoyBell_01.wav" Volume="4.000000,4.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\AmbEmitter_Nova04_BuoyBell_02.wav" Volume="4.000000,4.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\AmbEmitter_Nova04_BuoyBell_03.wav" Volume="4.000000,4.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\AmbEmitter_Nova04_BuoyBell_04.wav" Volume="4.000000,5.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\AmbEmitter_Nova04_BuoyBell_05.wav" Volume="4.000000,4.000000" FacialGroup=""/>
+        <AssetArray>
+            <File value="Assets\Sounds\AmbEmitter_Nova04_BuoyBell_06.wav"/>
+            <Pitch value="0.000000,2.000000"/>
+            <Volume value="4.000000,4.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <DupeMuteCount value="2"/>
+        <Pitch value="0.000000,1.000000"/>
+        <PlayDelay value="0,0"/>
+        <PositionRandomOffsetPower value="2.000000"/>
+        <Select value="Random"/>
+        <Volume value="-4.000000,-2.000000"/>
+        <VolumeRolloffPoints index="1" Distance="30.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_DominionLandingPad" parent="Ambience_Object">
+        <AssetArray>
+            <File value="Assets\Sounds\OrbitalDemo_Lt_Loop_01.ogg"/>
+            <LoopCount value="-1"/>
+            <Pitch value="-1.000000,-1.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray File="Assets\Sounds\OrbitalDemo_Lt_Loop_02.ogg" LoopCount="-1" FacialGroup=""/>
+        <AssetArray>
+            <File value="Assets\Sounds\Power_Orb_FlyBys_LpLyr.ogg"/>
+            <LoopCount value="-1"/>
+            <Pitch value="2.000000,2.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <DupeMuteCount value="2"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <Spread value="45.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1100" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="24.000000" Volume="-96.000000"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupePrioritization value="Oldest"/>
+        <Flags index="Stream" value="1"/>
+        <DupeHistoryCount value="64"/>
+    </CSound>
+    <CSound id="Doodad_Elsecaro_Catamaran" parent="Ambient_Emitter_ForDelayedOneshots">
+        <AssetArray File="Assets\Sounds\Amb_Water_UnderPier_Lp_01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Amb_Water_UnderPier_Lp_02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Amb_Water_UnderPier_Lp_03.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Amb_Water_UnderPier_Lp_04.ogg" FacialGroup=""/>
+        <Flags index="Stream" value="1"/>
+        <DupeDestroyCount value="32"/>
+        <DupeHistoryCount value="64"/>
+        <DupeMuteCount value="2"/>
+        <Pitch value="-1.000000,0.000000"/>
+        <PlayDelay value="0,0"/>
+        <PositionRandomOffsetPower value="2.000000"/>
+        <Select value="Random"/>
+        <Volume value="-4.000000,-3.000000"/>
+        <VolumeRolloffPoints index="1" Distance="26.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_Nanocloud_Currents" parent="Ambience_Map">
+        <AssetArray>
+            <File value="Assets\Sounds\Hallo_Spooky_Loop.ogg"/>
+            <LoopCount value="-1"/>
+            <Pitch value="-3.000000,-3.000000"/>
+            <Volume value="3.000000,3.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray File="Assets\Sounds\zLab_TestTubeElectric_Lp.wav" LoopCount="-1" FacialGroup=""/>
+        <DupeDestroyCount value="32"/>
+        <DupeHistoryCount value="64"/>
+        <DupeMuteCount value="2"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1500"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1500" Volume="-96.000000"/>
+        <LoopCount value="0"/>
+        <Mode value="3DWorld"/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="-12.000000,-10.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1100" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="SteamCurtain_UnFog" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\Uni\Doodad_FanVentMedium_01.ogg" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Doodad_FanVentMedium_02.ogg" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Doodad_FanVentMedium_03.ogg" LoopCount="-1" FacialGroup=""/>
+        <DupeHistoryCount value="64"/>
+        <DupeMuteCount value="2"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1500"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="2500" Volume="-96.000000"/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Spread value="20.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-5.000000,-4.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1600"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="2000" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="30.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_Void_DeathGripCrystal" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\AmbObj_MysticalHover_Lp.ogg" FacialGroup=""/>
+        <DupeHistoryCount value="32"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="1"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-2.000000,-2.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <LoopCount value="-1"/>
+        <Spread value="20.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="2100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="2100" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="2.000000"/>
+        <VolumeRolloffPoints Distance="40.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_Void_CorruptionPillar" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\AmbObj_MysticalHover_Lp.ogg" FacialGroup=""/>
+        <DupeHistoryCount value="32"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="1"/>
+        <DupePrioritization value="Oldest"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <LoopCount value="-1"/>
+        <Pitch value="-2.000000,-2.000000"/>
+        <Spread value="20.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="2100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="2100" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="2.000000"/>
+        <VolumeRolloffPoints Distance="40.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_Void_Rift_Static" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\VoidRift_Loop_01a.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidRift_Loop_01d.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\VoidRift_Loop_01e.wav" LoopCount="-1" FacialGroup=""/>
+        <DupeHistoryCount value="64"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <DupePrioritization value="Oldest"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1200" Volume="-0.040000"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <Pitch value="-0.310000,0.690000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="2100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="2100" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="28.000000" Volume="-96.000000"/>
+        <Spread value="20.000000"/>
+    </CSound>
+    <CSound id="Doodad_Void_Mist" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\Amb_SandyWind_Emitter_Lp_01.ogg" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Amb_SandyWind_Emitter_Lp_02.ogg" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Amb_SandyWind_Emitter_Lp_03.ogg" LoopCount="-1" FacialGroup=""/>
+        <Flags index="Stream" value="1"/>
+        <DupeHistoryCount value="64"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="2"/>
+        <DupePrioritization value="Oldest"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="2250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="2250" Volume="-96.000000"/>
+        <Pitch value="-0.310000,0.690000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-10.000000,-10.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="2100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="2100" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="60.000000" Volume="-96.000000"/>
+        <Spread value="90.000000"/>
+    </CSound>
+    <CSound id="Doodad_WaterfallMedium">
+        <Volume value="-14.000000,-14.000000"/>
+        <DupeDestroyCount value="32"/>
+        <DupeHistoryCount value="64"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="24.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="OrbitDemo5Addition_Layer_01" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\OrbitalDemo_Lt_Loop_01.ogg" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\OrbitalDemo_Lt_Loop_02.ogg" LoopCount="-1" FacialGroup=""/>
+        <Flags index="Stream" value="1"/>
+        <DupeHistoryCount value="64"/>
+        <DupeMuteCount value="2"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1100" Volume="-96.000000"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupePrioritization value="Oldest"/>
+        <Spread value="20.000000"/>
+    </CSound>
     <CSound id="Amb_ElectricArc_PowerConduit">
         <Pitch value="-3.000000,7.000000"/>
         <Volume value="-16.000000,-10.000000"/>
     </CSound>
+    <CSound id="AS_OrbitDemo5Addition" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\OrbitalDemo_Hvy_Loop_01.ogg" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\OrbitalDemo_Hvy_Loop_02.ogg" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\OrbitalDemo_Hvy_Loop_03.ogg" LoopCount="-1" FacialGroup=""/>
+        <DupeHistoryCount value="64"/>
+        <DupeMuteCount value="2"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1100" Volume="-96.000000"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupePrioritization value="Oldest"/>
+        <Spread value="45.000000"/>
+    </CSound>
+    <CSound id="Doodad_UlnarCurtain" parent="Ambience_Object">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_SpacePlatformCurtain0.wav" LoopCount="-1"/>
+        <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_SpacePlatformCurtain1.wav" LoopCount="-1"/>
+        <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_SpacePlatformCurtain2.wav" LoopCount="-1"/>
+        <DupeHistoryCount value="64"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="2"/>
+        <DupePrioritization value="Oldest"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <Pitch value="-0.500000,0.500000"/>
+        <Volume value="-18.000000,-18.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_UmojanLabWeaponCase" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\Power_Orbital_Loop_01.ogg" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Power_Orbital_Loop_02.ogg" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Power_Orbital_Loop_03.ogg" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Power_Orbital_Loop_04.ogg" LoopCount="-1" FacialGroup=""/>
+        <DupeMuteCount value="3"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-4.000000,-4.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1100" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="24.000000" Volume="-96.000000"/>
+        <Spread value="20.000000"/>
+    </CSound>
+    <CSound id="Ambience_Nova09_Space_Platform_Quad"/>
     <CSound id="CarrionBird_VxFx" parent="Ambience_Map">
         <AssetArray File="Assets\Sounds\Uni\Ambience\Tilesets\Emitter_JungleBirdCall1.ogg" FacialGroup=""/>
         <AssetArray>
@@ -101,6 +427,13 @@
         <LoopCount value="-1"/>
         <Pitch value="-2.000000,-2.000000"/>
         <Volume value="-6.600000,-6.600000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1100" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="30.000000" Volume="-96.000000"/>
     </CSound>
     <CSound id="Doodad_BlimpDoodad" parent="Movement">
         <EditorCategories value="Race:Neutral"/>
@@ -112,10 +445,330 @@
         <SustainFade index="1" Time="1000"/>
         <Volume value="-12.000000,-12.000000"/>
     </CSound>
+    <CSound id="Doodad_NewFolsomPrisonTowerSound">
+        <Volume value="-10.000000,-10.000000"/>
+    </CSound>
+    <CSound id="Doodad_Protoss_Base_Terminals">
+        <Volume value="-12.000000,-10.000000"/>
+    </CSound>
+    <CSound id="Doodad_StarShipAdun_Platforms" parent="Ambience_Object">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Protoss_Auir_Building_Float01.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss_Auir_Building_Float02.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Unused\Protoss_Auir_Building_Float03.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Unused\Protoss_Auir_Building_Float04.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Unused\Protoss_Auir_Building_Float05.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Unused\Protoss_Auir_Building_Float06.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Unused\Protoss_Auir_Building_Float07.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Unused\Protoss_Auir_Building_Float08.wav" LoopCount="-1" FacialGroup=""/>
+        <DupeMuteCount value="2"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-4.000000,-4.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="508"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="508" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="25.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_UmojanLabHoloProjector_PowerLoop">
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Doodad_UmojanLabHoloProjector_PowerOff">
+        <Pitch value="-3.000000,-2.000000"/>
+        <Volume value="-34.000000,-34.000000"/>
+    </CSound>
+    <CSound id="Doodad_UmojanLabHoloProjector_PowerOn">
+        <Pitch value="-3.000000,-2.000000"/>
+        <Volume value="-34.000000,-34.000000"/>
+    </CSound>
+    <CSound id="Lyote_Attack">
+        <Volume value="-16.000000,-12.000000"/>
+    </CSound>
+    <CSound id="Lyote_Death">
+        <Volume value="-14.000000,-10.000000"/>
+    </CSound>
+    <CSound id="Lyote_Howl">
+        <Volume value="-20.000000,-14.000000"/>
+    </CSound>
+    <CSound id="Lyote_MP_Howl">
+        <Volume value="-18.000000,-12.000000"/>
+        <Pitch value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="Lyote_Stand01_PreHowl">
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Stand01_PreHowl.wav" FacialGroup=""/>
+        <Volume value="-16.000000,-12.000000"/>
+        <Pitch value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="Lyote_Stand01_pt1">
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Stand01_pt01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Stand01_pt01_Alt.wav" FacialGroup=""/>
+        <Volume value="-16.000000,-12.000000"/>
+    </CSound>
+    <CSound id="Lyote_Walk">
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Walk_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Walk_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Walk_03.wav" FacialGroup=""/>
+        <Pitch value="0.000000,2.000000"/>
+        <Volume value="-22.000000,-20.000000"/>
+    </CSound>
+    <CSound id="Lyote_What">
+        <Volume value="-14.000000,-10.000000"/>
+    </CSound>
+    <CSound id="Doodad_ForceFieldWall" parent="Ambience_Object">
+        <AssetArray>
+            <File value="Assets\Sounds\ForceField_Loop_Mn.ogg"/>
+            <LoopCount value="-1"/>
+            <Pitch value="2.000000,2.000000"/>
+            <Volume value="-1.000000,-1.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="Assets\Sounds\ForceField_Energy_Loop.ogg"/>
+            <LoopCount value="-1"/>
+            <Pitch value="-3.000000,-3.000000"/>
+            <Volume value="-4.000000,-4.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="Assets\Sounds\Purifier_ForceField_Loop01.wav"/>
+            <LoopCount value="-1"/>
+            <Pitch value="-2.000000,-2.000000"/>
+            <Volume value="-12.000000,-12.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <DupePrioritization value="Oldest"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1000"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1000" Volume="-96.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-2.000000,-2.000000"/>
+        <VolumeRolloffPoints Distance="3.000000"/>
+        <VolumeRolloffPoints Distance="34.000000" Volume="-96.000000"/>
+        <DupeHistoryCount value="128"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1100" Volume="-96.000000"/>
+        <DupeDestroyCount value="64"/>
+    </CSound>
+    <CSound id="OrbitDemo5Addition_Layer_02" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\Power_Orb_FlyBys_LpLyr.ogg" LoopCount="-1" FacialGroup=""/>
+        <Flags index="Stream" value="1"/>
+        <DupeHistoryCount value="64"/>
+        <DupeMuteCount value="4"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <Pitch value="-1.000000,0.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1100" Volume="-96.000000"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupePrioritization value="Oldest"/>
+        <Spread value="20.000000"/>
+    </CSound>
+    <CSound id="Protoss_Base_Terminals_NonLoop" parent="Ambience_Object">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray>
+            <File value="Assets\Sounds\Protoss_Auir2_Computer05.wav"/>
+            <Pitch value="-3.000000,-3.000000"/>
+            <Volume value="-5.000000,-5.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray File="Assets\Sounds\Protoss_Auir2_Computer04.wav" FacialGroup=""/>
+        <AssetArray>
+            <File value="Assets\Sounds\Protoss_Auir2_Computer02.wav"/>
+            <Pitch value="-1.000000,-1.000000"/>
+            <Volume value="-2.000000,-2.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="Assets\Sounds\Protoss_Auir2_Computer01.wav"/>
+            <Pitch value="-4.000000,-4.000000"/>
+            <Volume value="-4.000000,-4.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-22.000000,-20.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1250"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1250" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="7.000000" Volume="-0.080000"/>
+        <VolumeRolloffPoints Distance="14.000000" Volume="-96.000000"/>
+        <DupeHistoryCount value="64"/>
+        <DupeMuteCount value="2"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="2250" Volume="-96.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_Purifier_Screens" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\Nova_Xanthos_Hologram_Loop_01.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,-1.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <DupeMuteCount value="2"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupePrioritization value="Oldest"/>
+        <LoopCount value="-1"/>
+    </CSound>
+    <CSound id="Doodad_Purifier_Screens_NonLoop" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\Nova_Xanthos_Hologram_Loop_01.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="1"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-1.000000,-1.000000"/>
+        <Volume value="-12.000000,-12.000000"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="2250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="2250" Volume="-96.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="7.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_Purifier_Warp_In_Pad" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\Purifier_TeleportPad_AmbientLoop01_2ch.ogg" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Purifier_TeleportPad_AmbientLoop02_2ch.ogg" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Xelnaga_Library_ActiveLoop_1ch.wav" LoopCount="-1" FacialGroup=""/>
+        <DupeHistoryCount value="64"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="2"/>
+        <DupePrioritization value="Oldest"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="2250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="2250" Volume="-96.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="2100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="2100" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="24.000000" Volume="-96.000000"/>
+        <MuteFadeIn Volume="-96.000000"/>
+        <MuteFadeIn Time="1250"/>
+        <MuteFadeOut/>
+        <MuteFadeOut Time="1250" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_SteamLoopSmall">
+        <Pitch value="0.000000,0.000000"/>
+        <Volume value="-24.000000,-24.000000"/>
+    </CSound>
+    <CSound id="PlatformSign_LightBulbFlickerClick" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\Doodad_LightBulbFlickerClick01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Doodad_LightBulbFlickerClick02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Doodad_LightBulbFlickerClick03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Doodad_LightBulbFlickerClick04.wav" FacialGroup=""/>
+        <Chance value="75"/>
+        <FogFadeOut/>
+        <Pitch value="1.300000,2.300000"/>
+        <Volume value="-22.000000,-20.000000"/>
+        <VolumeRolloffPoints Distance="7.000000"/>
+        <VolumeRolloffPoints Distance="15.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="PlatformSign_LightBulbFlickerBuzz" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\Doodad_LightBulbFlickerBuzz01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Doodad_LightBulbFlickerBuzz02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Doodad_LightBulbFlickerBuzz03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Doodad_LightBulbFlickerBuzz04.wav" FacialGroup=""/>
+        <Chance value="60"/>
+        <FogFadeOut/>
+        <Pitch value="-1.000000,4.000000"/>
+        <Volume value="-18.000000,-14.000000"/>
+        <VolumeRolloffPoints Distance="7.000000"/>
+        <VolumeRolloffPoints Distance="15.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_SpacePlatformSign" parent="Ambience_Object">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_BraxisAlphaFloodlights0.wav" LoopCount="-1" Pitch="-3.000000,0.000000"/>
+        <DupeDestroyCount value="65535"/>
+        <DupeMuteCount value="3"/>
+        <Volume value="-25.000000,-25.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1000"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1000" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="7.000000"/>
+        <VolumeRolloffPoints Distance="15.000000" Volume="-96.000000"/>
+    </CSound>
     <CSound id="Doodad_CastanarGenerator">
         <AssetArray index="0" File="Assets\Sounds\zLab_WaterGenerator_Amb_Lp_1a.wav" FacialGroup=""/>
         <Pitch value="-3.000000,-3.000000"/>
         <Volume value="-14.000000,-14.000000"/>
+    </CSound>
+    <CSound id="Doodad_CompoundSewers_ExhaustPipes_SteadyBurn" parent="Ambience_Object">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Protoss_FireSmall_01a.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss_FireSmall_02a.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss_FireSmall_03.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss_FireSmall_03a.wav" LoopCount="-1" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="2"/>
+        <DupePrioritization value="Oldest"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="750"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <Pitch value="-6.000000,-6.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-12.000000,-12.000000"/>
+        <DupeDestroyCount value="64"/>
+        <DupeHistoryCount value="32"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1100" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="7.000000"/>
+        <VolumeRolloffPoints Distance="18.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_ExhaustPipes_SteadyBurn" parent="Ambience_Object">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Protoss_FireSmall_01a.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss_FireSmall_02a.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss_FireSmall_03.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss_FireSmall_03a.wav" LoopCount="-1" FacialGroup=""/>
+        <DupeDestroyCount value="64"/>
+        <DupeHistoryCount value="32"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <DupePrioritization value="Oldest"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="750"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <Pitch value="-6.000000,-6.000000"/>
+        <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <Volume value="-12.000000,-12.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="1100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="1100" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Doodad_CompoundSewers_Flame" parent="Ambience_Object">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Korhal_SkyShield_Fire_FlareUp_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Korhal_SkyShield_Fire_FlareUp_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Korhal_SkyShield_Fire_FlareUp_03.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="2"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-10.000000,-8.000000"/>
     </CSound>
     <CSound id="Doodad_Korhal_WallCap" parent="Ambience_Object">
         <EditorCategories value="Race:Neutral"/>
@@ -492,7 +1145,7 @@
         <VolumeRolloffPoints index="1" Distance="16.000000" Volume="-96.000000"/>
     </CSound>
     <CSound id="HologramProjector_PowerOff">
-        <Volume value="-22.000000,-22.000000"/>
+        <Volume value="-18.000000,-18.000000"/>
         <AssetArray>
             <File value="Assets\Sounds\UI_Void_On_Off_2.wav"/>
             <Pitch value="-12.000000,-12.000000"/>
@@ -519,6 +1172,7 @@
             <Volume value="-10.000000,-10.000000"/>
             <FacialGroup value=""/>
         </AssetArray>
+        <Volume value="-18.000000,-18.000000"/>
     </CSound>
     <CSound id="Karak_What">
         <Pitch value="-1.000000,0.000000"/>
@@ -535,11 +1189,22 @@
         <AssetArray File="Assets\Sounds\MainMenu_Takeover_Fenix_ClawGrasp03.wav" FacialGroup=""/>
         <Flags index="VariationFallback" value="0"/>
         <Pitch value="-16.000000,-14.000000"/>
-        <Volume value="-32.000000,-30.000000"/>
+        <Volume value="-28.000000,-28.000000"/>
         <VolumeRolloffPoints Distance="10.000000"/>
         <VolumeRolloffPoints Distance="16.000000" Volume="-96.000000"/>
     </CSound>
-    <CSound id="Map_Emitter_ForceFieldWall"/>
+    <CSound id="Map_Emitter_ForceFieldWall">
+        <DupeHistoryCount value="128"/>
+        <FogFadeIn index="1" Time="3000"/>
+        <FogFadeOut index="1" Time="3000" Volume="-96.000000"/>
+        <Volume value="0.000000,0.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="2100"/>
+        <VolumeRolloffFadeOut/>
+        <VolumeRolloffFadeOut Time="2100" Volume="-96.000000"/>
+        <VolumeRolloffPoints index="0" Distance="5.000000"/>
+        <VolumeRolloffPoints index="1" Distance="40.000000" Volume="-96.000000"/>
+    </CSound>
     <CSound id="Observer_Land">
         <Pitch value="-2.000000,0.000000"/>
     </CSound>
@@ -553,8 +1218,8 @@
         <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_SuperCraneStand02Rotate1.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_TRaynor02DigSiteCraneLower0.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_TRaynor02DigSiteCraneRaise0.wav" FacialGroup=""/>
-        <Pitch value="-2.000000,0.000000"/>
-        <Volume value="-10.000000,-8.000000"/>
+        <Pitch value="-4.000000,-1.000000"/>
+        <Volume value="-16.000000,-12.000000"/>
         <VolumeRolloffPoints Distance="5.000000"/>
         <VolumeRolloffPoints Distance="28.000000" Volume="-96.000000"/>
     </CSound>
@@ -590,6 +1255,13 @@
         <AssetArray File="Assets\Sounds\FS_Water_WalkSeq_3.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\FS_Water_WalkSeq_5.wav" FacialGroup=""/>
         <Pitch value="-4.000000,0.000000"/>
+    </CSound>
+    <CSound id="Purifier_WarpPad_Halo_Loop">
+        <DupeDestroyCount value="64"/>
+        <DupeHistoryCount value="64"/>
+        <DupePrioritization value="Oldest"/>
+        <FogFadeOut index="1" Time="1500" Volume="-96.000000"/>
+        <DupeMuteCount value="3"/>
     </CSound>
     <CSound id="RavenShredderMissile_Travel_Loop" parent="Combat">
         <AssetArray File="Assets\Sounds\Def_Matrix_Loop_02.ogg" FacialGroup=""/>
@@ -639,16 +1311,89 @@
     <CSound id="ShieldBattery_Recharge_Loop">
         <DupeMuteCount value="5"/>
     </CSound>
-    <CSound id="Doodad_CompoundSewers_ExhaustPipes" parent="Ambience_Object">
-        <EditorCategories value="Race:Neutral"/>
-        <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_SteamBurstLarge0.wav"/>
-        <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_SteamBurstLarge1.wav"/>
-        <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_SteamBurstLarge2.wav"/>
+    <CSound id="Purifier_WarpPad_Halo_Active" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\UI_WarChest_BG_1Shot_Low_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\UI_WarChest_BG_1Shot_Low_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\UI_WarChest_BG_1Shot_Low_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\UI_WarChest_BG_1Shot_Low_04.wav" FacialGroup=""/>
         <DupeMaximumMethod value="Replace"/>
-        <DupeMuteCount value="3"/>
         <DupePrioritization value="Oldest"/>
-        <Pitch value="-6.000000,-3.000000"/>
-        <Volume value="-10.000000,-10.000000"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="SteamCurtain_RoseBud" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_SpacePlatformCurtain0.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_SpacePlatformCurtain1.wav" LoopCount="-1" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Doodads\Doodad_SpacePlatformCurtain2.wav" LoopCount="-1" FacialGroup=""/>
+        <DupeHistoryCount value="128"/>
+        <DupeMuteCount value="2"/>
+        <Pitch value="-1.500000,-0.500000"/>
+        <Volume value="-17.000000,-17.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="24.000000" Volume="-96.000000"/>
+        <Spread value="10.000000"/>
+    </CSound>
+    <CSound id="SteamCurtain_UnFog_1Shot" parent="Ambience_Object">
+        <AssetArray File="Assets\Sounds\Amb_Nova09_Steam_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Amb_Nova09_Steam_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Amb_Nova09_Steam_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Amb_Nova09_Steam_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Amb_Nova09_Steam_05.wav" FacialGroup=""/>
+        <DupeHistoryCount value="64"/>
+        <DupeMuteCount value="1"/>
+        <FogFadeIn Volume="-96.000000"/>
+        <FogFadeIn Time="1250"/>
+        <FogFadeOut/>
+        <FogFadeOut Time="1250" Volume="-96.000000"/>
+        <LoopCount value="-1"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <PlayDelay value="4000,20000"/>
+        <Spread value="15.000000"/>
+        <Volume value="-18.000000,-14.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Tastelope_Death">
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Tastelop_Death_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Tastelop_Death_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Tastelop_Death_03.wav" FacialGroup=""/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Tastelope_Fidget">
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Tastelop_Fidget_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Tastelop_Fidget_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Tastelop_Fidget_03.wav" FacialGroup=""/>
+        <Volume value="-8.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Tastelope_Walk">
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Tastelop_Walk_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Tastelop_Walk_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Tastelop_Walk_03.wav" FacialGroup=""/>
+        <Pitch value="1.000000,3.000000"/>
+        <Volume value="-22.000000,-18.000000"/>
+    </CSound>
+    <CSound id="Ursadak_Death_VxFx">
+        <Pitch value="-2.000000,0.000000"/>
+    </CSound>
+    <CSound id="Ursadak_F_Fidget">
+        <Pitch value="0.000000,0.000000"/>
+        <Volume value="-16.000000,-12.000000"/>
+    </CSound>
+    <CSound id="Ursadak_F_Stand">
+        <Pitch value="0.000000,0.000000"/>
+        <Volume value="-16.000000,-12.000000"/>
+    </CSound>
+    <CSound id="Ursadak_M_Stand">
+        <Pitch value="0.000000,0.000000"/>
+        <Volume value="-16.000000,-12.000000"/>
+    </CSound>
+    <CSound id="Ursadak_M_Stand01">
+        <Pitch value="0.000000,0.000000"/>
+        <Volume value="-16.000000,-12.000000"/>
+    </CSound>
+    <CSound id="Ursadak_Walk">
+        <Pitch value="0.000000,0.000000"/>
+        <Volume value="-18.000000,-14.000000"/>
     </CSound>
     <CSound id="Viking_MorphToAssault">
         <AssetArray index="0" File="Assets\Sounds\Terran\Viking\Viking_MorphToAssault0.wav" Offset="22500,22500"/>
@@ -744,14 +1489,19 @@
         <ReverbBalance Room="-10000"/>
     </CSound>
     <CSound id="Doodad_CompoundSewer_Med_PipeFlow" parent="Ambience_Object">
-        <AssetArray File="Assets\Sounds\Water_SewerDrain_Loop_01.wav" FacialGroup=""/>
+        <AssetArray>
+            <File value="Assets\Sounds\Water_SewerDrain_Loop_01.wav"/>
+            <LoopCount value="-1"/>
+            <Volume value="2.000000,2.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray File="Assets\Sounds\Water_SewerDrain_Loop_03.wav" LoopCount="-1" FacialGroup=""/>
         <DupeMaximumMethod value="Replace"/>
         <DupeMuteCount value="3"/>
         <FogFadeIn Volume="-96.000000"/>
         <FogFadeIn Time="2000"/>
         <FogFadeOut/>
         <FogFadeOut Time="2000" Volume="-96.000000"/>
-        <LoopCount value="-1"/>
         <Pitch value="-2.000000,-2.000000"/>
         <Volume value="-15.000000,-15.000000"/>
         <VolumeRolloffFadeIn Volume="-96.000000"/>
@@ -760,17 +1510,17 @@
         <VolumeRolloffFadeOut Time="2000" Volume="-96.000000"/>
         <VolumeRolloffPoints Distance="5.000000"/>
         <VolumeRolloffPoints Distance="22.000000" Volume="-96.000000"/>
-        <DupeDestroyCount value="2"/>
         <ReverbBalance Room="-10000"/>
         <Spread value="50.000000"/>
         <SustainFade index="1" Time="2000" Volume="-96.000000"/>
+        <DupeHistoryCount value="32"/>
     </CSound>
     <CSound id="Doodad_CompoundSewers_Water_Leak" parent="Ambience_Object">
         <DupeDestroyCount value="64"/>
         <DupeFadeOut/>
         <DupeFadeOut Time="1000" Volume="-96.000000"/>
         <DupeHistoryCount value="6"/>
-        <DupeMuteCount value="4"/>
+        <DupeMuteCount value="3"/>
         <FogFadeIn Volume="-96.000000"/>
         <FogFadeIn Time="1000"/>
         <FogFadeOut/>
@@ -841,7 +1591,7 @@
         <DupeFadeOut Time="1000" Volume="-96.000000"/>
         <DupeHistoryCount value="6"/>
         <DupeMaximumMethod value="Replace"/>
-        <DupeMuteCount value="4"/>
+        <DupeMuteCount value="3"/>
         <DupePrioritization value="Oldest"/>
         <FogFadeIn Volume="-96.000000"/>
         <FogFadeIn Time="2000"/>
@@ -863,15 +1613,14 @@
         <AssetArray File="Assets\Sounds\Water_SewerDrain_Loop_03.wav" LoopCount="-1" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Water_Flow_Calm_Loop_02.wav" LoopCount="-1" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Water_Flow_Calm_Loop_03.wav" LoopCount="-1" FacialGroup=""/>
-        <DupeDestroyCount value="3"/>
         <DupeMuteCount value="3"/>
         <Pitch value="-4.000000,-4.000000"/>
-        <Volume value="-11.000000,-11.000000"/>
+        <Volume value="-12.000000,-12.000000"/>
         <VolumeRolloffFadeIn Volume="-96.000000"/>
         <VolumeRolloffFadeIn Time="2000"/>
         <VolumeRolloffFadeOut/>
         <VolumeRolloffFadeOut Time="2000" Volume="-96.000000"/>
-        <DupeHistoryCount value="6"/>
+        <DupeHistoryCount value="32"/>
         <FogFadeIn Volume="-96.000000"/>
         <FogFadeIn Time="1000"/>
         <FogFadeOut/>
@@ -885,10 +1634,11 @@
         <EditorCategories value="Race:Terran"/>
         <AssetArray File="Assets\Sounds\Doodad_UmojanLabAlarms_00.wav" FacialGroup=""/>
         <LoopCount value="-1"/>
-        <Volume value="-18.000000,-18.000000"/>
+        <Volume value="-21.000000,-21.000000"/>
         <VolumeRolloffPoints Distance="6.685237"/>
         <VolumeRolloffPoints Distance="17.130920" Volume="-96.000000"/>
     </CSound>
+    <CSound id="Void_XelNaga_Structure_PwrLoop"/>
     <CSound id="XelNaga_Techno_Holo_Planet_DNA_Sculpture_Stand_A">
         <Pitch value="-2.000000,-2.000000"/>
         <Volume value="-14.000000,-14.000000"/>

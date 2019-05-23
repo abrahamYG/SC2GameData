@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CActorEventMacroRunnable id="ArthasLichPrinceVar3Macro">
+        <Do Send="TextureSelectById storm_hero_arthas_lichprince_var3_diff"/>
+        <Do Send="TextureSelectById storm_hero_arthas_lichprince_var3_emis"/>
+        <Do Send="TextureSelectById storm_hero_arthas_lichprince_var3_spec"/>
+    </CActorEventMacroRunnable>
+    <CLight id="Storm_Portrait_Arthas_LichPrince_Var3" parent="default">
+        <EditorCategories value="LightGroup:PortraitsUnitsOther"/>
+        <ToDInfoArray index="0" Id="Storm_Portrait_Arthas_LichPrince_Var3" OperatorHDR="4" Colorize="1">
+            <AmbientColor X="0.462745" Y="0.368627" Z="0.294118"/>
+            <Param index="HDRExposure" value="1.500000"/>
+            <Param index="HDREmisMultiplier" value="0.420000"/>
+            <Param index="ColorizationContrast" value="1.066000"/>
+            <Param index="ColorizationHue" value="0.001000"/>
+            <Param index="ColorizationBlend" value="0.300000"/>
+            <DirectionalLight index="Key" ColorMultiplier="1.000000" SpecColorMultiplier="1.000000">
+                <Color X="0.749020" Y="0.882353"/>
+                <Direction X="-0.548038" Y="0.699191" Z="-0.459115"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" ColorMultiplier="0.407000">
+                <Color X="0.862745" Y="0.745098" Z="0.686275"/>
+                <Direction X="0.851088" Y="0.124312" Z="-0.510093"/>
+            </DirectionalLight>
+            <DirectionalLight index="Back" ColorMultiplier="0.300000">
+                <Color X="0.784314" Y="0.725490" Z="0.686275"/>
+                <Direction X="0.283346" Y="-0.435982" Z="-0.854187"/>
+            </DirectionalLight>
+            <DirectionalLight index="Shadow">
+                <Direction Z="1.000000"/>
+            </DirectionalLight>
+        </ToDInfoArray>
+    </CLight>
+    <CModel id="ArthasSkinLichPrinceVar3Portrait" parent="ArthasSkinLichPrincePortrait">
+        <Lighting value="Storm_Portrait_Arthas_LichPrince_Var3"/>
+    </CModel>
+    <CRewardSkin id="ArthasLichPrinceVar3">
+        <License value="31118"/>
+    </CRewardSkin>
+    <CSkin id="ArthasLichPrinceVar3" parent="ArthasLichPrinceCommon">
+        <AttributeId value="ArtJ"/>
+        <ModelMacroRun Models="ArthasLichPrinceModels" Macro="ArthasLichPrinceVar3Macro"/>
+        <ProductId value="38980"/>
+        <ReplacementArray Catalog="Model" From="ArthasSkinLichPrincePortrait" To="ArthasSkinLichPrinceVar3Portrait"/>
+        <RequiredRewardArray value="ArthasLichPrinceVar3"/>
+        <ReleaseDate Month="7" Day="10" Year="2018"/>
+        <HyperlinkId value="StromgardePrinceArthas"/>
+    </CSkin>
+    <CTexture id="storm_hero_arthas_lichprince_var3_diff" parent="MainSlotTexture"/>
+    <CTexture id="storm_hero_arthas_lichprince_var3_emis" parent="MainSlotTexture"/>
+    <CTexture id="storm_hero_arthas_lichprince_var3_spec" parent="MainSlotTexture"/>
+</Catalog>

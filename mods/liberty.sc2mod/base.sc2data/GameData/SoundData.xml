@@ -532,6 +532,236 @@
         <SustainFade index="1" Time="500" Volume="-96.000000"/>
         <Volume value="-24.000000,-24.000000"/>
     </CSound>
+    <CSound id="Baneling_Mecha_Cacoon_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Death_0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Birth_01.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Broodlord_Mecha_Cacoon_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Overseer_Mecha_Birth_Alt.wav" FacialGroup=""/>
+        <Pitch value="-6.000000,-4.000000"/>
+        <Volume value="-16.000000,-12.000000"/>
+    </CSound>
+    <CSound id="Lowko_BuildErrorProtoss" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildErrorProtoss00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildErrorProtoss01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildErrorProtoss02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildErrorProtoss03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_ForcesUnderAttack_Protoss" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttackProtoss00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttackProtoss01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttackProtoss02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttackProtoss03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttackProtoss04.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_ForcesUnderAttack_Terran" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttack03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttack04.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_ForcesUnderAttack_Zerg" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttackZerg00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttackZerg01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttackZerg02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttackZerg03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttackZerg04.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_WorkersUnderAttack_Protoss" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttackProtoss00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttackProtoss01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttackProtoss02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttackProtoss03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Ravager_Mecha_Cacoon_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg_Alt.wav" FacialGroup=""/>
+        <Pitch value="0.000000,2.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Lurker_Mecha_Cocoon_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Death_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Death_02.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Overseer_Death_Splat" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\SpaceCow_DeathBlow_2.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Death_Power" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Disruptor_Overcharge_End_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Disruptor_Overcharge_End_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Disruptor_Overcharge_End_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Disruptor_Overcharge_End_04.wav" FacialGroup=""/>
+        <Pitch value="0.000000,2.000000"/>
+        <Volume value="-4.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Death_Electric" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Uni\Deaths\EmpGenerator_Electric_Arc_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Deaths\EmpGenerator_Electric_Arc_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Deaths\EmpGenerator_Electric_Arc_06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Deaths\EmpGenerator_Electric_Arc_07.wav" FacialGroup=""/>
+        <Pitch value="-3.000000,0.000000"/>
+        <Volume value="-11.000000,-7.000000"/>
+    </CSound>
+    <CSound id="InfestationPit_Mecha_Death_Hit" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Raveger_Mecha_Death00_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Raveger_Mecha_Death00_02.wav" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-10.000000,-8.000000"/>
+    </CSound>
+    <CSound id="Spire_Mecha_Morph" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Birth_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Birth_02.wav" FacialGroup=""/>
+        <Pitch value="-4.000000,-2.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+    </CSound>
+    <CSound id="HydraliskDen_Mecha_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg_Alt.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="-5.000000,-3.000000"/>
+    </CSound>
+    <CSound id="PhotonCannon_Forged_Death_01" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+        <AssetArray File="Assets\Sounds\PhotonCannon_Forged_Death_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PhotonCannon_Forged_Death_01a.wav" FacialGroup=""/>
+        <Spread value="15.000000"/>
+    </CSound>
+    <CSound id="PhotonCannon_Forged_Death_02" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+        <AssetArray File="Assets\Sounds\PhotonCannon_Forged_Death_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PhotonCannon_Forged_Death_02a.wav" FacialGroup=""/>
+        <Spread value="15.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Metal_Ronk" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray>
+            <File value="Assets\Sounds\Marauder_EvisDeath_Ronk_01.wav"/>
+            <Pitch value="-3.000000,-3.000000"/>
+            <Volume value="-4.000000,-4.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray File="Assets\Sounds\Marauder_EvisDeath_Ronk_02.wav" Pitch="-6.000000,-6.000000" FacialGroup=""/>
+        <Pitch value="-6.000000,-4.000000"/>
+        <Volume value="-18.000000,-14.000000"/>
+    </CSound>
+    <CSound id="Ravager_Mecha_Cacoon_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Birth_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Birth_02.wav" FacialGroup=""/>
+        <Pitch value="-6.000000,-4.000000"/>
+        <Volume value="-7.000000,-5.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Metal_Bend" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray>
+            <File value="Assets\Sounds\Marauder_EvisDeath_Ronk_01.wav"/>
+            <Pitch value="-3.000000,-3.000000"/>
+            <Volume value="-4.000000,-4.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray File="Assets\Sounds\Marauder_EvisDeath_Ronk_02.wav" Pitch="-6.000000,-6.000000" FacialGroup=""/>
+        <Pitch value="2.000000,4.000000"/>
+        <Volume value="-14.000000,-11.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Explo_SubPre" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Uni\Deaths\Vehicle_Explo_12.wav" FacialGroup=""/>
+        <Pitch value="-6.000000,-4.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="InfestationPit_Mecha_Death_Flail" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Hydralisk_MechaDeath_2_RoboticFlail_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hydralisk_MechaDeath_2_RoboticFlail_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Corruptor_CausticSpray_Attack_Start01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Corruptor_CausticSpray_Attack_Start02.wav" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <Pitch value="2.000000,4.000000"/>
+        <Volume value="-18.000000,-11.000000"/>
+    </CSound>
+    <CSound id="InfestationPit_UnC_Mecha_Death_Debris" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\MechaDeath_MetalDebris_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\MechaDeath_MetalDebris_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\MechaDeath_MetalDebris_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\MechaDeath_MetalDebris_04.wav" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-18.000000,-14.000000"/>
+    </CSound>
+    <CSound id="InfestationPit_UnC_Mecha_Death_Hit" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Med.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-14.000000,-11.000000"/>
+    </CSound>
+    <CSound id="Zerg_Mecha_Death_Ronk" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Marauder_EvisDeath_Ronk_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Marauder_EvisDeath_Ronk_02.wav" FacialGroup=""/>
+        <Pitch value="0.000000,2.000000"/>
+        <Volume value="-10.000000,-8.000000"/>
+    </CSound>
+    <CSound id="UltraliskCavern_Mecha_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\EvolutionChamber_Mecha_Death_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\EvolutionChamber_Mecha_Death_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\EvolutionChamber_Mecha_Death_03.wav" FacialGroup=""/>
+        <Pitch value="-4.000000,-3.000000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="BanelingNest_Mecha_Death_VxFx" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\SI_Civilian_Death_Vx_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SI_Civilian_Death_Vx_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SI_Civilian_Death_Vx_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SI_Civilian_Death_Vx_05.wav" FacialGroup=""/>
+        <AssetArray>
+            <File value="Assets\Sounds\Zergling_Mecha_Death_VxFx_01.wav"/>
+            <Pitch value="-1.000000,-1.000000"/>
+            <Volume value="-2.000000,-2.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <Pitch value="-4.000000,-2.000000"/>
+        <Volume value="-4.000000,-3.000000"/>
+    </CSound>
     <CSound id="BroodLord_Mecha_Swim" parent="Build">
         <EditorCategories value="Race:Zerg"/>
         <AssetArray File="Assets\Sounds\Overseer_Mecha_Birth.wav" FacialGroup=""/>
@@ -540,6 +770,501 @@
         <Pitch value="-6.000000,-2.000000"/>
         <Volume value="-30.000000,-24.000000"/>
         <Chance value="40"/>
+    </CSound>
+    <CSound id="Overlord_Mecha_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Death_0.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Overseer_Mecha_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Sml.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Spire_Mecha_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg_Alt.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Med.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="-5.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Explo_Impact_Fire" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Explosion_Metal_Fire_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Explosion_Metal_Fire_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Explosion_Metal_Fire_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Explosion_Metal_Fire_04.wav" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <DupeHistoryCount value="15"/>
+        <DupeMuteCount value="8"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Forge_UpG_SWS" parent="Build">
+        <AssetArray File="Assets\Sounds\Protoss_Forged_Upgrade_SWS.wav" FacialGroup=""/>
+        <Pitch value="-4.000000,-4.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+        <DupeMuteCount value="2"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Forge_UpG_SWE" parent="Build">
+        <AssetArray File="Assets\Sounds\Protoss_Forged_Upgrade_SWE.wav" FacialGroup=""/>
+        <Pitch value="-4.000000,-4.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+        <DupeMuteCount value="2"/>
+    </CSound>
+    <CSound id="Overseer_Mecha_Death_RoboticFlail" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Hydralisk_MechaDeath_2_RoboticFlail_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hydralisk_MechaDeath_2_RoboticFlail_02.wav" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <Pitch value="0.000000,2.000000"/>
+        <Volume value="-21.000000,-16.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Explo_Gen" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Gen_Explo_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Gen_Explo_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Gen_Explo_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Gen_Explo_08.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Gen_Explo_09.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Explo_Low" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Nova_Xanthos_DebrisImpact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Nova_Xanthos_DebrisImpact_02.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="0.000000,1.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Explo_Grande" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Nuke_Explo_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Nuke_Explo_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Nuke_Explo_05.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Spread value="15.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Large_Metal_Impact" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Unused\Explosion_Metal_Impact_Mv_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Unused\Explosion_Metal_Impact_Mv_02.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Impact_Metal" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Colossus_Explode_Legs_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Colossus_Explode_Legs_Impact_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Colossus_Explode_Legs_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Stalker_Explode_Fall_Impact_01.wav" Volume="-1.000000,-1.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Stalker_Explode_Fall_Impact_02.wav" Volume="-1.000000,-1.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Stalker_Explode_Fall_Impact_03.wav" Volume="-1.000000,-1.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Stalker_Explode_Fall_Impact_04.wav" Volume="-1.000000,-1.000000" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <DupeHistoryCount value="15"/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Terran_CoverOps_Explo_Impact_Fire" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Explosion_Metal_Fire_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Explosion_Metal_Fire_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Explosion_Metal_Fire_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Explosion_Metal_Fire_04.wav" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <DupeHistoryCount value="15"/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-8.000000,-5.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Explo_Debris" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Gen_Explo_Debris_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Deaths\Vehicle_Explo_12.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vehicle_Explo_10.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vehicle_Explo_11.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Deaths\Vehicle_Explo_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Deaths\Vehicle_Explo_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vehicle_Explo_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vehicle_Explo_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Vehicle_Explo_05.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Explo_Fire" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Gen_Explo_Fire_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Gen_Explo_10.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Gen_Explo_Debris_01.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Explo_Metal" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Explosion_Metal_Fire_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Explosion_Metal_Fire_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Explosion_Metal_Fire_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Explosion_Metal_Fire_04.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Explo_Impact_Swt" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Mutator_Fireworks_Missle_Attack_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Mutator_Fireworks_Missle_Attack_Impact_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Mutator_Fireworks_Missle_Attack_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Mutator_Fireworks_Missle_Attack_Impact_04.wav" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <DupeHistoryCount value="15"/>
+        <DupeMuteCount value="8"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-3.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Impact_Metal" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Colossus_Explode_Legs_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Colossus_Explode_Legs_Impact_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Colossus_Explode_Legs_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Stalker_Explode_Fall_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Stalker_Explode_Fall_Impact_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Stalker_Explode_Fall_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Stalker_Explode_Fall_Impact_04.wav" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <DupeHistoryCount value="15"/>
+        <DupeMuteCount value="6"/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-6.000000,-3.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="30.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Explo_Vocalize" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Colossus_Explode_Vocalize_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Colossus_Explode_Vocalize_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Colossus_Explode_Vocalize_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Colossus_Explode_Vocalize_04.wav" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <DupeHistoryCount value="15"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <PlayDelay value="0,60"/>
+        <Volume value="-4.000000,-2.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Explo_Whoosh" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Colossus_Explode_Legs_Whoosh_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Colossus_Explode_Legs_Whoosh_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Colossus_Explode_Legs_Whoosh_03.wav" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <DupeHistoryCount value="15"/>
+        <DupeMuteCount value="4"/>
+        <Pitch value="1.000000,3.000000"/>
+        <Volume value="-1.000000,0.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Explo_Aftermath" parent="Spell">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Disruptor_Discharge_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Disruptor_Discharge_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Disruptor_Discharge_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Disruptor_Discharge_06.wav" FacialGroup=""/>
+        <Pitch value="-10.000000,-8.000000"/>
+        <Spread value="20.000000"/>
+        <Volume value="-1.000000,1.000000"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="4"/>
+        <DupePrioritization value="Oldest"/>
+    </CSound>
+    <CSound id="Egg_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Birth_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Birth_02.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Egg_Mecha_Death_00" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Death_00.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Egg_Mecha_Death_01" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Death_01.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-5.000000,-5.000000"/>
+    </CSound>
+    <CSound id="Egg_Mecha_Death_02" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Death_02.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="EvolutionChamber_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Med.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Sml.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="BanelingNest_Mecha_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\EvolutionChamber_Mecha_Death_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\EvolutionChamber_Mecha_Death_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\EvolutionChamber_Mecha_Death_03.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-6.000000,-5.000000"/>
+    </CSound>
+    <CSound id="Extractor_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Med.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Extractor_Mecha_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg_Alt.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="-5.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Egg_Mecha_Death_0" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Egg_Mecha_Death_0.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Hatchery_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg_Alt.wav" FacialGroup=""/>
+        <Pitch value="-5.000000,-4.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Overlord_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Overseer_Mecha_Birth.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Overseer_Mecha_Birth_Alt.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="-16.000000,-10.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Explo_Small" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall0.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall1.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall2.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall3.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall4.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall5.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall6.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall7.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall8.wav" Pitch="-3.000000,3.000000"/>
+        <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall9.wav" Pitch="-3.000000,3.000000"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-3.000000,-2.000000"/>
+        <DupeMuteCount value="6"/>
+    </CSound>
+    <CSound id="RoachWarren_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Med.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Sml.wav" FacialGroup=""/>
+        <Pitch value="-4.000000,-3.000000"/>
+        <Volume value="-4.000000,-3.000000"/>
+    </CSound>
+    <CSound id="BanelingNest_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Med.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Sml.wav" FacialGroup=""/>
+        <Pitch value="-3.000000,-2.000000"/>
+        <Volume value="-4.000000,-3.000000"/>
+    </CSound>
+    <CSound id="InfestationPit_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Med.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Sml.wav" FacialGroup=""/>
+        <Pitch value="-4.000000,-3.000000"/>
+        <Volume value="-4.000000,-3.000000"/>
+    </CSound>
+    <CSound id="LurkerDen_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Med.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Sml.wav" FacialGroup=""/>
+        <Pitch value="-4.000000,-3.000000"/>
+        <Volume value="-4.000000,-3.000000"/>
+    </CSound>
+    <CSound id="SpawningPool_Mecha_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\SpawningPool_Mecha_Death_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SpawningPool_Mecha_Death_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SpawningPool_Mecha_Death_03.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Extractor_Mecha_BuildStart_D" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Extractor_Mecha_BuildStart_D_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Extractor_Mecha_BuildStart_D_02.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-4.000000,-3.000000"/>
+    </CSound>
+    <CSound id="SpawningPool_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Med.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Sml.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-4.000000,-3.000000"/>
+    </CSound>
+    <CSound id="RoachWarren_Mecha_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\SpawningPool_Mecha_Death_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SpawningPool_Mecha_Death_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\SpawningPool_Mecha_Death_03.wav" FacialGroup=""/>
+        <Pitch value="0.000000,1.000000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="SpineCrawler_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Sml.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-5.000000,-4.000000"/>
+    </CSound>
+    <CSound id="SporeCrawler_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Sml.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-5.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Explo_Large" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionLarge0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionLarge1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionLarge2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionLarge3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionLarge4.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionLarge5.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionLarge6.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionLarge7.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionLarge8.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionLarge9.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Explo_Ring" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\Zeratul\Zeratul_AC_Large_Ring_Explosion.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-6.000000,-5.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Metal_Ronk" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Marauder_EvisDeath_Ronk_01.wav" Pitch="-2.000000,-2.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Marauder_EvisDeath_Ronk_02.wav" Pitch="-6.000000,-6.000000" FacialGroup=""/>
+        <Pitch value="-6.000000,-4.000000"/>
+        <Volume value="-12.000000,-10.000000"/>
+    </CSound>
+    <CSound id="Terran_CovertOps_Explo_Med" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionMedium1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionMedium2.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionMedium4.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionMedium5.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionMedium6.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionMedium7.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\Terran_ExplosionMedium8.wav"/>
+        <DupeDestroyCount value="5"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="5"/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-6.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Egg_Mecha_Super_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Seps_Evis_Death_BloodRuns_01.wav" Pitch="-3.000000,-3.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Seps_Evis_Death_BloodSpray_01.wav" Pitch="-3.000000,-3.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Construction\Zerg_BuildingMorphStart1.wav" FacialGroup=""/>
+        <Pitch value="-6.000000,-4.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="UltraliskCavern_Mecha_Death_RoboticFlail" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Hydralisk_MechaDeath_2_RoboticFlail_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hydralisk_MechaDeath_2_RoboticFlail_02.wav" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="-18.000000,-10.000000"/>
+    </CSound>
+    <CSound id="Zerg_Mecha_BuildStart_Lrg" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg_Alt.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Hatchery_Mecha_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Hatchery_Mecha_Death_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hatchery_Mecha_Death_02.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="EvolutionChamber_Mecha_BuildStart_D" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\EvolutionChamber_Mecha_BuildStart_D_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\EvolutionChamber_Mecha_BuildStart_D_02.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-4.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Hatchery_Mecha_MorphStart_A" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Hatchery_Mecha_MorphStart_A1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hatchery_Mecha_MorphStart_A2.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Hatchery_Mecha_MorphEnd_A" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Hatchery_Mecha_MorphEnd_A1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hatchery_Mecha_MorphEnd_A2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hatchery_Mecha_MorphEnd_A3.wav" Pitch="-2.000000,-2.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hatchery_Mecha_MorphEnd_A4.wav" FacialGroup=""/>
+        <Pitch value="-4.000000,-2.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Hatchery_Mecha_MorphStart_B" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Hatchery_Mecha_MorphStart_B1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hatchery_Mecha_MorphStart_B2.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Hatchery_Mecha_MorphEnd_B" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Hatchery_Mecha_MorphEnd_B1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Hatchery_Mecha_MorphEnd_B2.wav" FacialGroup=""/>
+        <Pitch value="-3.000000,-1.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="Lyote_Stand01_pt1" parent="Voice">
+        <EditorCategories value="Race:Neutral"/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Lyote_MP_Howl" parent="Voice">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Howl_MP_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Howl_MP_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Howl_MP_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Howl_MP_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Howl_MP_05.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-12.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
     </CSound>
     <CSound id="Infestor_Mecha_Death01" parent="Death">
         <EditorCategories value="Race:Zerg"/>
@@ -556,6 +1281,74 @@
         <DupeDestroyCount value="5"/>
         <Pitch value="-1.000000,1.000000"/>
         <Volume value="-20.000000,-12.000000"/>
+    </CSound>
+    <CSound id="Lyote_Attack" parent="Voice">
+        <EditorCategories value="Race:Critter"/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-12.000000,-10.000000"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Attack_01.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Attack_02.ogg" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Lyote\Lyote_Attack_03.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="Lyote_Stand01_PreHowl" parent="Voice">
+        <EditorCategories value="Race:Neutral"/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Lyote_Walk" parent="Movement">
+        <EditorCategories value="Race:Neutral"/>
+    </CSound>
+    <CSound id="Overseer_OversightAura" parent="Spell">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Overseer_OversightAura01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Overseer_OversightAura02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Overseer_OversightAura03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Overseer_OversightAura04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Overseer_OversightAura05.wav" FacialGroup=""/>
+        <DupeMuteCount value="2"/>
+        <Pitch value="1.000000,3.000000"/>
+        <Spread value="5.000000"/>
+        <Volume value="-12.000000,-12.000000"/>
+    </CSound>
+    <CSound id="Overseer_OversightEnd" parent="Spell">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\EvolutionEgg_Birth_00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\EvolutionEgg_Birth_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\EvolutionEgg_Birth_02.wav" FacialGroup=""/>
+        <DupeDestroyCount value="3"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-2.000000,2.000000"/>
+        <Volume value="-9.000000,-9.000000"/>
+    </CSound>
+    <CSound id="Overseer_OversightEyeBirth" parent="Spell">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Overseer_OversightBirth01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Overseer_OversightBirth02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Overseer_OversightBirth03.wav" FacialGroup=""/>
+        <DupeDestroyCount value="3"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <DupePrioritization value="Oldest"/>
+        <Pitch value="-2.000000,2.000000"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="Overseer_OversightVox" parent="Spell">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Overseer_OversightVox01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Overseer_OversightVox02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Overseer_OversightVox03.wav" FacialGroup=""/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Tastelope_Walk" parent="Movement">
+        <EditorCategories value="Race:Neutral"/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-10.000000,-10.000000"/>
     </CSound>
     <CSound id="MM_Tychus_Foley_Bar_Mv_06" parent="SetPiece">
         <AssetArray File="Assets\Sounds\MM_Tychus_Foley_Bar_06.wav" FacialGroup=""/>
@@ -701,6 +1494,48 @@
         <SpeakerMix index="SideRight" value="0.125000"/>
         <Volume value="-16.000000,-16.000000"/>
     </CSound>
+    <CSound id="Tastelope_Fidget" parent="Movement">
+        <EditorCategories value="Race:Neutral"/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-10.000000,-10.000000"/>
+    </CSound>
+    <CSound id="Tastelope_Death" parent="Death">
+        <EditorCategories value="Race:Neutral"/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+        <VolumeRolloffPoints Distance="5.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+    </CSound>
+    <CSound id="Ursadak_M_Stand" parent="Movement">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_M_Stand_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_M_Stand_02.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CSound id="Ursadak_M_Stand01" parent="Movement">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_M_Stand01_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_M_Stand01_02.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CSound id="Ursadak_F_Stand" parent="Movement">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_F_Stand_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_F_Stand_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_F_Stand_03.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CSound id="Ursadak_Walk" parent="Movement">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_F_Walk_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_F_Walk_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_F_Walk_03.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
     <CSound id="UI_AC_Zeratul_Ready_Ally" parent="SetPiece">
         <AssetArray File="Assets\Sounds\UI_AC_Artanis_Birth.wav" FacialGroup=""/>
         <Category value="User23"/>
@@ -845,13 +1680,95 @@
         <Pitch value="-4.000000,-4.000000"/>
         <Volume value="-10.000000,-10.000000"/>
     </CSound>
+    <CSound id="Ursadak_F_Fidget" parent="Movement">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_F_Fidget_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_F_Fidget_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_F_Fidget_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_F_Fidget_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_F_Fidget_05.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CSound id="Ursadak_Death_VxFx" parent="DeathVoice">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Ursadak\Ursadak_Death_VxFx_01.wav" FacialGroup=""/>
+        <Chance value="100"/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="ZergMecha_Death_BloodRun" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Seps_Evis_Death_BloodRuns_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Seps_Evis_Death_BloodRuns_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Seps_Evis_Death_LegsRunWild.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Seps_Evis_Death_LegsRunWild_Alt.wav" FacialGroup=""/>
+        <Pitch value="-3.000000,-2.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
+    <CSound id="EvolutionChamber_Mecha_Death" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\EvolutionChamber_Mecha_Death_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\EvolutionChamber_Mecha_Death_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\EvolutionChamber_Mecha_Death_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\EvolutionChamber_Mecha_Death_04.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-6.000000,-5.000000"/>
+    </CSound>
+    <CSound id="HydraliskDen_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg_Alt.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="-5.000000,-4.000000"/>
+    </CSound>
+    <CSound id="NydusNetwork_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg_Alt.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="-6.000000,-6.000000"/>
+    </CSound>
+    <CSound id="UltraliskCavern_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Lrg_Alt.wav" FacialGroup=""/>
+        <Pitch value="-3.000000,-2.000000"/>
+        <Volume value="-4.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Zerg_Mecha_BuildStart_Med" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Med.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,0.000000"/>
+        <Volume value="-8.000000,-7.000000"/>
+    </CSound>
+    <CSound id="Zerg_Mecha_BuildStart_Sml" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Sml.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-8.000000,-7.000000"/>
+    </CSound>
+    <CSound id="Spire_Mecha_Birth" parent="Build">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg_MechaBuild_Sml.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-5.000000,-4.000000"/>
+    </CSound>
+    <CSound id="Spire_Mecha_Death_Junk" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\MechaDeath_1_Junk_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\MechaDeath_2_Junk_01.wav" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-16.000000,-12.000000"/>
+    </CSound>
     <CSound id="Zergling_Mecha_Death_Debris" parent="Death">
         <EditorCategories value="Race:Zerg"/>
         <AssetArray File="Assets\Sounds\MechaDeath_MetalDebris_01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\MechaDeath_MetalDebris_02.wav" FacialGroup=""/>
         <DupeDestroyCount value="5"/>
         <Pitch value="0.000000,2.000000"/>
-        <Volume value="-26.000000,-20.000000"/>
+        <Volume value="-26.000000,-22.000000"/>
     </CSound>
     <CSound id="Zergling_Mecha_Death_Hit" parent="Death">
         <EditorCategories value="Race:Zerg"/>
@@ -864,6 +1781,8 @@
         <EditorCategories value="Race:Zerg"/>
         <AssetArray File="Assets\Sounds\Raveger_Mecha_VxFx_01.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Raveger_Mecha_VxFx_02.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,0.000000"/>
+        <Volume value="-4.000000,-2.000000"/>
     </CSound>
     <CSound id="Raveger_Mecha_Death00" parent="Death">
         <EditorCategories value="Race:Zerg"/>
@@ -1104,8 +2023,8 @@
         <AssetArray File="Assets\Sounds\MechaDeath_1_Junk_02.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\MechaDeath_2_Junk_01.wav" FacialGroup=""/>
         <DupeDestroyCount value="5"/>
-        <Pitch value="-2.000000,0.000000"/>
-        <Volume value="-14.000000,-8.000000"/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-16.000000,-12.000000"/>
     </CSound>
     <CSound id="Infester_Mecha_Fidget" parent="Movement">
         <EditorCategories value="Race:Zerg"/>
@@ -2049,6 +2968,7 @@
         <Volume value="0.000000,0.000000"/>
         <CategoryDuckingLocal value="DayNineAlertVictory"/>
     </CSound>
+    <CSound id="DayNine_GGWin" parent="DayNine_EndGame"/>
     <CSound id="DayNine_EndGame_Lose" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="Day9_EndGame02"/>
         <AssetArray TemplateParam="Day9_EndGame03"/>
@@ -2056,6 +2976,7 @@
         <Category value="User35"/>
         <PlayDelay value="600,600"/>
     </CSound>
+    <CSound id="DayNine_GGLose" parent="DayNine_EndGame_Lose"/>
     <CSound id="DayNine_EvolutionComplete" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="Day9_EvolutionComplete00" Weight="81"/>
         <AssetArray TemplateParam="Day9_EvolutionComplete01" Weight="27"/>
@@ -2216,6 +3137,7 @@
         <AssetArray TemplateParam="Day9_StartGame02"/>
         <AssetArray TemplateParam="Day9_StartGame03"/>
     </CSound>
+    <CSound id="DayNine_GoodLuckHaveFun" parent="DayNine_StartGame"/>
     <CSound id="DayNine_ThorRepaired" parent="ACVO_TerranAlert">
         <AssetArray File="LocalizedData\Sounds\VO\Day9_AllyBaseUnderAttack05.ogg" FacialGroup=""/>
     </CSound>
@@ -4186,7 +5108,8 @@
         <Select value="Random"/>
         <Volume value="-28.000000,-22.000000"/>
         <VolumeRolloffPoints Distance="5.000000"/>
-        <VolumeRolloffPoints Distance="15.000000" Volume="-96.000000"/>
+        <VolumeRolloffPoints Distance="16.000000" Volume="-96.000000"/>
+        <DupeMuteCount value="4"/>
     </CSound>
     <CSound id="Doodad_VolcanicSpire02" parent="Ambience_Object">
         <EditorCategories value="Race:Neutral"/>
@@ -4515,11 +5438,13 @@
         <Volume value="0.000000,0.000000"/>
         <CategoryDuckingLocal value="HornerHanAlertVictory"/>
     </CSound>
+    <CSound id="HornerHanAnnouncer_GGWin" parent="HornerHanAnnouncer_EndGame"/>
     <CSound id="HornerHanAnnouncer_EndGameLost" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="HornerHanAnnouncer_EndGame01"/>
         <PlayDelay value="600,600"/>
         <Category value="User35"/>
     </CSound>
+    <CSound id="HornerHanAnnouncer_GGLose" parent="HornerHanAnnouncer_EndGameLost"/>
     <CSound id="HornerHanAnnouncer_EndGameTied" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="HornerHanAnnouncer_EndGame02"/>
         <PlayDelay value="600,600"/>
@@ -4660,6 +5585,7 @@
         <AssetArray TemplateParam="HornerHanAnnouncer_StartGame02"/>
         <Chance value="80"/>
     </CSound>
+    <CSound id="HornerHanAnnouncer_GoodLuckHaveFun" parent="HornerHanAnnouncer_StartGame"/>
     <CSound id="HornerHanAnnouncer_ThorRepaired" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="HornerHanAnnouncer_ThorRepaired00"/>
         <AssetArray TemplateParam="HornerHanAnnouncer_ThorRepaired01"/>
@@ -6539,6 +7465,9 @@
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
+    <CSound id="ZeratulA_BaseUnderAttackProtoss" parent="ZeratulA_BaseUnderAttack"/>
+    <CSound id="ZeratulA_BaseUnderAttackTerran" parent="ZeratulA_BaseUnderAttack"/>
+    <CSound id="ZeratulA_BaseUnderAttackZerg" parent="ZeratulA_BaseUnderAttack"/>
     <CSound id="ZeratulA_BuildError" parent="ACVO_ProtossAlert">
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_BuildError00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_BuildError01.ogg" FacialGroup=""/>
@@ -6546,6 +7475,7 @@
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
+    <CSound id="ZeratulA_BuildErrorProtoss" parent="ZeratulA_BuildError"/>
     <CSound id="ZeratulA_BuildErrorTerran" parent="ACVO_ProtossAlert">
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_BuildErrorTerran00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_BuildErrorTerran01.ogg" FacialGroup=""/>
@@ -6588,14 +7518,20 @@
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_EndGame01.ogg" FacialGroup=""/>
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
+        <Category value="User35"/>
+        <Volume value="0.000000,0.000000"/>
         <CategoryDuckingLocal value="ZeratulAlertVictory"/>
     </CSound>
+    <CSound id="ZeratulA_GGWin" parent="ZeratulA_EndGame"/>
     <CSound id="ZeratulA_EndGameLost" parent="ACVO_ProtossAlert">
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_EndGameLost00.ogg" FacialGroup=""/>
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
+        <Category value="User35"/>
+        <Volume value="0.000000,0.000000"/>
         <CategoryDuckingLocal value="ZeratulAlertVictory"/>
     </CSound>
+    <CSound id="ZeratulA_GGLose" parent="ZeratulA_EndGameLost"/>
     <CSound id="ZeratulA_EndGameTied" parent="ACVO_ProtossAlert">
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_EndGameTied00.ogg" FacialGroup=""/>
         <Flags index="NeedsUpdate" value="1"/>
@@ -6615,6 +7551,9 @@
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
+    <CSound id="ZeratulA_ForcesUnderAttackProtoss" parent="ZeratulA_ForcesUnderAttack"/>
+    <CSound id="ZeratulA_ForcesUnderAttackTerran" parent="ZeratulA_ForcesUnderAttack"/>
+    <CSound id="ZeratulA_ForcesUnderAttackZerg" parent="ZeratulA_ForcesUnderAttack"/>
     <CSound id="ZeratulA_GamePaused" parent="ACVO_ProtossAlert">
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_GamePaused00.ogg" FacialGroup=""/>
         <Flags index="NeedsUpdate" value="1"/>
@@ -6650,6 +7589,9 @@
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
+    <CSound id="ZeratulA_MaxSupplyProtoss" parent="ZeratulA_MaxSupply"/>
+    <CSound id="ZeratulA_MaxSupplyTerran" parent="ZeratulA_MaxSupply"/>
+    <CSound id="ZeratulA_MaxSupplyZerg" parent="ZeratulA_MaxSupply"/>
     <CSound id="ZeratulA_MetamorphosisComplete" parent="ACVO_ProtossAlert">
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_MetamorphosisComplete00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_MetamorphosisComplete01.ogg" FacialGroup=""/>
@@ -6688,6 +7630,7 @@
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
+    <CSound id="ZeratulA_NeedMoreFoodProtoss" parent="ZeratulA_NeedMoreFood"/>
     <CSound id="ZeratulA_NeedMoreFoodTerran" parent="ACVO_ProtossAlert">
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_NeedMoreFoodTerran00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_NeedMoreFoodTerran01.ogg" FacialGroup=""/>
@@ -6768,6 +7711,7 @@
         <Category value="User35"/>
         <CategoryDuckingLocal value="ZeratulAlertVictory"/>
     </CSound>
+    <CSound id="ZeratulA_GoodLuckHaveFun" parent="ZeratulA_StartGame"/>
     <CSound id="ZeratulA_ThorRepaired" parent="ACVO_ProtossAlert">
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_ThorRepaired00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_ThorRepaired01.ogg" FacialGroup=""/>
@@ -6805,6 +7749,7 @@
         <Flags index="NeedsUpdate" value="1"/>
         <Flags index="NeedsTTS" value="1"/>
     </CSound>
+    <CSound id="ZeratulA_WorkersUnderAttackProtoss" parent="ZeratulA_WorkersUnderAttack"/>
     <CSound id="ZeratulA_WorkersUnderAttackTerran" parent="ACVO_ProtossAlert">
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_WorkersUnderAttackTerran00.ogg" FacialGroup=""/>
         <AssetArray File="LocalizedData\Sounds\VO\Zeratul_Announcer\ZeratulA_WorkersUnderAttackTerran01.ogg" FacialGroup=""/>
@@ -6878,10 +7823,6 @@
         <DupeDestroyCount value="5"/>
         <Pitch value="0.000000,2.000000"/>
         <Volume value="-14.000000,-10.000000"/>
-    </CSound>
-    <CSound id="iNcontrolA_GGLose" parent="ACVO_TerranAlert">
-        <Category value="User35"/>
-        <Chance value="0"/>
     </CSound>
     <CSound id="UI_HoverTick" parent="Bnet_UI">
         <AssetArray index="0" File="Assets\Sounds\Uni\UI_Void\UI_CardsDeploy02_2ch.wav" FacialGroup=""/>
@@ -7866,6 +8807,7 @@
         <CategoryDuckingLocal value="ParkAlertVictory"/>
         <Select value="Random"/>
     </CSound>
+    <CSound id="ParkA_GGWin" parent="ParkA_EndGame"/>
     <CSound id="ParkA_GGLose" parent="ACVO_TerranAlert">
         <Category value="User35"/>
         <Chance value="0"/>
@@ -8026,8 +8968,8 @@
     <CSound id="ParkA_StartGame" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="ParkA_Goodluck00"/>
         <Volume value="-3.000000,-3.000000"/>
-        <Chance value="30"/>
     </CSound>
+    <CSound id="ParkA_GoodLuckHaveFun" parent="ParkA_StartGame"/>
     <CSound id="ParkA_ThorRepaired" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="ParkA_ThorRepaired00"/>
         <AssetArray TemplateParam="ParkA_ThorRepaired01"/>
@@ -8145,6 +9087,7 @@
         <Volume value="0.000000,0.000000"/>
         <CategoryDuckingLocal value="NathaniasAlertVictory"/>
     </CSound>
+    <CSound id="NathaniasA_GGWin" parent="NathaniasA_EndGame"/>
     <CSound id="NathaniasA_EvolutionComplete" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="NathaniasA_EvolutionComplete00"/>
         <AssetArray TemplateParam="NathaniasA_EvolutionComplete01"/>
@@ -8299,6 +9242,7 @@
         <AssetArray TemplateParam="NathaniasA_StartGame01"/>
         <Chance value="50"/>
     </CSound>
+    <CSound id="NathaniasA_GoodLuckHaveFun" parent="NathaniasA_StartGame"/>
     <CSound id="NathaniasA_ThorRepaired" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="NathaniasA_ThorRepaired00"/>
     </CSound>
@@ -12847,7 +13791,7 @@
         <AssetArray TemplateParam="TotalBiscuitA_AddOnComplete01" Weight="50"/>
         <AssetArray TemplateParam="TotalBiscuitA_AddOnComplete02" Weight="50"/>
         <Select value="Random"/>
-        <Volume value="1.000000,1.000000"/>
+        <Volume value="0.000000,0.000000"/>
     </CSound>
     <CSound id="TotalBiscuitA_AllyBaseUnderAttack" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="TotalBiscuitA_AllyBaseUnderAttack00"/>
@@ -20705,7 +21649,12 @@
         <Category value="User35"/>
         <Volume value="0.000000,0.000000"/>
         <CategoryDuckingLocal value="iNcontrolAlertVictory"/>
-        <Chance value="20"/>
+    </CSound>
+    <CSound id="iNcontrolA_GGWin" parent="iNcontrolA_EndGame"/>
+    <CSound id="iNcontrolA_GGLose" parent="ACVO_TerranAlert">
+        <Category value="User35"/>
+        <Volume value="0.000000,0.000000"/>
+        <CategoryDuckingLocal value="iNcontrolAlertVictory"/>
     </CSound>
     <CSound id="iNcontrolA_EvolutionComplete" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="iNcontrolA_EvolutionComplete00"/>
@@ -20717,7 +21666,8 @@
     </CSound>
     <CSound id="scboyA_GGLose" parent="ACVO_TerranAlert">
         <Category value="User35"/>
-        <Chance value="0"/>
+        <Volume value="0.000000,0.000000"/>
+        <CategoryDuckingLocal value="scboyAlertVictory"/>
     </CSound>
     <CSound id="iNcontrolA_GamePaused" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="iNcontrolA_GamePaused00"/>
@@ -20821,8 +21771,8 @@
     <CSound id="iNcontrolA_StartGame" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="iNcontrolA_StartGame00"/>
         <AssetArray TemplateParam="iNcontrolA_StartGame00_ALT"/>
-        <Chance value="50"/>
     </CSound>
+    <CSound id="iNcontrolA_GoodLuckHaveFun" parent="iNcontrolA_StartGame"/>
     <CSound id="iNcontrolA_ThorRepaired" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="iNcontrolA_ThorRepaired00"/>
         <AssetArray TemplateParam="iNcontrolA_ThorRepaired01"/>
@@ -27021,6 +27971,20 @@
         <DupeDestroyCount value="5"/>
         <EditorCategories value="Race:Protoss"/>
     </CSound>
+    <CSound id="Protoss_Forged_Explo_01" parent="Protoss_ExplosionLarge">
+        <AssetArray index="0" File="Assets\Sounds\ProtossForged_Explosion_Large_01.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="1" File="Assets\Sounds\ProtossForged_Explosion_Large_03.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+        <AssetArray index="4" removed="1"/>
+        <AssetArray index="5" removed="1"/>
+        <AssetArray index="6" removed="1"/>
+        <AssetArray index="7" removed="1"/>
+        <AssetArray index="8" removed="1"/>
+        <AssetArray index="9" removed="1"/>
+        <DupeMuteCount value="4"/>
+        <Volume value="-6.000000,-3.000000"/>
+    </CSound>
     <CSound id="Protoss_ExplosionMedium" parent="Combat">
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge0.wav" Pitch="-3.000000,3.000000"/>
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionLarge1.wav" Pitch="-3.000000,3.000000"/>
@@ -27061,12 +28025,78 @@
         <Volume value="-1.000000,0.000000"/>
         <EditorCategories value="Race:Protoss"/>
     </CSound>
+    <CSound id="PhotonCannon_Forged_Death_00" parent="Death">
+        <EditorCategories value="Race:Protoss"/>
+        <Pitch value="-2.000000,-1.000000"/>
+        <Volume value="-6.000000,-4.000000"/>
+        <AssetArray File="Assets\Sounds\PhotonCannon_Forged_Death_00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PhotonCannon_Forged_Death_00a.wav" FacialGroup=""/>
+        <Spread value="15.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Explo_02" parent="Protoss_ExplosionLarge">
+        <AssetArray index="0" File="Assets\Sounds\ProtossForged_Explosion_Large_02.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="1" File="Assets\Sounds\ProtossForged_Explosion_Large_04.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+        <AssetArray index="4" removed="1"/>
+        <AssetArray index="5" removed="1"/>
+        <AssetArray index="6" removed="1"/>
+        <AssetArray index="7" removed="1"/>
+        <AssetArray index="8" removed="1"/>
+        <AssetArray index="9" removed="1"/>
+        <DupeMuteCount value="4"/>
+        <Volume value="-6.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Explo_03" parent="Protoss_ExplosionLarge">
+        <AssetArray index="0" File="Assets\Sounds\ProtossForged_Explosion_Large_03.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="1" File="Assets\Sounds\ProtossForged_Explosion_Large_05.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+        <AssetArray index="4" removed="1"/>
+        <AssetArray index="5" removed="1"/>
+        <AssetArray index="6" removed="1"/>
+        <AssetArray index="7" removed="1"/>
+        <AssetArray index="8" removed="1"/>
+        <AssetArray index="9" removed="1"/>
+        <DupeMuteCount value="4"/>
+        <Volume value="-6.000000,-3.000000"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Explo_04" parent="Protoss_ExplosionLarge">
+        <AssetArray index="0" File="Assets\Sounds\ProtossForged_Explosion_Large_04.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="1" File="Assets\Sounds\ProtossForged_Explosion_Large_02.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+        <AssetArray index="4" removed="1"/>
+        <AssetArray index="5" removed="1"/>
+        <AssetArray index="6" removed="1"/>
+        <AssetArray index="7" removed="1"/>
+        <AssetArray index="8" removed="1"/>
+        <AssetArray index="9" removed="1"/>
+        <Volume value="-6.000000,-3.000000"/>
+        <DupeMuteCount value="4"/>
+    </CSound>
+    <CSound id="Protoss_Forged_Explo_05" parent="Protoss_ExplosionLarge">
+        <AssetArray index="0" File="Assets\Sounds\ProtossForged_Explosion_Large_05.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="1" File="Assets\Sounds\ProtossForged_Explosion_Large_01.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="2" removed="1"/>
+        <AssetArray index="3" removed="1"/>
+        <AssetArray index="4" removed="1"/>
+        <AssetArray index="5" removed="1"/>
+        <AssetArray index="6" removed="1"/>
+        <AssetArray index="7" removed="1"/>
+        <AssetArray index="8" removed="1"/>
+        <AssetArray index="9" removed="1"/>
+        <DupeMuteCount value="4"/>
+        <Volume value="-6.000000,-3.000000"/>
+    </CSound>
     <CSound id="Protoss_PowerDownSmall" parent="Spell">
         <EditorCategories value="Race:Protoss"/>
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Construction\Protoss_PowerDownSmall0.wav"/>
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Construction\Protoss_PowerDownSmall1.wav"/>
         <DupeDestroyCount value="3"/>
-        <Volume value="-12.000000,-12.000000"/>
+        <Volume value="-14.000000,-14.000000"/>
+        <VolumeRolloffPoints Distance="10.000000"/>
+        <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
     </CSound>
     <CSound id="Protoss_PowerUpLarge" parent="Spell">
         <EditorCategories value="Race:Protoss"/>
@@ -28975,6 +30005,21 @@
     <CSound id="Zergling_DeathFXEviscerate" parent="Uni_DeathFXEviscerate">
         <EditorCategories value="Race:Zerg"/>
     </CSound>
+    <CSound id="ZergMecha_Death_Spurts" parent="Death">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Seps_Evis_Death_BloodSpray_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Seps_Evis_Death_BloodSpray_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BloodSpray_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BloodSpray_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BloodSpray_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BloodSpray_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BloodSpray_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BloodSpray_06.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BloodSquirt_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\BloodSquirt_02.wav" FacialGroup=""/>
+        <Pitch value="-2.000000,1.000000"/>
+        <Volume value="-8.000000,-6.000000"/>
+    </CSound>
     <CSound id="Zergling_DeathFXFire" parent="Uni_DeathFXFire">
         <EditorCategories value="Race:Zerg"/>
     </CSound>
@@ -30506,7 +31551,7 @@
         <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Construction\Zerg_BuildingMorphEnd0.wav"/>
         <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Construction\Zerg_BuildingMorphEnd1.wav"/>
         <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Construction\Zerg_BuildingMorphEnd2.wav"/>
-        <Pitch value="-3.000000,3.000000"/>
+        <Pitch value="-1.000000,2.000000"/>
         <EditorCategories value="Race:Zerg"/>
     </CSound>
     <CSound id="Zerg_BuildingMorphStart" parent="Build">
@@ -32830,10 +33875,12 @@
         <AssetArray File="Assets\Sounds\Protoss_FireSmoldering_01.wav" FacialGroup=""/>
         <DupeMuteCount value="2"/>
         <Pitch value="-2.000000,-1.000000"/>
-        <SustainFade index="1" Time="2500"/>
+        <SustainFade index="1" Time="3500"/>
         <Volume value="-16.000000,-10.000000"/>
         <VolumeRolloffPoints Distance="10.000000"/>
         <VolumeRolloffPoints Distance="20.000000" Volume="-96.000000"/>
+        <DupeDestroyCount value="32"/>
+        <DupeHistoryCount value="64"/>
     </CSound>
     <CSound id="Terran_FireMedium" parent="Flames">
         <Volume value="-3.000000,-3.000000"/>
@@ -40053,6 +41100,7 @@
         <Category value="User35"/>
         <CategoryDuckingLocal value="scboyAlertVictory"/>
     </CSound>
+    <CSound id="scboyA_GGWin" parent="scboyA_EndGame"/>
     <CSound id="scboyA_EvolutionComplete" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="scboyA_EvolutionComplete00"/>
         <AssetArray TemplateParam="scboyA_EvolutionComplete01"/>
@@ -40203,8 +41251,8 @@
     </CSound>
     <CSound id="scboyA_StartGame" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="scboyA_StartGame00"/>
-        <Chance value="30"/>
     </CSound>
+    <CSound id="scboyA_GoodLuckHaveFun" parent="scboyA_StartGame"/>
     <CSound id="scboyA_ThorRepaired" parent="ACVO_TerranAlert">
         <AssetArray TemplateParam="scboyA_ThorRepaired00"/>
     </CSound>
@@ -42621,6 +43669,73 @@
         <AssetArray File="Assets\Music\zSM_RogueQueen_03.ogg" FacialGroup=""/>
         <Category value="Other"/>
         <Volume value="-7.000000,-7.000000"/>
+    </CSound>
+    <CSound id="zZerg_moveHerdLarge_loop" parent="Movement">
+        <AssetArray File="Assets\Sounds\zZerg_moveHerdLarge_loop.wav" FacialGroup=""/>
+        <DupeDestroyCount value="12"/>
+        <DupeMuteCount value="2"/>
+        <LoopCount value="-1"/>
+        <OffsetFadeIn/>
+        <OffsetFadeIn Time="500"/>
+        <Pitch value="-14.000000,-10.000000"/>
+        <Volume value="-9.000000,-9.000000"/>
+    </CSound>
+    <CSound id="zZerg_moveHerdMedium_loop" parent="Movement">
+        <AssetArray File="Assets\Sounds\zZerg_moveHerdMedium_loop.wav" FacialGroup=""/>
+        <Flags index="Download" value="1"/>
+        <Flags index="Ignorable" value="1"/>
+        <DupeMuteCount value="2"/>
+        <LoopCount value="-1"/>
+        <OffsetFadeIn/>
+        <OffsetFadeIn Time="500"/>
+        <Pitch value="-2.000000,2.000000"/>
+        <Volume value="-18.000000,-18.000000"/>
+        <VolumeRolloffFadeIn Volume="-96.000000"/>
+        <VolumeRolloffFadeIn Time="100"/>
+    </CSound>
+    <CSound id="zZerg_moveHerdSmall_loop" parent="Movement">
+        <AssetArray>
+            <File value="Assets\Sounds\zZerg_moveHerdSmall2La.wav"/>
+            <Pitch value="-1.000000,1.000000"/>
+            <Volume value="-3.000000,0.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="Assets\Sounds\zZerg_moveHerdSmall2Lb.wav"/>
+            <Pitch value="-1.000000,1.000000"/>
+            <Volume value="-3.000000,0.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="Assets\Sounds\zZerg_moveHerdSmall2Lc.wav"/>
+            <Pitch value="-1.000000,1.000000"/>
+            <Volume value="-3.000000,0.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="Assets\Sounds\zZerg_moveHerdSmall2Ld.wav"/>
+            <Pitch value="-1.000000,1.000000"/>
+            <Volume value="-3.000000,0.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="Assets\Sounds\zZerg_moveHerdSmall2Le.wav"/>
+            <Pitch value="-1.000000,1.000000"/>
+            <Volume value="-3.000000,0.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <AssetArray>
+            <File value="Assets\Sounds\zZerg_moveHerdSmall2Lf.wav"/>
+            <Pitch value="-1.000000,1.000000"/>
+            <Volume value="-3.000000,0.000000"/>
+            <FacialGroup value=""/>
+        </AssetArray>
+        <DupeMuteCount value="2"/>
+        <LoopCount value="-1"/>
+        <OffsetFadeIn/>
+        <OffsetFadeIn Time="500"/>
+        <Pitch value="-9.000000,-9.000000"/>
+        <Volume value="-25.000000,-25.000000"/>
     </CSound>
     <CSound id="zZerg_moveQueenHerdMedium_loop" parent="Movement">
         <AssetArray File="Assets\Sounds\zZerg_moveHerdMedium_loop.wav" FacialGroup=""/>
@@ -47602,4 +48717,802 @@
         <Pitch value="-6.000000,-3.000000"/>
         <Volume value="-10.000000,-10.000000"/>
     </CSound>
+    <CSound id="Lowko_AddOnComplete" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_AddOnComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_AddOnComplete01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_AllyBaseUnderAttack" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_AllyBaseUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_AllyBaseUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_AllyBaseUnderAttack02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_AllyUnderAttack" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_AllyUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_AllyUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_AllyUnderAttack02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_BadLZ" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BadLZ00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BadLZ01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BadLZ02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_BaseUnderAttack" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BaseUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BaseUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BaseUnderAttack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BaseUnderAttack03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Lowko_BaseUnderAttackProtoss" parent="Lowko_BaseUnderAttack"/>
+    <CSound id="Lowko_BaseUnderAttackTerran" parent="Lowko_BaseUnderAttack"/>
+    <CSound id="Lowko_BaseUnderAttackZerg" parent="Lowko_BaseUnderAttack"/>
+    <CSound id="Lowko_BuildError" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildError00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildError01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildError02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildError03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_BuildErrorTerran" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildError00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildError01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildError02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildError03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Lowko_BuildErrorZerg" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildErrorZerg00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildErrorZerg01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildErrorZerg02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildErrorZerg03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="Lowko_CalldownLaunch" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_CalldownLaunch00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_CalldownLaunch01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_CommandCenterUpgraded" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_CommandCenterUpgraded00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_CommandCenterUpgraded01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_ConstructInterrupt" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ConstructInterrupt00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ConstructInterrupt01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ConstructInterrupt02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_Countdown" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_Countdown00.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_EndGame" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_EndGameWon00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_EndGameWon01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Category value="User35"/>
+        <Volume value="0.000000,0.000000"/>
+        <CategoryDuckingLocal value="LowkolertVictory"/>
+    </CSound>
+    <CSound id="Lowko_GGWin" parent="Lowko_EndGame"/>
+    <CSound id="Lowko_EndGameLost" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_EndGameLost00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_EndGameLost01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_EndGameLost02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Category value="User35"/>
+        <Volume value="0.000000,0.000000"/>
+        <CategoryDuckingLocal value="LowkolertVictory"/>
+    </CSound>
+    <CSound id="Lowko_GGLose" parent="Lowko_EndGameLost"/>
+    <CSound id="Lowko_EndGameTied" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_EndGameTied00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_EndGameTied01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <CategoryDuckingLocal value="LowkolertVictory"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_EvolutionComplete" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_EvolutionComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_EvolutionComplete01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_EvolutionComplete02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_EvolutionComplete03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_ForcesUnderAttack" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttack03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ForcesUnderAttack04.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_ForcesUnderAttackProtoss" parent="Lowko_ForcesUnderAttack"/>
+    <CSound id="Lowko_ForcesUnderAttackTerran" parent="Lowko_ForcesUnderAttack"/>
+    <CSound id="Lowko_ForcesUnderAttackZerg" parent="Lowko_ForcesUnderAttack"/>
+    <CSound id="Lowko_GamePaused" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_GamePaused00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_GamePaused01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_GamePaused02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_GamePaused03.ogg" FacialGroup=""/>
+        <Flags index="Unpausable" value="1"/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Exclusivity value="GamePausedResumed"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_GameResumed" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_GameResumed00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_GameResumed01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_GameResumed02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Exclusivity value="GamePausedResumed"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_GeyserExhausted" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_GeyserExhausted00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_GeyserExhausted01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_GeyserExhausted02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_GeyserExhausted03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_GeyserExhaustedProtoss" parent="Lowko_GeyserExhausted"/>
+    <CSound id="Lowko_GeyserExhaustedTerran" parent="Lowko_GeyserExhausted"/>
+    <CSound id="Lowko_GeyserExhaustedZerg" parent="Lowko_GeyserExhausted"/>
+    <CSound id="Lowko_LandingInterrupt" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_LandingInterrupt00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_LandingInterrupt01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_LandingInterrupt02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_MULEDeployed" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MULEDeployed00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MULEDeployed01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_MaxSupply" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MaxSupply00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MaxSupply01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MaxSupply02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_MaxSupplyProtoss" parent="Lowko_MaxSupply"/>
+    <CSound id="Lowko_MaxSupplyTerran" parent="Lowko_MaxSupply"/>
+    <CSound id="Lowko_MaxSupplyZerg" parent="Lowko_MaxSupply"/>
+    <CSound id="Lowko_MetamorphosisComplete" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MetamorphosisComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MetamorphosisComplete01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MetamorphosisComplete02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MetamorphosisComplete03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_MineralsDepleted" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MineralsDepleted00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MineralsDepleted01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MineralsDepleted02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MineralsDepleted03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_MutationComplete" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MutationComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MutationComplete01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MutationComplete02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_NeedCreep" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedCreep00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedCreep01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedCreep02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_NeedGeyser" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedGeyser00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedGeyser01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_NeedGeyserProtoss" parent="Lowko_NeedGeyser"/>
+    <CSound id="Lowko_NeedGeyserTerran" parent="Lowko_NeedGeyser"/>
+    <CSound id="Lowko_NeedGeyserZerg" parent="Lowko_NeedGeyser"/>
+    <CSound id="Lowko_NeedMoreFoodProtoss" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreFoodProtoss00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreFoodProtoss01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreFoodProtoss02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreFoodProtoss03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_NeedMoreFoodTerran" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreFood00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreFood01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreFood02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreFood03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_NeedMoreFoodZerg" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreFoodZerg00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreFoodZerg01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreFoodZerg02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreFoodZerg03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_NeedMoreGas" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreGas00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreGas01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreGas02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_NeedMoreMinerals" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreMinerals00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreMinerals01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreMinerals02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NeedMoreMinerals03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_NotEnoughEnergy" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NotEnoughEnergy00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NotEnoughEnergy01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NotEnoughEnergy02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_NukeReady" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NukeReady00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NukeReady01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_NukeReady02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_PlaceInPowerField" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_PlaceInPowerField00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_PlaceInPowerField01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_PlaceInPowerField02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_PylonUnderAttack" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_PylonUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_PylonUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_PylonUnderAttack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_PylonUnderAttack03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_QueenDeployed" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_QueenDeployed00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_QueenDeployed01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_QueenDeployed02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_QueenDeployed03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_ResearchComplete" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ResearchComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ResearchComplete01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_SalvageComplete" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_SalvageComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_SalvageComplete01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_StartGame" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_StartGame00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_StartGame01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_StartGame02.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Category value="User35"/>
+        <CategoryDuckingLocal value="LowkolertVictory"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_GoodLuckHaveFun" parent="Lowko_StartGame"/>
+    <CSound id="Lowko_ThorRepaired" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ThorRepaired00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_ThorRepaired01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_Transmission" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_Transmission00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_Transmission01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_TumorUnderAttack" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_TumorUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_TumorUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_TumorUnderAttack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_TumorUnderAttack03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_UpgradeComplete" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_UpgradeComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_UpgradeComplete01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_WarpInComplete" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WarpInComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WarpInComplete01.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_WorkersUnderAttack" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttack03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_WorkersUnderAttackTerran" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttack03.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_WorkersUnderAttackZerg" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttackZerg00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttackZerg01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttackZerg02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttackZerg03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_WorkersUnderAttackZerg04.ogg" FacialGroup=""/>
+        <Flags index="NeedsUpdate" value="1"/>
+        <Flags index="NeedsTTS" value="1"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_Preview_Phrase" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_StartGame00.ogg" FacialGroup=""/>
+        <Flags index="Stream" value="0"/>
+        <Exclusivity value="SoundPreview"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_Preview_Protoss" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_PylonUnderAttack00.ogg" FacialGroup=""/>
+        <Flags index="Stream" value="0"/>
+        <Exclusivity value="SoundPreview"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_Preview_Terran" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_BuildError03.ogg" FacialGroup=""/>
+        <Flags index="Stream" value="0"/>
+        <Exclusivity value="SoundPreview"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="Lowko_Preview_Zerg" parent="ACVO_ProtossAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\Lowko\Lowko_MutationComplete02.ogg" FacialGroup=""/>
+        <Flags index="Stream" value="0"/>
+        <Exclusivity value="SoundPreview"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="MrSheng_AddOnComplete" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_AddOnComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_AddOnComplete01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_AddOnComplete02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_AddOnComplete03.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_AllyBaseUnderAttack" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_AllyBaseUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_AllyBaseUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_AllyBaseUnderAttack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_AllyBaseUnderAttack03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_AllyBaseUnderAttack04.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_AllyUnderAttack" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_AllyUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_AllyUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_AllyUnderAttack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_AllyUnderAttack03.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_BadLZ" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BadLZ00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BadLZ01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BadLZ02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_BaseUnderAttack" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BaseUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BaseUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BaseUnderAttack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BaseUnderAttack03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BaseUnderAttack04.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_BuildError" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildError00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildError01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildError03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildError04.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="MrSheng_BuildErrorProtoss" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildErrorProtoss00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildErrorProtoss01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildErrorProtoss02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildErrorProtoss03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildErrorProtoss04.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_BuildErrorZerg" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildErrorZerg00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildErrorZerg01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildErrorZerg02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildErrorZerg03.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_CalldownLaunch" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_CalldownLaunch00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_CalldownLaunch01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_CalldownLaunch02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_CalldownLaunch03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_CalldownLaunch04.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_CalldownLaunch05.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_CommandCenterUpgraded" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_CommandCenterUpgraded00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_CommandCenterUpgraded01.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_ConstructInterrupt" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ConstructInterrupt00.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_Countdown" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_Countdown00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_Countdown01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_Countdown02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_EvolutionComplete" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_EvolutionComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_EvolutionComplete01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_EvolutionComplete02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_ForcesUnderAttack" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ForcesUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ForcesUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ForcesUnderAttack03.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_ForcesUnderAttackProtoss" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ForcesUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ForcesUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ForcesUnderAttack03.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_ForcesUnderAttackZerg" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ForcesUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ForcesUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ForcesUnderAttack03.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_GamePaused" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_GamePaused00.ogg" FacialGroup=""/>
+        <Flags index="Unpausable" value="1"/>
+        <Exclusivity value="GamePausedResumed"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_GameResumed" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_GameResumed00.ogg" FacialGroup=""/>
+        <Flags index="Unpausable" value="1"/>
+        <Exclusivity value="GamePausedResumed"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_GeyserExhausted" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_GeyserExhausted00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_GeyserExhausted01.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_LandingInterrupt" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_LandingInterrupt00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_LandingInterrupt01.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_MULEDeployed" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MULEDeployed00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MULEDeployed01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MULEDeployed02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_MaxSupply" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MaxSupply00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MaxSupply01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MaxSupply02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_MaxSupplyProtoss" parent="MrSheng_MaxSupply"/>
+    <CSound id="MrSheng_MaxSupplyTerran" parent="MrSheng_MaxSupply"/>
+    <CSound id="MrSheng_MaxSupplyZerg" parent="MrSheng_MaxSupply"/>
+    <CSound id="MrSheng_MetamorphosisComplete" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MetamorphosisComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MetamorphosisComplete01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MetamorphosisComplete02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_MineralsDepleted" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MineralsDepleted00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MineralsDepleted01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MineralsDepleted02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MineralsDepleted03.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_MutationComplete" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MutationComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MutationComplete01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_MutationComplete02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_NeedCreep" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedCreep00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedCreep01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedCreep02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_NeedGeyser" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedGeyser00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedGeyser01.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_NeedGeyserProtoss" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedGeyser00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedGeyser01.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_NeedGeyserZerg" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedGeyser00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedGeyser01.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_NeedMoreFood" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreFood00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreFood01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreFood02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreFood03.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_NeedMoreFoodProtoss" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreFoodProtoss00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreFoodProtoss01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreFoodProtoss02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreFoodProtoss03.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_NeedMoreFoodZerg" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreFoodZerg00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreFoodZerg01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreFoodZerg02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreFoodZerg03.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_NeedMoreGas" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreGas00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreGas01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreGas02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreGas03.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_NeedMoreMinerals" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreMinerals00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreMinerals01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreMinerals02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreMinerals03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NeedMoreMinerals04.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_NotEnoughEnergy" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NotEnoughEnergy00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NotEnoughEnergy01.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_NukeReady" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NukeReady00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NukeReady01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_NukeReady02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_PlaceInPowerField" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_PlaceInPowerField00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_PlaceInPowerField01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_PlaceInPowerField02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_PylonUnderAttack" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_PylonUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_PylonUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_PylonUnderAttack02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_QueenDeployed" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_QueenDeployed00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_QueenDeployed01.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_ResearchComplete" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ResearchComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ResearchComplete01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ResearchComplete02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_SalvageComplete" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_SalvageComplete00.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_ThorRepaired" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ThorRepaired00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_ThorRepaired01.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_Transmission" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_Transmission00.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_TumorUnderAttack" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_TumorUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_TumorUnderAttack01.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_UpgradeComplete" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_UpgradeComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_UpgradeComplete01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_UpgradeComplete02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_WarpInComplete" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WarpInComplete00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WarpInComplete01.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_WorkersUnderAttack" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WorkersUnderAttack00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WorkersUnderAttack01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WorkersUnderAttack02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WorkersUnderAttack03.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_WorkersUnderAttackProtoss" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WorkersUnderAttackProtoss00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WorkersUnderAttackProtoss01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WorkersUnderAttackProtoss02.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_WorkersUnderAttackZerg" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WorkersUnderAttackZerg00.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WorkersUnderAttackZerg01.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WorkersUnderAttackZerg02.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WorkersUnderAttackZerg03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WorkersUnderAttackZerg04.ogg" FacialGroup=""/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_Preview_Phrase" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_GameResumed00.ogg" FacialGroup=""/>
+        <Flags index="Stream" value="0"/>
+        <Exclusivity value="SoundPreview"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_Preview_Protoss" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_PlaceInPowerField00.ogg" FacialGroup=""/>
+        <Flags index="Stream" value="0"/>
+        <Exclusivity value="SoundPreview"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_Preview_Terran" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_UpgradeComplete01.ogg" FacialGroup=""/>
+        <Flags index="Stream" value="0"/>
+        <Exclusivity value="SoundPreview"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_Preview_Zerg" parent="ACVO_TerranAlert">
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_WorkersUnderAttackZerg02.ogg" FacialGroup=""/>
+        <Flags index="Stream" value="0"/>
+        <Exclusivity value="SoundPreview"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MrSheng_GGLose" parent="ACVO_TerranAlert">
+        <Category value="User35"/>
+        <Volume value="-3.000000,-3.000000"/>
+        <CategoryDuckingLocal value="scboyAlertVictory"/>
+    </CSound>
+    <CSound id="MrSheng_BaseUnderAttackProtoss" parent="MrSheng_BaseUnderAttack"/>
+    <CSound id="MrSheng_BaseUnderAttackTerran" parent="MrSheng_BaseUnderAttack"/>
+    <CSound id="MrSheng_BaseUnderAttackZerg" parent="MrSheng_BaseUnderAttack"/>
+    <CSound id="MrSheng_BuildErrorTerran" parent="MrSheng_BuildError">
+        <Volume value="-3.000000,-3.000000"/>
+        <AssetArray index="2" File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildError02.ogg" FacialGroup=""/>
+        <AssetArray index="3" File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildError03.ogg" FacialGroup=""/>
+        <AssetArray File="LocalizedData\Sounds\VO\MrSheng\MrSheng_BuildError04.ogg" FacialGroup=""/>
+    </CSound>
+    <CSound id="MrSheng_ForcesUnderAttackTerran" parent="MrSheng_ForcesUnderAttack"/>
+    <CSound id="MrSheng_GeyserExhaustedProtoss" parent="MrSheng_GeyserExhausted"/>
+    <CSound id="MrSheng_GeyserExhaustedTerran" parent="MrSheng_GeyserExhausted"/>
+    <CSound id="MrSheng_GeyserExhaustedZerg" parent="MrSheng_GeyserExhausted"/>
+    <CSound id="MrSheng_NeedGeyserTerran" parent="MrSheng_NeedGeyser"/>
+    <CSound id="MrSheng_NeedMoreFoodTerran" parent="MrSheng_NeedMoreFood"/>
+    <CSound id="MrSheng_WorkersUnderAttackTerran" parent="MrSheng_WorkersUnderAttack"/>
 </Catalog>

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+    <CRaceBannerPack id="TwitchPrimeAbathur_RaceBannerPack">
+        <RaceBannerArray value="RaceBanner_Zerg_TwitchPrime2019"/>
+    </CRaceBannerPack>
+    <CRaceBannerPack id="TwitchPrimeSwann_RaceBannerPack">
+        <RaceBannerArray value="RaceBanner_Terran_TwitchPrime2019"/>
+    </CRaceBannerPack>
+    <!-- War Chest 3 -->
     <CRaceBannerPack id="WarChestSeason3Terran">
         <RaceBannerArray value="RaceBanner_Terran_WarChest3"/>
     </CRaceBannerPack>
@@ -8,5 +15,15 @@
     </CRaceBannerPack>
     <CRaceBannerPack id="WarChestSeason3Protoss">
         <RaceBannerArray value="RaceBanner_Protoss_WarChest3"/>
+    </CRaceBannerPack>
+    <!-- War Chest 4 -->
+    <CRaceBannerPack id="WarChestSeason4Terran">
+        <RaceBannerArray value="RaceBanner_Terran_WarChest4"/>
+    </CRaceBannerPack>
+    <CRaceBannerPack id="WarChestSeason4Zerg">
+        <RaceBannerArray value="RaceBanner_Zerg_WarChest4"/>
+    </CRaceBannerPack>
+    <CRaceBannerPack id="WarChestSeason4Protoss">
+        <RaceBannerArray value="RaceBanner_Protoss_WarChest4"/>
     </CRaceBannerPack>
 </Catalog>

@@ -71,6 +71,8 @@ Abil/Name/LocustMPFlyingMorphToGround=Morph To Ground
 Abil/Name/LocustMPFlyingSwoop=Swoop
 Abil/Name/LocustMPMorphToAir=Locust MP Morph To Air
 Abil/Name/LurkerHoldFire=Lurker Hold Fire
+Abil/Name/MorphToCollapsibleRockTowerDebrisRampLeftGreen=Morph To Collapsible Rock Tower Debris (Ramp Left) (Green)
+Abil/Name/MorphToCollapsibleRockTowerDebrisRampRightGreen=Morph To Collapsible Rock Tower Debris (Ramp Right) (Green)
 Abil/Name/MorphToDevourerMP=Morph To Devourer 
 Abil/Name/MorphToGuardianMP=Morph To Guardian MP
 Abil/Name/MorphToHellion=Morph To Hellion
@@ -509,9 +511,6 @@ Button/Tooltip/QueenMP=Support flyer. Can use Ensnare, Spawn Broodlings, and Inf
 Button/Tooltip/QueenMPEnsnare=Reduces movement of units in the targeted area by <d ref="100 - (Behavior,QueenMPEnsnare,Modification.MoveSpeedMultiplier * 100)"/>% for <d ref="Behavior,Ensnare,Duration"/> seconds. Reveals cloaked and burrowed units.
 Button/Tooltip/QueenMPSpawnBroodlings=Kills target biological unit and spawns <d ref="Effect,QueenMPSpawnBroodlingsCreate,SpawnCount"/> Broodlings.
 Button/Tooltip/RapidDeployment=The Medivac deploys loaded troops twice as fast.
-Button/Tooltip/Ravager=Ranged artillery. Can use Corrosive Bile.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
-Button/Tooltip/RavagerBurrowed=Ranged artillery. Can use Corrosive Bile.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
-Button/Tooltip/RavagerCocoon=This cocoon contains a Roach that is morphing into a Ravager.
 Button/Tooltip/RavagerCorrosiveBile=Launch a missile at the target location, dealing <d ref="Effect,RavagerCorrosiveBileDamage,Amount"/> damage to all units in the area upon impact.<n/><n/><c val="#ColorAttackInfo">Can destroy Protoss Force Fields.</c>
 Button/Tooltip/RavagerRange=Increases the Ravager's Corrosive Bile range by 4.
 Button/Tooltip/Raven=Aerial support unit. Can use Auto-Turret, Point Defense Drone, and Seeker Missile.<n/><n/><c val="FFE303">Detector</c>
@@ -652,6 +651,24 @@ Effect/Name/CloakingDroneRB=Cloaking Drone RB
 Effect/Name/CloakingFieldTargetedAB=Cloaking Field Targeted AB
 Effect/Name/CloakingFieldTargetedCP=Cloaking Field Targeted CP
 Effect/Name/CloakingFieldTargetedSearch=Cloaking Field Targeted Search
+Effect/Name/CollapsibleRockTowerIssueOrderRampLeftGreen=Collapsible Rock Tower (Ramp Left) (Green)
+Effect/Name/CollapsibleRockTowerIssueOrderRampRightGreen=Collapsible Rock Tower (Ramp Right) (Green)
+Effect/Name/CollapsibleRockTowerRampLeftGreenCP=Collapsible Rock Tower (Ramp Left) (Green) (CP)
+Effect/Name/CollapsibleRockTowerRampLeftGreenCPFinal=Collapsible Rock Tower (Ramp Left) (Green) (CPFinal)
+Effect/Name/CollapsibleRockTowerRampLeftGreenCreateDebris=Collapsible Rock Tower (Ramp Left) (Green) (Create Debris)
+Effect/Name/CollapsibleRockTowerRampRightGreenCP=Collapsible Rock Tower (Ramp Right) (Green) (CP)
+Effect/Name/CollapsibleRockTowerRampRightGreenCPFinal=Collapsible Rock Tower (Ramp Right) (Green) (CPFinal)
+Effect/Name/CollapsibleRockTowerRampRightGreenCreateDebris=Collapsible Rock Tower (Ramp Right) (Green) (Create Debris)
+Effect/Name/CollapsibleRockTowerRubbleCPRampLeftGreen=Collapsible Rock Tower Rubble CP (Ramp Left) (Green)
+Effect/Name/CollapsibleRockTowerRubbleCPRampRightGreen=Collapsible Rock Tower Rubble CP (Ramp Right) (Green)
+Effect/Name/CollapsibleRockTowerRubbleDamageRampLeftGreen=Collapsible Rock Tower Rubble Damage (Ramp Left) (Green)
+Effect/Name/CollapsibleRockTowerRubbleDamageRampLeftSetGreen=CollapsibleRockTowerRubbleDamageRampLeftSet (Unnamed) (Green)
+Effect/Name/CollapsibleRockTowerRubbleDamageRampRightGreen=Collapsible Rock Tower Rubble Damage (Ramp Right) (Green)
+Effect/Name/CollapsibleRockTowerRubbleDamageRampRightGreenSet=CollapsibleRockTowerRubbleDamageRampRightGreenSet
+Effect/Name/CollapsibleRockTowerRubbleDamageSearchRampLeftGreen=Collapsible Rock Tower Rubble Damage Search (Ramp Left) (Green)
+Effect/Name/CollapsibleRockTowerRubbleDamageSearchRampRightGreen=Collapsible Rock Tower Rubble Damage Search (Ramp Right) (Green)
+Effect/Name/CollapsibleRockTowerRubbleRemoveCasterRampLeftGreen=Collapsible Rock Tower Rubble Remove Caster (Ramp Left) (Green)
+Effect/Name/CollapsibleRockTowerRubbleRemoveCasterRampRightGreen=Collapsible Rock Tower Rubble Remove Caster (Ramp Right) (Green)
 Effect/Name/CorruptionBombApplyDamage=Corruption Bomb (Apply Damage)
 Effect/Name/CorruptionBombChannelDamage=Corruption Bomb (Channel Damage)
 Effect/Name/CorruptionBombChannelSearch=Corruption Bomb (Channel Search)
@@ -1229,6 +1246,8 @@ Unit/Name/CollapsibleRockTower=Rock Tower
 Unit/Name/CollapsibleRockTowerDebris=Rocks
 Unit/Name/CollapsibleRockTowerDiagonal=Rock Tower
 Unit/Name/CollapsibleRockTowerPushUnit=Rocks
+Unit/Name/CollapsibleRockTowerPushUnitRampLeftGreen=Collapsible Rock Tower Debris Push Unit (Ramp Left) (Green)
+Unit/Name/CollapsibleRockTowerPushUnitRampRightGreen=Collapsible Rock Tower Debris Push Unit (Ramp Right) (Green)
 Unit/Name/CompoundMansion_DoorE=Compound Mansion Door E
 Unit/Name/CompoundMansion_DoorELowered=Compound Mansion Door E Lowered
 Unit/Name/CompoundMansion_DoorN=Compound Mansion Door N
@@ -1367,11 +1386,6 @@ Unit/Name/PurifierRichMineralField750=Rich Mineral Field
 Unit/Name/QueenMP=Brood Queen
 Unit/Name/QueenMPEnsnareMissile=Queen MPEnsnare Missile
 Unit/Name/QueenMPSpawnBroodlingsMissile=Queen MPSpawn Broodlings Missile
-Unit/Name/Ravager=Ravager
-Unit/Name/RavagerBurrowed=Ravager
-Unit/Name/RavagerCocoon=Ravager Cocoon
-Unit/Name/RavagerCorrosiveBileMissile=Ravager Corrosive Bile Missile
-Unit/Name/RavagerWeaponMissile=Ravager Weapon Missile
 Unit/Name/ReleaseInterceptorsBeacon=Release Interceptors Beacon
 Unit/Name/Replicant=Replicant
 Unit/Name/ReptileCrate=Reptile Crate
