@@ -216,7 +216,6 @@
       <AttachQuery Methods="Hardpoint 3" />
       <HostSiteOps Ops="SOpShadowRespectsBaseHeight" HoldPosition="1" HoldRotation="1" />
     </HostedAttaches>
-    <ModelFlags index="AllowHitTest" value="0" />
     <VisibilityShape Shape="ThrallSunderingVisibilityShape" />
   </CActorModel>
   <CActorSite id="ThrallChainLightning7LaunchSite" parent="SiteCenter">
@@ -284,7 +283,6 @@
     <Host Subject="_Selectable" />
     <HostSiteOps Ops="SOpAttachCenterStationary SOpForwardCasterPoint" />
     <Model value="ThrallSwiftBreezeFXOut" />
-    <ModelFlags index="AllowHitTest" value="0" />
   </CActorModel>
   <CActorModel id="ThrallWindRushUnitCopyModel">
     <CopySource value="_Unit" />
@@ -706,7 +704,6 @@
       <AttachQuery Methods="Hardpoint 3" />
       <HostSiteOps Ops="SOpShadowRespectsBaseHeight" HoldPosition="1" HoldRotation="1" />
     </HostedAttaches>
-    <ModelFlags index="AllowHitTest" value="0" />
     <VisibilityShape Shape="ThrallSunderingVisibilityShape" />
   </CActorModel>
   <CActorModel id="ThrallSunderingWorldbreakerBirth" parent="StormModelAnimationStyleOneShot">
@@ -799,7 +796,6 @@
     <GroupIcon>
       <Image value="Assets\Textures\storm_ui_ingame_partyframe_thrall.dds" />
     </GroupIcon>
-    <WalkAnimMoveSpeed value="4" />
   </CActorUnit>
   <CActorModel id="HeroThrallDeathRagdoll" parent="StormHeroDeathRagdoll" />
   <CActorPortrait id="ThrallPortrait" parent="StormCompositePortrait" />
@@ -1763,8 +1759,9 @@
     <ValidatorArray value="NoJungleBenignTarget" />
     <EffectArray value="ApplyAbilityImpactReveal" />
     <EffectArray value="ThrallChainLightningStructureRevealerPersistent" />
-    <EffectArray value="ThrallChainLightningTalentProcSet" />
+    <EffectArray value="ThrallChainLightningEchooftheElementsTalentApplyDebuff" />
     <EffectArray value="ThrallChainLightningRollingThunderTalentBounce6Damage" />
+    <EffectArray value="ThrallChainLightningTalentProcSet" />
     <EffectArray value="ThrallChainLightningRollingThunderTalentDummy7" />
   </CEffectSet>
   <CEffectEnumArea id="ThrallChainLightningRollingThunderTalentBounce6Search">
@@ -1806,8 +1803,9 @@
     <ValidatorArray value="NoJungleBenignTarget" />
     <EffectArray value="ApplyAbilityImpactReveal" />
     <EffectArray value="ThrallChainLightningStructureRevealerPersistent" />
-    <EffectArray value="ThrallChainLightningTalentProcSet" />
+    <EffectArray value="ThrallChainLightningEchooftheElementsTalentApplyDebuff" />
     <EffectArray value="ThrallChainLightningRollingThunderTalentBounce5Damage" />
+    <EffectArray value="ThrallChainLightningTalentProcSet" />
   </CEffectSet>
   <CEffectCreatePersistent id="ThrallChainLightningRollingThunderTalentBounce5Persistent">
     <ValidatorArray value="ThrallHasRollingThunderTalent" />
@@ -2117,7 +2115,6 @@
   <CEffectSet id="ThrallChainLightningTalentProcSet">
     <EffectArray value="ThrallChainLightningApplyRollingThunderMasteryDebuff" />
     <EffectArray value="ThrallFrostwolfResilienceImpactSwitch" />
-    <EffectArray value="ThrallChainLightningEchooftheElementsTalentApplyDebuff" />
     <EffectArray value="ThrallChainLightningCrashLightningTalentSwitch" />
   </CEffectSet>
   <CEffectApplyBehavior id="ThrallFeralSpiritApplyDummyMissileDeathFX">
@@ -2891,8 +2888,9 @@
     <ValidatorArray value="NotCloakedOrIsRevealed" />
     <EffectArray value="ApplyAbilityImpactReveal" />
     <EffectArray value="ThrallChainLightningStructureRevealerPersistent" />
-    <EffectArray value="ThrallChainLightningTalentProcSet" />
+    <EffectArray value="ThrallChainLightningEchooftheElementsTalentApplyDebuff" />
     <EffectArray value="ThrallChainLightningBounce1Damage" />
+    <EffectArray value="ThrallChainLightningTalentProcSet" />
     <EffectArray value="ThrallChainLightningDummy2" />
     <EffectArray value="ThrallChainLightningBounce1Persistent" />
   </CEffectSet>
@@ -2903,8 +2901,9 @@
     <ValidatorArray value="NotCloakedOrIsRevealed" />
     <EffectArray value="ApplyAbilityImpactReveal" />
     <EffectArray value="ThrallChainLightningStructureRevealerPersistent" />
-    <EffectArray value="ThrallChainLightningTalentProcSet" />
+    <EffectArray value="ThrallChainLightningEchooftheElementsTalentApplyDebuff" />
     <EffectArray value="ThrallChainLightningBounce2Damage" />
+    <EffectArray value="ThrallChainLightningTalentProcSet" />
     <EffectArray value="ThrallChainLightningDummy3" />
     <EffectArray value="ThrallChainLightningBounce2Persistent" />
   </CEffectSet>
@@ -2915,8 +2914,9 @@
     <ValidatorArray value="NotCloakedOrIsRevealed" />
     <EffectArray value="ApplyAbilityImpactReveal" />
     <EffectArray value="ThrallChainLightningStructureRevealerPersistent" />
-    <EffectArray value="ThrallChainLightningTalentProcSet" />
+    <EffectArray value="ThrallChainLightningEchooftheElementsTalentApplyDebuff" />
     <EffectArray value="ThrallChainLightningBounce3Damage" />
+    <EffectArray value="ThrallChainLightningTalentProcSet" />
     <EffectArray value="ThrallChainLightningDummy4" />
     <EffectArray value="ThrallChainLightningBounce3Persistent" />
   </CEffectSet>
@@ -2935,8 +2935,9 @@
     <ValidatorArray value="NotCloakedOrIsRevealed" />
     <EffectArray value="ApplyAbilityImpactReveal" />
     <EffectArray value="ThrallChainLightningStructureRevealerPersistent" />
-    <EffectArray value="ThrallChainLightningTalentProcSet" />
+    <EffectArray value="ThrallChainLightningEchooftheElementsTalentApplyDebuff" />
     <EffectArray value="ThrallChainLightningBounce4Damage" />
+    <EffectArray value="ThrallChainLightningTalentProcSet" />
     <EffectArray value="ThrallChainLightningDummy5" />
   </CEffectSet>
   <CEffectCreatePersistent id="ThrallChainLightningBounce3Persistent">

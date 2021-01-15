@@ -2,8 +2,8 @@
 <Catalog>
   <const id="$AzmodanAllShallBurnCastRange" value="6" />
   <const id="$AzmodanAllShallBurnChannelSlop" value="2.25" />
-  <const id="$AzmodanAllShallBurnChannelRange" value="8.25" />
-  <const id="$AzmodanAllShallBurnChannelRangeGreed" value="9.75" />
+  <const id="$AzmodanAllShallBurnChannelRange" value="+($AzmodanAllShallBurnCastRange $AzmodanAllShallBurnChannelSlop)" evaluateAsExpression="1" />
+  <const id="$AzmodanAllShallBurnChannelRangeGreed" value="+($AzmodanAllShallBurnChannelRange $AzmodanAllShallBurnGreedBonusRange)" evaluateAsExpression="1" />
   <const id="$AzmodanAllShallBurnGreedBonusRange" value="1.5" />
   <CAbilEffectTarget id="AzmodanTrample" parent="StormSkillshotDashParent">
     <Effect value="AzmodanTrampleCastSet" />
@@ -20,7 +20,7 @@
     <PrepEffect value="AzmodanAllShallBurnPrepareSet" />
     <Effect value="AzmodanAllShallBurnInitialSet" />
     <Cost>
-      <Vital index="Energy" value="40" />
+      <Vital index="Energy" value="30" />
       <Cooldown TimeUse="6" />
     </Cost>
     <TargetFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable" />
@@ -114,7 +114,7 @@
     <Flags index="ClearLastMoveTarget" value="1" />
     <Flags index="RequireTargetVision" value="0" />
     <Cost>
-      <Vital index="Energy" value="60" />
+      <Vital index="Energy" value="70" />
       <Cooldown Link="Abil/AzmodanGlobeofAnnihilation" TimeUse="10" />
     </Cost>
     <Range value="30" />
@@ -139,7 +139,7 @@
     <Flags index="RequireTargetVision" value="0" />
     <Flags index="TransientPreferred" value="1" />
     <Cost>
-      <Vital index="Energy" value="30" />
+      <Vital index="Energy" value="25" />
       <Cooldown TimeUse="10" />
     </Cost>
     <Range value="500" />
@@ -1713,7 +1713,7 @@
     <EffectArray Operation="Set" Reference="Abil,AzmodanGlobeOfAnnihilation,Cost.Vital[Energy]" Value="0" />
   </CEffectModifyPlayer>
   <CEffectModifyPlayer id="AzmodanTideOfSinResetGlobeCost">
-    <EffectArray Operation="Set" Reference="Abil,AzmodanGlobeOfAnnihilation,Cost.Vital[Energy]" Value="60" />
+    <EffectArray Operation="Set" Reference="Abil,AzmodanGlobeOfAnnihilation,Cost.Vital[Energy]" Value="70" />
   </CEffectModifyPlayer>
   <CEffectModifyTokenCount id="AzmodanDemonLieutenantDemonicSmiteModifyToken">
     <EffectCategory index="Quest" value="1" />
@@ -1786,7 +1786,7 @@
   </CEffectSet>
   <CEffectCreateHealer id="AzmodanGlobeOfAnnihilationArtOfChaosTalentModifyUnit" parent="StormManaRestore">
     <ImpactUnit Value="Caster" />
-    <RechargeVitalRate value="30" />
+    <RechargeVitalRate value="40" />
   </CEffectCreateHealer>
   <CEffectModifyTokenCount id="AzmodanHeroWeaponWrathTalentModifyDisplayTokenCount">
     <CollationId value="AzmodanHeroWeaponWrathTalentModifyTokenCount" />
@@ -2004,10 +2004,10 @@
   </CEffectCancelOrder>
   <CEffectSet id="AzmodanGlobeOfAnnihilationHeroImpactSet">
     <ValidatorArray value="TargetIsHero" />
-    <EffectArray value="AzmodanGlobeOfAnnihilationHeroImpactModifyTokenSet" />
     <EffectArray value="AzmodanGlobeOfAnnihilationTotalAnnihilationTalentDamage" />
     <EffectArray value="AzmodanGlobeOfAnnihilationGluttonyTalentHeroModifyUnit" />
     <EffectArray value="AzmodanGlobeOfAnnihilationWrathTalentApplyMarker" />
+    <EffectArray value="AzmodanGlobeOfAnnihilationHeroImpactModifyTokenSet" />
   </CEffectSet>
   <CEffectModifyPlayer id="AzmodanGlobeOfAnnihilationPrideTalentResetPlayer">
     <EffectArray Operation="Set" Reference="Effect,AzmodanGlobeOfAnnihilationArtOfChaosTalent3TargetSearch,AreaArray[0].Radius" Value="4" />
@@ -2651,8 +2651,8 @@
   <CEffectSet id="AzmodanGlobeOfAnnihilationSearchAreaSet">
     <EffectArray value="AzmodanGlobeOfAnnihilationApplyDebuffBehavior" />
     <EffectArray value="AzmodanGlobeOfAnnihilationGluttonyTalentMinionModifyUnit" />
-    <EffectArray value="AzmodanGlobeOfAnnihilationHeroImpactSet" />
     <EffectArray value="GlobeOfAnnihilationDamageSwitch" />
+    <EffectArray value="AzmodanGlobeOfAnnihilationHeroImpactSet" />
   </CEffectSet>
   <CEffectCreatePersistent id="AzmodanDemonicInvasionDemonCreationPersistent">
     <Flags index="RandomOffset" value="1" />

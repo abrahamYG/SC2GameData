@@ -38,12 +38,14 @@ void libCOMU_InitVariables () {
     for (init_i = 0; init_i <= libCOMU_gv_cTC_AmonHeroMaxHeroTypes; init_i += 1) {
         libCOMU_gv_cT_AmonHeroSoundArray[init_i] = SoundLink("EditorDefaultSound", -1);
     }
+    libCOMU_gv_cT_AmonHeroLastSpawnTimer = TimerCreate();
     libCOMU_gv_cT_Gifts = UnitGroupEmpty();
     libCOMU_gv_cT_CandyBowlTextTag = c_textTagNone;
     libCOMU_gv_cT_FoodHuntWarningLabel = c_invalidDialogControlId;
     libCOMU_gv_cT_FoodHuntAttackLabel = c_invalidDialogControlId;
     libCOMU_gv_cT_OrderCostImmuneUnits = UnitGroupEmpty();
     libCOMU_gv_cT_PolarityPlayer = 1;
+    libCOMU_gv_cT_PolarityPlayerTrains = 1;
     libCOMU_gv_cT_BlizzardSpacingTolerance = 10.0;
     libCOMU_gv_cT_RecentBlizzards = UnitGroupEmpty();
     libCOMU_gv_cT_RandomCycleTimer = TimerCreate();
@@ -52,6 +54,11 @@ void libCOMU_InitVariables () {
     libCOMU_gv_cT_Reanimators = UnitGroupEmpty();
     libCOMU_gv_cT_VoidRifts = UnitGroupEmpty();
     libCOMU_gv_cT_VoidRiftLastSpawnedUnits = UnitGroupEmpty();
+    for (init_i = 0; init_i <= 2; init_i += 1) {
+        libCOMU_gv_cT_BoomBotsDigits[init_i] = 4;
+    }
+    libCOMU_gv_cT_BoomBotsIndexStart = 40;
+    libCOMU_gv_cT_BoomBotsInputTextTagIndex = 5;
     libCOMU_gv_cT_OnDeathSpawns = UnitGroupEmpty();
     libCOMU_gv_cT_SpawnedUnits = UnitGroupEmpty();
     libCOMU_gv_cT_Tornadoes = UnitGroupEmpty();
@@ -307,6 +314,9 @@ void libCOMU_gf_CT_ToggleTrigger (int lp_triggerType, bool lp_onOff) {
         else if (auto8E75653A_val == libCOMU_ge_CT_TriggerType_UnitIssuedOrder) {
             TriggerEnable(libCOMU_gt_CT_UnitOrdered, lp_onOff);
         }
+        else if (auto8E75653A_val == libCOMU_ge_CT_TriggerType_UpgradeChanged) {
+            TriggerEnable(libCOMU_gt_CT_UpgradeChanged, lp_onOff);
+        }
         else {
         }
     }
@@ -391,6 +401,7 @@ void libCOMU_gf_CT_InitializeAll () {
     libCOMU_gf_CT_RegisterMutator("Propagate", libCOMU_gt_CT_InitializePropagate, libCOMU_gt_CT_ShutdownPropagate);
     libCOMU_gf_CT_RegisterMutator("KillBots", libCOMU_gt_CT_InitializeKillBots, libCOMU_gt_CT_ShutdownKillBots);
     libCOMU_gf_CT_RegisterMutator("MomentOfSilence", libCOMU_gt_CT_InitializeMomentOfSilence, libCOMU_gt_CT_ShutdownMomentOfSilence);
+    libCOMU_gf_CT_RegisterMutator("BoomBots", libCOMU_gt_CT_InitializeBoomBots, libCOMU_gt_CT_ShutdownBoomBots);
     if ((libCOMU_gf_MutatorIsEnabled("CycleRandom") == true)) {
         TriggerExecute(libCOMU_gf_CT_MutatorInitTrigger("CycleRandom"), true, false);
     }
@@ -410,7 +421,7 @@ void libCOMU_gf_CT_InitializeAll () {
 void libCOMU_gf_CT_ApplyPermaCloak (unit lp_createdUnit) {
     // Automatic Variable Declarations
     // Implementation
-    if (((libCOMU_gf_MutatorIsEnabled("AllEnemiesCloaked") == false) || (UnitGetOwner(lp_createdUnit) == c_playerAny) || (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, 1), UnitGetOwner(lp_createdUnit)) == false) || (UnitFilterMatch(lp_createdUnit, 1, UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)))) == false) || (UnitGetType(lp_createdUnit) == "MutatorStormCloud") || (UnitGetType(lp_createdUnit) == "VoidThrasher"))) {
+    if (((libCOMU_gf_MutatorIsEnabled("AllEnemiesCloaked") == false) || (UnitGetOwner(lp_createdUnit) == c_playerAny) || (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, 1), UnitGetOwner(lp_createdUnit)) == false) || (UnitFilterMatch(lp_createdUnit, 1, UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterDead - 32)))) == false) || (UnitGetType(lp_createdUnit) == "MutatorStormCloud") || (UnitGetType(lp_createdUnit) == "MutatorTornado") || (UnitGetType(lp_createdUnit) == "VoidThrasher"))) {
         return ;
     }
 
@@ -462,6 +473,20 @@ void libCOMU_gf_CT_ApplyInspiration (unit lp_createdUnit) {
     }
 
     UnitBehaviorAdd(lp_createdUnit, "MutatorInspirationSearch", lp_createdUnit, 1);
+}
+
+void libCOMU_gf_CT_ApplyUberDarkness (string lp_upgrade, int lp_player) {
+    // Automatic Variable Declarations
+    string auto85398AE1_val;
+
+    // Implementation
+    auto85398AE1_val = lp_upgrade;
+    if (auto85398AE1_val == "ZeratulArtifactTier3_RoboticsBay") {
+        CatalogFieldValueSet(c_gameCatalogUnit, "ZeratulObserver", "Sight", lp_player, "0");
+        CatalogFieldValueSet(c_gameCatalogUnit, "ZeratulObserverSiegeMode", "Sight", lp_player, "0");
+    }
+    else {
+    }
 }
 
 void libCOMU_gf_CT_ApplySpawnBroodling (unit lp_killedUnit) {
@@ -660,6 +685,7 @@ void libCOMU_gf_CT_ApplyAvenger (unit lp_killedUnit) {
     unit lv_nearbyUnit;
     fixed lv_actualDistance;
     int lv_index;
+    fixed lv_supplyvalue;
 
     // Automatic Variable Declarations
     unitgroup autoF1DA6167_g;
@@ -668,8 +694,17 @@ void libCOMU_gf_CT_ApplyAvenger (unit lp_killedUnit) {
     // Variable Initialization
 
     // Implementation
-    if (((libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickAvenger)] == false) || (UnitGetOwner(lp_killedUnit) == c_playerAny) || (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, 1), UnitGetOwner(lp_killedUnit)) == false) || (UnitFilterMatch(lp_killedUnit, 1, UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterHidden - 32)))) == false))) {
+    if (((libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickAvenger)] == false) || (UnitGetOwner(lp_killedUnit) == c_playerAny) || (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, 1), UnitGetOwner(lp_killedUnit)) == false) || (UnitFilterMatch(lp_killedUnit, 1, UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), 0)) == false))) {
         return ;
+    }
+
+    lv_supplyvalue = UnitTypeGetProperty(UnitGetType(lp_killedUnit), c_unitPropSuppliesUsed);
+    if ((lv_supplyvalue < 1)) {
+        libCOMU_gv_cT_AvengerWimpCounter += 1;
+        if ((ModI(libCOMU_gv_cT_AvengerWimpCounter, 2) == 1)) {
+            return ;
+        }
+
     }
 
     autoF1DA6167_g = libNtve_gf_UnitsInRegionWithAllianceToPlayerMatchingCondition(null, "", "", 1, c_unitAllianceEnemy, RegionCircle(UnitGetPosition(lp_killedUnit), 3.5), UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
@@ -688,7 +723,7 @@ void libCOMU_gf_CT_ApplyAvenger (unit lp_killedUnit) {
             continue;
         }
 
-        UnitBehaviorAdd(lv_nearbyUnit, "MutatorAvenger", lp_killedUnit, MaxI(FixedToInt(UnitTypeGetProperty(UnitGetType(lp_killedUnit), c_unitPropSuppliesUsed)), 1));
+        UnitBehaviorAdd(lv_nearbyUnit, "MutatorAvenger", lp_killedUnit, MaxI(FixedToInt(lv_supplyvalue), 1));
         libCOMU_gv_cT_StatAvengerStacksApplied += FixedToInt(UnitTypeGetProperty(UnitGetType(lp_killedUnit), c_unitPropSuppliesUsed));
         libNtve_gf_SendActorMessageToUnit(lv_nearbyUnit, (("SetScale " + FixedToString(((0.08 * UnitBehaviorCount(lv_nearbyUnit, "MutatorAvenger")) + 1.0), 1))));
         libNtve_gf_SendActorMessageToUnit(lv_nearbyUnit, "GlowStart");
@@ -730,7 +765,7 @@ void libCOMU_gf_CT_ApplyEvolve (unit lp_killingUnit, unit lp_victimUnit) {
     // Variable Initialization
 
     // Implementation
-    if (((libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickEvolve)] == false) || (UnitIsAlive(lp_killingUnit) == false) || (UnitGetOwner(lp_killingUnit) == c_playerAny) || (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, 1), UnitGetOwner(lp_killingUnit)) == false) || (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, 1), UnitGetOwner(lp_victimUnit)) == true) || (UnitHasBehavior2(lp_killingUnit, "MutatorEvolve") == true) || (UnitFilterMatch(lp_killingUnit, 1, UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterHidden - 32)))) == false) || (libCOMU_gf_CT_MutatorUnitIsMapObjective(lp_killingUnit) == true))) {
+    if (((libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickEvolve)] == false) || (UnitIsAlive(lp_killingUnit) == false) || (UnitGetOwner(lp_killingUnit) == c_playerAny) || (UnitGetOwner(lp_killingUnit) == 0) || (UnitGetOwner(lp_victimUnit) == 0) || (UnitGetType(lp_killingUnit) == "MutatorKillBot") || (UnitGetType(lp_killingUnit) == "MutatorPropagator") || (UnitGetType(lp_killingUnit) == "MutatorBoomBot") || (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, 1), UnitGetOwner(lp_killingUnit)) == false) || (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, 1), UnitGetOwner(lp_victimUnit)) == true) || (UnitHasBehavior2(lp_killingUnit, "MutatorEvolve") == true) || (UnitFilterMatch(lp_killingUnit, 1, UnitFilter(0, 0, (1 << c_targetFilterPlayer) | (1 << c_targetFilterAlly) | (1 << c_targetFilterNeutral) | (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterHidden - 32)))) == false) || (libCOMU_gf_CT_MutatorUnitIsMapObjective(lp_killingUnit) == true))) {
         return ;
     }
 
@@ -833,7 +868,7 @@ void libCOMU_gf_CT_ApplyConcussiveAttacks (unit lp_damagedUnit, unit lp_damaging
         return ;
     }
 
-    UnitBehaviorAdd(lp_damagedUnit, "MutatorConcussiveAttacks", lp_damagingUnit, 1);
+    UnitCreateEffectUnit(lp_damagingUnit, "MutatorConcussiveAttacksAB", lp_damagedUnit);
 }
 
 trigger auto_libCOMU_gf_CT_ApplyDamageBounce2_Trigger = null;
@@ -1227,6 +1262,11 @@ void libCOMU_gf_CT_ApplyPolarity (unit lp_createdUnit) {
         return ;
     }
 
+    if ((libCOOC_gf_CC_CurrentMap() == "AC_TarsonisTrain") && ((UnitGetType(lp_createdUnit) == "Caboose") || (UnitGetType(lp_createdUnit) == "TarsonisEngineFast") || (UnitGetType(lp_createdUnit) == "TarsonisEngine") || (UnitGetType(lp_createdUnit) == "FreightCar"))) {
+        libCOMU_gf_CT_Polarity_TrainApply(lp_createdUnit);
+        return ;
+    }
+
     if (libCOMU_gv_cT_PolarityPlayer >= 2) {
         libCOMU_gv_cT_PolarityPlayer = 1;
     }
@@ -1522,7 +1562,7 @@ void libCOMU_gf_CT_ApplyStructureSteal (unit lp_killingUnit, unit lp_deadStructu
         return ;
     }
 
-    if (((libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickStructureSteal)] == false) || (UnitGetOwner(lp_deadStructure) == c_playerAny) || (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, 1), UnitGetOwner(lp_deadStructure)) == true) || (UnitFilterMatch(lp_deadStructure, 1, UnitFilter(0, 0, (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy), 0)) == false) || (UnitHasBehavior2(lp_deadStructure, "MutatorHouseHunters") == false) || (lv_structureType == "NydusNetworkAlly") || (lv_structureType == "NydusCanalAlly") || (lv_structureType == "GreaterNydusWormAlly") || (lv_structureType == "CybrosEscortDownloader") || (lv_structureType == "HHStarport") || (lv_structureType == "HHStarportFlying") || (lv_structureType == "TychusOdin") || (lv_structureType == "TychusResearchCenter") || (lv_structureType == "TychusResearchCenterUnlocked"))) {
+    if (((libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickStructureSteal)] == false) || (UnitGetOwner(lp_deadStructure) == c_playerAny) || (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, 1), UnitGetOwner(lp_deadStructure)) == true) || (UnitFilterMatch(lp_deadStructure, 1, UnitFilter(0, 0, (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy), 0)) == false) || (UnitHasBehavior2(lp_deadStructure, "MutatorHouseHunters") == false) || (lv_structureType == "NydusNetworkAlly") || (lv_structureType == "NydusCanalAlly") || (lv_structureType == "GreaterNydusWormAlly") || (lv_structureType == "CybrosEscortDownloader") || (lv_structureType == "HHStarport") || (lv_structureType == "HHStarportFlying") || (lv_structureType == "TychusOdin") || (lv_structureType == "TychusResearchCenter") || (lv_structureType == "TychusResearchCenterUnlocked") || (lv_structureType == "PowerTowerStetmann"))) {
         UnitKill(lp_deadStructure);
         return ;
     }
@@ -1561,7 +1601,7 @@ void libCOMU_gf_CT_ApplyStructureStealBehavior (unit lp_createdUnit) {
 
     // Implementation
     lv_structureType = UnitGetType(lp_createdUnit);
-    if (((libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickStructureSteal)] == false) || (UnitGetOwner(lp_createdUnit) == c_playerAny) || (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, 1), UnitGetOwner(lp_createdUnit)) == true) || (UnitFilterMatch(lp_createdUnit, 1, UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), 0)) == false) || (lv_structureType == "DrakkenLaserDrillCoop") || (lv_structureType == "UnfinishedDrakkenLaserDrillCoop") || (lv_structureType == "DamagedSolarForge") || (lv_structureType == "SolarForge") || (lv_structureType == "NydusNetworkAlly") || (lv_structureType == "NydusCanalAlly") || (lv_structureType == "GreaterNydusWormAlly") || (lv_structureType == "HHStarport") || (lv_structureType == "HHStarportFlying"))) {
+    if (((libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickStructureSteal)] == false) || (UnitGetOwner(lp_createdUnit) == c_playerAny) || (PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, 1), UnitGetOwner(lp_createdUnit)) == true) || (UnitFilterMatch(lp_createdUnit, 1, UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterMissile), 0)) == false) || (lv_structureType == "DrakkenLaserDrillCoop") || (lv_structureType == "UnfinishedDrakkenLaserDrillCoop") || (lv_structureType == "DamagedSolarForge") || (lv_structureType == "SolarForge") || (lv_structureType == "NydusNetworkAlly") || (lv_structureType == "NydusCanalAlly") || (lv_structureType == "GreaterNydusWormAlly") || (lv_structureType == "HHStarport") || (lv_structureType == "HHStarportFlying") || (lv_structureType == "ToxicNest") || (lv_structureType == "ToxicNestBurrowed"))) {
         return ;
     }
 
@@ -1802,6 +1842,42 @@ void libCOMU_gf_CT_ApplyMomentOfSilence (unit lp_killedUnit) {
     }
 }
 
+void libCOMU_gf_CT_ApplyBoomBotPing (unit lp_createdUnit) {
+    // Variable Declarations
+    int lv_storedPing;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_storedPing = c_invalidPingId;
+
+    // Implementation
+    libCOMI_gf_CreatePingFacingAngleCoop(PlayerGroupAll(), UnitGetPosition(lp_createdUnit), 270.0, "BeaconClaimPing", ColorWithAlpha(0.00, 50.20, 75.29, 0.00), 0.0);
+    PingSetScale(PingLastCreated(), 0.5);
+    PingSetTooltip(PingLastCreated(), StringExternal("Param/Value/lib_COMU_DC876213"));
+    PingSetUnit(PingLastCreated(), lp_createdUnit);
+    libHots_gf_StorePingForUnit(lp_createdUnit, 1, PingLastCreated());
+}
+
+void libCOMU_gf_CT_ApplyBoomBotPingCleanup (unit lp_killedUnit) {
+    // Variable Declarations
+    int lv_storedPing;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_storedPing = c_invalidPingId;
+
+    // Implementation
+    if (((libCOMU_gv_cT_BoomBotCleanupEnabled == false) || (UnitGetType(lp_killedUnit) != "MutatorBoomBot"))) {
+        return ;
+    }
+
+    lv_storedPing = libHots_gf_PingStoredForUnit(lp_killedUnit, 1);
+    if ((lv_storedPing != c_invalidPingId)) {
+        libCOMI_gf_DestroyPingCoop(lv_storedPing);
+    }
+
+}
+
 void libCOMU_gf_CT_RemovePolarity (unit lp_polarityUnit) {
     // Automatic Variable Declarations
     // Implementation
@@ -1856,15 +1932,6 @@ void libCOMU_gf_CT_RemoveAllCastersEnergy (unit lp_energyUnit) {
     UnitSetPropertyFixed(lp_energyUnit, c_unitPropEnergyMax, 0.0);
     UnitSetPropertyFixed(lp_energyUnit, c_unitPropEnergy, 0.0);
     UnitSetPropertyFixed(lp_energyUnit, c_unitPropEnergyRegen, 0.0);
-}
-
-void libCOMU_gf_CT_NullifyDamage (unit lp_damagedUnit, unit lp_damagingUnit, fixed lp_damageAmount) {
-    // Automatic Variable Declarations
-    // Implementation
-    if ((libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickPolarity)] == true) && (lp_damageAmount > 0.0) && (((UnitGetOwner(lp_damagingUnit) == 1) && (UnitHasBehavior2(lp_damagedUnit, "MutatorImmunetoPlayer1") == true)) || ((UnitGetOwner(lp_damagingUnit) == 2) && (UnitHasBehavior2(lp_damagedUnit, "MutatorImmunetoPlayer2") == true)))) {
-        UnitSetPropertyFixed(lp_damagedUnit, c_unitPropLife, (UnitGetPropertyFixed(lp_damagedUnit, c_unitPropLife, c_unitPropCurrent) + lp_damageAmount));
-    }
-
 }
 
 void libCOMU_gf_CT_AmonHeroTychus_AIThink (int lp_owner, unit lp_aIUnit, unitgroup lp_nearByUnits) {
@@ -2386,6 +2453,85 @@ void libCOMU_gf_CT_AmonHeroKerrigan_AIThink (int lp_owner, unit lp_aIUnit, unitg
 
 void libCOMU_gf_CT_AmonHeroKerriganBurrowed_AIThink (int lp_owner, unit lp_aIUnit, unitgroup lp_nearByUnits) {
     // Automatic Variable Declarations
+}
+
+void libCOMU_gf_CT_AmonHero_AddToWave (int lp_player, unitgroup lp_units, point lp_gatherPoint, int lp_targetType) {
+    // Variable Declarations
+    int lv_heroCount;
+    int lv_numHeroesToSpawn;
+    bool lv_playSweetener;
+
+    // Automatic Variable Declarations
+    int autoBA3182CD_ae;
+    const int autoBA3182CD_ai = 1;
+
+    // Variable Initialization
+    lv_playSweetener = true;
+
+    // Implementation
+    if ((lp_targetType == libCOMI_ge_CM_CoopAI_WaveAttackTargetType_ShakurasTempleAirRamp)) {
+        return ;
+    }
+    else if ((TimerGetRemaining(libCOMU_gv_cT_AmonHeroLastSpawnTimer) > 0.0) && (DistanceBetweenPoints(lp_gatherPoint, libCOMU_gv_cT_AmonHeroLastSpawnPoint) < 5.0)) {
+        return ;
+    }
+    TimerStart(libCOMU_gv_cT_AmonHeroLastSpawnTimer, 10.0, false, c_timeGame);
+    libCOMU_gv_cT_AmonHeroLastSpawnPoint = lp_gatherPoint;
+    lv_numHeroesToSpawn = MinI(libCOMU_gv_cT_AmonHeroPool, libCOMU_gf_CT_AmonHero_HeroMaxPerWave(lp_targetType));
+    autoBA3182CD_ae = lv_numHeroesToSpawn;
+    lv_heroCount = 1;
+    for ( ; ( (autoBA3182CD_ai >= 0 && lv_heroCount <= autoBA3182CD_ae) || (autoBA3182CD_ai < 0 && lv_heroCount >= autoBA3182CD_ae) ) ; lv_heroCount += autoBA3182CD_ai ) {
+        libCOMU_gv_cT_AmonHeroPool -= 1;
+        libCOMU_gv_cT_AmonHeroNumber += 1;
+        if ((libCOMU_gv_cT_AmonHeroNumber < 10)) {
+            UnitGroupAdd(lp_units, libCOMU_gf_CT_AmonHero_SpawnHero(lp_player, libCOMU_gv_cT_AmonHeroNumber, lp_gatherPoint, lv_playSweetener));
+        }
+        else if ((ModI(libCOMU_gv_cT_AmonHeroNumber, 3) == 1)) {
+            UnitGroupAdd(lp_units, libCOMU_gf_CT_AmonHero_SpawnHero(lp_player, RandomInt(1, 3), lp_gatherPoint, lv_playSweetener));
+        }
+        else if ((ModI(libCOMU_gv_cT_AmonHeroNumber, 3) == 2)) {
+            UnitGroupAdd(lp_units, libCOMU_gf_CT_AmonHero_SpawnHero(lp_player, RandomInt(4, 6), lp_gatherPoint, lv_playSweetener));
+        }
+        else if (true) {
+            UnitGroupAdd(lp_units, libCOMU_gf_CT_AmonHero_SpawnHero(lp_player, RandomInt(7, 9), lp_gatherPoint, lv_playSweetener));
+        }
+        lv_playSweetener = false;
+    }
+}
+
+unit libCOMU_gf_CT_AmonHero_SpawnHero (int lp_player, int lp_heroIndex, point lp_spawnPoint, bool lp_playSweeteners) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, libCOMU_gv_cT_AmonHeroUnitTypeArray[lp_heroIndex], 0, lp_player, lp_spawnPoint);
+    SoundPlayAtPointForPlayer(libCOMU_gv_cT_AmonHeroSoundArray[lp_heroIndex], c_maxPlayers, PlayerGroupAll(), lp_spawnPoint, 0.0, 100.0, 0.0);
+    if ((lp_playSweeteners == true)) {
+        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lp_spawnPoint, 0.0, 100.0, 0.0);
+        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX_Sur", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lp_spawnPoint, 0.0, 100.0, 0.0);
+    }
+
+    AISetUnitScriptControlled(UnitLastCreated(), false);
+    return UnitLastCreated();
+}
+
+void libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime (fixed lp_missionTimeInMinutes, int lp_poolGranted) {
+    // Automatic Variable Declarations
+    // Implementation
+    while (!((GameGetMissionTime() >= (lp_missionTimeInMinutes * 60.0 - 5)))) {
+        Wait(1.0, c_timeGame);
+    }
+    libCOMU_gv_cT_AmonHeroPool += lp_poolGranted;
+}
+
+int libCOMU_gf_CT_AmonHero_HeroMaxPerWave (int lp_targetType) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libCOOC_gf_CC_CurrentMap() == "AC_ShakurasTemple") && (lp_targetType != libCOMI_ge_CM_CoopAI_WaveAttackTargetType_ShakurasTempleMainRamp)) {
+        return 1;
+    }
+    else if ((libCOOC_gf_CC_CurrentMap() == "AC_BelshirEscort") && (lp_targetType == libCOMI_ge_CM_CoopAI_WaveAttackTargetType_Objective)) {
+        return 1;
+    }
+    return 6;
 }
 
 int libCOMU_gf_CT_GiftState (unit lp_gift) {
@@ -3368,6 +3514,91 @@ fixed libCOMU_gf_CT_MathNumberWrap (fixed lp_value, fixed lp_minAmount, fixed lp
     return ((lv_OffsetValue - (Floor((lv_OffsetValue / lv_width)) * lv_width)) + lp_minAmount);
 }
 
+void libCOMU_gf_CT_NullifyDamage (unit lp_damagedUnit, unit lp_damagingUnit, fixed lp_damageAmount) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickPolarity)] == true) && (lp_damageAmount > 0.0) && (((UnitGetOwner(lp_damagingUnit) == 1) && (UnitHasBehavior2(lp_damagedUnit, "MutatorImmunetoPlayer1") == true)) || ((UnitGetOwner(lp_damagingUnit) == 2) && (UnitHasBehavior2(lp_damagedUnit, "MutatorImmunetoPlayer2") == true)))) {
+        UnitSetPropertyFixed(lp_damagedUnit, c_unitPropLife, (UnitGetPropertyFixed(lp_damagedUnit, c_unitPropLife, c_unitPropCurrent) + lp_damageAmount));
+    }
+
+}
+
+void libCOMU_gf_CT_Polarity_Swap (unit lp_polarizedUnit) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickPolarity)] == false)) {
+        return ;
+    }
+    else if ((UnitHasBehavior2(lp_polarizedUnit, "MutatorImmunetoPlayer1") == true)) {
+        libCOMU_gf_CT_RemovePolarity(lp_polarizedUnit);
+        UnitCreateEffectUnit(lp_polarizedUnit, "MutatorPolarityMimic", libCOMU_gv_cT_PolarityCloneTarget[2]);
+        UnitBehaviorAdd(lp_polarizedUnit, "MutatorImmunetoPlayer2", lp_polarizedUnit, 1);
+    }
+    else if ((UnitHasBehavior2(lp_polarizedUnit, "MutatorImmunetoPlayer2") == true)) {
+        libCOMU_gf_CT_RemovePolarity(lp_polarizedUnit);
+        UnitCreateEffectUnit(lp_polarizedUnit, "MutatorPolarityMimic", libCOMU_gv_cT_PolarityCloneTarget[1]);
+        UnitBehaviorAdd(lp_polarizedUnit, "MutatorImmunetoPlayer1", lp_polarizedUnit, 1);
+    }
+}
+
+void libCOMU_gf_CT_Polarity_TrainApply (unit lp_createdUnit) {
+    // Variable Declarations
+    unit lv_indexTrain;
+    unitgroup lv_trainCars;
+    int lv_polarityPlayer;
+
+    // Automatic Variable Declarations
+    unitgroup auto14B4EB59_g;
+    int auto14B4EB59_u;
+
+    // Variable Initialization
+    lv_trainCars = UnitGroupEmpty();
+
+    // Implementation
+    lv_trainCars = UnitGroup("Caboose", c_playerAny, RegionCircle(UnitGetPosition(lp_createdUnit), 10.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupAddUnitGroup(lv_trainCars, UnitGroup("TarsonisEngineFast", c_playerAny, RegionCircle(UnitGetPosition(lp_createdUnit), 10.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    UnitGroupAddUnitGroup(lv_trainCars, UnitGroup("TarsonisEngine", c_playerAny, RegionCircle(UnitGetPosition(lp_createdUnit), 10.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    UnitGroupAddUnitGroup(lv_trainCars, UnitGroup("FreightCar", c_playerAny, RegionCircle(UnitGetPosition(lp_createdUnit), 10.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    UnitGroupRemove(lv_trainCars, lp_createdUnit);
+    auto14B4EB59_g = lv_trainCars;
+    auto14B4EB59_u = UnitGroupCount(auto14B4EB59_g, c_unitCountAll);
+    for (;; auto14B4EB59_u -= 1) {
+        lv_indexTrain = UnitGroupUnitFromEnd(auto14B4EB59_g, auto14B4EB59_u);
+        if (lv_indexTrain == null) { break; }
+        if ((UnitHasBehavior2(lv_indexTrain, "MutatorImmunetoPlayer1") == true)) {
+            lv_polarityPlayer = 1;
+            break;
+        }
+        else if ((UnitHasBehavior2(lv_indexTrain, "MutatorImmunetoPlayer2") == true)) {
+            lv_polarityPlayer = 2;
+            break;
+        }
+    }
+    if ((lv_polarityPlayer == 0)) {
+        if (libCOMU_gv_cT_PolarityPlayerTrains >= 2) {
+            libCOMU_gv_cT_PolarityPlayerTrains = 1;
+        }
+        else {
+            libCOMU_gv_cT_PolarityPlayerTrains = libCOMU_gv_cT_PolarityPlayerTrains + 1;
+        }
+        lv_polarityPlayer = libCOMU_gv_cT_PolarityPlayerTrains;
+    }
+
+    if ((libCOMU_gv_cT_PolarityCloneTarget[lv_polarityPlayer] == null)) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "InvisibleTargetDummy", c_unitCreateIgnorePlacement, libCOMU_gv_cT_PolarityEnemies[lv_polarityPlayer], Point(0.0, 0.0));
+        UnitSetState(UnitLastCreated(), c_unitStateInvulnerable, true);
+        libCOMU_gv_cT_PolarityCloneTarget[lv_polarityPlayer] = UnitLastCreated();
+    }
+
+    UnitCreateEffectUnit(lp_createdUnit, "MutatorPolarityMimic", libCOMU_gv_cT_PolarityCloneTarget[lv_polarityPlayer]);
+    if ((lv_polarityPlayer == 1)) {
+        UnitBehaviorAddPlayer(lp_createdUnit, "MutatorImmunetoPlayer1", UnitGetOwner(lp_createdUnit), 1);
+    }
+    else {
+        UnitBehaviorAddPlayer(lp_createdUnit, "MutatorImmunetoPlayer2", UnitGetOwner(lp_createdUnit), 1);
+    }
+}
+
 void libCOMU_gf_CT_AllCastersUseAbility (unit lp_caster, unit lp_target, int lp_ability) {
     // Automatic Variable Declarations
     int auto02DE27FB_val;
@@ -3801,17 +4032,17 @@ bool libCOMU_gf_CT_PurifierBeamTargetValid (unit lp_beam, unit lp_target) {
     // Variable Initialization
 
     // Implementation
-    if (((lp_target == null) || (UnitIsValid(lp_target) == false) || (UnitIsAlive(lp_target) == false))) {
+    if (((lp_target == null) || (UnitIsValid(lp_target) == false) || (UnitIsAlive(lp_target) == false) || (UnitGetType(lp_target) == "PowerTowerStetmann"))) {
         return false;
     }
 
-    if (((PlayerGroupHasPlayer(libCOOC_gf_HumanPlayers(), UnitGetOwner(lp_target)) == false) || (DistanceBetweenPoints(UnitGetPosition(lp_target), PlayerStartLocation(1)) < libCOMU_gv_cT_PurifierBeamBaseAvoidDistance) || (DistanceBetweenPoints(UnitGetPosition(lp_target), PlayerStartLocation(2)) < libCOMU_gv_cT_PurifierBeamBaseAvoidDistance) || (UnitGroupCount(UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(lp_target), 15.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0))) {
+    if (((PlayerGroupHasPlayer(libCOOC_gf_HumanPlayers(), UnitGetOwner(lp_target)) == false) || (libNtve_gf_UnitInRegion(lp_target, libCOMU_gf_CT_MutatorSafetyZone()) == true))) {
         return false;
     }
 
     if ((DistanceBetweenPoints(UnitGetPosition(lp_beam), UnitGetPosition(lp_target)) > 10.0)) {
         lv_stepLocation = libNtve_gf_PointOffsetTowardsPoint(UnitGetPosition(lp_beam), 10.0, UnitGetPosition(lp_target));
-        if (((DistanceBetweenPoints(lv_stepLocation, PlayerStartLocation(1)) < libCOMU_gv_cT_PurifierBeamBaseAvoidDistance) || (DistanceBetweenPoints(lv_stepLocation, PlayerStartLocation(2)) < libCOMU_gv_cT_PurifierBeamBaseAvoidDistance) || (UnitGroupCount(UnitGroup(null, c_playerAny, RegionCircle(lv_stepLocation, 10.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0))) {
+        if ((RegionContainsPoint(libCOMU_gf_CT_MutatorSafetyZone(), lv_stepLocation) == true)) {
             return false;
         }
 
@@ -4310,6 +4541,96 @@ void libCOMU_gf_CT_KillBot_AIThink (int lp_owner, unit lp_aIUnit, unitgroup lp_n
     libNtve_gf_AICast(lp_aIUnit, OrderTargetingUnit(AbilityCommand("attack", 0), lv_targetUnit));
 }
 
+trigger auto_libCOMU_gf_CT_BoomBotsUpdate_Trigger = null;
+unit auto_libCOMU_gf_CT_BoomBotsUpdate_lp_boomBot;
+
+void libCOMU_gf_CT_BoomBotsUpdate (unit lp_boomBot) {
+    auto_libCOMU_gf_CT_BoomBotsUpdate_lp_boomBot = lp_boomBot;
+
+    if (auto_libCOMU_gf_CT_BoomBotsUpdate_Trigger == null) {
+        auto_libCOMU_gf_CT_BoomBotsUpdate_Trigger = TriggerCreate("auto_libCOMU_gf_CT_BoomBotsUpdate_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libCOMU_gf_CT_BoomBotsUpdate_Trigger, false, false);
+}
+
+bool auto_libCOMU_gf_CT_BoomBotsUpdate_TriggerFunc (bool testConds, bool runActions) {
+    unit lp_boomBot = auto_libCOMU_gf_CT_BoomBotsUpdate_lp_boomBot;
+
+    // Variable Declarations
+    unit lv_boombothelper;
+    int lv_codeplayer;
+    int lv_defuseplayer;
+    string lv_codestring;
+    string lv_inputstring;
+    int lv_codetexttag;
+    int lv_inputtexttag;
+    int lv_customvalueindex;
+
+    // Automatic Variable Declarations
+    int auto36390897_ae;
+    const int auto36390897_ai = 1;
+
+    // Variable Initialization
+    lv_codestring = "";
+    lv_inputstring = "";
+    lv_codetexttag = c_textTagNone;
+    lv_inputtexttag = c_textTagNone;
+
+    // Implementation
+    libCOMU_gv_cT_BoomBotsCount += 1;
+    if ((ModI(libCOMU_gv_cT_BoomBotsCount, 2) == 1)) {
+        lv_codeplayer = 1;
+        lv_defuseplayer = 2;
+    }
+    else {
+        lv_codeplayer = 2;
+        lv_defuseplayer = 1;
+    }
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorBoomBotHelper", c_unitCreateIgnorePlacement, lv_defuseplayer, UnitGetPosition(lp_boomBot));
+    lv_boombothelper = UnitLastCreated();
+    UnitSetCustomValue(lv_boombothelper, libCOMU_gv_cT_BoomBotsIndexStart, libCOMU_gv_cT_BoomBotsDigits[lv_defuseplayer]);
+    auto36390897_ae = (libCOMU_gv_cT_BoomBotsIndexStart + libCOMU_gv_cT_BoomBotsDigits[lv_defuseplayer]);
+    lv_customvalueindex = (libCOMU_gv_cT_BoomBotsIndexStart + 1);
+    for ( ; ( (auto36390897_ai >= 0 && lv_customvalueindex <= auto36390897_ae) || (auto36390897_ai < 0 && lv_customvalueindex >= auto36390897_ae) ) ; lv_customvalueindex += auto36390897_ai ) {
+        UnitSetCustomValue(lv_boombothelper, lv_customvalueindex, RandomInt(1, 9));
+        if ((lv_customvalueindex == (libCOMU_gv_cT_BoomBotsIndexStart+1))) {
+            lv_codestring = FixedToString(UnitGetCustomValue(lv_boombothelper, lv_customvalueindex), 0);
+            lv_inputstring = "?";
+        }
+        else {
+            lv_codestring = (lv_codestring + "-" + FixedToString(UnitGetCustomValue(lv_boombothelper, lv_customvalueindex), 0));
+            lv_inputstring = (lv_inputstring + "-?");
+        }
+    }
+    TextExpressionSetToken("Param/Expression/lib_COMU_A0E6C44D", "A", StringToText(lv_codestring));
+    TextTagCreate(TextExpressionAssemble("Param/Expression/lib_COMU_A0E6C44D"), 24, UnitGetPosition(lp_boomBot), 3.0, true, true, PlayerGroupSingle(lv_codeplayer));
+    lv_codetexttag = TextTagLastCreated();
+    TextTagAttachToUnit(lv_codetexttag, lp_boomBot, 3.0);
+    TextTagSetFogVisibility(lv_codetexttag, c_visTypeFog);
+    TextExpressionSetToken("Param/Expression/lib_COMU_3FA5A8D0", "A", StringToText(lv_inputstring));
+    TextTagCreate(TextExpressionAssemble("Param/Expression/lib_COMU_3FA5A8D0"), 24, UnitGetPosition(lp_boomBot), 3.0, true, true, PlayerGroupSingle(lv_defuseplayer));
+    lv_inputtexttag = TextTagLastCreated();
+    TextTagAttachToUnit(lv_inputtexttag, lp_boomBot, 3.0);
+    TextTagSetFogVisibility(lv_inputtexttag, c_visTypeFog);
+    libHots_gf_StoreTextTagForUnit(lv_boombothelper, libCOMU_gv_cT_BoomBotsInputTextTagIndex, lv_inputtexttag);
+    while ((UnitIsAlive(lp_boomBot) == true) && (UnitIsAlive(lv_boombothelper) == true)) {
+        if ((libNtve_gf_UnitIsVisibleToPlayer(lp_boomBot, lv_defuseplayer) == true)) {
+            libNtve_gf_ShowHideUnit(lv_boombothelper, true);
+        }
+        else {
+            libNtve_gf_ShowHideUnit(lv_boombothelper, false);
+        }
+        Wait(0.0625, c_timeGame);
+        UnitSetPosition(lv_boombothelper, UnitGetPosition(lp_boomBot), true);
+    }
+    UnitKill(lp_boomBot);
+    UnitRemove(lv_boombothelper);
+    TextTagDestroy(lv_codetexttag);
+    TextTagDestroy(lv_inputtexttag);
+    return true;
+}
+
 bool libCOMU_gf_CT_ResourceSpawnLocationValid (point lp_spawnPoint) {
     // Automatic Variable Declarations
     // Implementation
@@ -4362,6 +4683,628 @@ void libCOMU_gf_CT_RegisterSpawnedUnitGroup (unitgroup lp_spawnedUnits) {
     }
 
     UnitGroupAddUnitGroup(libCOMU_gv_cT_SpawnedUnits, lp_spawnedUnits);
+}
+
+void libCOMU_gf_CT_Mutator_AttackWaveHook_WaveCreated (int lp_attackingPlayer, unitgroup lp_attackingUnitGroup, point lp_attackOrigin, int lp_attackTargetType) {
+    // Automatic Variable Declarations
+}
+
+void libCOMU_gf_CT_Mutator_AttackWaveHook_WaveSent (int lp_attackingPlayer, unitgroup lp_attackingUnitGroup, point lp_attackOrigin, int lp_attackTargetType) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickHeroesFromTheStorm)] == true) && (lp_attackTargetType != libCOMI_ge_CM_CoopAI_WaveAttackTargetType_Special)) {
+        libCOMU_gf_CT_AmonHero_AddToWave(lp_attackingPlayer, lp_attackingUnitGroup, lp_attackOrigin, lp_attackTargetType);
+    }
+
+}
+
+void libCOMU_gf_CT_MutatorSafetyZone_Init () {
+    // Variable Declarations
+    region lv_safetyzone;
+    region lv_basereveal;
+    region lv_startinglocations;
+    fixed lv_startinglocationsafetyradius;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_safetyzone = RegionFromName("MutatorSafetyZone");
+    lv_basereveal = RegionFromName("BaseReveal");
+    lv_startinglocationsafetyradius = 25.0;
+
+    // Implementation
+    if ((lv_safetyzone != null)) {
+        libCOMU_gv_cT_MutatorSafetyZone = lv_safetyzone;
+    }
+    else if ((lv_basereveal != null)) {
+        libCOMU_gv_cT_MutatorSafetyZone = lv_basereveal;
+    }
+    else if (true) {
+        libCOMU_gv_cT_MutatorSafetyZone = RegionCircle(PlayerStartLocation(1), lv_startinglocationsafetyradius);
+        RegionAddRegion(libCOMU_gv_cT_MutatorSafetyZone, RegionCircle(PlayerStartLocation(2), lv_startinglocationsafetyradius));
+    }
+}
+
+region libCOMU_gf_CT_MutatorSafetyZone () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libCOMU_gv_cT_MutatorSafetyZone == null)) {
+        libCOMU_gf_CT_MutatorSafetyZone_Init();
+    }
+
+    return libCOMU_gv_cT_MutatorSafetyZone;
+}
+
+void libCOMU_gf_CreateMutationAbominationProbabilities (int lp_minMutators, int lp_maxMutators, int lp_minPointValue, int lp_maxPointValue) {
+    // Variable Declarations
+    string lv_mutationabominationinstance;
+    string lv_mutatoriter;
+    int lv_pointindexiter;
+    int lv_pointvalueindexiter;
+    int lv_mutatorindexiter;
+    int lv_mutatorsconsideredcount;
+    int lv_player;
+
+    // Automatic Variable Declarations
+    const int autoC9BA05C8_ae = libCOMU_gv_cT_MAbomination_MutatorPointCeiling;
+    const int autoC9BA05C8_ai = 1;
+    string auto44BFE48E_userType;
+    int auto44BFE48E_i;
+    int autoF77644B9_ai;
+    int autoF77644B9_ae;
+    const int auto7110EF1A_ae = libCOMU_gv_cT_MAbomination_MutatorPointCeiling;
+    const int auto7110EF1A_ai = 1;
+    int auto63589666_n;
+    int auto63589666_i;
+    string autoB22E283B_userType;
+    int autoB22E283B_i;
+
+    // Variable Initialization
+
+    // Implementation
+    libCOMU_gv_cT_MAbomination_MinMutators = lp_minMutators;
+    libCOMU_gv_cT_MAbomination_MaxMutators = lp_maxMutators;
+    libCOMU_gv_cT_MAbomination_MinPoints = lp_minPointValue;
+    libCOMU_gv_cT_MAbomination_MaxPoints = lp_maxPointValue;
+    libCOMU_gv_cT_MAbomination_MutatorsCount = 0;
+    libCOMU_gv_cT_MAbomination_CombosCounted = 0;
+    lv_pointindexiter = 1;
+    for ( ; ( (autoC9BA05C8_ai >= 0 && lv_pointindexiter <= autoC9BA05C8_ae) || (autoC9BA05C8_ai < 0 && lv_pointindexiter >= autoC9BA05C8_ae) ) ; lv_pointindexiter += autoC9BA05C8_ai ) {
+        libCOMU_gv_cT_MAbomination_MutatorPointPossibilities[lv_pointindexiter] = 0;
+    }
+    auto44BFE48E_userType = "MutationAbominations";
+    auto44BFE48E_i = 1;
+    for ( ; auto44BFE48E_i <= UserDataInstanceCount(auto44BFE48E_userType) ; auto44BFE48E_i += 1 ) {
+        lv_mutationabominationinstance = UserDataInstance(auto44BFE48E_userType, auto44BFE48E_i);
+        libCOMU_gv_cT_MAbomination_MutatorPointPossibilities[UserDataGetInt("MutationAbominations", lv_mutationabominationinstance, "Points", 1)] += 1;
+    }
+    libCOMU_gf_TraverseMutationAbominationPointIndex(1, 0, 0, true);
+    autoF77644B9_ai = 1;
+    autoF77644B9_ae = UserDataInstanceCount("Mutators")+1;
+    while (autoF77644B9_ai < autoF77644B9_ae) {
+        lv_mutatoriter = UserDataInstance("Mutators", autoF77644B9_ai);
+        autoF77644B9_ai = autoF77644B9_ai+1;
+        libCOMU_gf_EnableDisableMutator(false, lv_mutatoriter);
+    }
+    lv_mutatorindexiter = 1;
+    lv_pointindexiter = 1;
+    for ( ; ( (auto7110EF1A_ai >= 0 && lv_pointindexiter <= auto7110EF1A_ae) || (auto7110EF1A_ai < 0 && lv_pointindexiter >= auto7110EF1A_ae) ) ; lv_pointindexiter += auto7110EF1A_ai ) {
+        auto63589666_n = libCOMU_gv_cT_MAbomination_MutatorPointTemplate[lv_pointindexiter];
+        for (auto63589666_i = 1; auto63589666_i <= auto63589666_n; auto63589666_i += 1) {
+            lv_mutatorsconsideredcount = 0;
+            autoB22E283B_userType = "MutationAbominations";
+            autoB22E283B_i = 1;
+            for ( ; autoB22E283B_i <= UserDataInstanceCount(autoB22E283B_userType) ; autoB22E283B_i += 1 ) {
+                lv_mutationabominationinstance = UserDataInstance(autoB22E283B_userType, autoB22E283B_i);
+                if ((UserDataGetInt("MutationAbominations", lv_mutationabominationinstance, "Points", 1) == lv_pointindexiter) && (libCOMU_gf_MutatorIsEnabled(UserDataGetUserInstance("MutationAbominations", lv_mutationabominationinstance, "Mutator", 1)) == false)) {
+                    lv_mutatorsconsideredcount += 1;
+                    if ((RandomInt(1, lv_mutatorsconsideredcount) == lv_mutatorsconsideredcount)) {
+                        libCOMU_gv_cT_MAbomination_Mutators[lv_mutatorindexiter] = UserDataGetUserInstance("MutationAbominations", lv_mutationabominationinstance, "Mutator", 1);
+                    }
+
+                }
+
+            }
+            libCOMU_gf_EnableDisableMutator(true, libCOMU_gv_cT_MAbomination_Mutators[lv_mutatorindexiter]);
+            lv_mutatorindexiter += 1;
+        }
+    }
+    libCOMU_gf_CT_StoreMutatorScoreValues();
+}
+
+void libCOMU_gf_TraverseMutationAbominationPointIndex (int lp_pointIndex, int lp_pointTotal, int lp_mutatorTotal, bool lp_setaTemplate) {
+    // Variable Declarations
+    int lv_mutatorcountiter;
+    int lv_newpointtotal;
+    int lv_newmutatortotal;
+    int lv_nextpointindex;
+
+    // Automatic Variable Declarations
+    int auto18F82740_ae;
+    const int auto18F82740_ai = 1;
+
+    // Variable Initialization
+    lv_nextpointindex = (lp_pointIndex + 1);
+
+    // Implementation
+    auto18F82740_ae = libCOMU_gv_cT_MAbomination_MaxMutators;
+    lv_mutatorcountiter = 0;
+    for ( ; ( (auto18F82740_ai >= 0 && lv_mutatorcountiter <= auto18F82740_ae) || (auto18F82740_ai < 0 && lv_mutatorcountiter >= auto18F82740_ae) ) ; lv_mutatorcountiter += auto18F82740_ai ) {
+        libCOMU_gv_cT_MAbomination_ConsideredMutatorPointTemplate[lp_pointIndex] = lv_mutatorcountiter;
+        lv_newpointtotal = (lp_pointTotal + lp_pointIndex * lv_mutatorcountiter);
+        lv_newmutatortotal = (lp_mutatorTotal + lv_mutatorcountiter);
+        if ((lv_newmutatortotal <= libCOMU_gv_cT_MAbomination_MaxMutators) && (lv_newpointtotal <= libCOMU_gv_cT_MAbomination_MaxPoints) && (lv_mutatorcountiter <= libCOMU_gv_cT_MAbomination_MutatorPointPossibilities[lp_pointIndex])) {
+            if ((lv_mutatorcountiter > 0) && (lv_newmutatortotal >= libCOMU_gv_cT_MAbomination_MinMutators) && (lv_newpointtotal >= libCOMU_gv_cT_MAbomination_MinPoints)) {
+                libCOMU_gf_ConsiderMutationAbominationPointTemplate(lp_pointIndex, lp_setaTemplate);
+            }
+
+            if ((lp_pointIndex < libCOMU_gv_cT_MAbomination_MutatorPointCeiling)) {
+                libCOMU_gf_TraverseMutationAbominationPointIndex(lv_nextpointindex, lv_newpointtotal, lv_newmutatortotal, lp_setaTemplate);
+            }
+
+        }
+
+    }
+}
+
+void libCOMU_gf_ConsiderMutationAbominationPointTemplate (int lp_currentPointIndex, bool lp_setaTemplate) {
+    // Variable Declarations
+    int lv_pointindexiter;
+    int lv_pointvalueiter;
+    int lv_combospossible;
+    int lv_mutatorscount;
+    int lv_pointscount;
+
+    // Automatic Variable Declarations
+    int auto2F9D9930_ae;
+    const int auto2F9D9930_ai = 1;
+    int auto6CF8DFAD_ae;
+    const int auto6CF8DFAD_ai = 1;
+    const int auto9DC81E68_ae = 2;
+    const int auto9DC81E68_ai = -1;
+    int auto6025F6B5_ae;
+    const int auto6025F6B5_ai = 1;
+    const int auto68B70B6E_ae = libCOMU_gv_cT_MAbomination_MutatorPointCeiling;
+    const int auto68B70B6E_ai = 1;
+
+    // Variable Initialization
+    lv_combospossible = 1;
+
+    // Implementation
+    auto2F9D9930_ae = lp_currentPointIndex;
+    lv_pointindexiter = 1;
+    for ( ; ( (auto2F9D9930_ai >= 0 && lv_pointindexiter <= auto2F9D9930_ae) || (auto2F9D9930_ai < 0 && lv_pointindexiter >= auto2F9D9930_ae) ) ; lv_pointindexiter += auto2F9D9930_ai ) {
+        lv_mutatorscount += libCOMU_gv_cT_MAbomination_ConsideredMutatorPointTemplate[lv_pointindexiter];
+        lv_pointscount += (lv_pointindexiter * libCOMU_gv_cT_MAbomination_ConsideredMutatorPointTemplate[lv_pointindexiter]);
+        auto6CF8DFAD_ae = (libCOMU_gv_cT_MAbomination_ConsideredMutatorPointTemplate[lv_pointindexiter] - 1);
+        lv_pointvalueiter = 0;
+        for ( ; ( (auto6CF8DFAD_ai >= 0 && lv_pointvalueiter <= auto6CF8DFAD_ae) || (auto6CF8DFAD_ai < 0 && lv_pointvalueiter >= auto6CF8DFAD_ae) ) ; lv_pointvalueiter += auto6CF8DFAD_ai ) {
+            lv_combospossible *= (libCOMU_gv_cT_MAbomination_MutatorPointPossibilities[lv_pointindexiter] - lv_pointvalueiter);
+        }
+        lv_pointvalueiter = libCOMU_gv_cT_MAbomination_ConsideredMutatorPointTemplate[lv_pointindexiter];
+        for ( ; ( (auto9DC81E68_ai >= 0 && lv_pointvalueiter <= auto9DC81E68_ae) || (auto9DC81E68_ai < 0 && lv_pointvalueiter >= auto9DC81E68_ae) ) ; lv_pointvalueiter += auto9DC81E68_ai ) {
+            lv_combospossible /= lv_pointvalueiter;
+        }
+    }
+    libCOMU_gv_cT_MAbomination_CombosCounted += lv_combospossible;
+    if ((lp_setaTemplate == true) && (RandomInt(1, libCOMU_gv_cT_MAbomination_CombosCounted) <= lv_combospossible)) {
+        libCOMU_gv_cT_MAbomination_MutatorsCount = lv_mutatorscount;
+        libCOMU_gv_cT_MAbomination_PointsSnapshot = lv_pointscount;
+        auto6025F6B5_ae = lp_currentPointIndex;
+        lv_pointindexiter = 1;
+        for ( ; ( (auto6025F6B5_ai >= 0 && lv_pointindexiter <= auto6025F6B5_ae) || (auto6025F6B5_ai < 0 && lv_pointindexiter >= auto6025F6B5_ae) ) ; lv_pointindexiter += auto6025F6B5_ai ) {
+            libCOMU_gv_cT_MAbomination_MutatorPointTemplate[lv_pointindexiter] = libCOMU_gv_cT_MAbomination_ConsideredMutatorPointTemplate[lv_pointindexiter];
+        }
+        lv_pointindexiter = (lp_currentPointIndex + 1);
+        for ( ; ( (auto68B70B6E_ai >= 0 && lv_pointindexiter <= auto68B70B6E_ae) || (auto68B70B6E_ai < 0 && lv_pointindexiter >= auto68B70B6E_ae) ) ; lv_pointindexiter += auto68B70B6E_ai ) {
+            libCOMU_gv_cT_MAbomination_MutatorPointTemplate[lv_pointindexiter] = 0;
+        }
+    }
+
+}
+
+void libCOMU_gf_CreateMutationAbomination (int lp_minMutators, int lp_maxMutators, int lp_minPointValue, int lp_maxPointValue) {
+    // Variable Declarations
+    string lv_mutatoriter;
+    int lv_mutatorindex;
+
+    // Automatic Variable Declarations
+    int auto9F348364_ae;
+    const int auto9F348364_ai = 1;
+    int auto7D959103_ai;
+    int auto7D959103_ae;
+    int autoFA4E75EF_ae;
+    const int autoFA4E75EF_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    libCOMU_gv_cT_MAbomination_MinMutators = lp_minMutators;
+    libCOMU_gv_cT_MAbomination_MaxMutators = lp_maxMutators;
+    libCOMU_gv_cT_MAbomination_MinPoints = lp_minPointValue;
+    libCOMU_gv_cT_MAbomination_MaxPoints = lp_maxPointValue;
+    libCOMU_gv_cT_MAbomination_MutatorsCount = 0;
+    libCOMU_gv_cT_MAbomination_CombosCounted = 0;
+    auto9F348364_ae = UserDataInstanceCount("MutationAbominations");
+    lv_mutatorindex = 1;
+    for ( ; ( (auto9F348364_ai >= 0 && lv_mutatorindex <= auto9F348364_ae) || (auto9F348364_ai < 0 && lv_mutatorindex >= auto9F348364_ae) ) ; lv_mutatorindex += auto9F348364_ai ) {
+        libCOMU_gf_IterateNextMutationAbomination(1, lv_mutatorindex, 0);
+    }
+    auto7D959103_ai = 1;
+    auto7D959103_ae = UserDataInstanceCount("Mutators")+1;
+    while (auto7D959103_ai < auto7D959103_ae) {
+        lv_mutatoriter = UserDataInstance("Mutators", auto7D959103_ai);
+        auto7D959103_ai = auto7D959103_ai+1;
+        libCOMU_gf_EnableDisableMutator(false, lv_mutatoriter);
+    }
+    autoFA4E75EF_ae = libCOMU_gv_cT_MAbomination_MutatorsCount;
+    lv_mutatorindex = 1;
+    for ( ; ( (autoFA4E75EF_ai >= 0 && lv_mutatorindex <= autoFA4E75EF_ae) || (autoFA4E75EF_ai < 0 && lv_mutatorindex >= autoFA4E75EF_ae) ) ; lv_mutatorindex += autoFA4E75EF_ai ) {
+        libCOMU_gf_EnableDisableMutator(true, libCOMU_gv_cT_MAbomination_Mutators[lv_mutatorindex]);
+    }
+    libCOMU_gf_CT_StoreMutatorScoreValues();
+}
+
+void libCOMU_gf_IterateNextMutationAbomination (int lp_depthLevel, int lp_mutationAbominationIndex, int lp_currentPoints) {
+    // Variable Declarations
+    string lv_mutationabominationinstance;
+    int lv_mutationabominationpoints;
+    int lv_newpointtotal;
+    int lv_iterindex;
+
+    // Automatic Variable Declarations
+    int auto899AA90E_ae;
+    const int auto899AA90E_ai = 1;
+    int auto4EB0262E_ae;
+    const int auto4EB0262E_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((((lp_mutationAbominationIndex >= 1) && (lp_mutationAbominationIndex <= UserDataInstanceCount("MutationAbominations"))) == true)) {
+        lv_mutationabominationinstance = UserDataInstance("MutationAbominations", lp_mutationAbominationIndex);
+        lv_mutationabominationpoints = UserDataGetInt("MutationAbominations", lv_mutationabominationinstance, "Points", 1);
+        lv_newpointtotal = (lp_currentPoints + lv_mutationabominationpoints);
+    }
+    else {
+        return ;
+    }
+    if ((lv_newpointtotal > libCOMU_gv_cT_MAbomination_MaxPoints)) {
+        return ;
+    }
+
+    libCOMU_gv_cT_MAbomination_ConsideredMutatorsCount = lp_depthLevel;
+    libCOMU_gv_cT_MAbomination_ConsideredMutators[lp_depthLevel] = UserDataGetUserInstance("MutationAbominations", UserDataInstance("MutationAbominations", lp_mutationAbominationIndex), "Mutator", 1);
+    if ((lv_newpointtotal >= libCOMU_gv_cT_MAbomination_MinPoints) && (lp_depthLevel >= libCOMU_gv_cT_MAbomination_MinMutators)) {
+        libCOMU_gv_cT_MAbomination_CombosCounted += 1;
+        if ((RandomInt(1, libCOMU_gv_cT_MAbomination_CombosCounted) == libCOMU_gv_cT_MAbomination_CombosCounted)) {
+            libCOMU_gv_cT_MAbomination_CountSnapshot = libCOMU_gv_cT_MAbomination_CombosCounted;
+            libCOMU_gv_cT_MAbomination_PointsSnapshot = lv_newpointtotal;
+            libCOMU_gv_cT_MAbomination_MutatorsCount = lp_depthLevel;
+            auto899AA90E_ae = lp_depthLevel;
+            lv_iterindex = 1;
+            for ( ; ( (auto899AA90E_ai >= 0 && lv_iterindex <= auto899AA90E_ae) || (auto899AA90E_ai < 0 && lv_iterindex >= auto899AA90E_ae) ) ; lv_iterindex += auto899AA90E_ai ) {
+                libCOMU_gv_cT_MAbomination_Mutators[lv_iterindex] = libCOMU_gv_cT_MAbomination_ConsideredMutators[lv_iterindex];
+            }
+        }
+
+    }
+
+    if ((lp_depthLevel < libCOMU_gv_cT_MAbomination_MaxMutators) && (lv_newpointtotal < libCOMU_gv_cT_MAbomination_MaxPoints)) {
+        auto4EB0262E_ae = UserDataInstanceCount("MutationAbominations");
+        lv_iterindex = (lp_mutationAbominationIndex + 1);
+        for ( ; ( (auto4EB0262E_ai >= 0 && lv_iterindex <= auto4EB0262E_ae) || (auto4EB0262E_ai < 0 && lv_iterindex >= auto4EB0262E_ae) ) ; lv_iterindex += auto4EB0262E_ai ) {
+            if (((lv_newpointtotal + UserDataGetInt("MutationAbominations", UserDataInstance("MutationAbominations", lv_iterindex), "Points", 1)) <= libCOMU_gv_cT_MAbomination_MaxPoints)) {
+                libCOMU_gf_IterateNextMutationAbomination((lp_depthLevel + 1), lv_iterindex, lv_newpointtotal);
+            }
+            else {
+                return ;
+            }
+        }
+    }
+
+}
+
+string libCOMU_gf_CT_GetMutationDifficultyLevel () {
+    // Automatic Variable Declarations
+    // Implementation
+    return libCOMU_gv_cT_MAbomination_DifficultyLevel;
+}
+
+void libCOMU_gf_CT_SetMutationDifficultyLevel (string lp_difficultyLevel) {
+    // Variable Declarations
+    int lv_mutatorcountiter;
+    fixed lv_remainingpercentage;
+    fixed lv_targetpercentage;
+    fixed lv_actualpercentage;
+    int lv_basepossibilities;
+    int lv_totalbasepossibilities;
+    int lv_totaluntargetedpossibilities;
+
+    // Automatic Variable Declarations
+    int autoEE00DB27_ae;
+    const int autoEE00DB27_ai = 1;
+    int auto17954CDD_ae;
+    const int auto17954CDD_ai = 1;
+    int autoD7B7EC40_ae;
+    const int autoD7B7EC40_ai = 1;
+
+    // Variable Initialization
+    lv_remainingpercentage = 1.0;
+
+    // Implementation
+    if ((libCOMU_gf_CT_GetMutationDifficultyLevel() == lp_difficultyLevel)) {
+        return ;
+    }
+
+    if ((libCOMU_gf_CT_GetMutationDifficultyLevel() != null)) {
+        autoEE00DB27_ae = UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "MutatorsMax", 1);
+        lv_mutatorcountiter = UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "MutatorsMin", 1);
+        for ( ; ( (autoEE00DB27_ai >= 0 && lv_mutatorcountiter <= autoEE00DB27_ae) || (autoEE00DB27_ai < 0 && lv_mutatorcountiter >= autoEE00DB27_ae) ) ; lv_mutatorcountiter += autoEE00DB27_ai ) {
+            DataTableValueRemove(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_TargetPercentage_", lv_mutatorcountiter));
+            DataTableValueRemove(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_ActualPercentage_", lv_mutatorcountiter));
+            DataTableValueRemove(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_WeightMod_", lv_mutatorcountiter));
+            DataTableValueRemove(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_Possibilities_", lv_mutatorcountiter));
+        }
+        DataTableValueRemove(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_TargetPercentage_", 0));
+        DataTableValueRemove(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_Possibilities_", 0));
+    }
+
+    libCOMU_gv_cT_MAbomination_DifficultyLevel = lp_difficultyLevel;
+    if ((libCOMU_gf_CT_GetMutationDifficultyLevel() != null)) {
+        auto17954CDD_ae = UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "MutatorsMax", 1);
+        lv_mutatorcountiter = UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "MutatorsMin", 1);
+        for ( ; ( (auto17954CDD_ai >= 0 && lv_mutatorcountiter <= auto17954CDD_ae) || (auto17954CDD_ai < 0 && lv_mutatorcountiter >= auto17954CDD_ae) ) ; lv_mutatorcountiter += auto17954CDD_ai ) {
+            lv_basepossibilities = libCOMU_gf_CT_GetMutatorCountPossibilities(lv_mutatorcountiter, UserDataGetInt("MutationDifficultyLevels", "Plus1", "PointsMin", 1), UserDataGetInt("MutationDifficultyLevels", "Plus1", "PointsMax", 1));
+            DataTableSetInt(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_Possibilities_", lv_mutatorcountiter), lv_basepossibilities);
+            lv_totalbasepossibilities += lv_basepossibilities;
+            lv_targetpercentage = libCOMU_gf_CT_GetMutatorCountTargetPercentageAtDifficultyLevel(lv_mutatorcountiter, libCOMU_gf_CT_GetMutationDifficultyLevel());
+            DataTableSetFixed(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_TargetPercentage_", lv_mutatorcountiter), lv_targetpercentage);
+            if ((lv_targetpercentage >= 0.0)) {
+                lv_remainingpercentage -= lv_targetpercentage;
+            }
+            else {
+                lv_totaluntargetedpossibilities += lv_basepossibilities;
+            }
+        }
+        DataTableSetFixed(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_TargetPercentage_", 0), MaxF(lv_remainingpercentage, 0.0));
+        DataTableSetInt(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_Possibilities_", 0), lv_basepossibilities);
+        autoD7B7EC40_ae = UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "MutatorsMax", 1);
+        lv_mutatorcountiter = UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "MutatorsMin", 1);
+        for ( ; ( (autoD7B7EC40_ai >= 0 && lv_mutatorcountiter <= autoD7B7EC40_ae) || (autoD7B7EC40_ai < 0 && lv_mutatorcountiter >= autoD7B7EC40_ae) ) ; lv_mutatorcountiter += autoD7B7EC40_ai ) {
+            lv_targetpercentage = DataTableGetFixed(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_TargetPercentage_", lv_mutatorcountiter));
+            if ((lv_targetpercentage < 0.0) && (lv_remainingpercentage > 0.0) && (lv_totaluntargetedpossibilities > 0)) {
+                lv_targetpercentage = (DataTableGetInt(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_Possibilities_", lv_mutatorcountiter)) / lv_totaluntargetedpossibilities * lv_remainingpercentage);
+                DataTableSetFixed(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_TargetPercentage_", lv_mutatorcountiter), lv_targetpercentage);
+            }
+            else if ((lv_targetpercentage < 0.0)) {
+                lv_targetpercentage = 0.0;
+                DataTableSetFixed(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_TargetPercentage_", lv_mutatorcountiter), lv_targetpercentage);
+            }
+            lv_actualpercentage = (IntToFixed(DataTableGetInt(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_Possibilities_", lv_mutatorcountiter))) / IntToFixed(lv_totalbasepossibilities));
+            DataTableSetFixed(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_ActualPercentage_", lv_mutatorcountiter), lv_actualpercentage);
+            if ((lv_actualpercentage > 0.0)) {
+                DataTableSetFixed(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_WeightMod_", lv_mutatorcountiter), (lv_targetpercentage / lv_actualpercentage));
+            }
+            else {
+                DataTableSetFixed(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_WeightMod_", lv_mutatorcountiter), 0.0);
+            }
+        }
+    }
+
+}
+
+fixed libCOMU_gf_CT_GetMutatorCountTargetPercentageAtDifficultyLevel (int lp_count, string lp_difficultyLevel) {
+    // Variable Declarations
+    string lv_countweightinstance;
+    int lv_countiter;
+    int lv_bestdifficultymatch;
+    fixed lv_bestdifficultymatchtargetweight;
+    fixed lv_totalweight;
+    fixed lv_targetweight;
+    int lv_minmutatorcount;
+    int lv_maxmutatorcount;
+    bool lv_foundmatch;
+
+    // Automatic Variable Declarations
+    int auto18AB673E_ae;
+    const int auto18AB673E_ai = 1;
+    string autoC845F325_userType;
+    int autoC845F325_i;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((lp_difficultyLevel == null)) {
+        return 0.0;
+    }
+
+    lv_minmutatorcount = UserDataGetInt("MutationDifficultyLevels", lp_difficultyLevel, "MutatorsMin", 1);
+    lv_maxmutatorcount = UserDataGetInt("MutationDifficultyLevels", lp_difficultyLevel, "MutatorsMax", 1);
+    auto18AB673E_ae = lv_maxmutatorcount;
+    lv_countiter = lv_minmutatorcount;
+    for ( ; ( (auto18AB673E_ai >= 0 && lv_countiter <= auto18AB673E_ae) || (auto18AB673E_ai < 0 && lv_countiter >= auto18AB673E_ae) ) ; lv_countiter += auto18AB673E_ai ) {
+        lv_bestdifficultymatch = 0;
+        lv_bestdifficultymatchtargetweight = 0;
+        autoC845F325_userType = "MutationDifficultyCountTargets";
+        autoC845F325_i = 1;
+        for ( ; autoC845F325_i <= UserDataInstanceCount(autoC845F325_userType) ; autoC845F325_i += 1 ) {
+            lv_countweightinstance = UserDataInstance(autoC845F325_userType, autoC845F325_i);
+            if ((UserDataGetInt("MutationDifficultyCountTargets", lv_countweightinstance, "MutatorCount", 1) == lv_countiter) && (libNtve_gf_UserDataInstanceGetIndex("MutationDifficultyLevels", UserDataGetUserInstance("MutationDifficultyCountTargets", lv_countweightinstance, "MinDifficulty", 1)) > lv_bestdifficultymatch)) {
+                lv_bestdifficultymatch = libNtve_gf_UserDataInstanceGetIndex("MutationDifficultyLevels", UserDataGetUserInstance("MutationDifficultyCountTargets", lv_countweightinstance, "MinDifficulty", 1));
+                lv_bestdifficultymatchtargetweight = UserDataGetFixed("MutationDifficultyCountTargets", lv_countweightinstance, "TargetWeight", 1);
+                if ((lv_countiter == lp_count)) {
+                    lv_foundmatch = true;
+                }
+
+            }
+
+        }
+        lv_totalweight += lv_bestdifficultymatchtargetweight;
+        if ((lv_countiter == lp_count)) {
+            lv_targetweight = lv_bestdifficultymatchtargetweight;
+        }
+
+    }
+    if ((lv_foundmatch == false)) {
+        return -1.0;
+    }
+
+    if ((lv_totalweight > 0.0)) {
+        return (lv_targetweight / 100);
+    }
+
+    return 0.0;
+}
+
+int libCOMU_gf_CT_GetMutatorCountPossibilities (int lp_mutatorCount, int lp_minPoints, int lp_maxPoints) {
+    // Variable Declarations
+    string lv_mutationabominationinstance;
+    int lv_pointindexiter;
+
+    // Automatic Variable Declarations
+    const int auto28E02FF3_ae = libCOMU_gv_cT_MAbomination_MutatorPointCeiling;
+    const int auto28E02FF3_ai = 1;
+    string auto2414BB0A_userType;
+    int auto2414BB0A_i;
+
+    // Variable Initialization
+
+    // Implementation
+    libCOMU_gv_cT_MAbomination_MinMutators = lp_mutatorCount;
+    libCOMU_gv_cT_MAbomination_MaxMutators = lp_mutatorCount;
+    libCOMU_gv_cT_MAbomination_MinPoints = lp_minPoints;
+    libCOMU_gv_cT_MAbomination_MaxPoints = lp_maxPoints;
+    libCOMU_gv_cT_MAbomination_MutatorsCount = 0;
+    libCOMU_gv_cT_MAbomination_CombosCounted = 0;
+    lv_pointindexiter = 1;
+    for ( ; ( (auto28E02FF3_ai >= 0 && lv_pointindexiter <= auto28E02FF3_ae) || (auto28E02FF3_ai < 0 && lv_pointindexiter >= auto28E02FF3_ae) ) ; lv_pointindexiter += auto28E02FF3_ai ) {
+        libCOMU_gv_cT_MAbomination_MutatorPointPossibilities[lv_pointindexiter] = 0;
+    }
+    auto2414BB0A_userType = "MutationAbominations";
+    auto2414BB0A_i = 1;
+    for ( ; auto2414BB0A_i <= UserDataInstanceCount(auto2414BB0A_userType) ; auto2414BB0A_i += 1 ) {
+        lv_mutationabominationinstance = UserDataInstance(auto2414BB0A_userType, auto2414BB0A_i);
+        libCOMU_gv_cT_MAbomination_MutatorPointPossibilities[UserDataGetInt("MutationAbominations", lv_mutationabominationinstance, "Points", 1)] += 1;
+    }
+    libCOMU_gf_TraverseMutationAbominationPointIndex(1, 0, 0, false);
+    return libCOMU_gv_cT_MAbomination_CombosCounted;
+}
+
+fixed libCOMU_gf_CT_GetMutatorCountWeightModifier (int lp_mutatorCount) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((DataTableValueExists(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_WeightMod_", lp_mutatorCount)) == true)) {
+        return DataTableGetFixed(true, libCOMU_gf_CT_MutatorCountTableName("MutatorCount_WeightMod_", lp_mutatorCount));
+    }
+
+    return 0.0;
+}
+
+int libCOMU_gf_CT_GetRandomMutatorCount () {
+    // Variable Declarations
+    int lv_mincount;
+    int lv_maxcount;
+    int lv_mutatorcountiter;
+    fixed lv_weight;
+    fixed lv_totalweight;
+    int lv_chosencount;
+
+    // Automatic Variable Declarations
+    int auto4E0436F5_ae;
+    const int auto4E0436F5_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((libCOMU_gf_CT_GetMutationDifficultyLevel() == null)) {
+        return 0;
+    }
+
+    lv_mincount = UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "MutatorsMin", 1);
+    lv_maxcount = UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "MutatorsMax", 1);
+    auto4E0436F5_ae = lv_maxcount;
+    lv_mutatorcountiter = lv_mincount;
+    for ( ; ( (auto4E0436F5_ai >= 0 && lv_mutatorcountiter <= auto4E0436F5_ae) || (auto4E0436F5_ai < 0 && lv_mutatorcountiter >= auto4E0436F5_ae) ) ; lv_mutatorcountiter += auto4E0436F5_ai ) {
+        lv_weight = (libCOMU_gf_CT_GetMutatorCountPossibilities(lv_mutatorcountiter, UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "PointsMin", 1), UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "PointsMax", 1)) * libCOMU_gf_CT_GetMutatorCountWeightModifier(lv_mutatorcountiter));
+        lv_totalweight += lv_weight;
+        if ((RandomFixed(0.0, lv_totalweight) <= lv_weight)) {
+            lv_chosencount = lv_mutatorcountiter;
+        }
+
+    }
+    return lv_chosencount;
+}
+
+fixed libCOMU_gf_CT_GetRandomMutatorXPModifier () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libCOMU_gf_CT_GetMutationDifficultyLevel() != null)) {
+        return UserDataGetFixed("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "XPModifier", 1);
+    }
+
+    return 0.0;
+}
+
+string libCOMU_gf_CT_MutatorCountTableName (string lp_prefixType, int lp_mutatorCount) {
+    // Automatic Variable Declarations
+    // Implementation
+    return ((lp_prefixType) + IntToString(lp_mutatorCount));
+}
+
+string libCOMU_gf_CT_GetAbomFromMutator (string lp_mutator) {
+    // Variable Declarations
+    string lv_mutabominstance;
+
+    // Automatic Variable Declarations
+    string auto55757824_userType;
+    int auto55757824_i;
+
+    // Variable Initialization
+
+    // Implementation
+    auto55757824_userType = "MutationAbominations";
+    auto55757824_i = 1;
+    for ( ; auto55757824_i <= UserDataInstanceCount(auto55757824_userType) ; auto55757824_i += 1 ) {
+        lv_mutabominstance = UserDataInstance(auto55757824_userType, auto55757824_i);
+        if ((UserDataGetUserInstance("MutationAbominations", lv_mutabominstance, "Mutator", 1) == lp_mutator)) {
+            return lv_mutabominstance;
+        }
+
+    }
+    return null;
+}
+
+void libCOMU_gf_CT_StoreMutatorForPlayer (int lp_player, string lp_mutatorScoreValue, int lp_mutatorIndex) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_mutatorIndex <= libCOMU_gv_cT_MAbomination_MutatorsCount) && (libCOMU_gv_cT_MAbomination_Mutators[lp_mutatorIndex] != null)) {
+        libCOOC_gf_CC_ScoreValueSet(lp_player, lp_mutatorScoreValue, libNtve_gf_UserDataInstanceGetIndex("Mutators", libCOMU_gv_cT_MAbomination_Mutators[lp_mutatorIndex]));
+    }
+    else {
+        libCOOC_gf_CC_ScoreValueSet(lp_player, lp_mutatorScoreValue, 0);
+    }
+}
+
+void libCOMU_gf_CT_StoreMutatorScoreValues () {
+    // Variable Declarations
+    int lv_player;
+
+    // Automatic Variable Declarations
+    playergroup autoABECF3ED_g;
+
+    // Variable Initialization
+
+    // Implementation
+    autoABECF3ED_g = libCOOC_gf_CommanderPlayers();
+    lv_player = -1;
+    while (true) {
+        lv_player = PlayerGroupNextPlayer(autoABECF3ED_g, lv_player);
+        if (lv_player < 0) { break; }
+        libCOMU_gf_CT_StoreMutatorForPlayer(lv_player, "MutatorTryAgain1", 1);
+        libCOMU_gf_CT_StoreMutatorForPlayer(lv_player, "MutatorTryAgain2", 2);
+        libCOMU_gf_CT_StoreMutatorForPlayer(lv_player, "MutatorTryAgain3", 3);
+        libCOMU_gf_CT_StoreMutatorForPlayer(lv_player, "MutatorTryAgain4", 4);
+    }
 }
 
 // Triggers
@@ -4945,6 +5888,111 @@ void libCOMU_gt_CT_DebugGiftEnemy_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: CT_DebugBoomBotSpawn
+//--------------------------------------------------------------------------------------------------
+bool libCOMU_gt_CT_DebugBoomBotSpawn_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((GameCheatsEnabled(c_gameCheatCategoryDevelopment) == true))) {
+            return false;
+        }
+
+        if (!((libCOMU_gf_MutatorIsEnabled("BoomBots") == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "MutatorBoomBot", 0, 3, CameraGetTarget(EventPlayer()));
+    libCOMU_gf_CT_RegisterSpawnedUnit(UnitLastCreated());
+    AISetUnitSuicide(UnitLastCreated(), true);
+    libCOMU_gf_CT_ApplyBoomBotPing(UnitLastCreated());
+    libCOMU_gf_CT_BoomBotsUpdate(UnitLastCreated());
+    SoundPlayForPlayer(SoundLink("TUIWarning", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libCOMU_gt_CT_DebugBoomBotSpawn_Init () {
+    libCOMU_gt_CT_DebugBoomBotSpawn = TriggerCreate("libCOMU_gt_CT_DebugBoomBotSpawn_Func");
+    TriggerAddEventChatMessage(libCOMU_gt_CT_DebugBoomBotSpawn, c_playerAny, "-boombot", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CT_DebugBrutal+
+//--------------------------------------------------------------------------------------------------
+bool libCOMU_gt_CT_DebugBrutal_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_difficultylevel;
+    int lv_mutatorcount;
+    int lv_player;
+
+    // Automatic Variable Declarations
+    string autoB9840892_val;
+    playergroup auto021711F7_g;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((GameCheatsEnabled(c_gameCheatCategoryDevelopment) == true))) {
+            return false;
+        }
+
+        if (!((StringSub(EventChatMessage(false), 1, 7) == "brutal+"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoB9840892_val = EventChatMessage(false);
+    if (autoB9840892_val == "brutal+6") {
+        lv_difficultylevel = 6;
+    }
+    else if (autoB9840892_val == "brutal+5") {
+        lv_difficultylevel = 5;
+    }
+    else if (autoB9840892_val == "brutal+4") {
+        lv_difficultylevel = 4;
+    }
+    else if (autoB9840892_val == "brutal+3") {
+        lv_difficultylevel = 3;
+    }
+    else if (autoB9840892_val == "brutal+2") {
+        lv_difficultylevel = 2;
+    }
+    else {
+        lv_difficultylevel = 1;
+    }
+    libCOMU_gf_CT_SetMutationDifficultyLevel(UserDataInstance("MutationDifficultyLevels", lv_difficultylevel));
+    lv_mutatorcount = libCOMU_gf_CT_GetRandomMutatorCount();
+    libCOMU_gf_CreateMutationAbominationProbabilities(lv_mutatorcount, lv_mutatorcount, UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "PointsMin", 1), UserDataGetInt("MutationDifficultyLevels", libCOMU_gf_CT_GetMutationDifficultyLevel(), "PointsMax", 1));
+    auto021711F7_g = libCOOC_gf_HumanPlayers();
+    lv_player = -1;
+    while (true) {
+        lv_player = PlayerGroupNextPlayer(auto021711F7_g, lv_player);
+        if (lv_player < 0) { break; }
+        libCOUI_gf_CU_CommanderUpdate(lv_player);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libCOMU_gt_CT_DebugBrutal_Init () {
+    libCOMU_gt_CT_DebugBrutal = TriggerCreate("libCOMU_gt_CT_DebugBrutal_Func");
+    TriggerAddEventChatMessage(libCOMU_gt_CT_DebugBrutal, 1, "brutal+", false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: CT_InitializeWorkerSleep
 //--------------------------------------------------------------------------------------------------
 bool libCOMU_gt_CT_InitializeWorkerSleep_Func (bool testConds, bool runActions) {
@@ -5508,6 +6556,7 @@ bool libCOMU_gt_CT_InitializeJustDie_Func (bool testConds, bool runActions) {
         if (lv_indexUnit == null) { break; }
         libCOMU_gf_CT_ApplyJustDie(lv_indexUnit);
     }
+    TriggerEnable(libCOMU_gt_CT_JustDiePolarityInteraction, true);
     if ((libCOOC_gf_CC_CurrentMap() == "AC_TarsonisTrain")) {
         TriggerEnable(libCOMU_gt_CT_JustDieTrainHealth, true);
     }
@@ -5799,6 +6848,8 @@ bool libCOMU_gt_CT_InitializeBlizzard_Func (bool testConds, bool runActions) {
     }
 
     TriggerEnable(libCOMU_gt_CT_BlizzardSpawn, true);
+    TriggerEnable(libCOMU_gt_CT_BlizzardEntersSafetyZone, true);
+    TriggerEnable(libCOMU_gt_CT_BlizzardLeavesSafetyZone, true);
     TriggerExecute(libCOMU_gt_CT_BlizzardSpawn, true, false);
     return true;
 }
@@ -5974,7 +7025,7 @@ bool libCOMU_gt_CT_InitializeTornadoes_Func (bool testConds, bool runActions) {
         lv_spawnAttempt = 1;
         for ( ; ( (autoDBBF9915_ai >= 0 && lv_spawnAttempt <= autoDBBF9915_ae) || (autoDBBF9915_ai < 0 && lv_spawnAttempt >= autoDBBF9915_ae) ) ; lv_spawnAttempt += autoDBBF9915_ai ) {
             lv_spawnLocation = RegionRandomPoint(RegionPlayableMap());
-            if ((DistanceBetweenPoints(lv_spawnLocation, PlayerStartLocation(1)) > 30.0) && (DistanceBetweenPoints(lv_spawnLocation, PlayerStartLocation(2)) > 30.0) && (libCOOC_gf_CC_SpawnAllowedAtPoint(lv_spawnLocation) == true) && (PointPathingIsConnected(lv_spawnLocation, PlayerStartLocation(1)) == true) && (UnitGroupCount(UnitGroup(null, c_playerAny, RegionCircle(lv_spawnLocation, lv_harvestableSpawnBufferDistance), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) == 0)) {
+            if ((DistanceBetweenPoints(lv_spawnLocation, PlayerStartLocation(1)) > 30.0) && (DistanceBetweenPoints(lv_spawnLocation, PlayerStartLocation(2)) > 30.0) && (libCOOC_gf_CC_SpawnAllowedAtPoint(lv_spawnLocation) == true) && (PointPathingIsConnected(lv_spawnLocation, PlayerStartLocation(1)) == true) && (RegionContainsPoint(libCOMU_gf_CT_MutatorSafetyZone(), lv_spawnLocation) == false)) {
                 break;
             }
 
@@ -6505,12 +7556,16 @@ bool libCOMU_gt_CT_InitializeUberDarkness_Func (bool testConds, bool runActions)
         return true;
     }
 
+    libCOMU_gf_CT_ToggleTrigger(libCOMU_ge_CT_TriggerType_UpgradeChanged, true);
     GameSetLighting("MutatorVeryDark", 0.0);
     auto9AFF4A66_ae = CatalogEntryCount(c_gameCatalogUnit);
     lv_catalogIndex = 1;
     for ( ; ( (auto9AFF4A66_ai >= 0 && lv_catalogIndex <= auto9AFF4A66_ae) || (auto9AFF4A66_ai < 0 && lv_catalogIndex >= auto9AFF4A66_ae) ) ; lv_catalogIndex += auto9AFF4A66_ai ) {
         lv_stringUnitID = (CatalogEntryGet(c_gameCatalogUnit, lv_catalogIndex));
-        if ((UnitTypeTestAttribute(UnitTypeFromString(lv_stringUnitID), c_unitAttributeStructure) == true)) {
+        if ((UnitTypeTestAttribute(UnitTypeFromString(lv_stringUnitID), c_unitAttributeMapBoss) == true)) {
+            continue;
+        }
+        else if ((UnitTypeTestAttribute(UnitTypeFromString(lv_stringUnitID), c_unitAttributeStructure) == true)) {
             if ((libCOOC_gf_CC_UnitTypeIsTownHall((lv_stringUnitID)) == true) && (libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogUnit, (lv_stringUnitID), "Speed", c_playerAny) <= 0.0)) {
                 lv_sightRange = libCOMI_gf_MinimumDifficultyValueCoopReal(9.0, 9.0, 7.0, 7.0, 7.0, 7.0);
             }
@@ -6518,7 +7573,7 @@ bool libCOMU_gt_CT_InitializeUberDarkness_Func (bool testConds, bool runActions)
                 lv_sightRange = libCOMI_gf_MinimumDifficultyValueCoopReal(4.0, 3.0, 2.0, 2.0, 2.0, 2.0);
             }
         }
-        else {
+        else if (true) {
             lv_sightRange = 0.0;
         }
         auto829A59D6_g = libCOOC_gf_HumanPlayers();
@@ -6755,6 +7810,7 @@ bool libCOMU_gt_CT_InitializeStructureSteal_Func (bool testConds, bool runAction
     int lv_indexPlayer;
 
     // Automatic Variable Declarations
+    playergroup auto02C45B4F_g;
     playergroup autoC01B81EC_g;
     unitgroup auto375334DE_g;
     int auto375334DE_u;
@@ -6772,6 +7828,17 @@ bool libCOMU_gt_CT_InitializeStructureSteal_Func (bool testConds, bool runAction
     TriggerExecute(libCOMU_gt_CT_StructureStealLogic, true, false);
     TriggerEnable(libCOMU_gt_CT_StructureStealUnitTrained, true);
     TriggerEnable(libCOMU_gt_CT_StructureStealTrigger, true);
+    auto02C45B4F_g = PlayerGroupAlliance(c_playerGroupEnemy, 1);
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(auto02C45B4F_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        TechTreeUnitAllow(lv_indexPlayer, "HydraliskStetmann", false);
+        TechTreeUnitAllow(lv_indexPlayer, "CorruptorStetmann", false);
+        TechTreeUnitAllow(lv_indexPlayer, "ZerglingStetmann", false);
+        TechTreeUnitAllow(lv_indexPlayer, "UltraliskStetmann", false);
+        TechTreeUnitAllow(lv_indexPlayer, "InfestorStetmann", false);
+    }
     autoC01B81EC_g = libCOOC_gf_HumanPlayers();
     lv_indexPlayer = -1;
     while (true) {
@@ -6950,14 +8017,14 @@ bool libCOMU_gt_CT_InitializeHeroesFromTheStorm_Func (bool testConds, bool runAc
     }
 
     libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickHeroesFromTheStorm)] = true;
-    libCOMU_gv_cT_AmonHeroUnitTypeArray[1] = "MutatorAmonTychus";
-    libCOMU_gv_cT_AmonHeroUnitTypeArray[2] = "MutatorAmonRaynor";
+    libCOMU_gv_cT_AmonHeroUnitTypeArray[1] = "MutatorAmonRaynor";
+    libCOMU_gv_cT_AmonHeroUnitTypeArray[2] = "MutatorAmonTychus";
     libCOMU_gv_cT_AmonHeroUnitTypeArray[3] = "MutatorAmonDehaka";
     libCOMU_gv_cT_AmonHeroUnitTypeArray[4] = "MutatorAmonKarax";
     libCOMU_gv_cT_AmonHeroUnitTypeArray[5] = "MutatorAmonNova";
     libCOMU_gv_cT_AmonHeroUnitTypeArray[6] = "MutatorAmonZagara";
-    libCOMU_gv_cT_AmonHeroUnitTypeArray[7] = "MutatorAmonArtanis";
-    libCOMU_gv_cT_AmonHeroUnitTypeArray[8] = "MutatorAmonZeratul";
+    libCOMU_gv_cT_AmonHeroUnitTypeArray[7] = "MutatorAmonZeratul";
+    libCOMU_gv_cT_AmonHeroUnitTypeArray[8] = "MutatorAmonArtanis";
     libCOMU_gv_cT_AmonHeroUnitTypeArray[9] = "MutatorAmonKerrigan";
     lv_heroIndex = 1;
     for ( ; ( (auto02C1020A_ai >= 0 && lv_heroIndex <= auto02C1020A_ae) || (auto02C1020A_ai < 0 && lv_heroIndex >= auto02C1020A_ae) ) ; lv_heroIndex += auto02C1020A_ai ) {
@@ -7022,7 +8089,7 @@ bool libCOMU_gt_CT_InitializeHeroesFromTheStorm_Func (bool testConds, bool runAc
         }
 
     }
-    TriggerEnable(libCOMU_gt_CT_HeroesFromTheStorm, true);
+    TriggerExecute(libCOMU_gt_CT_AmonHeroPool_Tracker, true, false);
     return true;
 }
 
@@ -7323,6 +8390,41 @@ bool libCOMU_gt_CT_InitializeMomentOfSilence_Func (bool testConds, bool runActio
 //--------------------------------------------------------------------------------------------------
 void libCOMU_gt_CT_InitializeMomentOfSilence_Init () {
     libCOMU_gt_CT_InitializeMomentOfSilence = TriggerCreate("libCOMU_gt_CT_InitializeMomentOfSilence_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CT_InitializeBoomBots
+//--------------------------------------------------------------------------------------------------
+bool libCOMU_gt_CT_InitializeBoomBots_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+
+    // Automatic Variable Declarations
+    const int auto35D305D2_ae = 2;
+    const int auto35D305D2_ai = 1;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickBoomBots)] = true;
+    libCOMU_gf_CT_ToggleTrigger(libCOMU_ge_CT_TriggerType_UnitDeath, true);
+    lv_player = 1;
+    for ( ; ( (auto35D305D2_ai >= 0 && lv_player <= auto35D305D2_ae) || (auto35D305D2_ai < 0 && lv_player >= auto35D305D2_ae) ) ; lv_player += auto35D305D2_ai ) {
+        libCOMU_gv_cT_BoomBotsDigits[lv_player] = libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(lv_player), 1, 2, 3, 4, 4, 4);
+    }
+    libCOMU_gv_cT_BoomBotCleanupEnabled = true;
+    TriggerEnable(libCOMU_gt_CT_BoomBotsInput, true);
+    TriggerExecute(libCOMU_gt_CT_BoomBotsSpawn, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libCOMU_gt_CT_InitializeBoomBots_Init () {
+    libCOMU_gt_CT_InitializeBoomBots = TriggerCreate("libCOMU_gt_CT_InitializeBoomBots_Func");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7845,6 +8947,8 @@ bool libCOMU_gt_CT_ShutdownJustDie_Func (bool testConds, bool runActions) {
         if (lv_indexUnit == null) { break; }
         UnitBehaviorRemove(lv_indexUnit, "MutatorMasterController", c_unitBehaviorCountAll);
     }
+    TriggerEnable(libCOMU_gt_CT_JustDiePolarityInteraction, false);
+    TriggerEnable(libCOMU_gt_CT_JustDieTrainHealth, false);
     return true;
 }
 
@@ -8566,6 +9670,7 @@ bool libCOMU_gt_CT_ShutdownUberDarkness_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    libCOMU_gf_CT_ToggleTrigger(libCOMU_ge_CT_TriggerType_UpgradeChanged, false);
     TriggerStop(libCOMU_gt_CT_UberDarknessSpotlight);
     TriggerExecute(libCOMU_gt_CT_ShutdownBlackFog, true, false);
     return true;
@@ -8702,8 +9807,6 @@ bool libCOMU_gt_CT_ShutdownHeroesFromTheStorm_Func (bool testConds, bool runActi
     }
 
     libCOMU_gv_cT_MutatorEnabledQuickList[(libCOMU_ge_CT_MutatorQuickList_CT_QuickHeroesFromTheStorm)] = false;
-    TriggerEnable(libCOMU_gt_CT_HeroesFromTheStorm, false);
-    TriggerStop(libCOMU_gt_CT_HeroesFromTheStorm);
     return true;
 }
 
@@ -8920,6 +10023,69 @@ void libCOMU_gt_CT_ShutdownMomentOfSilence_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: CT_ShutdownBoomBots
+//--------------------------------------------------------------------------------------------------
+bool libCOMU_gt_CT_ShutdownBoomBots_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerStop(libCOMU_gt_CT_BoomBotsSpawn);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libCOMU_gt_CT_ShutdownBoomBots_Init () {
+    libCOMU_gt_CT_ShutdownBoomBots = TriggerCreate("libCOMU_gt_CT_ShutdownBoomBots_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CT_AmonHeroPool_Tracker
+//--------------------------------------------------------------------------------------------------
+bool libCOMU_gt_CT_AmonHeroPool_Tracker_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TriggerActiveCount(TriggerGetCurrent()) <= 1))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMU_gv_cT_AmonHeroNumber = 0;
+    libCOMU_gv_cT_AmonHeroPool = 1;
+    libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime(5.0, 2);
+    libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime(6.5, 1);
+    libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime(8.0, 1);
+    libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime(9.5, 1);
+    libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime(11.0, 1);
+    libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime(12.5, 1);
+    libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime(14.0, 1);
+    libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime(15.0, 1);
+    libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime(16.0, 1);
+    libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime(17.0, 1);
+    libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime(18.0, 1);
+    libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime(19.0, 1);
+    libCOMU_gf_CT_AmonHero_GrantPoolAtMissionTime(20.0, 1);
+    while (true) {
+        Wait(30.0, c_timeGame);
+        libCOMU_gv_cT_AmonHeroPool += 1;
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libCOMU_gt_CT_AmonHeroPool_Tracker_Init () {
+    libCOMU_gt_CT_AmonHeroPool_Tracker = TriggerCreate("libCOMU_gt_CT_AmonHeroPool_Tracker_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: CT_JustDieTrainHealth
 //--------------------------------------------------------------------------------------------------
 bool libCOMU_gt_CT_JustDieTrainHealth_Func (bool testConds, bool runActions) {
@@ -8927,11 +10093,13 @@ bool libCOMU_gt_CT_JustDieTrainHealth_Func (bool testConds, bool runActions) {
     unit lv_trainUnit;
     unit lv_indexTrain;
     unitgroup lv_trainCars;
-    int lv_trainWave;
+    fixed lv_trainID;
 
     // Automatic Variable Declarations
     unitgroup auto0C023CCA_g;
     int auto0C023CCA_u;
+    unitgroup auto51264FBB_g;
+    int auto51264FBB_u;
 
     // Variable Initialization
     lv_trainUnit = EventPlayerEffectUsedUnit(c_effectUnitCaster);
@@ -8949,20 +10117,31 @@ bool libCOMU_gt_CT_JustDieTrainHealth_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    lv_trainWave = FixedToInt(UnitGetCustomValue(lv_trainUnit, 1));
-    lv_trainCars = UnitGroup("Caboose", c_playerAny, null, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupAddUnitGroup(lv_trainCars, UnitGroup("TarsonisEngineFast", c_playerAny, null, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupAddUnitGroup(lv_trainCars, UnitGroup("TarsonisEngine", c_playerAny, null, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupAddUnitGroup(lv_trainCars, UnitGroup("FreightCar", c_playerAny, null, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    lv_trainID = UnitGetCustomValue(lv_trainUnit, 2);
+    lv_trainCars = libCOMI_gf_ConjoinedTrainsofTrainCar(lv_trainUnit);
+    UnitGroupRemove(lv_trainCars, lv_trainUnit);
     auto0C023CCA_g = lv_trainCars;
     auto0C023CCA_u = UnitGroupCount(auto0C023CCA_g, c_unitCountAll);
     for (;; auto0C023CCA_u -= 1) {
         lv_indexTrain = UnitGroupUnitFromEnd(auto0C023CCA_g, auto0C023CCA_u);
         if (lv_indexTrain == null) { break; }
-        if ((UnitGetCustomValue(lv_indexTrain, 1) == lv_trainWave)) {
-            UnitSetPropertyFixed(lv_indexTrain, c_unitPropLifePercent, 100.0);
+        if ((UnitGetCustomValue(lv_indexTrain, 2) == lv_trainID) && (UnitHasBehavior2(lv_indexTrain, "MutatorMasterController") == true)) {
             UnitBehaviorRemove(lv_indexTrain, "MutatorMasterController", 1);
             UnitBehaviorAdd(lv_indexTrain, "MutatorJustDie", lv_indexTrain, 1);
+        }
+        else {
+            UnitGroupRemove(lv_trainCars, lv_indexTrain);
+        }
+    }
+    Wait(0.0625, c_timeGame);
+    UnitGroupAdd(lv_trainCars, lv_trainUnit);
+    auto51264FBB_g = lv_trainCars;
+    auto51264FBB_u = UnitGroupCount(auto51264FBB_g, c_unitCountAll);
+    for (;; auto51264FBB_u -= 1) {
+        lv_indexTrain = UnitGroupUnitFromEnd(auto51264FBB_g, auto51264FBB_u);
+        if (lv_indexTrain == null) { break; }
+        if ((UnitGetCustomValue(lv_indexTrain, 2) == lv_trainID)) {
+            UnitSetPropertyFixed(lv_indexTrain, c_unitPropLifePercent, 100.0);
         }
 
     }
@@ -8974,6 +10153,33 @@ void libCOMU_gt_CT_JustDieTrainHealth_Init () {
     libCOMU_gt_CT_JustDieTrainHealth = TriggerCreate("libCOMU_gt_CT_JustDieTrainHealth_Func");
     TriggerEnable(libCOMU_gt_CT_JustDieTrainHealth, false);
     TriggerAddEventPlayerEffectUsed(libCOMU_gt_CT_JustDieTrainHealth, c_playerAny, "MutatorJustDieAB");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CT_JustDiePolarityInteraction
+//--------------------------------------------------------------------------------------------------
+bool libCOMU_gt_CT_JustDiePolarityInteraction_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_unit = EventUnit();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMU_gf_CT_Polarity_Swap(lv_unit);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libCOMU_gt_CT_JustDiePolarityInteraction_Init () {
+    libCOMU_gt_CT_JustDiePolarityInteraction = TriggerCreate("libCOMU_gt_CT_JustDiePolarityInteraction_Func");
+    TriggerEnable(libCOMU_gt_CT_JustDiePolarityInteraction, false);
+    TriggerAddEventUnitBehaviorChange(libCOMU_gt_CT_JustDiePolarityInteraction, null, "MutatorJustDie", c_unitBehaviorChangeCreate);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9141,6 +10347,62 @@ void libCOMU_gt_CT_CandyBowlTextUpdate_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: CT_BlizzardEntersSafetyZone
+//--------------------------------------------------------------------------------------------------
+bool libCOMU_gt_CT_BlizzardEntersSafetyZone_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "MutatorStormCloud"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnit(), "MutatorStormCloudBlizzardDisable", EventUnit(), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libCOMU_gt_CT_BlizzardEntersSafetyZone_Init () {
+    libCOMU_gt_CT_BlizzardEntersSafetyZone = TriggerCreate("libCOMU_gt_CT_BlizzardEntersSafetyZone_Func");
+    TriggerEnable(libCOMU_gt_CT_BlizzardEntersSafetyZone, false);
+    TriggerAddEventUnitRegion(libCOMU_gt_CT_BlizzardEntersSafetyZone, null, libCOMU_gf_CT_MutatorSafetyZone(), true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CT_BlizzardLeavesSafetyZone
+//--------------------------------------------------------------------------------------------------
+bool libCOMU_gt_CT_BlizzardLeavesSafetyZone_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "MutatorStormCloud"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorRemove(EventUnit(), "MutatorStormCloudBlizzardDisable", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libCOMU_gt_CT_BlizzardLeavesSafetyZone_Init () {
+    libCOMU_gt_CT_BlizzardLeavesSafetyZone = TriggerCreate("libCOMU_gt_CT_BlizzardLeavesSafetyZone_Func");
+    TriggerEnable(libCOMU_gt_CT_BlizzardLeavesSafetyZone, false);
+    TriggerAddEventUnitRegion(libCOMU_gt_CT_BlizzardLeavesSafetyZone, null, libCOMU_gf_CT_MutatorSafetyZone(), false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Mutator Laser Drill Beam Sound Region Clear
 //--------------------------------------------------------------------------------------------------
 bool libCOMU_gt_MutatorLaserDrillBeamSoundRegionClear_Func (bool testConds, bool runActions) {
@@ -9301,6 +10563,22 @@ bool libCOMU_gt_CT_UnitDeath_Func (bool testConds, bool runActions) {
         if (!((UnitGetType(EventUnit()) != "AdeptPhaseShift"))) {
             return false;
         }
+
+        if (!((UnitGetType(EventUnit()) != "TerranDropPod"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnit()) != "ZergDropPodLarge"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnit()) != "ZergDropPod"))) {
+            return false;
+        }
+
+        if (!((UnitGetType(EventUnit()) != "ZergDropPodCreep"))) {
+            return false;
+        }
     }
 
     // Actions
@@ -9309,6 +10587,11 @@ bool libCOMU_gt_CT_UnitDeath_Func (bool testConds, bool runActions) {
     }
 
     if ((EventUnitDamageDeathCheck(c_deathTypeRemove) == true)) {
+        return true;
+    }
+
+    if (((UnitGetType(EventUnit()) == "MutatorMissileNuke") || (UnitGetType(EventUnit()) == "MutatorMissilePointDefense") || (UnitGetType(EventUnit()) == "MutatorMissileSplitter") || (UnitGetType(EventUnit()) == "MutatorMissileSplitterChild") || (UnitGetType(EventUnit()) == "MutatorMissileStandard"))) {
+        libCOMU_gf_CT_ApplyMissileDeath(EventUnit());
         return true;
     }
 
@@ -9322,7 +10605,6 @@ bool libCOMU_gt_CT_UnitDeath_Func (bool testConds, bool runActions) {
     libCOMU_gf_CT_ApplyAvenger(EventUnit());
     libCOMU_gf_CT_ApplyDeathFire(EventUnit());
     libCOMU_gf_CT_ApplyHybridDeathNuke(EventUnit());
-    libCOMU_gf_CT_ApplyMissileDeath(EventUnit());
     libCOMU_gf_CT_ApplyEvolve(libNtve_gf_KillingUnit(), EventUnit());
     libCOMU_gf_CT_ApplyFoodHuntBounty(EventUnit());
     libCOMU_gf_CT_ApplyFoodHuntSpawn(EventUnit());
@@ -9332,6 +10614,7 @@ bool libCOMU_gt_CT_UnitDeath_Func (bool testConds, bool runActions) {
     libCOMU_gf_CT_ApplyDeathPull(EventUnit());
     libCOMU_gf_CT_ApplyPropagatorPingCleanup(EventUnit());
     libCOMU_gf_CT_ApplyMomentOfSilence(EventUnit());
+    libCOMU_gf_CT_ApplyBoomBotPingCleanup(EventUnit());
     return true;
 }
 
@@ -9394,6 +10677,34 @@ void libCOMU_gt_CT_UnitOrdered_Init () {
     libCOMU_gt_CT_UnitOrdered = TriggerCreate("libCOMU_gt_CT_UnitOrdered_Func");
     TriggerEnable(libCOMU_gt_CT_UnitOrdered, false);
     TriggerAddEventUnitOrder(libCOMU_gt_CT_UnitOrdered, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CT_UpgradeChanged
+//--------------------------------------------------------------------------------------------------
+bool libCOMU_gt_CT_UpgradeChanged_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((PlayerGroupHasPlayer(libCOOC_gf_CommanderPlayers(), EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCOMU_gf_CT_ApplyUberDarkness(EventUpgradeName(), EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libCOMU_gt_CT_UpgradeChanged_Init () {
+    libCOMU_gt_CT_UpgradeChanged = TriggerCreate("libCOMU_gt_CT_UpgradeChanged_Func");
+    TriggerEnable(libCOMU_gt_CT_UpgradeChanged, false);
+    TriggerAddEventUpgradeLevelChanged(libCOMU_gt_CT_UpgradeChanged, c_playerAny);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9492,7 +10803,7 @@ bool libCOMU_gt_CT_OutbreakSpawn_Func (bool testConds, bool runActions) {
             UnitGroupAddUnitGroup(lv_spawnedUnits, UnitLastCreatedGroup());
         }
         else if (((GameGetMissionTime() <= 1200.0) || (libCOMI_gf_DifficultyValueFixed4(libCOMI_gf_DifficultyLevelForPlayerCoop(1), true, true, false, false, false, false) == true) || (libCOMI_gf_DifficultyValueFixed4(libCOMI_gf_DifficultyLevelForPlayerCoop(2), true, true, false, false, false, false) == true))) {
-            libNtve_gf_CreateUnitsWithDefaultFacing(1, "InfestedTerranCampaign", 0, UnitGetOwner(lv_spawningStructure), PointWithOffsetPolar(UnitGetPosition(lv_spawningStructure), 1.0, libNtve_gf_RandomAngle()));
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "StukovInfestedTerran", 0, UnitGetOwner(lv_spawningStructure), PointWithOffsetPolar(UnitGetPosition(lv_spawningStructure), 1.0, libNtve_gf_RandomAngle()));
             UnitGroupAddUnitGroup(lv_spawnedUnits, UnitLastCreatedGroup());
         }
         else if (true) {
@@ -9820,6 +11131,7 @@ bool libCOMU_gt_CT_ResourceSpawns_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    Wait(1.0, c_timeGame);
     while (true) {
         if (((GameGetMissionTime() > 180.0) || (lv_spawnIsOdd == true))) {
             lv_spawnRegion = RegionEntireMap();
@@ -9997,7 +11309,7 @@ bool libCOMU_gt_CT_TimeWarpSpawn_Func (bool testConds, bool runActions) {
         lv_safetyInt = 1;
         for ( ; ( (autoF9AA7C4A_ai >= 0 && lv_safetyInt <= autoF9AA7C4A_ae) || (autoF9AA7C4A_ai < 0 && lv_safetyInt >= autoF9AA7C4A_ae) ) ; lv_safetyInt += autoF9AA7C4A_ai ) {
             lv_spawnLocation = RegionRandomPoint(lv_spawnRegion);
-            if (((PathingType(lv_spawnLocation) != c_pathingGround) || (DistanceBetweenPoints(lv_spawnLocation, PlayerStartLocation(1)) <= 25.0) || (DistanceBetweenPoints(lv_spawnLocation, PlayerStartLocation(2)) <= 25.0) || (UnitCount("MineralField", c_playerAny, RegionCircle(lv_spawnLocation, 4.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) >= 1) || (UnitCountAlliance(3, c_unitAllianceEnemy, RegionCircle(lv_spawnLocation, 50.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) == 0))) {
+            if (((PathingType(lv_spawnLocation) != c_pathingGround) || (RegionContainsPoint(libCOMU_gf_CT_MutatorSafetyZone(), lv_spawnLocation) == true) || (UnitCountAlliance(3, c_unitAllianceEnemy, RegionCircle(lv_spawnLocation, 50.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) == 0))) {
                 continue;
             }
             else {
@@ -10043,7 +11355,7 @@ bool libCOMU_gt_CT_NukeSpawn_Func (bool testConds, bool runActions) {
         lv_safetyInt = 1;
         for ( ; ( (auto1AC79492_ai >= 0 && lv_safetyInt <= auto1AC79492_ae) || (auto1AC79492_ai < 0 && lv_safetyInt >= auto1AC79492_ae) ) ; lv_safetyInt += auto1AC79492_ai ) {
             lv_spawnLocation = RegionRandomPoint(lv_spawnRegion);
-            if (((PathingType(lv_spawnLocation) != c_pathingGround) || (DistanceBetweenPoints(lv_spawnLocation, PlayerStartLocation(1)) <= 25.0) || (DistanceBetweenPoints(lv_spawnLocation, PlayerStartLocation(2)) <= 25.0) || (UnitGroupCount(UnitGroup(null, c_playerAny, RegionCircle(lv_spawnLocation, 15.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) >= 1) || ((UnitCount(null, 1, RegionCircle(lv_spawnLocation, 50.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) == 0) && (UnitCount(null, 2, RegionCircle(lv_spawnLocation, 50.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) == 0)))) {
+            if (((PathingType(lv_spawnLocation) != c_pathingGround) || (RegionContainsPoint(libCOMU_gf_CT_MutatorSafetyZone(), lv_spawnLocation) == true) || ((UnitCount(null, 1, RegionCircle(lv_spawnLocation, 50.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) == 0) && (UnitCount(null, 2, RegionCircle(lv_spawnLocation, 50.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) == 0)))) {
                 continue;
             }
             else {
@@ -10131,7 +11443,7 @@ bool libCOMU_gt_CT_BlizzardSpawn_Func (bool testConds, bool runActions) {
                     lv_destinationLocation = PointWithOffsetPolar(lv_spawnLocation, (PointGetY(lv_spawnLocation) / Cos(lv_rightTriangleAngle)), lv_moveDirection);
                 }
             }
-            if (((libCOMU_gf_CT_LineCrossesRegion(lv_spawnLocation, lv_destinationLocation, RegionCircle(PlayerStartLocation(1), 25.0)) == true) || (libCOMU_gf_CT_LineCrossesRegion(lv_spawnLocation, lv_destinationLocation, RegionCircle(PlayerStartLocation(2), 25.0)) == true) || ((UnitGroupCount(libCOMU_gv_cT_RecentBlizzards, c_unitCountAlive) > 0) && (DistanceBetweenPoints(UnitGetPosition(UnitGroupClosestToPoint(libCOMU_gv_cT_RecentBlizzards, lv_spawnLocation)), lv_spawnLocation) < libCOMU_gv_cT_BlizzardSpacingTolerance)))) {
+            if ((((UnitGroupCount(libCOMU_gv_cT_RecentBlizzards, c_unitCountAlive) > 0) && (DistanceBetweenPoints(UnitGetPosition(UnitGroupClosestToPoint(libCOMU_gv_cT_RecentBlizzards, lv_spawnLocation)), lv_spawnLocation) < libCOMU_gv_cT_BlizzardSpacingTolerance)))) {
                 continue;
             }
             else {
@@ -10180,7 +11492,7 @@ bool libCOMU_gt_CT_LavaBurstSpawn_Func (bool testConds, bool runActions) {
         lv_safetyInt = 1;
         for ( ; ( (autoEB25DD61_ai >= 0 && lv_safetyInt <= autoEB25DD61_ae) || (autoEB25DD61_ai < 0 && lv_safetyInt >= autoEB25DD61_ae) ) ; lv_safetyInt += autoEB25DD61_ai ) {
             lv_spawnLocation = RegionRandomPoint(lv_spawnRegion);
-            if (((PathingType(lv_spawnLocation) != c_pathingGround) || (DistanceBetweenPoints(lv_spawnLocation, PlayerStartLocation(1)) <= 25.0) || (DistanceBetweenPoints(lv_spawnLocation, PlayerStartLocation(2)) <= 25.0) || (libCOOC_gf_CC_SpawnAllowedAtPoint(lv_spawnLocation) == false) || (UnitCount("MineralField", c_playerAny, RegionCircle(lv_spawnLocation, 10.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) >= 1) || (UnitCountAlliance(3, c_unitAllianceEnemy, RegionCircle(lv_spawnLocation, 1.0), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) > 0) || (UnitCountAlliance(3, c_unitAllianceEnemy, RegionCircle(lv_spawnLocation, 35.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) == 0))) {
+            if (((PathingType(lv_spawnLocation) != c_pathingGround) || (libCOOC_gf_CC_SpawnAllowedAtPoint(lv_spawnLocation) == false) || (RegionContainsPoint(libCOMU_gf_CT_MutatorSafetyZone(), lv_spawnLocation) == true) || (UnitCountAlliance(3, c_unitAllianceEnemy, RegionCircle(lv_spawnLocation, 1.0), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) > 0) || (UnitCountAlliance(3, c_unitAllianceEnemy, RegionCircle(lv_spawnLocation, 35.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) == 0))) {
                 continue;
             }
             else {
@@ -10222,7 +11534,7 @@ bool libCOMU_gt_CT_TemporalFieldSpawn_Func (bool testConds, bool runActions) {
         Wait(lv_waitTime, c_timeGame);
         while (true) {
             lv_spawnLocation = RegionRandomPoint(lv_spawnRegion);
-            if (((PathingType(lv_spawnLocation) != c_pathingGround) || (libCOOC_gf_CC_SpawnAllowedAtPoint(lv_spawnLocation) == false) || (UnitCount("MineralField", c_playerAny, RegionCircle(lv_spawnLocation, 4.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) >= 1) || (DistanceBetweenPoints(lv_spawnLocation, PlayerStartLocation(1)) <= 30.0) || (DistanceBetweenPoints(lv_spawnLocation, PlayerStartLocation(2)) <= 30.0))) {
+            if (((PathingType(lv_spawnLocation) != c_pathingGround) || (libCOOC_gf_CC_SpawnAllowedAtPoint(lv_spawnLocation) == false) || (RegionContainsPoint(libCOMU_gf_CT_MutatorSafetyZone(), lv_spawnLocation) == true))) {
                 continue;
             }
             else {
@@ -10653,7 +11965,7 @@ bool libCOMU_gt_CT_TornadoMovement_Func (bool testConds, bool runActions) {
                 else {
                     lv_targetLocation = PointWithOffsetPolar(UnitGetPosition(lv_indexTornado), 10.0, libNtve_gf_RandomAngle());
                 }
-                if ((DistanceBetweenPoints(lv_targetLocation, PlayerStartLocation(1)) > 25.0) && (DistanceBetweenPoints(lv_targetLocation, PlayerStartLocation(2)) > 25.0) && (UnitGroupCount(UnitGroup(null, c_playerAny, RegionCircle(lv_targetLocation, 5.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) == 0)) {
+                if ((RegionContainsPoint(libCOMU_gf_CT_MutatorSafetyZone(), lv_targetLocation) == false)) {
                     break;
                 }
                 else {
@@ -10713,7 +12025,7 @@ bool libCOMU_gt_CT_OrbitalStrikes_Func (bool testConds, bool runActions) {
         for (;; autoE903CC8A_u -= 1) {
             lv_candidate = UnitGroupUnitFromEnd(autoE903CC8A_g, autoE903CC8A_u);
             if (lv_candidate == null) { break; }
-            if (((DistanceBetweenPoints(UnitGetPosition(lv_candidate), PlayerStartLocation(UnitGetOwner(lv_candidate))) < 30.0) || (UnitGroupCount(UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(lv_candidate), 15.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0))) {
+            if ((RegionContainsPoint(libCOMU_gf_CT_MutatorSafetyZone(), UnitGetPosition(lv_candidate)) == true) && (true)) {
                 UnitGroupRemove(lv_targetCandidates, lv_candidate);
             }
 
@@ -10748,7 +12060,7 @@ bool libCOMU_gt_CT_OrbitalStrikes_Func (bool testConds, bool runActions) {
         for (;; auto3FF39B5B_u -= 1) {
             lv_candidate = UnitGroupUnitFromEnd(auto3FF39B5B_g, auto3FF39B5B_u);
             if (lv_candidate == null) { break; }
-            if (((DistanceBetweenPoints(UnitGetPosition(lv_candidate), PlayerStartLocation(UnitGetOwner(lv_candidate))) < 30.0) || (UnitGroupCount(UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(lv_candidate), 15.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) > 0))) {
+            if ((RegionContainsPoint(libCOMU_gf_CT_MutatorSafetyZone(), UnitGetPosition(lv_candidate)) == true) && (true)) {
                 UnitGroupRemove(lv_targetCandidates, lv_candidate);
             }
 
@@ -10839,7 +12151,7 @@ bool libCOMU_gt_CT_PurifierBeamController_Func (bool testConds, bool runActions)
             }
             lv_searchAttempts = 1;
             for ( ; ( (autoA208DE0C_ai >= 0 && lv_searchAttempts <= autoA208DE0C_ae) || (autoA208DE0C_ai < 0 && lv_searchAttempts >= autoA208DE0C_ae) ) ; lv_searchAttempts += autoA208DE0C_ai ) {
-                if ((DistanceBetweenPoints(lv_targetLocation, PlayerStartLocation(1)) > libCOMU_gv_cT_PurifierBeamBaseAvoidDistance) && (DistanceBetweenPoints(lv_targetLocation, PlayerStartLocation(2)) > libCOMU_gv_cT_PurifierBeamBaseAvoidDistance) && ((UnitGroupCount(UnitGroup(null, c_playerAny, RegionCircle(lv_targetLocation, 20.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) <= 0) || (DistanceBetweenPoints(lv_targetLocation, PlayerStartLocation(3)) < 25.0) || (DistanceBetweenPoints(lv_targetLocation, PlayerStartLocation(4)) < 25.0))) {
+                if ((RegionContainsPoint(libCOMU_gf_CT_MutatorSafetyZone(), lv_targetLocation) == false)) {
                     UnitIssueOrder(lv_purifierBeam, OrderTargetingPoint(AbilityCommand("move", 0), lv_targetLocation), c_orderQueueReplace);
                     break;
                 }
@@ -12247,138 +13559,6 @@ void libCOMU_gt_CT_GiftFightControl_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: CT_HeroesFromTheStorm
-//--------------------------------------------------------------------------------------------------
-bool libCOMU_gt_CT_HeroesFromTheStorm_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    point lv_waveSpawnPoint;
-    unit lv_heroUnit;
-    int lv_i;
-    int lv_randomHeroIndex1;
-    int lv_randomHeroIndex2;
-    int lv_randomHeroIndex3;
-
-    // Automatic Variable Declarations
-    int auto158C0988_val;
-
-    // Variable Initialization
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_waveSpawnPoint = UnitGroupCenterOfGroup(AIWaveGetUnits(EventPlayerWave()));
-    libCOMU_gv_cT_AmonHeroNumber += 1;
-    auto158C0988_val = libCOMU_gv_cT_AmonHeroNumber;
-    if (auto158C0988_val == 1) {
-        return true;
-    }
-    else if (auto158C0988_val == 2) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, libCOMU_gv_cT_AmonHeroUnitTypeArray[2], 0, EventPlayer(), lv_waveSpawnPoint);
-        SoundPlayAtPointForPlayer(libCOMU_gv_cT_AmonHeroSoundArray[2], c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX_Sur", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        AISetUnitScriptControlled(UnitLastCreated(), false);
-        AIWaveAddUnit(EventPlayerWave(), UnitLastCreated());
-    }
-    else if (auto158C0988_val == 3) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, libCOMU_gv_cT_AmonHeroUnitTypeArray[1], 0, EventPlayer(), lv_waveSpawnPoint);
-        SoundPlayAtPointForPlayer(libCOMU_gv_cT_AmonHeroSoundArray[1], c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX_Sur", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        AISetUnitScriptControlled(UnitLastCreated(), false);
-        AIWaveAddUnit(EventPlayerWave(), UnitLastCreated());
-    }
-    else if (auto158C0988_val == 4) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, libCOMU_gv_cT_AmonHeroUnitTypeArray[(libCOMU_gv_cT_AmonHeroNumber - 1)], 0, EventPlayer(), lv_waveSpawnPoint);
-        SoundPlayAtPointForPlayer(libCOMU_gv_cT_AmonHeroSoundArray[(libCOMU_gv_cT_AmonHeroNumber - 1)], c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX_Sur", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        AISetUnitScriptControlled(UnitLastCreated(), false);
-        AIWaveAddUnit(EventPlayerWave(), UnitLastCreated());
-    }
-    else if (auto158C0988_val == 5) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, libCOMU_gv_cT_AmonHeroUnitTypeArray[(libCOMU_gv_cT_AmonHeroNumber - 1)], 0, EventPlayer(), lv_waveSpawnPoint);
-        SoundPlayAtPointForPlayer(libCOMU_gv_cT_AmonHeroSoundArray[(libCOMU_gv_cT_AmonHeroNumber - 1)], c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX_Sur", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        AISetUnitScriptControlled(UnitLastCreated(), false);
-        AIWaveAddUnit(EventPlayerWave(), UnitLastCreated());
-    }
-    else if (auto158C0988_val == 6) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, libCOMU_gv_cT_AmonHeroUnitTypeArray[(libCOMU_gv_cT_AmonHeroNumber - 1)], 0, EventPlayer(), lv_waveSpawnPoint);
-        SoundPlayAtPointForPlayer(libCOMU_gv_cT_AmonHeroSoundArray[(libCOMU_gv_cT_AmonHeroNumber - 1)], c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX_Sur", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        AISetUnitScriptControlled(UnitLastCreated(), false);
-        AIWaveAddUnit(EventPlayerWave(), UnitLastCreated());
-    }
-    else if (auto158C0988_val == 7) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, libCOMU_gv_cT_AmonHeroUnitTypeArray[(libCOMU_gv_cT_AmonHeroNumber - 1)], 0, EventPlayer(), lv_waveSpawnPoint);
-        SoundPlayAtPointForPlayer(libCOMU_gv_cT_AmonHeroSoundArray[(libCOMU_gv_cT_AmonHeroNumber - 1)], c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX_Sur", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        AISetUnitScriptControlled(UnitLastCreated(), false);
-        AIWaveAddUnit(EventPlayerWave(), UnitLastCreated());
-    }
-    else if (auto158C0988_val == 8) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, libCOMU_gv_cT_AmonHeroUnitTypeArray[8], 0, EventPlayer(), lv_waveSpawnPoint);
-        SoundPlayAtPointForPlayer(libCOMU_gv_cT_AmonHeroSoundArray[8], c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX_Sur", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        AISetUnitScriptControlled(UnitLastCreated(), false);
-        AIWaveAddUnit(EventPlayerWave(), UnitLastCreated());
-    }
-    else if (auto158C0988_val == 9) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, libCOMU_gv_cT_AmonHeroUnitTypeArray[7], 0, EventPlayer(), lv_waveSpawnPoint);
-        SoundPlayAtPointForPlayer(libCOMU_gv_cT_AmonHeroSoundArray[7], c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX_Sur", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        AISetUnitScriptControlled(UnitLastCreated(), false);
-        AIWaveAddUnit(EventPlayerWave(), UnitLastCreated());
-    }
-    else if (auto158C0988_val == 10) {
-        libNtve_gf_CreateUnitsWithDefaultFacing(1, libCOMU_gv_cT_AmonHeroUnitTypeArray[(libCOMU_gv_cT_AmonHeroNumber - 1)], 0, EventPlayer(), lv_waveSpawnPoint);
-        SoundPlayAtPointForPlayer(libCOMU_gv_cT_AmonHeroSoundArray[(libCOMU_gv_cT_AmonHeroNumber - 1)], c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX_Sur", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-        AISetUnitScriptControlled(UnitLastCreated(), false);
-        AIWaveAddUnit(EventPlayerWave(), UnitLastCreated());
-    }
-    else {
-        if ((ModI(libCOMU_gv_cT_AmonHeroNumber, 2) == 0)) {
-            SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-            SoundPlayAtPointForPlayer(SoundLink("MutatorAmonHero_BirthFX_Sur", c_soundIndexAny), c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-            lv_randomHeroIndex1 = RandomInt(1, 3);
-            libNtve_gf_CreateUnitsWithDefaultFacing(1, libCOMU_gv_cT_AmonHeroUnitTypeArray[lv_randomHeroIndex1], 0, EventPlayer(), lv_waveSpawnPoint);
-            SoundPlayAtPointForPlayer(libCOMU_gv_cT_AmonHeroSoundArray[lv_randomHeroIndex1], c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-            AISetUnitScriptControlled(UnitLastCreated(), false);
-            AIWaveAddUnit(EventPlayerWave(), UnitLastCreated());
-            lv_randomHeroIndex2 = RandomInt(4, 6);
-            libNtve_gf_CreateUnitsWithDefaultFacing(1, libCOMU_gv_cT_AmonHeroUnitTypeArray[lv_randomHeroIndex2], 0, EventPlayer(), lv_waveSpawnPoint);
-            SoundPlayAtPointForPlayer(libCOMU_gv_cT_AmonHeroSoundArray[lv_randomHeroIndex2], c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-            AISetUnitScriptControlled(UnitLastCreated(), false);
-            AIWaveAddUnit(EventPlayerWave(), UnitLastCreated());
-            lv_randomHeroIndex3 = RandomInt(7, 9);
-            libNtve_gf_CreateUnitsWithDefaultFacing(1, libCOMU_gv_cT_AmonHeroUnitTypeArray[lv_randomHeroIndex3], 0, EventPlayer(), lv_waveSpawnPoint);
-            SoundPlayAtPointForPlayer(libCOMU_gv_cT_AmonHeroSoundArray[lv_randomHeroIndex3], c_maxPlayers, PlayerGroupAll(), lv_waveSpawnPoint, 0.0, 100.0, 0.0);
-            AISetUnitScriptControlled(UnitLastCreated(), false);
-            AIWaveAddUnit(EventPlayerWave(), UnitLastCreated());
-        }
-
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libCOMU_gt_CT_HeroesFromTheStorm_Init () {
-    libCOMU_gt_CT_HeroesFromTheStorm = TriggerCreate("libCOMU_gt_CT_HeroesFromTheStorm_Func");
-    TriggerEnable(libCOMU_gt_CT_HeroesFromTheStorm, false);
-    TriggerAddEventPlayerAIWave(libCOMU_gt_CT_HeroesFromTheStorm, c_playerAny);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: CT_TempDamageReflectHealing
 //--------------------------------------------------------------------------------------------------
 bool libCOMU_gt_CT_TempDamageReflectHealing_Func (bool testConds, bool runActions) {
@@ -12519,7 +13699,7 @@ bool libCOMU_gt_CT_PropagatorSpawn_Func (bool testConds, bool runActions) {
         for ( ; ( (autoF17E7024_ai >= 0 && lv_indexSpawn <= autoF17E7024_ae) || (autoF17E7024_ai < 0 && lv_indexSpawn >= autoF17E7024_ae) ) ; lv_indexSpawn += autoF17E7024_ai ) {
             lv_spawnAttempt = 1;
             for ( ; ( (autoD964A6BB_ai >= 0 && lv_spawnAttempt <= autoD964A6BB_ae) || (autoD964A6BB_ai < 0 && lv_spawnAttempt >= autoD964A6BB_ae) ) ; lv_spawnAttempt += autoD964A6BB_ai ) {
-                lv_spawningStructure = UnitGroupRandomUnit(libNtve_gf_UnitsInRegionWithAllianceToPlayerMatchingCondition(null, "", "", 1, c_unitAllianceEnemy, RegionPlayableMap(), UnitFilter((1 << c_targetFilterStructure) | (1 << c_targetFilterPreventDefeat), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive);
+                lv_spawningStructure = UnitGroupRandomUnit(libNtve_gf_UnitsInRegionWithAllianceToPlayerMatchingCondition(null, "", "", 1, c_unitAllianceEnemy, RegionPlayableMap(), UnitFilter((1 << c_targetFilterStructure) | (1 << c_targetFilterPreventDefeat), 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive);
                 if ((PointPathingIsConnected(UnitGetPosition(lv_spawningStructure), PlayerStartLocation(1)) == true)) {
                     break;
                 }
@@ -12692,6 +13872,215 @@ void libCOMU_gt_CT_KillBotsSpawn_Init () {
     TriggerEnable(libCOMU_gt_CT_KillBotsSpawn, false);
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: CT_BoomBotsSpawn
+//--------------------------------------------------------------------------------------------------
+bool libCOMU_gt_CT_BoomBotsSpawn_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_spawningStructure;
+    int lv_spawnAttempt;
+    timer lv_spawnTimer;
+    unit lv_indexReanimator;
+    int lv_spawnCount;
+    int lv_indexSpawn;
+
+    // Automatic Variable Declarations
+    int auto7CFEB633_ae;
+    const int auto7CFEB633_ai = 1;
+    const int autoC3D7CF28_ae = 100;
+    const int autoC3D7CF28_ai = 1;
+
+    // Variable Initialization
+    lv_spawnTimer = TimerCreate();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    while (!((GameGetMissionTime() >= libCOMI_gf_MinimumDifficultyValueCoopReal(270.0, 220.0, 170.0, 130.0, 130.0, 130.0)))) {
+        Wait(10.0, c_timeGame);
+    }
+    TimerStart(lv_spawnTimer, 5.0, false, c_timeAI);
+    while (true) {
+        Wait(10.0, c_timeAI);
+        if ((TimerGetRemaining(lv_spawnTimer) > 0.0)) {
+            continue;
+        }
+
+        if ((GameGetMissionTime() <= 720.0)) {
+            lv_spawnCount = 1;
+        }
+        else if (true) {
+            lv_spawnCount = libCOMI_gf_MinimumDifficultyValueCoopInteger(1, 1, 2, 2, 2, 2);
+        }
+        auto7CFEB633_ae = lv_spawnCount;
+        lv_indexSpawn = 1;
+        for ( ; ( (auto7CFEB633_ai >= 0 && lv_indexSpawn <= auto7CFEB633_ae) || (auto7CFEB633_ai < 0 && lv_indexSpawn >= auto7CFEB633_ae) ) ; lv_indexSpawn += auto7CFEB633_ai ) {
+            lv_spawnAttempt = 1;
+            for ( ; ( (autoC3D7CF28_ai >= 0 && lv_spawnAttempt <= autoC3D7CF28_ae) || (autoC3D7CF28_ai < 0 && lv_spawnAttempt >= autoC3D7CF28_ae) ) ; lv_spawnAttempt += autoC3D7CF28_ai ) {
+                lv_spawningStructure = UnitGroupRandomUnit(libNtve_gf_UnitsInRegionWithAllianceToPlayerMatchingCondition(null, "", "", 1, c_unitAllianceEnemy, RegionPlayableMap(), UnitFilter((1 << c_targetFilterStructure) | (1 << c_targetFilterPreventDefeat), 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterDestructible), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive);
+                if ((PointPathingIsConnected(UnitGetPosition(lv_spawningStructure), PlayerStartLocation(1)) == true)) {
+                    break;
+                }
+                else {
+                    lv_spawningStructure = null;
+                }
+            }
+            if ((lv_spawningStructure == null)) {
+                continue;
+            }
+
+            UnitCreate(1, "MutatorBoomBot", 0, 3, UnitGetPosition(lv_spawningStructure), libNtve_gf_RandomAngle());
+            libCOMU_gf_CT_RegisterSpawnedUnit(UnitLastCreated());
+            AISetUnitSuicide(UnitLastCreated(), true);
+            libCOMU_gf_CT_ApplyBoomBotPing(UnitLastCreated());
+            libCOMU_gf_CT_BoomBotsUpdate(UnitLastCreated());
+        }
+        SoundPlayForPlayer(SoundLink("TUIWarning", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+        if ((GameGetMissionTime() <= 720.0)) {
+            TimerStart(lv_spawnTimer, libCOMI_gf_MinimumDifficultyValueCoopReal(140.0, 120.0, 100.0, 80.0, 80.0, 80.0), false, c_timeAI);
+        }
+        else if ((GameGetMissionTime() <= 1080.0)) {
+            TimerStart(lv_spawnTimer, libCOMI_gf_MinimumDifficultyValueCoopReal(130.0, 105.0, 77.5, 60.0, 60.0, 60.0), false, c_timeAI);
+        }
+        else if (true) {
+            TimerStart(lv_spawnTimer, libCOMI_gf_MinimumDifficultyValueCoopReal(120.0, 90.0, 55.0, 40.0, 40.0, 40.0), false, c_timeAI);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libCOMU_gt_CT_BoomBotsSpawn_Init () {
+    libCOMU_gt_CT_BoomBotsSpawn = TriggerCreate("libCOMU_gt_CT_BoomBotsSpawn_Func");
+    TriggerEnable(libCOMU_gt_CT_BoomBotsSpawn, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CT_BoomBotsInput
+//--------------------------------------------------------------------------------------------------
+bool libCOMU_gt_CT_BoomBotsInput_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_boombothelper;
+    int lv_remainingdigitcount;
+    int lv_correctvalue;
+    int lv_input;
+    text lv_inputtext;
+    int lv_customvalueindex;
+    int lv_speedstacks;
+
+    // Automatic Variable Declarations
+    abilcmd autoCD529328_val;
+    int auto6B242565_ae;
+    const int auto6B242565_ai = 1;
+    int auto789E5336_ae;
+    const int auto789E5336_ai = 1;
+    unitgroup auto1F0E61FB_g;
+    int auto1F0E61FB_u;
+    unit auto1F0E61FB_var;
+
+    // Variable Initialization
+    lv_boombothelper = EventUnit();
+    lv_remainingdigitcount = FixedToInt(UnitGetCustomValue(lv_boombothelper, libCOMU_gv_cT_BoomBotsIndexStart));
+    lv_correctvalue = FixedToInt(UnitGetCustomValue(lv_boombothelper, (libCOMU_gv_cT_BoomBotsIndexStart+libCOMU_gv_cT_BoomBotsDigits[EventPlayer()]-lv_remainingdigitcount+1)));
+    lv_speedstacks = libCOMI_gf_DifficultyValueInt2(libCOMI_gf_DifficultyLevelForPlayerCoop(EventPlayer()), 0, 1, 2, 4, 4, 4);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoCD529328_val = EventUnitAbility();
+    if (autoCD529328_val == AbilityCommand("MutatorBoomBotDefuse", 0)) {
+        lv_input = 1;
+    }
+    else if (autoCD529328_val == AbilityCommand("MutatorBoomBotDefuse", 1)) {
+        lv_input = 2;
+    }
+    else if (autoCD529328_val == AbilityCommand("MutatorBoomBotDefuse", 2)) {
+        lv_input = 3;
+    }
+    else if (autoCD529328_val == AbilityCommand("MutatorBoomBotDefuse", 3)) {
+        lv_input = 4;
+    }
+    else if (autoCD529328_val == AbilityCommand("MutatorBoomBotDefuse", 4)) {
+        lv_input = 5;
+    }
+    else if (autoCD529328_val == AbilityCommand("MutatorBoomBotDefuse", 5)) {
+        lv_input = 6;
+    }
+    else if (autoCD529328_val == AbilityCommand("MutatorBoomBotDefuse", 6)) {
+        lv_input = 7;
+    }
+    else if (autoCD529328_val == AbilityCommand("MutatorBoomBotDefuse", 7)) {
+        lv_input = 8;
+    }
+    else if (autoCD529328_val == AbilityCommand("MutatorBoomBotDefuse", 8)) {
+        lv_input = 9;
+    }
+    else {
+        return true;
+    }
+    if ((lv_input == lv_correctvalue) && (lv_remainingdigitcount > 1)) {
+        lv_remainingdigitcount -= 1;
+        UnitSetCustomValue(lv_boombothelper, libCOMU_gv_cT_BoomBotsIndexStart, lv_remainingdigitcount);
+        TextExpressionSetToken("Param/Expression/lib_COMU_CEC6A06A", "A", FixedToText(UnitGetCustomValue(lv_boombothelper, (libCOMU_gv_cT_BoomBotsIndexStart+1)), 0));
+        lv_inputtext = TextExpressionAssemble("Param/Expression/lib_COMU_CEC6A06A");
+        auto6B242565_ae = (libCOMU_gv_cT_BoomBotsIndexStart + libCOMU_gv_cT_BoomBotsDigits[EventPlayer()] - lv_remainingdigitcount);
+        lv_customvalueindex = (libCOMU_gv_cT_BoomBotsIndexStart + 2);
+        for ( ; ( (auto6B242565_ai >= 0 && lv_customvalueindex <= auto6B242565_ae) || (auto6B242565_ai < 0 && lv_customvalueindex >= auto6B242565_ae) ) ; lv_customvalueindex += auto6B242565_ai ) {
+            TextExpressionSetToken("Param/Expression/lib_COMU_139E6F06", "A", lv_inputtext);
+            TextExpressionSetToken("Param/Expression/lib_COMU_139E6F06", "B", FixedToText(UnitGetCustomValue(lv_boombothelper, lv_customvalueindex), 0));
+            lv_inputtext = TextExpressionAssemble("Param/Expression/lib_COMU_139E6F06");
+        }
+        TextExpressionSetToken("Param/Expression/lib_COMU_7C4087AF", "A", lv_inputtext);
+        lv_inputtext = TextExpressionAssemble("Param/Expression/lib_COMU_7C4087AF");
+        auto789E5336_ae = (libCOMU_gv_cT_BoomBotsIndexStart + libCOMU_gv_cT_BoomBotsDigits[EventPlayer()]);
+        lv_customvalueindex = (libCOMU_gv_cT_BoomBotsIndexStart + libCOMU_gv_cT_BoomBotsDigits[EventPlayer()] - lv_remainingdigitcount + 1);
+        for ( ; ( (auto789E5336_ai >= 0 && lv_customvalueindex <= auto789E5336_ae) || (auto789E5336_ai < 0 && lv_customvalueindex >= auto789E5336_ae) ) ; lv_customvalueindex += auto789E5336_ai ) {
+            TextExpressionSetToken("Param/Expression/lib_COMU_28B79680", "A", lv_inputtext);
+            lv_inputtext = TextExpressionAssemble("Param/Expression/lib_COMU_28B79680");
+        }
+        TextExpressionSetToken("Param/Expression/lib_COMU_6B5CE06A", "A", lv_inputtext);
+        lv_inputtext = TextExpressionAssemble("Param/Expression/lib_COMU_6B5CE06A");
+        TextExpressionSetToken("Param/Expression/lib_COMU_26E41F38", "A", lv_inputtext);
+        TextTagSetText(libHots_gf_TextTagForUnit(lv_boombothelper, libCOMU_gv_cT_BoomBotsInputTextTagIndex), TextExpressionAssemble("Param/Expression/lib_COMU_26E41F38"));
+    }
+    else if ((lv_input == lv_correctvalue)) {
+        UnitRemove(lv_boombothelper);
+    }
+    else if (true) {
+        UnitModifyCooldown(lv_boombothelper, "Abil/MutatorBoomBotDefuse", libCOMI_gf_DifficultyValueFixed2(libCOMI_gf_DifficultyLevelForPlayerCoop(EventPlayer()), 1.0, 3.0, 5.0, 8.0, 8.0, 8.0), c_cooldownOperationDefault);
+        if ((lv_speedstacks > 0)) {
+            auto1F0E61FB_g = UnitGroup(null, c_playerAny, RegionCircle(UnitGetPosition(lv_boombothelper), 0.1), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+            auto1F0E61FB_u = UnitGroupCount(auto1F0E61FB_g, c_unitCountAll);
+            for (;; auto1F0E61FB_u -= 1) {
+                auto1F0E61FB_var = UnitGroupUnitFromEnd(auto1F0E61FB_g, auto1F0E61FB_u);
+                if (auto1F0E61FB_var == null) { break; }
+                UnitBehaviorAdd(auto1F0E61FB_var, "MutatorBoomBotSpeedUp", auto1F0E61FB_var, lv_speedstacks);
+            }
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libCOMU_gt_CT_BoomBotsInput_Init () {
+    libCOMU_gt_CT_BoomBotsInput = TriggerCreate("libCOMU_gt_CT_BoomBotsInput_Func");
+    TriggerEnable(libCOMU_gt_CT_BoomBotsInput, false);
+    TriggerAddEventUnitAbility(libCOMU_gt_CT_BoomBotsInput, null, AbilityCommand("MutatorBoomBotDefuse", 0), c_unitAbilStageComplete, false);
+    TriggerAddEventUnitAbility(libCOMU_gt_CT_BoomBotsInput, null, AbilityCommand("MutatorBoomBotDefuse", 1), c_unitAbilStageComplete, false);
+    TriggerAddEventUnitAbility(libCOMU_gt_CT_BoomBotsInput, null, AbilityCommand("MutatorBoomBotDefuse", 2), c_unitAbilStageComplete, false);
+    TriggerAddEventUnitAbility(libCOMU_gt_CT_BoomBotsInput, null, AbilityCommand("MutatorBoomBotDefuse", 3), c_unitAbilStageComplete, false);
+    TriggerAddEventUnitAbility(libCOMU_gt_CT_BoomBotsInput, null, AbilityCommand("MutatorBoomBotDefuse", 4), c_unitAbilStageComplete, false);
+    TriggerAddEventUnitAbility(libCOMU_gt_CT_BoomBotsInput, null, AbilityCommand("MutatorBoomBotDefuse", 5), c_unitAbilStageComplete, false);
+    TriggerAddEventUnitAbility(libCOMU_gt_CT_BoomBotsInput, null, AbilityCommand("MutatorBoomBotDefuse", 6), c_unitAbilStageComplete, false);
+    TriggerAddEventUnitAbility(libCOMU_gt_CT_BoomBotsInput, null, AbilityCommand("MutatorBoomBotDefuse", 7), c_unitAbilStageComplete, false);
+    TriggerAddEventUnitAbility(libCOMU_gt_CT_BoomBotsInput, null, AbilityCommand("MutatorBoomBotDefuse", 8), c_unitAbilStageComplete, false);
+}
+
 void libCOMU_InitTriggers () {
     libCOMU_gt_CT_DebugDropPodSpawnNow_Init();
     libCOMU_gt_CT_DebugMakeVoidRift_Init();
@@ -12709,6 +14098,8 @@ void libCOMU_InitTriggers () {
     libCOMU_gt_CT_DebugGiftSetPower_Init();
     libCOMU_gt_CT_DebugGiftPlayer_Init();
     libCOMU_gt_CT_DebugGiftEnemy_Init();
+    libCOMU_gt_CT_DebugBoomBotSpawn_Init();
+    libCOMU_gt_CT_DebugBrutal_Init();
     libCOMU_gt_CT_InitializeWorkerSleep_Init();
     libCOMU_gt_CT_InitializeOutbreak_Init();
     libCOMU_gt_CT_InitializeEntomb_Init();
@@ -12776,6 +14167,7 @@ void libCOMU_InitTriggers () {
     libCOMU_gt_CT_InitializePropagate_Init();
     libCOMU_gt_CT_InitializeKillBots_Init();
     libCOMU_gt_CT_InitializeMomentOfSilence_Init();
+    libCOMU_gt_CT_InitializeBoomBots_Init();
     libCOMU_gt_CT_ShutdownWorkerSleep_Init();
     libCOMU_gt_CT_ShutdownOutbreak_Init();
     libCOMU_gt_CT_ShutdownEntomb_Init();
@@ -12845,12 +14237,17 @@ void libCOMU_InitTriggers () {
     libCOMU_gt_CT_ShutdownPropagate_Init();
     libCOMU_gt_CT_ShutdownKillBots_Init();
     libCOMU_gt_CT_ShutdownMomentOfSilence_Init();
+    libCOMU_gt_CT_ShutdownBoomBots_Init();
+    libCOMU_gt_CT_AmonHeroPool_Tracker_Init();
     libCOMU_gt_CT_JustDieTrainHealth_Init();
+    libCOMU_gt_CT_JustDiePolarityInteraction_Init();
     libCOMU_gt_CT_StatBlizzardFreeze_Init();
     libCOMU_gt_CT_GiftKillBotBanelingCredit_Init();
     libCOMU_gt_CT_GiftShrunkEffectOn_Init();
     libCOMU_gt_CT_GiftShrunkEffectOff_Init();
     libCOMU_gt_CT_CandyBowlTextUpdate_Init();
+    libCOMU_gt_CT_BlizzardEntersSafetyZone_Init();
+    libCOMU_gt_CT_BlizzardLeavesSafetyZone_Init();
     libCOMU_gt_MutatorLaserDrillBeamSoundRegionClear_Init();
     libCOMU_gt_MutatorLaserDrillBeamSoundFiring_Init();
     libCOMU_gt_CT_OwnerChanges_Init();
@@ -12858,6 +14255,7 @@ void libCOMU_InitTriggers () {
     libCOMU_gt_CT_UnitDeath_Init();
     libCOMU_gt_CT_UnitCreation_Init();
     libCOMU_gt_CT_UnitOrdered_Init();
+    libCOMU_gt_CT_UpgradeChanged_Init();
     libCOMU_gt_CT_PlagueDeath_Init();
     libCOMU_gt_CT_OutbreakSpawn_Init();
     libCOMU_gt_CT_StoneZealotsSpawn_Init();
@@ -12899,11 +14297,12 @@ void libCOMU_InitTriggers () {
     libCOMU_gt_CT_StructureStealUnitTrained_Init();
     libCOMU_gt_CT_GiftFightSpawn_Init();
     libCOMU_gt_CT_GiftFightControl_Init();
-    libCOMU_gt_CT_HeroesFromTheStorm_Init();
     libCOMU_gt_CT_TempDamageReflectHealing_Init();
     libCOMU_gt_CT_PropagateClone_Init();
     libCOMU_gt_CT_PropagatorSpawn_Init();
     libCOMU_gt_CT_KillBotsSpawn_Init();
+    libCOMU_gt_CT_BoomBotsSpawn_Init();
+    libCOMU_gt_CT_BoomBotsInput_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

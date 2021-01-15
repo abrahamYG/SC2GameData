@@ -1,9 +1,42 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CUpgrade id="AdeptPiercingAttack">
         <Icon value="Assets\Textures\btn-upgrade-protoss-resonatingglaives-orange.dds"/>
         <ScoreAmount value="200"/>
         <ScoreResult value="BuildOrder"/>
+    </CUpgrade>
+    <CUpgrade id="TempestGroundAttackUpgrade">
+        <Icon value="Assets\Textures\btn-ability-protoss-disruptionblast.dds"/>
+        <ScoreAmount value="300"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Reference="Effect,TempestDamageGround,AttributeBonus[Structure]" Value="40"/>
+        <AffectedUnitArray value="Tempest"/>
+    </CUpgrade>
+    <CUpgrade id="AmplifiedShielding">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-adeptshieldupgrade.dds"/>
+        <ScoreAmount value="200"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Reference="Unit,Adept,ShieldsMax" Value="20"/>
+        <EffectArray Reference="Unit,Adept,ShieldsStart" Value="20"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:AttackBonus"/>
+        <AffectedUnitArray value="Adept"/>
+    </CUpgrade>
+    <CUpgrade id="MicrobialShroud">
+        <Icon value="Assets\Textures\btn-ability-zerg-darkswarm.dds"/>
+        <Alert value="ResearchComplete"/>
+        <Race value="Zerg"/>
+        <ScoreAmount value="300"/>
+        <ScoreResult value="BuildOrder"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:SpellResearch"/>
+        <AffectedUnitArray value="Infestor"/>
+    </CUpgrade>
+    <CUpgrade id="PsionicAmplifiers">
+        <Icon value="Assets\Textures\btn-ability-protoss-phasedisruptor.dds"/>
+        <ScoreAmount value="200"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Reference="Weapon,Adept,Range" Value="1"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:AttackBonus"/>
+        <AffectedUnitArray value="Adept"/>
     </CUpgrade>
     <CUpgrade id="AnabolicSynthesis">
         <EffectArray index="0" Operation="Subtract" Reference="Unit,Ultralisk,SpeedMultiplierCreep" Value="0.2165"/>
@@ -32,15 +65,45 @@
         <EffectArray Reference="Unit,BanelingBurrowed,LifeStart" Value="5"/>
     </CUpgrade>
     <CUpgrade id="Charge">
-        <EffectArray index="0" Reference="Unit,Zealot,Speed" Value="0.703100"/>
+        <EffectArray index="0" Reference="Unit,Zealot,Speed" Value="1.125000"/>
         <ScoreAmount value="200"/>
+    </CUpgrade>
+    <CUpgrade id="SunderingImpact">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-shadowblade.dds"/>
+        <Alert value="ResearchComplete"/>
+        <Race value="Prot"/>
+        <ScoreAmount value="200"/>
+        <ScoreResult value="BuildOrder"/>
+        <!--EffectArray Operation="Set" Reference="Effect,ChargingDamage,Amount" Value="8"/>
+        <EffectArray Operation="Set" Reference="Effect,ChargingDamageSecondary,Amount" Value="8"/-->
+        <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
+        <AffectedUnitArray value="Zealot"/>
+        <LeaderAlias value="Charge"/>
     </CUpgrade>
     <CUpgrade id="ChitinousPlating"/>
     <CUpgrade id="DrillClaws">
-        <EffectArray Operation="Set" Reference="Behavior,WidowMineBurrowedCloakingBehavior,Modification.StateFlags[SuppressCloak]" Value="0"/>
+        <!--EffectArray Operation="Set" Reference="Behavior,WidowMineBurrowedCloakingBehavior,Modification.StateFlags[SuppressCloak]" Value="0"/-->
+    </CUpgrade>
+    <CUpgrade id="SecretedCoating">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-demolition.dds"/>
+        <Alert value="ResearchComplete"/>
+        <Race value="Zerg"/>
+        <ScoreAmount value="200"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Operation="Set" Reference="Abil,NydusCanalTransport,InitialUnloadDelay" Value="0.250000"/>
+        <EffectArray Operation="Set" Reference="Abil,NydusCanalTransport,LoadPeriod" Value="0.125000"/>
+        <EffectArray Operation="Set" Reference="Abil,NydusCanalTransport,UnloadPeriod" Value="0.250000"/>
+        <EffectArray Operation="Set" Reference="Abil,NydusWormTransport,InitialUnloadDelay" Value="0.250000"/>
+        <EffectArray Operation="Set" Reference="Abil,NydusWormTransport,LoadPeriod" Value="0.125000"/>
+        <EffectArray Operation="Set" Reference="Abil,NydusWormTransport,UnloadPeriod" Value="0.250000"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
+        <AffectedUnitArray value="NydusNetwork"/>
+        <AffectedUnitArray value="NydusCanal"/>
     </CUpgrade>
     <CUpgrade id="ObserverGraviticBooster">
-        <EffectArray index="0" Reference="Unit,Observer,Speed" Value="1.074200"/>
+        <EffectArray index="0" Reference="Unit,Observer,Speed" Value="0.937500"/>
     </CUpgrade>
     <CUpgrade id="PhoenixRangeUpgrade"/>
     <CUpgrade id="ProtossAirArmorsLevel1">
@@ -78,8 +141,8 @@
     </CUpgrade>
     <CUpgrade id="LiberatorAGRangeUpgrade">
         <Icon value="Assets\Textures\btn-upgrade-terran-advanceballistics.dds"/>
-        <EffectArray Reference="Abil,LiberatorAGTarget,Range[0]" Value="4"/>
-        <EffectArray Reference="Weapon,LiberatorAGWeapon,Range" Value="4"/>
+        <EffectArray Reference="Abil,LiberatorAGTarget,Range[0]" Value="3"/>
+        <EffectArray Reference="Weapon,LiberatorAGWeapon,Range" Value="3"/>
         <!--EffectArray Reference="Unit,LiberatorAG,Sight" Value="4"/-->
         <EditorCategories value="Race:Protoss,UpgradeType:SpellResearch"/>
         <AffectedUnitArray value="Liberator"/>
@@ -88,6 +151,18 @@
         <ScoreResult value="BuildOrder"/>
     </CUpgrade>
     <CUpgrade id="PersonalCloaking">
+        <AffectedUnitArray value="GhostAlternate"/>
+        <AffectedUnitArray value="GhostNova"/>
+    </CUpgrade>
+    <CUpgrade id="EnhancedShockwaves">
+        <Icon value="Assets\Textures\btn-ability-terran-electricfield.dds"/>
+        <Alert value="ResearchComplete"/>
+        <Race value="Terr"/>
+        <ScoreAmount value="300"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Reference="Effect,EMPSearch,AreaArray[0].Radius" Value="0.5"/>
+        <EditorCategories value="Race:Terran,UpgradeType:SpellResearch"/>
+        <AffectedUnitArray value="Ghost"/>
         <AffectedUnitArray value="GhostAlternate"/>
         <AffectedUnitArray value="GhostNova"/>
     </CUpgrade>
@@ -146,13 +221,13 @@
     </CUpgrade>
     <CUpgrade id="LurkerRange">
         <Flags index="TechTreeCheat" value="1"/>
-        <Icon value="Assets\Textures\btn-ability-kerrigan-malignantcreep.dds"/>
+        <Icon value="Assets\Textures\btn-upgrade-kerrigan-seismicspines.dds"/>
         <Alert value="ResearchComplete"/>
         <Race value="Zerg"/>
-        <ScoreAmount value="400"/>
+        <ScoreAmount value="300"/>
         <ScoreResult value="BuildOrder"/>
-        <EffectArray Reference="Weapon,LurkerMP,Range" Value="3"/>
-        <EffectArray Reference="Effect,LurkerMP,PeriodCount" Value="3"/>
+        <EffectArray Reference="Weapon,LurkerMP,Range" Value="2"/>
+        <EffectArray Reference="Effect,LurkerMP,PeriodCount" Value="2"/>
         <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
         <AffectedUnitArray value="LurkerMP"/>
         <AffectedUnitArray value="LurkerMPBurrowed"/>
@@ -160,6 +235,7 @@
     <CUpgrade id="TerranBuildingArmor">
         <AffectedUnitArray value="BypassArmorDrone"/>
         <AffectedUnitArray value="RavenRepairDrone"/>
+        <AffectedUnitArray value="RefineryRich"/>
         <EffectArray Reference="Unit,BypassArmorDrone,LifeArmorLevel" Value="2"/>
         <EffectArray Reference="Unit,BypassArmorDrone,LifeArmor" Value="2"/>
         <EffectArray Reference="Unit,RavenRepairDrone,LifeArmorLevel" Value="2"/>
@@ -170,6 +246,8 @@
         <EffectArray Reference="Abil,CommandCenterTransport,TotalCargoSpace" Value="5"/>
         <EffectArray Operation="Set" Reference="Actor,Bunker,Wireframe.Image[0]" Value="Assets\Textures\wireframe-terran-bunker-neosteelframe.dds"/>
         <EffectArray Operation="Set" Reference="Actor,Bunker,GroupIcon.Image[0]" Value="Assets\Textures\wireframe-terran-bunker-neosteelframe.dds"/>
+        <EffectArray Reference="Unit,RefineryRich,LifeArmor" Value="2"/>
+        <EffectArray Reference="Unit,RefineryRich,LifeArmorLevel" Value="2"/>
     </CUpgrade>
     <CUpgrade id="TerranShipArmorsLevel1">
         <EffectArray Operation="Set" Reference="Actor,LiberatorAG,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-shipplatinglevel1.dds"/>
@@ -205,8 +283,8 @@
         <EffectArray index="20" Reference="Effect,CrucioShockCannonBlast,AttributeBonus[Armored]" Value="1"/>
         <EffectArray index="21" Reference="Effect,CrucioShockCannonDirected,AttributeBonus[Armored]" Value="1"/>
         <EffectArray index="22" Reference="Effect,CrucioShockCannonDummy,AttributeBonus[Armored]" Value="1"/>
-        <EffectArray index="36" Reference="Effect,LanceMissileLaunchersDamage,Amount" Value="5"/>
-        <EffectArray Reference="Effect,LanceMissileLaunchersDamage,AttributeBonus[Armored]" Value="0"/>
+        <EffectArray index="36" Reference="Effect,LanceMissileLaunchersDamage,Amount" Value="3"/>
+        <EffectArray Reference="Effect,LanceMissileLaunchersDamage,AttributeBonus[Massive]" Value="1"/>
     </CUpgrade>
     <CUpgrade id="TerranVehicleWeaponsLevel2">
         <EffectArray index="7" Reference="Effect,CrucioShockCannonBlast,Amount" Value="4"/>
@@ -215,8 +293,8 @@
         <EffectArray index="20" Reference="Effect,CrucioShockCannonBlast,AttributeBonus[Armored]" Value="1"/>
         <EffectArray index="21" Reference="Effect,CrucioShockCannonDirected,AttributeBonus[Armored]" Value="1"/>
         <EffectArray index="22" Reference="Effect,CrucioShockCannonDummy,AttributeBonus[Armored]" Value="1"/>
-        <EffectArray index="36" Reference="Effect,LanceMissileLaunchersDamage,Amount" Value="5"/>
-        <EffectArray Reference="Effect,LanceMissileLaunchersDamage,AttributeBonus[Armored]" Value="0"/>
+        <EffectArray index="36" Reference="Effect,LanceMissileLaunchersDamage,Amount" Value="3"/>
+        <EffectArray Reference="Effect,LanceMissileLaunchersDamage,AttributeBonus[Massive]" Value="1"/>
     </CUpgrade>
     <CUpgrade id="TerranVehicleWeaponsLevel3">
         <EffectArray index="7" Reference="Effect,CrucioShockCannonBlast,Amount" Value="4"/>
@@ -225,8 +303,15 @@
         <EffectArray index="20" Reference="Effect,CrucioShockCannonBlast,AttributeBonus[Armored]" Value="1"/>
         <EffectArray index="21" Reference="Effect,CrucioShockCannonDirected,AttributeBonus[Armored]" Value="1"/>
         <EffectArray index="22" Reference="Effect,CrucioShockCannonDummy,AttributeBonus[Armored]" Value="1"/>
-        <EffectArray index="36" Reference="Effect,LanceMissileLaunchersDamage,Amount" Value="5"/>
-        <EffectArray Reference="Effect,LanceMissileLaunchersDamage,AttributeBonus[Armored]" Value="0"/>
+        <EffectArray index="36" Reference="Effect,LanceMissileLaunchersDamage,Amount" Value="3"/>
+        <EffectArray Reference="Effect,LanceMissileLaunchersDamage,AttributeBonus[Massive]" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="VoidRaySpeedUpgrade">
+        <ScoreAmount value="200"/>
+        <EffectArray index="0" Operation="Set" Value="3.320300"/>
+        <EffectArray index="1" Operation="Set" Value="2.687500"/>
+        <EffectArray Operation="Set" Reference="Behavior,VoidRaySwarmDamageBoost,Modification.MoveSpeedMultiplier" Value="0.5644"/>
+        <EffectArray Operation="Set" Reference="Behavior,VoidRaySwarmDamageBoost,Modification.AccelerationMultiplier" Value="0.7441"/>
     </CUpgrade>
     <CUpgrade id="ZergFlyerArmorsLevel1">
         <AffectedUnitArray value="OverlordTransport"/>
@@ -303,7 +388,7 @@
         <EffectArray Reference="Weapon,LurkerMP,Level" Value="1"/>
         <EffectArray Reference="Effect,LurkerMPDamage,Amount" Value="2"/>
         <EffectArray Reference="Effect,LurkerMPDamage,AttributeBonus[Armored]" Value="1"/>
-        <EffectArray Reference="Effect,InfestedAcidSpines,Amount" Value="1"/>
+        <EffectArray Reference="Effect,InfestedAcidSpines,Amount" Value="2"/>
         <EffectArray Reference="Effect,InfestedGuassRifle,Amount" Value="1"/>
         <EffectArray Reference="Weapon,InfestedGuassRifle,Level" Value="1"/>
         <EffectArray Operation="Set" Reference="Weapon,InfestedGuassRifle,Icon" Value="Assets\Textures\btn-upgrade-zerg-missileattacks-level1.dds"/>
@@ -319,7 +404,7 @@
         <EffectArray Reference="Weapon,LurkerMP,Level" Value="1"/>
         <EffectArray Reference="Effect,LurkerMPDamage,Amount" Value="2"/>
         <EffectArray Reference="Effect,LurkerMPDamage,AttributeBonus[Armored]" Value="1"/>
-        <EffectArray Reference="Effect,InfestedAcidSpines,Amount" Value="1"/>
+        <EffectArray Reference="Effect,InfestedAcidSpines,Amount" Value="2"/>
         <EffectArray Reference="Effect,InfestedGuassRifle,Amount" Value="1"/>
         <EffectArray Reference="Weapon,InfestedGuassRifle,Level" Value="1"/>
         <EffectArray Operation="Set" Reference="Weapon,InfestedGuassRifle,Icon" Value="Assets\Textures\btn-upgrade-zerg-missileattacks-level2.dds"/>
@@ -335,7 +420,7 @@
         <EffectArray Reference="Weapon,LurkerMP,Level" Value="1"/>
         <EffectArray Reference="Effect,LurkerMPDamage,Amount" Value="2"/>
         <EffectArray Reference="Effect,LurkerMPDamage,AttributeBonus[Armored]" Value="1"/>
-        <EffectArray Reference="Effect,InfestedAcidSpines,Amount" Value="1"/>
+        <EffectArray Reference="Effect,InfestedAcidSpines,Amount" Value="2"/>
         <EffectArray Reference="Effect,InfestedGuassRifle,Amount" Value="1"/>
         <EffectArray Reference="Weapon,InfestedGuassRifle,Level" Value="1"/>
         <EffectArray Operation="Set" Reference="Weapon,InfestedGuassRifle,Icon" Value="Assets\Textures\btn-upgrade-zerg-missileattacks-level3.dds"/>
@@ -355,6 +440,8 @@
         <EffectArray Operation="Set" Reference="Weapon,HighTemplarWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel1.dds"/>
         <EffectArray Reference="Weapon,HighTemplarWeapon,Level" Value="1"/>
         <EffectArray Reference="Effect,ParticleDisruptorsU,AttributeBonus[Armored]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,DisruptionBeamDisplayDummy,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel1.dds"/>
+        <EffectArray Reference="Weapon,DisruptionBeamDisplayDummy,Level" Value="1"/>
     </CUpgrade>
     <CUpgrade id="ProtossGroundWeaponsLevel2">
         <EffectArray index="5" Value="1"/>
@@ -369,6 +456,8 @@
         <EffectArray Operation="Set" Reference="Weapon,HighTemplarWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel2.dds"/>
         <EffectArray Reference="Weapon,HighTemplarWeapon,Level" Value="1"/>
         <EffectArray Reference="Effect,ParticleDisruptorsU,AttributeBonus[Armored]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,DisruptionBeamDisplayDummy,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel2.dds"/>
+        <EffectArray Reference="Weapon,DisruptionBeamDisplayDummy,Level" Value="1"/>
     </CUpgrade>
     <CUpgrade id="ProtossGroundWeaponsLevel3">
         <EffectArray index="5" Value="1"/>
@@ -383,24 +472,32 @@
         <EffectArray Operation="Set" Reference="Weapon,HighTemplarWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
         <EffectArray Reference="Weapon,HighTemplarWeapon,Level" Value="1"/>
         <EffectArray Reference="Effect,ParticleDisruptorsU,AttributeBonus[Armored]" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,DisruptionBeamDisplayDummy,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
+        <EffectArray Reference="Weapon,DisruptionBeamDisplayDummy,Level" Value="1"/>
     </CUpgrade>
     <CUpgrade id="ProtossAirWeaponsLevel1">
         <EffectArray index="32" Reference="Effect,TempestDamageGround,Amount" Value="4"/>
         <EffectArray Operation="Set" Reference="Weapon,VoidRaySwarm,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
         <EffectArray Reference="Weapon,VoidRaySwarm,Level" Value="1"/>
         <EffectArray Reference="Effect,TempestDamage,AttributeBonus[Massive]" Value="2"/>
+        <EffectArray Operation="Set" Reference="Weapon,VoidRaySwarmDisplayDummy,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
+        <EffectArray Reference="Weapon,VoidRaySwarmDisplayDummy,Level" Value="1"/>
     </CUpgrade>
     <CUpgrade id="ProtossAirWeaponsLevel2">
         <EffectArray index="32" Reference="Effect,TempestDamageGround,Amount" Value="4"/>
         <EffectArray Operation="Set" Reference="Weapon,VoidRaySwarm,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
         <EffectArray Reference="Weapon,VoidRaySwarm,Level" Value="1"/>
         <EffectArray Reference="Effect,TempestDamage,AttributeBonus[Massive]" Value="2"/>
+        <EffectArray Operation="Set" Reference="Weapon,VoidRaySwarmDisplayDummy,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
+        <EffectArray Reference="Weapon,VoidRaySwarmDisplayDummy,Level" Value="1"/>
     </CUpgrade>
     <CUpgrade id="ProtossAirWeaponsLevel3">
         <EffectArray index="32" Reference="Effect,TempestDamageGround,Amount" Value="4"/>
         <EffectArray Operation="Set" Reference="Weapon,VoidRaySwarm,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
         <EffectArray Reference="Weapon,VoidRaySwarm,Level" Value="1"/>
         <EffectArray Reference="Effect,TempestDamage,AttributeBonus[Massive]" Value="2"/>
+        <EffectArray Operation="Set" Reference="Weapon,VoidRaySwarmDisplayDummy,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
+        <EffectArray Reference="Weapon,VoidRaySwarmDisplayDummy,Level" Value="1"/>
     </CUpgrade>
     <!-- Balance change for balance patch of Nov 11th 2013 -->
     <CUpgrade id="TunnelingClaws">
@@ -461,6 +558,8 @@
         <Flags index="UpgradeCheat" value="0"/>
         <Icon value="Assets\Textures\btn-upgrade-terran-highcapacityfueltanks.dds"/>
         <EffectArray Operation="Subtract" Reference="Abil,MedivacSpeedBoost,Cost[0].Cooldown.TimeUse" Value="7.000000"/>
+        <EffectArray Operation="Set" Reference="Behavior,MedivacSpeedBoost,Modification.MoveSpeedMultiplier" Value="1.4406"/>
+        <EffectArray Operation="Set" Reference="Unit,Medivac,Speed" Value="2.949200"/>
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
         <AffectedUnitArray value="Medivac"/>
         <ScoreAmount value="200"/>
@@ -625,7 +724,7 @@
         <Icon value="Assets\Textures\btn-upgrade-zerg-adaptivetalons.dds"/>
         <Alert value="ResearchComplete"/>
         <Race value="Terr"/>
-        <ScoreAmount value="200"/>
+        <ScoreAmount value="300"/>
         <ScoreResult value="BuildOrder"/>
         <EffectArray Operation="Subtract" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].RandomDelayMax" Value="0.25"/>
         <EffectArray Operation="Subtract" Reference="Abil,BurrowLurkerMPDown,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.500000"/>

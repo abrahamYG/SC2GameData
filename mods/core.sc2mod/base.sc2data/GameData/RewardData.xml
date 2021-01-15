@@ -5,7 +5,9 @@
     <const id="$Decals2" value="ui_wol_achievementdecals_sheet2.dds"/>
     <const id="$Decals3" value="ui_wol_achievementdecals_sheet3.dds"/>
     <const id="$Decals4" value="ui_wol_achievementdecals_sheet4.dds"/>
+    <const id="$Decals5" value="ui_wol_achievementdecals_sheet5.dds"/>
     <const id="$Emoticons1" value="ui_wol_achievementemoticons_sheet1.dds"/>
+    <const id="$Emoticons2" value="ui_wol_achievementemoticons_sheet2.dds"/>
     <const id="$Transparency" value="ui_wol_achievementicons_sheet_transparency.dds"/>
     <const id="$Portraits1" value="ui_wol_achievementportraits_sheet1.dds"/>
     <const id="$Portraits2" value="ui_wol_achievementportraits_sheet2.dds"/>
@@ -21,6 +23,8 @@
     <const id="$Portraits12" value="ui_wol_achievementportraits_sheet12.dds"/>
     <const id="$Portraits13" value="ui_wol_achievementportraits_sheet13.dds"/>
     <const id="$Portraits14" value="ui_wol_achievementportraits_sheet14.dds"/>
+    <const id="$Portraits15" value="ui_wol_achievementportraits_sheet15.dds"/>
+    <const id="$Portraits16" value="ui_wol_achievementportraits_sheet16.dds"/>
     <const id="$Achievements1" value="ui_wol_achievementicons_sheet1.dds"/>
     <const id="$Achievements2" value="ui_wol_achievementicons_sheet2.dds"/>
     <const id="$Achievements3" value="ui_wol_achievementicons_sheet3.dds"/>
@@ -48,6 +52,8 @@
     <const id="$WarChest2" value="ui_wol_unitskinicons_warchest2.dds"/>
     <const id="$WarChest3" value="ui_wol_unitskinicons_warchest3.dds"/>
     <const id="$WarChest4" value="ui_wol_unitskinicons_warchest4.dds"/>
+    <const id="$WarChest5" value="ui_wol_unitskinicons_warchest5.dds"/>
+    <const id="$WarChest6" value="ui_wol_unitskinicons_warchest6.dds"/>
     <const id="$Banners1" value="ui_wol_achievementbanners_sheet1.dds"/>
     <const id="$Banners2" value="ui_wol_achievementbanners_sheet2.dds"/>
     <!-- Dont let the editor change the order of the constants -->
@@ -62,6 +68,7 @@
         <IconFile value="##file##"/>
         <IconCols value="8"/>
         <IconRows value="8"/>
+        <Spray value="##id##"/>
     </CRewardDecal>
     <CRewardIcon default="1">
         <?token id="iconfile" type="CImagePath"?>
@@ -100,6 +107,7 @@
         <IconCols value="8"/>
         <IconRows value="8"/>
         <IgnorePlayerRace value="1"/>
+        <Spray value="##id##"/>
     </CRewardSpray>
     <CRewardRaceBanner default="1">
         <?token id="iconfile" type="CImagePath"?>

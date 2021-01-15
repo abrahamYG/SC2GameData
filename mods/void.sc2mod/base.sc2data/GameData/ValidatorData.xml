@@ -987,9 +987,6 @@
         <CombineArray value="IsWarpgate"/>
         <CombineArray value="IsNexus"/>
     </CValidatorCombine>
-    <CValidatorUnitCompareField id="TargetHasWeapon">
-        <Field value="WeaponArray[0]"/>
-    </CValidatorUnitCompareField>
     <CValidatorLocationCompareRange id="SpecialPylonRange">
         <WhichLocation Value="CasterPoint"/>
         <Compare value="LE"/>
@@ -1021,10 +1018,6 @@
         <WhichUnit Effect="TimeWarpCP"/>
         <Filters value="Dead;-"/>
     </CValidatorUnitFilters>
-    <CValidatorLocationComparePower id="SuperPower">
-        <Value value="2"/>
-        <PowerLink value="PowerSource"/>
-    </CValidatorLocationComparePower>
     <!--
         LurkerMP Burrow
 

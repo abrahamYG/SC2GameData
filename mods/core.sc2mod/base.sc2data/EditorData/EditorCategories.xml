@@ -13,9 +13,24 @@
         <value>Hero</value>
         <value>Other</value>
         <value>Shape</value>
+        <value>Equipment</value>
+        <value>Spell</value>
+        <value>Artifact</value>
+        <value>Charged</value>
+        <value>Miscellaneous</value>
+        <value>Permanent</value>
+        <value>PowerUp</value>
+        <value>Purchasable</value>
+        <value>Water</value>
+        <value>Terrain</value>
+        <value>Environment</value>
+        <value>Cinematic</value>
+        <value>Spray</value>
+        <value>Decal</value>
     </category>
     <category name="FieldType">
         <value>Ability</value>
+        <value>Accumulator</value>
         <value>Art</value>
         <value>Combat</value>
         <value>Data</value>
@@ -64,8 +79,11 @@
         <value>Orc</value>
         <value>NightElf</value>
         <value>Naga</value>
+        <value>Commoner</value>
         <value>Critter</value>
-        <value>Creep</value>
+        <value>Creeps</value>
+        <value>Demon</value>
+        <value>Other</value>
         <value>InfestedTerran</value>
         <value>PrimalZerg</value>
     </category>
@@ -126,6 +144,13 @@
         <value>C4PortraitsBuildingsTerran</value>
         <value>C4PortraitsBuildingsZerg</value>
         <value>C4UI</value>
+        <value>C5PortraitsUnitsProtoss</value>
+        <value>C5PortraitsUnitsTerran</value>
+        <value>C5PortraitsUnitsZerg</value>
+        <value>C5UI</value>
+        <value>C6PortraitsBuildingsProtoss</value>
+        <value>C6PortraitsBuildingsTerran</value>
+        <value>C6PortraitsBuildingsZerg</value>
     </category>
     <category name="DoodadType">
         <value>Blocker</value>
@@ -178,6 +203,25 @@
         <value group="Installer">Pitch</value>
         <value group="Installer">Debrief</value>
     </category>
+    <category name="DataGroup">
+        <value group="Unit">Unit</value>
+        <value group="Item">Item</value>
+        <value group="Destructible">Destructible</value>
+        <value group="Doodad">Doodad</value>
+        <value group="Ability">Ability</value>
+        <value group="Research">Research</value>
+        <value>Template</value>
+        <value group="Arifact">Arifact</value>
+        <value group="Buff">Buff</value>
+        <value group="Weapon">Weapon</value>
+        <value group="Tileset">Tileset</value>
+        <value group="LoadOut">LoadOut</value>
+    </category>
+    <category name="DataFamily">
+        <value>Melee</value>
+        <value>Campaign</value>
+        <value>Coop</value>
+    </category>
     <category name="ObjectFamily">
         <value>Melee</value>
         <value>Campaign</value>
@@ -194,6 +238,8 @@
         <value>FactionRaider</value>
         <value>FactionOutlaw</value>
         <value>FactionXelNaga</value>
+        <value>FactionMecha</value>
+        <value>Coop</value>
     </category>
     <group name="CutScene"/>
     <group name="Conversation"/>
@@ -207,6 +253,17 @@
     <group name="ScriptedScenes"/>
     <group name="TVReports"/>
     <group name="Installer"/>
+    <group name="Ability"/>
+    <group name="Arifact"/>
+    <group name="Buff"/>
+    <group name="Destructible"/>
+    <group name="Doodad"/>
+    <group name="Item"/>
+    <group name="Research"/>
+    <group name="Unit"/>
+    <group name="Weapon"/>
+    <group name="LoadOut"/>
+    <group name="Tileset"/>
     <objectUsage type="Abil">
         <objects>
             <usage source="External">Race</usage>
@@ -470,6 +527,25 @@
     <objectUsage type="Weapon">
         <objects>
             <usage source="External">Race</usage>
+        </objects>
+        <fields>
+            <usage source="External">FieldType</usage>
+        </fields>
+    </objectUsage>
+    <objectUsage type="Accumulator">
+        <objects>
+            <usage source="EntryType"></usage>
+        </objects>
+        <fields>
+            <usage source="External">FieldType</usage>
+        </fields>
+    </objectUsage>
+    <objectUsage type="DataCollection">
+        <objects>
+            <usage source="External">DataGroup</usage>
+            <usage source="External">DataFamily</usage>
+            <usage source="External">Race</usage>
+            <usage source="External">ObjectType</usage>
         </objects>
         <fields>
             <usage source="External">FieldType</usage>
@@ -1594,7 +1670,7 @@
     <fieldVal path="CAbilEffect_Cost_VitalFraction">
         <value category="FieldType">Cost</value>
     </fieldVal>
-    <fieldVal path="CAbilEffect_CursorEffect">
+    <fieldVal path="CAbilEffect_CursorEffect" explorefwd="1">
         <value category="FieldType">Effect</value>
     </fieldVal>
     <fieldVal path="CAbilEffect_CursorRangeMode">
@@ -3694,6 +3770,24 @@
     <fieldVal path="CAbilWarpTransport_ScrapCost" advanced="1">
         <value category="FieldType">Cost</value>
     </fieldVal>
+    <fieldVal path="CAccumulator_EditorComment" advanced="1">
+        <value category="FieldType">Editor</value>
+    </fieldVal>
+    <fieldVal path="CAccumulator_EditorDescription" advanced="1">
+        <value category="FieldType">Editor</value>
+    </fieldVal>
+    <fieldVal path="CAccumulator_EditorPrefix" advanced="1">
+        <value category="FieldType">Editor</value>
+    </fieldVal>
+    <fieldVal path="CAccumulator_EditorSuffix" advanced="1">
+        <value category="FieldType">Editor</value>
+    </fieldVal>
+    <fieldVal path="CAccumulator_Name" advanced="1">
+        <value category="FieldType">Editor</value>
+    </fieldVal>
+    <fieldVal path="CAccumulatorVitals" advanced="1">
+        <value category="FieldType">Accumulator</value>
+    </fieldVal>
     <fieldVal path="CActor_AcceptedHostedPropTransfers" advanced="1">
         <value category="FieldType">Properties</value>
     </fieldVal>
@@ -4321,7 +4415,7 @@
     <fieldVal path="CActorArc_Radius">
         <value category="FieldType">Actor</value>
     </fieldVal>
-    <fieldVal path="CActorBase_On" sort="1" exploreback="1" explorereverse="1" explorebackpastroot="1">
+    <fieldVal path="CActorBase_On" sort="1" explorefwd="1" exploreback="1" explorereverse="1" explorebackpastroot="1">
         <value category="FieldType">Event</value>
     </fieldVal>
     <fieldVal path="CActorBase_On_Send" sort="1">
@@ -4344,6 +4438,12 @@
     </fieldVal>
     <fieldVal path="CActorBase_Remove_Terms" advanced="1">
         <value category="FieldType">Event</value>
+    </fieldVal>
+    <fieldVal path="CActorBatch_Count_AccumulatorArray" explorefwd="1">
+        <value category="FieldType">Accumulator</value>
+    </fieldVal>
+    <fieldVal path="CActorBatch_HarnessActor" explorefwd="1">
+        <value category="FieldType">Actor</value>
     </fieldVal>
     <fieldVal path="CActorBeam_Beam" explorefwd="1"/>
     <fieldVal path="CActorBeam_HostImpact" advanced="1">
@@ -8704,11 +8804,11 @@
     <fieldVal path="CBehaviorBuff_Modification_RadarFilters">
         <value category="FieldType">Unit</value>
     </fieldVal>
-    <fieldVal path="CBehaviorBuff_Modification_RateMultiplierArray" advanced="1">
-        <value category="FieldType">Behavior</value>
-    </fieldVal>
     <fieldVal path="CBehaviorBuff_Modification_RangedWeaponRange">
         <value category="FieldType">Weapon</value>
+    </fieldVal>
+    <fieldVal path="CBehaviorBuff_Modification_RateMultiplierArray" advanced="1">
+        <value category="FieldType">Behavior</value>
     </fieldVal>
     <fieldVal path="CBehaviorBuff_Modification_ResourceHarvestAmountBonus">
         <value category="FieldType">Resource</value>
@@ -8844,6 +8944,9 @@
     </fieldVal>
     <fieldVal path="CBehaviorBuff_PeriodCount">
         <value category="FieldType">Stats</value>
+    </fieldVal>
+    <fieldVal path="CBehaviorBuff_PeriodCount_AccumulatorArray" explorefwd="1">
+        <value category="FieldType">Accumulator</value>
     </fieldVal>
     <fieldVal path="CBehaviorBuff_PeriodicEffect" explorepastroot="1" explorefwd="1" explorerecurse="1">
         <value category="FieldType">Effect</value>
@@ -9031,6 +9134,12 @@
     </fieldVal>
     <fieldVal path="CBehaviorPowerUser_Flags">
         <value category="FieldType">Stats</value>
+    </fieldVal>
+    <fieldVal path="CBehaviorPowerUser_Modification_MeleeWeaponRange">
+        <value category="FieldType">Weapon</value>
+    </fieldVal>
+    <fieldVal path="CBehaviorPowerUser_Modification_RangedWeaponRange">
+        <value category="FieldType">Weapon</value>
     </fieldVal>
     <fieldVal path="CBehaviorPowerUser_PlacementMinPowerLevel">
         <value category="FieldType">Stats</value>
@@ -9285,9 +9394,6 @@
     <fieldVal path="CBehaviorPowerUser_PowerStageArray_Modification_LifeArmorMultiplier">
         <value category="FieldType">Unit</value>
     </fieldVal>
-    <fieldVal path="CBehaviorPowerUser_Modification_MeleeWeaponRange">
-        <value category="FieldType">Weapon</value>
-    </fieldVal>
     <fieldVal path="CBehaviorPowerUser_PowerStageArray_Modification_ModifyFlags">
         <value category="FieldType">Behavior</value>
     </fieldVal>
@@ -9320,9 +9426,6 @@
     </fieldVal>
     <fieldVal path="CBehaviorPowerUser_PowerStageArray_Modification_RadarFilters">
         <value category="FieldType">Unit</value>
-    </fieldVal>
-    <fieldVal path="CBehaviorPowerUser_Modification_RangedWeaponRange">
-        <value category="FieldType">Weapon</value>
     </fieldVal>
     <fieldVal path="CBehaviorPowerUser_PowerStageArray_Modification_RateMultiplierArray" advanced="1">
         <value category="FieldType">Behavior</value>
@@ -9572,6 +9675,12 @@
     </fieldVal>
     <fieldVal path="CBehaviorVeterancy_Flags">
         <value category="FieldType">Behavior</value>
+    </fieldVal>
+    <fieldVal path="CBehaviorVeterancy_Modification_MeleeWeaponRange">
+        <value category="FieldType">Weapon</value>
+    </fieldVal>
+    <fieldVal path="CBehaviorVeterancy_Modification_RangedWeaponRange">
+        <value category="FieldType">Weapon</value>
     </fieldVal>
     <fieldVal path="CBehaviorVeterancy_SharedXPFraction">
         <value category="FieldType">Stats</value>
@@ -9831,9 +9940,6 @@
     <fieldVal path="CBehaviorVeterancy_VeterancyLevelArray_Modification_LifeArmorMultiplier">
         <value category="FieldType">Unit</value>
     </fieldVal>
-    <fieldVal path="CBehaviorVeterancy_Modification_MeleeWeaponRange">
-        <value category="FieldType">Weapon</value>
-    </fieldVal>
     <fieldVal path="CBehaviorVeterancy_VeterancyLevelArray_Modification_ModifyFlags">
         <value category="FieldType">Behavior</value>
     </fieldVal>
@@ -9866,9 +9972,6 @@
     </fieldVal>
     <fieldVal path="CBehaviorVeterancy_VeterancyLevelArray_Modification_RadarFilters">
         <value category="FieldType">Unit</value>
-    </fieldVal>
-    <fieldVal path="CBehaviorVeterancy_Modification_RangedWeaponRange">
-        <value category="FieldType">Weapon</value>
     </fieldVal>
     <fieldVal path="CBehaviorVeterancy_VeterancyLevelArray_Modification_RateMultiplierArray" advanced="1">
         <value category="FieldType">Behavior</value>
@@ -10030,6 +10133,9 @@
         <value category="FieldType">UI</value>
     </fieldVal>
     <fieldVal path="CButton_AlertTooltip">
+        <value category="FieldType">UI</value>
+    </fieldVal>
+    <fieldVal path="CButton_DefaultButtonLayout">
         <value category="FieldType">UI</value>
     </fieldVal>
     <fieldVal path="CButton_EditorCategories">
@@ -10345,6 +10451,19 @@
     <fieldVal path="CConversationState_Indices_Variations_Value" sort="1"/>
     <fieldVal path="CConversationState_InfoIds" sort="2"/>
     <fieldVal path="CConversationState_InfoIds_Id" sort="2"/>
+    <fieldVal path="CDataCollection_DataRecord_Entry" explorefwd="1"/>
+    <fieldVal path="CDataCollection_Name">
+        <value category="FieldType">UI</value>
+    </fieldVal>
+    <fieldVal path="CDataCollectionUnit_TechInfoUpgradeUsed">
+        <value category="FieldType">Upgrade</value>
+    </fieldVal>
+    <fieldVal path="CDataCollectionUnit_UpgradeInfoUnitLifeArmorPerLevel">
+        <value category="FieldType">Combat</value>
+    </fieldVal>
+    <fieldVal path="CDataCollectionUnit_UpgradeInfoWeapon_DamagePerDice">
+        <value category="FieldType">Combat</value>
+    </fieldVal>
     <fieldVal path="CDSPCustomCompressor_ARCAttackMs" sort="8">
         <value category="FieldType">Sound</value>
     </fieldVal>
@@ -10834,6 +10953,9 @@
     <fieldVal path="CEffectDamage_Amount" sort="1">
         <value category="FieldType">Combat</value>
     </fieldVal>
+    <fieldVal path="CEffectDamage_Amount_AccumulatorArray" explorefwd="1">
+        <value category="FieldType">Accumulator</value>
+    </fieldVal>
     <fieldVal path="CEffectDamage_AreaArray">
         <value category="FieldType">Search</value>
     </fieldVal>
@@ -10891,7 +11013,7 @@
     <fieldVal path="CEffectDamage_ExcludeArray" advanced="1">
         <value category="FieldType">Search</value>
     </fieldVal>
-    <fieldVal path="CEffectDamage_ExcludeArray_Effect" advanced="1">
+    <fieldVal path="CEffectDamage_ExcludeArray_Effect" advanced="1" explorefwd="1">
         <value category="FieldType">Search</value>
     </fieldVal>
     <fieldVal path="CEffectDamage_ExcludeArray_Value" advanced="1">
@@ -11095,7 +11217,7 @@
     <fieldVal path="CEffectEnumArea_ExcludeArray">
         <value category="FieldType">Search</value>
     </fieldVal>
-    <fieldVal path="CEffectEnumArea_ExcludeArray_Effect">
+    <fieldVal path="CEffectEnumArea_ExcludeArray_Effect" explorefwd="1">
         <value category="FieldType">Search</value>
     </fieldVal>
     <fieldVal path="CEffectEnumArea_ExcludeArray_Value">
@@ -12085,7 +12207,7 @@
     <fieldVal path="CEffectTeleport_PlacementAround">
         <value category="FieldType">Target</value>
     </fieldVal>
-    <fieldVal path="CEffectTeleport_PlacementAround_Effect">
+    <fieldVal path="CEffectTeleport_PlacementAround_Effect" explorefwd="1">
         <value category="FieldType">Target</value>
     </fieldVal>
     <fieldVal path="CEffectTeleport_PlacementAround_Value">
@@ -12115,7 +12237,7 @@
     <fieldVal path="CEffectTeleport_TargetLocation" sort="2">
         <value category="FieldType">Target</value>
     </fieldVal>
-    <fieldVal path="CEffectTeleport_TargetLocation_Effect">
+    <fieldVal path="CEffectTeleport_TargetLocation_Effect" explorefwd="1">
         <value category="FieldType">Target</value>
     </fieldVal>
     <fieldVal path="CEffectTeleport_TargetLocation_Value">
@@ -14519,7 +14641,7 @@
         <value category="FieldType">Movement</value>
     </fieldVal>
     <fieldVal path="CMoverMissile_MotionPhases_MaxSpeed">
-        <value category="FieldType">Movement</value>
+        <value category="FieldType">Combat</value>
     </fieldVal>
     <fieldVal path="CMoverMissile_MotionPhases_MinSpeed">
         <value category="FieldType">Movement</value>
@@ -14739,21 +14861,12 @@
     <fieldVal path="CSound_ConeVolume" sort="18" advanced="1"/>
     <fieldVal path="CSound_DopplerLevel" sort="19" advanced="1"/>
     <fieldVal path="CSound_DupeDestroyCount" sort="18" advanced="1">
-        <value category="FieldType">Sound</value>
+        <value category="FieldType">Dupe</value>
     </fieldVal>
     <fieldVal path="CSound_DupeDestroyCountPerPlayer" sort="19">
-        <value category="FieldType">Sound</value>
+        <value category="FieldType">Dupe</value>
     </fieldVal>
     <fieldVal path="CSound_DupeFadeBlend" sort="29">
-        <value category="FieldType">Sound</value>
-    </fieldVal>
-    <fieldVal path="CSound_DupeDestroyCount" advanced="1">
-        <value category="FieldType">Dupe</value>
-    </fieldVal>
-    <fieldVal path="CSound_DupeDestroyCountPerPlayer">
-        <value category="FieldType">Dupe</value>
-    </fieldVal>
-    <fieldVal path="CSound_DupeFadeBlend">
         <value category="FieldType">Data</value>
     </fieldVal>
     <fieldVal path="CSound_DupeFadeIn">
@@ -15289,6 +15402,9 @@
     <fieldVal path="CUnit_ArmorArray" advanced="1">
         <value category="FieldType">Combat</value>
     </fieldVal>
+    <fieldVal path="CUnit_ArmorType">
+        <value category="FieldType">Combat</value>
+    </fieldVal>
     <fieldVal path="CUnit_AttackSpeedMultiplierCreep" advanced="1">
         <value category="FieldType">Combat</value>
     </fieldVal>
@@ -15329,10 +15445,13 @@
         <value category="FieldType">AI</value>
     </fieldVal>
     <fieldVal path="CUnit_BuildOnAs">
-        <value category="FieldType">Behavior</value>
+        <value category="FieldType">Stats</value>
+    </fieldVal>
+    <fieldVal path="CUnit_BuildTime">
+        <value category="FieldType">Stats</value>
     </fieldVal>
     <fieldVal path="CUnit_BuiltOn" advanced="1">
-        <value category="FieldType">Behavior</value>
+        <value category="FieldType">Stats</value>
     </fieldVal>
     <fieldVal path="CUnit_ButtonArray_Abil" advanced="1">
         <value category="FieldType">Data</value>
@@ -15673,6 +15792,9 @@
     <fieldVal path="CUnit_Footprint" advanced="1" explorefwd="1" exploreback="1">
         <value category="FieldType">Movement</value>
     </fieldVal>
+    <fieldVal path="CUnit_FormationRank">
+        <value category="FieldType">Stats</value>
+    </fieldVal>
     <fieldVal path="CUnit_GlossaryAlias" advanced="1">
         <value category="FieldType">Techtree</value>
     </fieldVal>
@@ -15747,6 +15869,9 @@
     </fieldVal>
     <fieldVal path="CUnit_LeaderAlias" advanced="1">
         <value category="FieldType">Unit</value>
+    </fieldVal>
+    <fieldVal path="CUnit_Level">
+        <value category="FieldType">Stats</value>
     </fieldVal>
     <fieldVal path="CUnit_LifeArmor">
         <value category="FieldType">Stats</value>
@@ -16228,6 +16353,9 @@
     <fieldVal path="CUnit_StationaryTurningRate" advanced="1">
         <value category="FieldType">Movement</value>
     </fieldVal>
+    <fieldVal path="CUnit_StockCharge">
+        <value category="FieldType">Stats</value>
+    </fieldVal>
     <fieldVal path="CUnit_StrafeRadius" advanced="1">
         <value category="FieldType">Movement</value>
     </fieldVal>
@@ -16317,6 +16445,15 @@
     </fieldVal>
     <fieldVal path="CUnit_WireframeLayer">
         <value category="FieldType">Art</value>
+    </fieldVal>
+    <fieldVal path="CUnitHero_AttributePointsInfoArray">
+        <value category="FieldType">Stats</value>
+    </fieldVal>
+    <fieldVal path="CUnitHero_LearnInfoArray_Abil">
+        <value category="FieldType">Ability</value>
+    </fieldVal>
+    <fieldVal path="CUnitHero_MainAttribute">
+        <value category="FieldType">Stats</value>
     </fieldVal>
     <fieldVal path="CUpgrade_AffectedUnitArray" advanced="1" explorefwd="1" exploreback="1">
         <value category="FieldType">Upgrade</value>
@@ -17364,13 +17501,13 @@
     <fieldVal path="CWater_ReceiveShadows">
         <value category="FieldType">Visual</value>
     </fieldVal>
+    <fieldVal path="CWater_ReflectionCubeMap">
+        <value category="FieldType">Basic</value>
+    </fieldVal>
     <fieldVal path="CWater_ScrollVectors">
         <value category="FieldType">Visual</value>
     </fieldVal>
     <fieldVal path="CWater_Sound">
-        <value category="FieldType">Basic</value>
-    </fieldVal>
-    <fieldVal path="CWater_ReflectionCubeMap">
         <value category="FieldType">Basic</value>
     </fieldVal>
     <fieldVal path="CWater_State" sort="1">
@@ -17466,8 +17603,11 @@
     <fieldVal path="CWeapon_ArcSlop" advanced="1">
         <value category="FieldType">Stats</value>
     </fieldVal>
-    <fieldVal path="CWeapon_Backswing" advanced="1">
-        <value category="FieldType">Stats</value>
+    <fieldVal path="CWeapon_AttackType">
+        <value category="FieldType">Combat</value>
+    </fieldVal>
+    <fieldVal path="CWeapon_Backswing">
+        <value category="FieldType">Combat</value>
     </fieldVal>
     <fieldVal path="CWeapon_ChaseFilters" advanced="1">
         <value category="FieldType">Weapon</value>
@@ -17529,8 +17669,8 @@
     <fieldVal path="CWeapon_Cost_VitalFraction" advanced="1">
         <value category="FieldType">Cost</value>
     </fieldVal>
-    <fieldVal path="CWeapon_DamagePoint" advanced="1">
-        <value category="FieldType">Stats</value>
+    <fieldVal path="CWeapon_DamagePoint">
+        <value category="FieldType">Combat</value>
     </fieldVal>
     <fieldVal path="CWeapon_DisplayAttackCount">
         <value category="FieldType">UI</value>
@@ -17581,10 +17721,10 @@
         <value category="FieldType">Effect</value>
     </fieldVal>
     <fieldVal path="CWeapon_MinimumRange">
-        <value category="FieldType">Stats</value>
+        <value category="FieldType">Combat</value>
     </fieldVal>
     <fieldVal path="CWeapon_MinScanRange">
-        <value category="FieldType">Stats</value>
+        <value category="FieldType">Combat</value>
     </fieldVal>
     <fieldVal path="CWeapon_Name">
         <value category="FieldType">Weapon</value>
@@ -17593,7 +17733,7 @@
         <value category="FieldType">Weapon</value>
     </fieldVal>
     <fieldVal path="CWeapon_Period">
-        <value category="FieldType">Stats</value>
+        <value category="FieldType">Combat</value>
     </fieldVal>
     <fieldVal path="CWeapon_PeriodDisplayFlags">
         <value category="FieldType">UI</value>
@@ -17602,7 +17742,7 @@
         <value category="FieldType">Editor</value>
     </fieldVal>
     <fieldVal path="CWeapon_Range">
-        <value category="FieldType">Stats</value>
+        <value category="FieldType">Combat</value>
     </fieldVal>
     <fieldVal path="CWeapon_RangeDisplayFlags" advanced="1">
         <value category="FieldType">UI</value>
@@ -17611,7 +17751,7 @@
         <value category="FieldType">Stats</value>
     </fieldVal>
     <fieldVal path="CWeapon_TargetFilters">
-        <value category="FieldType">Weapon</value>
+        <value category="FieldType">Combat</value>
     </fieldVal>
     <fieldVal path="CWeapon_Tip">
         <value category="FieldType">UI</value>

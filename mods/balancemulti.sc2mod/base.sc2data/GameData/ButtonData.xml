@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CButton id="BurrowDown">
         <HotkeySet value="BurrowUnburrowModes"/>
@@ -8,6 +8,46 @@
     </CButton>
     <CButton id="BurrowUp">
         <HotkeySet value="BurrowUnburrowModes"/>
+    </CButton>
+    <CButton id="AmorphousArmorcloud">
+        <Icon value="Assets\Textures\btn-ability-zerg-darkswarm.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-darkswarm.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CButton>
+    <CButton id="EvolveAmorphousArmorcloud">
+        <Icon value="Assets\Textures\btn-ability-zerg-darkswarm.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-darkswarm.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CButton>
+    <CButton id="ResearchPsionicSurge">
+        <Icon value="Assets\Textures\btn-ability-protoss-shadowblade.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-shadowblade.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="ResearchAmplifiedShielding">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-adeptshieldupgrade.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-adeptshieldupgrade.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="ResearchPsionicSurge"/>
+    </CButton>
+    <CButton id="TempestResearchGroundAttackUpgrade">
+        <Icon value="Assets\Textures\btn-ability-protoss-disruptionblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-disruptionblast.dds"/>
+    </CButton>
+    <CButton id="TempestGroundAttackUpgrade">
+        <Icon value="Assets\Textures\btn-ability-protoss-disruptionblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-disruptionblast.dds"/>
+    </CButton>
+    <CButton id="ResearchPsionicAmplifiers">
+        <Icon value="Assets\Textures\btn-ability-protoss-phasedisruptor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-phasedisruptor.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="ResearchPsionicSurge"/>
+    </CButton>
+    <CButton id="PsionicSurge">
+        <Icon value="Assets\Textures\btn-ability-protoss-shadowblade.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-shadowblade.dds"/>
+        <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="CycloneResearchLockOnAir"/>
     <CButton id="LurkerBurrowUp">
@@ -21,6 +61,15 @@
         <Icon value="Assets\Textures\btn-upgrade-terran-highcapacityfueltanks.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-terran-highcapacityfueltanks.dds"/>
         <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="EvolvePropulsivePeristalsis">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-demolition.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-demolition.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+        <HotkeyAlias value="ResearchLurkerRange"/>
+    </CButton>
+    <CButton id="ResearchLurkerRange">
+        <AlertIcon value="Assets\Textures\btn-upgrade-kerrigan-seismicspines.dds"/>
     </CButton>
     <CButton id="ResearchRapidReignitionSystem">
         <Icon value="Assets\Textures\btn-upgrade-terran-highcapacityfueltanks.dds"/>
@@ -42,6 +91,10 @@
         <AlertIcon value="Assets\Textures\btn-ability-protoss-stealth-blink.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
+    <CButton id="ShieldBatteryRechargeEx5">
+        <Icon value="Assets\Textures\btn-ability-protoss-shieldbattery-color.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
     <CButton id="SpineCrawlerRoot">
         <HotkeySet value="BurrowUnburrowModes"/>
     </CButton>
@@ -53,6 +106,9 @@
     </CButton>
     <CButton id="SporeCrawlerUproot">
         <HotkeySet value="BurrowUnburrowModes"/>
+    </CButton>
+    <CButton id="Stop">
+        <DefaultButtonLayout Column="1"/>
     </CButton>
     <CButton id="SwarmHostBurrowDown">
         <HotkeySet value="BurrowUnburrowModes"/>
@@ -150,6 +206,16 @@
         <AlertIcon value="Assets\Textures\BTN-Ability-Terran-ShredderMissile-Color.dds"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
+    <CButton id="ResearchEnhancedShockwaves">
+        <Icon value="Assets\Textures\btn-ability-terran-electricfield.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-electricfield.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="EnhancedShockwaves">
+        <Icon value="Assets\Textures\btn-ability-terran-electricfield.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-electricfield.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
     <CButton id="ChronoBoostEnergyCost">
         <Icon value="Assets\Textures\btn-ability-protoss-protoncharge-color.dds"/>
         <EditorCategories value="Race:Protoss"/>
@@ -183,9 +249,17 @@
         <AlertIcon value="Assets\Textures\btn-upgrade-raynor-ripwavemissiles.dds"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
+    <CButton id="BatteryOvercharge">
+        <Icon value="Assets\Textures\btn-ability-zeratul-observer-sensorarray.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zeratul-observer-sensorarray.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
     <CButton id="ShieldBatteryRecharge">
         <Icon value="Assets\Textures\btn-ability-protoss-shieldbattery-color.dds"/>
         <EditorCategories value="Race:Protoss"/>
+        <TooltipAppender Validator="CasterIsNotBatteryOvercharged" Text="Button/Tooltip/ShieldBatteryRechargeOvercharged"/>
+        <TooltipAppender Validator="CasterHasBatteryOverchargeBehavior" Text="Button/Tooltip/ShieldBatteryRechargeNotOvercharged"/>
+        <TooltipAppender Text="Button/Tooltip/ShieldBatteryRechargeNotOverchargedConstantText"/>
     </CButton>
     <CButton id="NexusShieldOvercharge">
         <Icon value="Assets\Textures\btn-upgrade-karax-fortificationbarrier.dds"/>
@@ -205,6 +279,10 @@
     <CButton id="AdeptResearchPiercingUpgrade">
         <Icon value="Assets\Textures\btn-upgrade-protoss-resonatingglaives-orange.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-protoss-resonatingglaives-orange.dds"/>
+    </CButton>
+    <CButton id="TemporalField">
+        <Icon value="Assets\Textures\btn-ability-protoss-timewarp-red.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-timewarp-red.dds"/>
     </CButton>
     <CButton id="UpgradeBuildingArmorLevel1"/>
     <CButton id="ResearchCarrierCapacity">
@@ -234,6 +312,11 @@
     <CButton id="DrillClaws">
         <Icon value="Assets\Textures\BTN-Upgrade-Terran-ResearchDrillingClaws.dds"/>
         <AlertIcon value="Assets\Textures\BTN-Upgrade-Terran-ResearchDrillingClaws.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="WidowMineConcealment">
+        <Icon value="Assets\Textures\btn-ability-terran-widowminehidden.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-widowminehidden.dds"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
     <CButton id="NydusWormIncreasedArmorPassive">

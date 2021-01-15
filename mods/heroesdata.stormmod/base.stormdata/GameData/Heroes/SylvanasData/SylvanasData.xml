@@ -206,7 +206,7 @@
         <CountMax value="3" />
         <CountStart value="3" />
         <CountUse value="1" />
-        <TimeUse value="8" />
+        <TimeUse value="12" />
       </Charge>
     </Cost>
     <TargetFilters value="-;Player,Ally,Neutral,Creep,Structure,Heroic,User1,Missile,Item,Stasis,Dead,Hidden,Invulnerable,MapCreature" />
@@ -1338,8 +1338,6 @@
     <Duration value="2" />
     <Modification>
       <StateFlags index="SuppressAttack" value="1" />
-      <AbilClassEnableArray index="CAbilEffectInstant" value="1" />
-      <AbilClassEnableArray index="CAbilEffectTarget" value="1" />
     </Modification>
     <FinalEffect value="SylvanasHauntingWaveWindrunnerRemoveFirstCastMonitorBehavior" />
   </CBehaviorBuff>
@@ -1569,6 +1567,9 @@
     <Variations Model="HeroSylvanasPortraitAddition" Actor="HeroSylvanasPortraitAddition" />
     <Unit value="HeroSylvanas" />
   </CCharacter>
+  <CEffectRemoveBehavior id="SylvanasShadowDaggerDummyBuffSpreadRemoveBehavior">
+    <BehaviorLink value="SylvanasShadowDaggerDummyBuffSpreadBehavior" />
+  </CEffectRemoveBehavior>
   <CEffectSet id="SylvanasWitheringFireLaunchMissileRemorselessSet">
     <EffectArray value="SylvanasWitheringFireLaunchMissileRemorseless" />
     <EffectArray value="SylvanasWitheringFireRemorselessDummyPersistent" />
@@ -2047,7 +2048,7 @@
   </CEffectSet>
   <CEffectDamage id="SylvanasShadowDaggerInitialDamage" parent="StormSpell">
     <Marker Link="Effect/SylvanasShadowDaggerDoTDamage" />
-    <Amount value="32" />
+    <Amount value="30" />
     <MultiplicativeModifierArray index="BlackArrowsBonusDamage" Validator="SylvanasTargetHas3StacksOfBlackArrowsStackingBehavior" Modifier="0.25" Crit="1" />
     <MultiplicativeModifierArray index="UnfurlingShadowsDamage" Accumulator="SylvanasShadowDaggerUnfurlingShadowsAccumulator" />
     <MultiplicativeModifierArray index="MercenaryQueenBonusDamage" Validator="SylvanasHasMercenaryQueenAndTargetIsMercLanerOrDefenderAndTargetHas3StacksofBlackArrowsStackingBehavior" Modifier="0.3" Crit="1" />
@@ -2345,6 +2346,7 @@
   <CEffectSet id="SylvanasWitheringFireImpactSet">
     <ValidatorArray value="TargetNotDeadOrStasis" />
     <ValidatorArray value="TargetNotInvulnerable" />
+    <ValidatorArray value="TargetIsEnemy" />
     <EffectArray value="SylvanasWitheringFireBarbedShotUnitTrackerSwitch" />
     <EffectArray value="SylvanasWitheringFireDamage" />
     <EffectArray value="SylvanasWitheringFireApplyEvasiveFireSpeedupBehavior" />
@@ -2815,12 +2817,14 @@
     <ValidatorArray value="SylvanasPossessionViableTargetCastVersion" />
     <ValidatorArray value="TargetNotMerc" />
     <EffectArray value="SylvanasPossessionRemoveBlackArrowsStunBehavior" />
-    <EffectArray value="SylvanasPossessionUse3ChargesOnCatapultMinions" />
     <EffectArray value="SylvanasPossessionRemoveBlackArrowsStackingBehavior" />
+    <EffectArray value="SylvanasShadowDaggerDummyBuffSpreadRemoveBehavior" />
+    <EffectArray value="SylvanasPossessionRemoveRavenCurseBehavior" />
+    <EffectArray value="HeroGenericCleanseRemoveCCBehaviorCategoriesExpandedTarget" />
+    <EffectArray value="SylvanasPossessionUse3ChargesOnCatapultMinions" />
     <EffectArray value="SylvanasPossessionApplyTargetBehavior" />
     <EffectArray value="SylvanasPossessionApplySupressRegenGlobeCreation" />
     <EffectArray value="SylvanasPossessionFullHeal" />
-    <EffectArray value="SylvanasPossessionRemoveRavenCurseBehavior" />
   </CEffectSet>
   <CEffectRemoveBehavior id="SylvanasPossessionRemoveBlackArrowsStunBehavior">
     <BehaviorLink value="SylvanasBlackArrowsMercMinionOrStructureStunBehavior" />
@@ -2859,6 +2863,8 @@
     <EffectArray value="ApplyAbilityImpactReveal" />
     <EffectArray value="SylvanasShadowDaggerApplyBehaviorsSet" />
     <EffectArray value="StylvanasBlackArrowsMercMinionOrStructureStunApplyBehavior" />
+    <ValidatorArray value="TargetIsEnemy" />
+    <ValidatorArray value="TargetNotTimeStopped" />
   </CEffectSet>
   <CEffectSet id="SylvanasShadowDaggerApplyBehaviorsSet">
     <EffectArray value="SylvanasShadowDaggerApplyTargetEnemyBehavior" />
@@ -2872,7 +2878,7 @@
     <MultiplicativeModifierArray index="BlackArrowsBonusDamage" Validator="SylvanasTargetHas3StacksOfBlackArrowsStackingBehavior" Modifier="0.25" Crit="1" />
     <MultiplicativeModifierArray index="UnfurlingShadowsDamage" Accumulator="SylvanasShadowDaggerUnfurlingShadowsAccumulator" />
     <MultiplicativeModifierArray index="MercenaryQueenBonusDamage" Validator="SylvanasHasMercenaryQueenAndTargetIsMercLanerOrDefenderAndTargetHas3StacksofBlackArrowsStackingBehavior" Modifier="0.3" Crit="1" />
-    <Amount value="32" />
+    <Amount value="30" />
     <LeechValidator index="Life" value="SylvanasHasLifeDrainTalentAnd3StacksOfBlackArrows" />
     <LeechFraction index="Life" value="0.15" />
     <LeechMultiplicativeModifierArray index="LifeDrainLifeStealHero" Validator="SylvanasHasLifeDrainTalentAnd3StacksOfBlackArrowsAndTargetIsHero" Modifier="1" Crit="1" />

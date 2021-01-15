@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CEffectEnumArea default="1" id="InhibitorZoneSearchBase">
         <AreaArray Effect="InhibitorZoneTemporalField"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea default="1" id="AccelerationZoneSearchBase">
+        <AreaArray Effect="AccelerationZoneTemporalField"/>
         <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden"/>
     </CEffectEnumArea>
     <!--                                                                                         -->
@@ -150,6 +154,33 @@
         <SelectUnit Value="Caster"/>
         <SpawnOwner Value="Target"/>
     </CEffectCreateUnit>
+    <CEffectEnumArea default="1" id="AccelerationZoneFlyingSearchBase">
+        <AreaArray Effect="AccelerationZoneFlyingTemporalField"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea default="1" id="InhibitorZoneFlyingSearchBase">
+        <AreaArray Effect="InhibitorZoneFlyingTemporalField"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden"/>
+    </CEffectEnumArea>
+    <CEffectCreateUnit default="1" id="SprayDefault">
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnUnit value="##id##"/>
+        <SpawnEffect value="LoadOutSpray@AddTracked"/>
+    </CEffectCreateUnit>
+    <CEffectApplyBehavior id="AccelerationZoneTemporalField"/>
+    <CEffectEnumArea id="AccelerationZoneSmallSearch" parent="AccelerationZoneSearchBase">
+        <AreaArray index="0" Radius="4" Effect="AccelerationZoneTemporalField"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="AccelerationZoneMediumSearch" parent="AccelerationZoneSearchBase">
+        <AreaArray index="0" Radius="5" Effect="AccelerationZoneTemporalField"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="AccelerationZoneLargeSearch" parent="AccelerationZoneSearchBase">
+        <AreaArray index="0" Radius="6" Effect="AccelerationZoneTemporalField"/>
+    </CEffectEnumArea>
     <CEffectEnumArea id="InhibitorZoneLargeSearch" parent="InhibitorZoneSearchBase">
         <AreaArray index="0" Radius="6" Effect="InhibitorZoneTemporalField"/>
     </CEffectEnumArea>
@@ -162,6 +193,28 @@
     <CEffectApplyBehavior id="InhibitorZoneTemporalField">
         <ValidatorArray value="NotFrenzied"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AccelerationZoneFlyingTemporalField"/>
+    <CEffectEnumArea id="AccelerationZoneFlyingSmallSearch" parent="AccelerationZoneFlyingSearchBase">
+        <AreaArray index="0" Radius="4" Effect="AccelerationZoneFlyingTemporalField"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="AccelerationZoneFlyingMediumSearch" parent="AccelerationZoneFlyingSearchBase">
+        <AreaArray index="0" Radius="5" Effect="AccelerationZoneFlyingTemporalField"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="AccelerationZoneFlyingLargeSearch" parent="AccelerationZoneFlyingSearchBase">
+        <AreaArray index="0" Radius="6" Effect="AccelerationZoneFlyingTemporalField"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="InhibitorZoneFlyingTemporalField">
+        <ValidatorArray value="NotFrenzied"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="InhibitorZoneFlyingSmallSearch" parent="InhibitorZoneFlyingSearchBase">
+        <AreaArray index="0" Radius="4" Effect="InhibitorZoneFlyingTemporalField"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="InhibitorZoneFlyingMediumSearch" parent="InhibitorZoneFlyingSearchBase">
+        <AreaArray index="0" Radius="5" Effect="InhibitorZoneFlyingTemporalField"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="InhibitorZoneFlyingLargeSearch" parent="InhibitorZoneFlyingSearchBase">
+        <AreaArray index="0" Radius="6" Effect="InhibitorZoneFlyingTemporalField"/>
+    </CEffectEnumArea>
     <CEffectSet id="CCBirthSet">
         <EditorCategories value=""/>
     </CEffectSet>
@@ -170,7 +223,9 @@
     </CEffectSet>
     <CEffectModifyUnit id="CasterHealtoFullEnergy">
         <ImpactUnit Value="Caster"/>
-        <VitalArray index="Energy" ChangeFraction="1"/>
+        <VitalArray index="Energy">
+            <ChangeFraction value="1"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectSet id="HatcheryBirthSet">
         <EditorCategories value=""/>
@@ -179,6 +234,10 @@
         <Flags index="Kill" value="1"/>
         <Flags index="NoKillCredit" value="1"/>
     </CEffectDamage>
+    <CEffectAddTrackedUnit id="LoadOutSpray@AddTracked">
+        <BehaviorLink value="LoadOutSpray@Tracker"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
     <CEffectApplyBehavior id="RefineryRichAB">
         <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
@@ -277,6 +336,20 @@
         <ValidatorArray value="HatcheryCreateSetTargetFilters"/>
         <EditorCategories value=""/>
     </CEffectSet>
+    <CEffectCreateUnit id="LoadOutSpray@1" parent="SprayDefault"/>
+    <CEffectCreateUnit id="LoadOutSpray@2" parent="SprayDefault"/>
+    <CEffectCreateUnit id="LoadOutSpray@3" parent="SprayDefault"/>
+    <CEffectCreateUnit id="LoadOutSpray@4" parent="SprayDefault"/>
+    <CEffectCreateUnit id="LoadOutSpray@5" parent="SprayDefault"/>
+    <CEffectCreateUnit id="LoadOutSpray@6" parent="SprayDefault"/>
+    <CEffectCreateUnit id="LoadOutSpray@7" parent="SprayDefault"/>
+    <CEffectCreateUnit id="LoadOutSpray@8" parent="SprayDefault"/>
+    <CEffectCreateUnit id="LoadOutSpray@9" parent="SprayDefault"/>
+    <CEffectCreateUnit id="LoadOutSpray@10" parent="SprayDefault"/>
+    <CEffectCreateUnit id="LoadOutSpray@11" parent="SprayDefault"/>
+    <CEffectCreateUnit id="LoadOutSpray@12" parent="SprayDefault"/>
+    <CEffectCreateUnit id="LoadOutSpray@13" parent="SprayDefault"/>
+    <CEffectCreateUnit id="LoadOutSpray@14" parent="SprayDefault"/>
     <CEffectSet id="WizSimpleSkillshotFinalImpactSet">
         <TargetLocationType value="Point"/>
     </CEffectSet>
@@ -389,7 +462,9 @@
     </CEffectDamage>
     <CEffectModifyUnit id="LeechModifyUnit">
         <EditorCategories value="Race:Zerg"/>
-        <VitalArray index="Energy" Change="-10"/>
+        <VitalArray index="Energy">
+            <Change value="-10"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectSet id="LeechSet">
         <EditorCategories value="Race:Zerg"/>
@@ -426,7 +501,9 @@
         <ValidatorArray value="PointDefenseLaserEnergyTargetFilters"/>
         <EditorCategories value="Race:Terran"/>
         <ImpactUnit Value="Caster"/>
-        <VitalArray index="Energy" Change="-10"/>
+        <VitalArray index="Energy">
+            <Change value="-10"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectSet id="PointDefenseLaserInitialSet">
         <ValidatorArray value="PointDefenseDroneUnitFilter"/>
@@ -532,7 +609,9 @@
     <CEffectModifyUnit id="FeedbackEnergyLoss">
         <ValidatorArray value=""/>
         <EditorCategories value="Race:Protoss"/>
-        <VitalArray index="Energy" ChangeFraction="-1"/>
+        <VitalArray index="Energy">
+            <ChangeFraction value="-1"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectSet id="InfestedTerransImpact">
         <EditorCategories value=""/>
@@ -675,7 +754,9 @@
     <CEffectModifyUnit id="GravitonBeamCasterEnergyDrain">
         <EditorCategories value="Race:Protoss"/>
         <ImpactUnit Value="Caster"/>
-        <VitalArray index="Energy" Change="-0.5"/>
+        <VitalArray index="Energy">
+            <Change value="-0.5"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectApplyBehavior id="KillsToCaster">
         <EditorCategories value="Race:Terran"/>
@@ -2229,8 +2310,12 @@
     </CEffectDamage>
     <CEffectModifyUnit id="PostMorphHeal">
         <EditorCategories value="Race:Zerg"/>
-        <VitalArray index="Life" ChangeFraction="1"/>
-        <VitalArray index="Shields" ChangeFraction="1"/>
+        <VitalArray index="Life">
+            <ChangeFraction value="1"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <ChangeFraction value="1"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectCreatePersistent id="TalonsBurst">
         <EditorCategories value="Race:Zerg"/>
@@ -2406,8 +2491,12 @@
     <CEffectModifyUnit id="EMPModifyUnit">
         <EditorCategories value="Race:Terran"/>
         <ValidatorArray value="empUTargetFilters"/>
-        <VitalArray index="Shields" Change="-100"/>
-        <VitalArray index="Energy" ChangeFraction="-1"/>
+        <VitalArray index="Shields">
+            <Change value="-100"/>
+        </VitalArray>
+        <VitalArray index="Energy">
+            <ChangeFraction value="-1"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectDamage id="SalvageDeath">
         <EditorCategories value="Race:Terran"/>
@@ -2503,7 +2592,9 @@
     <CEffectModifyUnit id="Transfusion">
         <EditorCategories value="Race:Zerg"/>
         <ValidatorArray value="LifeNotFull"/>
-        <VitalArray index="Life" Change="125"/>
+        <VitalArray index="Life">
+            <Change value="125"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectCreatePersistent id="TriggeredExplosion"/>
     <CEffectDamage id="InfernalFlameThrower" parent="DU_WEAP">

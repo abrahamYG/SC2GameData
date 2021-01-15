@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CBundle id="WCSPortraitBundle">
         <ProductId value="22637"/>
@@ -93,6 +93,15 @@
         <LearnMoreImage3 value="Assets\Textures\UI_Battlenet_Glue_Campaign_Purchase_Thumb_Nova_Standard_03.dds"/>
         <CinematicsImagePath value="Assets/Textures/UI_Battlenet_Glue_Campaign_Purchase_Thumb_Small_Nova_MP1.dds"/>
     </CBundle>
+    <CBundle id="WhiteRaAnnouncerBundle">
+        <ProductId value="74957"/>
+        <Flags index="IsFeatured" value="1"/>
+        <TileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Small_WhiteRa.dds"/>
+        <MediumTileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Medium_WhiteRa.dds"/>
+        <LargeTileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Large_WhiteRa.dds"/>
+        <ReleaseDate Month="7" Year="2020"/>
+        <GameContentArray value="VoicePack,WhiteRa"/>
+    </CBundle>
     <CBundle id="Alex007AnnouncerBundle">
         <ProductId value="38950"/>
         <TileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Small_Alex007.dds"/>
@@ -105,7 +114,6 @@
         <ProductId value="41830"/>
         <Flags index="ShowDynamicProductContent" value="1"/>
         <Flags index="IsFeatured" value="1"/>
-        <Flags index="IsFeaturedLarge" value="0"/>
         <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_tychusmasterbundle.dds"/>
         <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_tychusmasterbundle.dds"/>
         <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_tychusmasterbundle.dds"/>
@@ -142,16 +150,61 @@
         <ProductId value="43905"/>
         <Flags index="ShowDynamicProductContent" value="1"/>
         <Flags index="IsFeatured" value="1"/>
-        <Flags index="IsFeaturedLarge" value="1"/>
         <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_zeratulmasterbundle.dds"/>
         <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_zeratulmasterbundle.dds"/>
         <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_zeratulmasterbundle.dds"/>
         <ReleaseDate Month="12" Year="2018"/>
         <GameContentArray value="Commander,Zeratul"/>
     </CBundle>
+    <CBundle id="StetmannBundle">
+        <ProductId value="55870"/>
+        <Flags index="ShowDynamicProductContent" value="1"/>
+        <Flags index="IsFeatured" value="1"/>
+        <Flags index="IsFeaturedLarge" value="1"/>
+        <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_stetmannmasterbundle.dds"/>
+        <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_stetmannmasterbundle.dds"/>
+        <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_stetmannmasterbundle.dds"/>
+        <ReleaseDate Month="5" Year="2019"/>
+        <GameContentArray value="Commander,Stetmann"/>
+        <GameContentArray value="VoicePack,Stetmann"/>
+        <GameContentArray value="StimPack,StetmannStimpack"/>
+    </CBundle>
+    <CBundle id="StetmannCommander">
+        <ProductId value="47190"/>
+        <Flags index="ShowDynamicProductContent" value="1"/>
+        <Flags index="IsFeatured" value="1"/>
+        <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_stetmanncommander.dds"/>
+        <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_stetmanncommander.dds"/>
+        <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_stetmanncommander.dds"/>
+        <ReleaseDate Month="5" Year="2019"/>
+        <GameContentArray value="Commander,Stetmann"/>
+    </CBundle>
+    <CBundle id="MengskBundle">
+        <ProductId value="71075"/>
+        <Flags index="ShowDynamicProductContent" value="1"/>
+        <Flags index="IsFeatured" value="1"/>
+        <Flags index="IsFeaturedLarge" value="1"/>
+        <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_mengskmasterbundle.dds"/>
+        <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_mengskmasterbundle.dds"/>
+        <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_mengskmasterbundle.dds"/>
+        <ReleaseDate Month="11" Year="2019"/>
+        <GameContentArray value="Commander,Mengsk"/>
+        <GameContentArray value="VoicePack,Mengsk"/>
+        <GameContentArray value="StimPack,MengskStimpack"/>
+    </CBundle>
+    <CBundle id="MengskCommander">
+        <ProductId value="71073"/>
+        <Flags index="ShowDynamicProductContent" value="1"/>
+        <Flags index="IsFeatured" value="1"/>
+        <Flags index="IsFeaturedLarge" value="1"/>
+        <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_mengskcommander.dds"/>
+        <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_mengskcommander.dds"/>
+        <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_mengskcommander.dds"/>
+        <ReleaseDate Month="11" Year="2019"/>
+        <GameContentArray value="Commander,Mengsk"/>
+    </CBundle>
     <CBundle id="PomfThudAnnouncerBundle">
         <ProductId value="42170"/>
-        <Flags index="IsFeatured" value="1"/>
         <TileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Small_PomfThud.dds"/>
         <MediumTileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Medium_PomfThud.dds"/>
         <LargeTileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Large_PomfThud.dds"/>
@@ -170,6 +223,18 @@
         <GameContentArray value="DecalPack,TotalBiscuitTribute_DecalPack"/>
         <GameContentArray value="EmoticonPack,TotalBiscuitTribute_EmoticonPack"/>
     </CBundle>
+    <CBundle id="iNcontroLTributeBundle">
+        <ProductId value="26601"/>
+        <Flags index="IsFeatured" value="1"/>
+        <Flags index="ExternalSource" value="1"/>
+        <TileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Small_iNcontroLTributePack.dds"/>
+        <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_iNcontroLTributePack.dds"/>
+        <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_iNcontroLTributePack.dds"/>
+        <ReleaseDate Month="10" Year="2019"/>
+        <GameContentArray value="VoicePack,iNcontrol"/>
+        <GameContentArray value="PortraitPack,iNcontroLTribute_PortraitPack"/>
+        <GameContentArray value="SprayPack,iNcontroLTribute_SprayPack"/>
+    </CBundle>
     <CBundle id="AbathurBundle">
         <ProductId value="22042"/>
         <Flags index="IsFeatured" value="1"/>
@@ -179,7 +244,6 @@
     </CBundle>
     <CBundle id="AbathurTwitchPrimeBundle">
         <ProductId value="48610"/>
-        <Flags index="IsFeatured" value="0"/>
         <Flags index="ExternalSource" value="1"/>
         <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_twitchprimeabathur.dds"/>
         <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_twitchprimeabathur.dds"/>
@@ -195,7 +259,6 @@
     </CBundle>
     <CBundle id="SwannTwitchPrimeBundle">
         <ProductId value="48611"/>
-        <Flags index="IsFeatured" value="1"/>
         <Flags index="ExternalSource" value="1"/>
         <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_twitchprimeswann.dds"/>
         <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_twitchprimeswann.dds"/>
@@ -207,6 +270,22 @@
         <GameContentArray value="SprayPack,TwitchPrime2019"/>
         <GameContentArray value="EmoticonPack,TwitchPrime2019"/>
         <GameContentArray value="RaceBannerPack,TwitchPrimeSwann_RaceBannerPack"/>
+        <SuppressCountryArray value="CHN"/>
+        <SuppressCountryArray value="RUS"/>
+    </CBundle>
+    <CBundle id="VorazunTwitchPrimeBundle">
+        <ProductId value="48612"/>
+        <Flags index="IsFeatured" value="1"/>
+        <Flags index="ExternalSource" value="1"/>
+        <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_twitchprimevorazun.dds"/>
+        <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_twitchprimevorazun.dds"/>
+        <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_twitchprimevorazun.dds"/>
+        <ReleaseDate Month="5" Year="2019"/>
+        <GameContentArray value="Commander,Vorazun"/>
+        <GameContentArray value="VoicePack,Vorazun"/>
+        <GameContentArray value="ConsoleSkin,ConsoleProtoss_Nerazim"/>
+        <GameContentArray value="ConsoleSkin,ConsoleProtoss_ArcadePurple"/>
+        <GameContentArray value="RaceBannerPack,TwitchPrimeVorazun_RaceBannerPack"/>
         <SuppressCountryArray value="CHN"/>
         <SuppressCountryArray value="RUS"/>
     </CBundle>
@@ -249,7 +328,6 @@
         <ProductId value="32229"/>
         <Flags index="ShowDynamicProductContent" value="1"/>
         <Flags index="IsFeatured" value="1"/>
-        <Flags index="SuppressDiscount" value="1"/>
         <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_novacovertops.dds"/>
         <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_novacovertops.dds"/>
         <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_novacovertops.dds"/>
@@ -414,7 +492,6 @@
     </CBundle>
     <CBundle id="LowkoAnnouncerBundle">
         <ProductId value="48770"/>
-        <Flags index="IsFeatured" value="0"/>
         <TileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Small_Lowko.dds"/>
         <MediumTileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Medium_Lowko.dds"/>
         <LargeTileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Large_Lowko.dds"/>
@@ -423,12 +500,20 @@
     </CBundle>
     <CBundle id="MrShengAnnouncerBundle">
         <ProductId value="53150"/>
-        <Flags index="IsFeatured" value="1"/>
         <TileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Small_MrSheng.dds"/>
         <MediumTileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Medium_MrSheng.dds"/>
         <LargeTileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Large_MrSheng.dds"/>
         <ReleaseDate Month="4" Year="2019"/>
         <GameContentArray value="VoicePack,MrSheng"/>
+    </CBundle>
+    <CBundle id="WinterAnnouncerBundle">
+        <ProductId value="64311"/>
+        <Flags index="IsFeatured" value="1"/>
+        <TileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Small_Winter.dds"/>
+        <MediumTileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Medium_Winter.dds"/>
+        <LargeTileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Large_Winter.dds"/>
+        <ReleaseDate Month="10" Year="2019"/>
+        <GameContentArray value="VoicePack,Winter"/>
     </CBundle>
     <CBundle id="AnnouncerBundle">
         <ProductId value="24981"/>
@@ -436,6 +521,18 @@
         <Flags index="IsFeatured" value="1"/>
         <TileTexture value="Assets\Textures\SC2_UI_Collection_Featured_TileItem_Small_EpicAnnouncer.dds"/>
         <ReleaseDate Month="5" Year="2016"/>
+    </CBundle>
+    <CBundle id="VoicesOfLegendAnnouncerBundle">
+        <ProductId value="59070"/>
+        <Flags index="IsFeatured" value="1"/>
+        <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_umjeonkim.dds"/>
+        <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_umjeonkim.dds"/>
+        <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_umjeonkim.dds"/>
+        <ReleaseDate Month="6" Year="2019"/>
+        <GameContentArray value="VoicePack,eSports"/>
+        <GameContentArray value="VoicePack,Um"/>
+        <GameContentArray value="VoicePack,Jeon"/>
+        <GameContentArray value="VoicePack,Kim"/>
     </CBundle>
     <CBundle id="WarChestSeason1ProtossSkinsBundle">
         <ProductId value="36157"/>
@@ -468,7 +565,6 @@
         <ProductId value="38043"/>
         <Flags index="ShowDynamicProductContent" value="1"/>
         <Flags index="IsFeatured" value="1"/>
-        <Flags index="IsFeaturedLarge" value="0"/>
         <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_purifierskins.dds"/>
         <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_purifierskins.dds"/>
         <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_purifierskins.dds"/>
@@ -478,7 +574,6 @@
         <ProductId value="38045"/>
         <Flags index="ShowDynamicProductContent" value="1"/>
         <Flags index="IsFeatured" value="1"/>
-        <Flags index="IsFeaturedLarge" value="0"/>
         <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_mirasmaraudersskins.dds"/>
         <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_mirasmaraudersskins.dds"/>
         <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_mirasmaraudersskins.dds"/>
@@ -488,7 +583,6 @@
         <ProductId value="38044"/>
         <Flags index="ShowDynamicProductContent" value="1"/>
         <Flags index="IsFeatured" value="1"/>
-        <Flags index="IsFeaturedLarge" value="0"/>
         <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_primalskins.dds"/>
         <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_primalskins.dds"/>
         <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_primalskins.dds"/>
@@ -498,7 +592,6 @@
         <ProductId value="43810"/>
         <Flags index="ShowDynamicProductContent" value="1"/>
         <Flags index="IsFeatured" value="1"/>
-        <Flags index="IsFeaturedLarge" value="0"/>
         <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_goldenageskins.dds"/>
         <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_goldenageskins.dds"/>
         <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_goldenageskins.dds"/>
@@ -508,7 +601,6 @@
         <ProductId value="43812"/>
         <Flags index="ShowDynamicProductContent" value="1"/>
         <Flags index="IsFeatured" value="1"/>
-        <Flags index="IsFeaturedLarge" value="0"/>
         <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_umojanskins.dds"/>
         <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_umojanskins.dds"/>
         <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_umojanskins.dds"/>
@@ -518,11 +610,58 @@
         <ProductId value="43811"/>
         <Flags index="ShowDynamicProductContent" value="1"/>
         <Flags index="IsFeatured" value="1"/>
-        <Flags index="IsFeaturedLarge" value="0"/>
         <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_simulantskins.dds"/>
         <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_simulantskins.dds"/>
         <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_simulantskins.dds"/>
         <ReleaseDate Month="11" Year="2018"/>
+    </CBundle>
+    <CBundle id="WarChestSeason4ProtossSkinsBundle">
+        <ProductId value="49058"/>
+        <Flags index="ShowDynamicProductContent" value="1"/>
+        <Flags index="IsFeatured" value="1"/>
+        <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_forgedbuildingskins.dds"/>
+        <ReleaseDate Month="6" Year="2019"/>
+    </CBundle>
+    <CBundle id="WarChestSeason4TerranSkinsBundle">
+        <ProductId value="48931"/>
+        <Flags index="ShowDynamicProductContent" value="1"/>
+        <Flags index="IsFeatured" value="1"/>
+        <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_specialforcesbuildingskins.dds"/>
+        <ReleaseDate Month="6" Year="2019"/>
+    </CBundle>
+    <CBundle id="WarChestSeason4ZergSkinsBundle">
+        <ProductId value="49070"/>
+        <Flags index="ShowDynamicProductContent" value="1"/>
+        <Flags index="IsFeatured" value="1"/>
+        <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_simulantbuildingskins.dds"/>
+        <ReleaseDate Month="6" Year="2019"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossSkinsBundle">
+        <ProductId value="64313"/>
+        <Flags index="ShowDynamicProductContent" value="1"/>
+        <Flags index="IsFeatured" value="1"/>
+        <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_ihanriiskins.dds"/>
+        <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_ihanriiskins.dds"/>
+        <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_ihanriiskins.dds"/>
+        <ReleaseDate Month="2" Year="2020"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranSkinsBundle">
+        <ProductId value="64330"/>
+        <Flags index="ShowDynamicProductContent" value="1"/>
+        <Flags index="IsFeatured" value="1"/>
+        <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_tyradorskins.dds"/>
+        <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_tyradorskins.dds"/>
+        <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_tyradorskins.dds"/>
+        <ReleaseDate Month="2" Year="2020"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergSkinsBundle">
+        <ProductId value="64312"/>
+        <Flags index="ShowDynamicProductContent" value="1"/>
+        <Flags index="IsFeatured" value="1"/>
+        <TileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_small_cerberusskins.dds"/>
+        <MediumTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_medium_cerberusskins.dds"/>
+        <LargeTileTexture value="Assets\Textures\sc2_ui_collection_featured_tileitem_large_cerberusskins.dds"/>
+        <ReleaseDate Month="2" Year="2020"/>
     </CBundle>
     <!-- WarChest Season 1 Protoss Bundles -->
     <CBundle id="WarChestSeason1ProtossStarterBundle">
@@ -1442,5 +1581,580 @@
         <GameContentArray value="SkinPack,UltraliskCavernMecha"/>
         <GameContentArray value="EmoticonPack,WarChestZerg_GLHFZerg"/>
         <GameContentArray value="PortraitPack,WarChestSeason4_BroodLord"/>
+    </CBundle>
+    <!-- WarChest Season 5 Protoss Bundles -->
+    <CBundle id="WarChestSeason5ProtossStarterBundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,ProbeIhanrii"/>
+        <GameContentArray value="RaceBannerPack,WarChestSeason5Protoss"/>
+        <GameContentArray value="PortraitPack,WarChestSeason5_AdeptInk"/>
+        <GameContentArray value="DecalPack,WarChestSeason5_Protoss"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier1Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,ZealotIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier2Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,AdeptIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier3Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,StalkerIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier4Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,DarkTemplarIhanrii"/>
+        <GameContentArray value="EmoticonPack,WarChestProtoss_CookieRat"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier5Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,HighTemplarIhanrii"/>
+        <GameContentArray value="EmoticonPack,WarChestProtoss_Screwdriver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier6Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,SentryIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier7Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,ImmortalIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier8Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,OracleIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier9Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,DisruptorIhanrii"/>
+        <GameContentArray value="EmoticonPack,WarChestProtoss_Crowbar"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier10Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,ColossusIhanrii"/>
+        <GameContentArray value="SkinPack,ObserverIhanrii"/>
+        <GameContentArray value="SprayPack,WarChestProtoss_Balanced"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier11Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,PhoenixIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier12Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,VoidRayIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier13Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,WarpPrismIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier14Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,MothershipIhanrii"/>
+        <GameContentArray value="SprayPack,WarChestProtoss_NoGas"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ProtossTier15Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,CarrierIhanrii"/>
+        <GameContentArray value="SkinPack,TempestIhanrii"/>
+        <GameContentArray value="PortraitPack,WarChestSeason5_AdeptColor"/>
+    </CBundle>
+    <!-- WarChest Season 5 Terran Bundles -->
+    <CBundle id="WarChestSeason5TerranStarterBundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,SCVSilver"/>
+        <GameContentArray value="RaceBannerPack,WarChestSeason5Terran"/>
+        <GameContentArray value="PortraitPack,WarChestSeason5_GhostInk"/>
+        <GameContentArray value="DecalPack,WarChestSeason5_Terran"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier1Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,MarineSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier2Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,MarauderSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier3Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,GhostSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier4Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,ReaperSilver"/>
+        <GameContentArray value="EmoticonPack,WarChestTerran_BrownCat"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier5Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,MedivacSilver"/>
+        <GameContentArray value="EmoticonPack,WarChestTerran_Thumbtack"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier6Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,HellionSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier7Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,CycloneSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier8Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,WidowMineSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier9Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,SiegeTankSilver"/>
+        <GameContentArray value="EmoticonPack,WarChestTerran_Drill"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier10Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,ThorSilver"/>
+        <GameContentArray value="SprayPack,WarChestTerran_Caution"/>
+        <GameContentArray value="EmoticonPack,WarChestTerran_ShieldSword"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier11Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,BansheeSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier12Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,VikingSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier13Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,LiberatorSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier14Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,RavenSilver"/>
+        <GameContentArray value="SprayPack,WarChestTerran_Bullseye"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5TerranTier15Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,BattlecruiserSilver"/>
+        <GameContentArray value="PortraitPack,WarChestSeason5_GhostColor"/>
+        <GameContentArray value="EmoticonPack,WarChestTerran_PickaxeShovelSaw"/>
+    </CBundle>
+    <!-- WarChest Season 5 Zerg Bundles -->
+    <CBundle id="WarChestSeason5ZergStarterBundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,DroneRCZ"/>
+        <GameContentArray value="RaceBannerPack,WarChestSeason5Zerg"/>
+        <GameContentArray value="PortraitPack,WarChestSeason5_HydraliskInk"/>
+        <GameContentArray value="DecalPack,WarChestSeason5_Zerg"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier1Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,ZerglingRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier2Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,HydraliskRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier3Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,RoachRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier4Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,BanelingRCZ"/>
+        <GameContentArray value="EmoticonPack,WarChestZerg_CheeseMouse"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier5Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,QueenRCZ"/>
+        <GameContentArray value="EmoticonPack,WarChestZerg_Hammer"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier6Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,RavagerRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier7Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,SwarmHostRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier8Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,InfestorRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier9Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,LurkerRCZ"/>
+        <GameContentArray value="EmoticonPack,WarChestZerg_Wrench"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier10Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,UltraliskRCZ"/>
+        <GameContentArray value="SprayPack,WarChestZerg_MoneyBag"/>
+        <GameContentArray value="EmoticonPack,WarChestZerg_PliersVice"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier11Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,OverlordRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier12Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,MutaliskRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier13Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,CorruptorRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier14Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,ViperRCZ"/>
+        <GameContentArray value="SprayPack,WarChestZerg_Gift"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5ZergTier15Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,BroodLordRCZ"/>
+        <GameContentArray value="SkinPack,OverseerRCZ"/>
+        <GameContentArray value="PortraitPack,WarChestSeason5_HydraliskColor"/>
+    </CBundle>
+    <!-- WarChest Season 5 Free Bundles -->
+    <CBundle id="WarChestSeason5FreeTier1Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="PortraitPack,WarChestSeason5_ClassicMarine"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier2Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="EmoticonPack,WarChestFree_ClassicTerranNPC"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier3Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SprayPack,WarChestFree_SaltyBrickWall"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier4Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,MarineRemastered"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier5Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="DecalPack,WarChestSeason5_Free"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier6Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="PortraitPack,WarChestSeason5_ClassicHydralisk"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier7Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="EmoticonPack,WarChestFree_ClassicZergSlapRoof"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier8Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SprayPack,WarChestFree_JuiceBoxLingXing"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier9Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,HydraliskRemastered"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier10Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SprayPack,WarChestFree_Thumbs"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier11Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="PortraitPack,WarChestSeason5_ClassicZealot"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier12Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="EmoticonPack,WarChestFree_ClassicProtossWhatsThis"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier13Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SprayPack,WarChestFree_RedBalloonToast"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier14Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="SkinPack,ZealotRemastered"/>
+    </CBundle>
+    <CBundle id="WarChestSeason5FreeTier15Bundle">
+        <ReleaseDate Month="8" Year="2019"/>
+        <GameContentArray value="RaceBannerPack,WarChestSeason5Free"/>
+    </CBundle>
+    <!-- WarChest Season 6 Protoss Bundles -->
+    <CBundle id="WarChestSeason6ProtossStarterBundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="ConsoleSkin,ConsoleProtoss_Ihanrii"/>
+        <GameContentArray value="RaceBannerPack,WarChestSeason6Protoss"/>
+        <GameContentArray value="PortraitPack,WarChestSeason6_IhanriiExecutor"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier1Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,NexusIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier2Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,AssimilatorIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier3Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,PylonIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier4Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,GatewayIhanrii"/>
+        <GameContentArray value="EmoticonPack,WarChestProtoss_Onion"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier5Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,ForgeIhanrii"/>
+        <GameContentArray value="EmoticonPack,WarChestProtoss_Banana"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier6Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,PhotonCannonIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier7Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,ShieldBatteryIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier8Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,CyberneticsCoreIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier9Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,RoboticsFacilityIhanrii"/>
+        <GameContentArray value="EmoticonPack,WarChestProtoss_Muffin"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier10Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,RoboticsBayIhanrii"/>
+        <GameContentArray value="SprayPack,WarChestProtoss_Fork"/>
+        <GameContentArray value="EmoticonPack,WarChestProtoss_Shrimp"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier11Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,TwilightCouncilIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier12Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,StargateIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier13Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,DarkShrineIhanrii"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier14Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,TemplarArchiveIhanrii"/>
+        <GameContentArray value="SprayPack,WarChestProtoss_Torch"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ProtossTier15Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,FleetBeaconIhanrii"/>
+        <GameContentArray value="PortraitPack,WarChestSeason6_IhanriiSentry"/>
+        <GameContentArray value="EmoticonPack,WarChestProtoss_GrapesMushroom"/>
+    </CBundle>
+    <!-- WarChest Season 6 Terran Bundles -->
+    <CBundle id="WarChestSeason6TerranStarterBundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="ConsoleSkin,ConsoleTerran_Silver"/>
+        <GameContentArray value="RaceBannerPack,WarChestSeason6Terran"/>
+        <GameContentArray value="PortraitPack,WarChestSeason6_SilverAdjutant"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier1Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,CommandCenterSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier2Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,RefinerySilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier3Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,SupplyDepotSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier4Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,BarracksSilver"/>
+        <GameContentArray value="EmoticonPack,WarChestTerran_Broccoli"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier5Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,EngineeringBaySilver"/>
+        <GameContentArray value="EmoticonPack,WarChestTerran_Apple"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier6Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,BunkerSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier7Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,MissileTurretSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier8Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,ReactorSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier9Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,FactorySilver"/>
+        <GameContentArray value="EmoticonPack,WarChestTerran_Toasted"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier10Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,ArmorySilver"/>
+        <GameContentArray value="SprayPack,WarChestTerran_PricklyCactus"/>
+        <GameContentArray value="EmoticonPack,WarChestTerran_Steak"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier11Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,TechLabSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier12Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,StarportSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier13Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,SensorTowerSilver"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier14Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,GhostAcademySilver"/>
+        <GameContentArray value="SprayPack,WarChestTerran_Crown"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6TerranTier15Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,FusionCoreSilver"/>
+        <GameContentArray value="PortraitPack,WarChestSeason6_SilverThor"/>
+        <GameContentArray value="EmoticonPack,WarChestTerran_CherriesGarlic"/>
+    </CBundle>
+    <!-- WarChest Season 6 Zerg Bundles -->
+    <CBundle id="WarChestSeason6ZergStarterBundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="ConsoleSkin,ConsoleZerg_RCZ"/>
+        <GameContentArray value="RaceBannerPack,WarChestSeason6Zerg"/>
+        <GameContentArray value="PortraitPack,WarChestSeason6_RCZHiveNode"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier1Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,HatcheryRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier2Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,ExtractorRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier3Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,LarvaRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier4Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,SpawningPoolRCZ"/>
+        <GameContentArray value="EmoticonPack,WarChestZerg_Carrot"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier5Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,EvolutionChamberRCZ"/>
+        <GameContentArray value="EmoticonPack,WarChestZerg_Strawberry"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier6Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,SpineCrawlerRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier7Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,SporeCrawlerRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier8Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,BanelingNestRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier9Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,RoachWarrenRCZ"/>
+        <GameContentArray value="EmoticonPack,WarChestZerg_Croissant"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier10Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,HydraliskDenRCZ"/>
+        <GameContentArray value="SprayPack,WarChestZerg_Gavel"/>
+        <GameContentArray value="EmoticonPack,WarChestZerg_Lobster"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier11Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,LurkerDenRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier12Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,SpireRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier13Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,NydusNetworkRCZ"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier14Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,InfestationPitRCZ"/>
+        <GameContentArray value="SprayPack,WarChestZerg_SurprisedEyes"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6ZergTier15Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,UltraliskCavernRCZ"/>
+        <GameContentArray value="PortraitPack,WarChestSeason6_RCZLurker"/>
+        <GameContentArray value="EmoticonPack,WarChestZerg_LemonPepper"/>
+    </CBundle>
+    <!-- WarChest Season 6 Free Bundles -->
+    <CBundle id="WarChestSeason6FreeTier1Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="EmoticonPack,WarChestFree_PieCookie"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier2Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="PortraitPack,WarChestSeason6_ClassicAdjutant"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier3Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SprayPack,WarChestFree_StopCheck"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier4Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,CommandCenterRemastered"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier5Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="DecalPack,WarChestSeason6_Free"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier6Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="EmoticonPack,WarChestFree_CoffeeJuiceBox"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier7Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="PortraitPack,WarChestSeason6_ClassicOvermind"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier8Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SprayPack,WarChestFree_LightBulbPinkHeart"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier9Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,HatcheryRemastered"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier10Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SprayPack,WarChestFree_EpicGrips"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier11Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="EmoticonPack,WarChestFree_DonutPancakes"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier12Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="PortraitPack,WarChestSeason6_ClassicAldaris"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier13Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SprayPack,WarChestFree_SilverMedalGoldStar"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier14Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="SkinPack,NexusRemastered"/>
+    </CBundle>
+    <CBundle id="WarChestSeason6FreeTier15Bundle">
+        <ReleaseDate Month="6" Year="2020"/>
+        <GameContentArray value="RaceBannerPack,WarChestSeason6Free"/>
     </CBundle>
 </Catalog>

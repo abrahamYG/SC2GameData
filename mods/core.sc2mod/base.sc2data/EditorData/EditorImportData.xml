@@ -645,17 +645,17 @@
     
     <PlayerRaces>
         <Value>Neut</Value>                     <!-- None -->
-        <Value>Terr</Value>                     <!-- Human -->
-        <Value>Prot</Value>                     <!-- Orc -->
-        <Value>Zerg</Value>                     <!-- Undead -->
-        <Value>Prot</Value>                     <!-- Night Elf -->
-        <Value>Neut</Value>                     <!-- Demon -->
+        <Value>Human</Value>                     <!-- Human -->
+        <Value>Orc</Value>                     <!-- Orc -->
+        <Value>Undead</Value>                     <!-- Undead -->
+        <Value>NightElf</Value>                     <!-- Night Elf -->
+        <Value>Demon</Value>                     <!-- Demon -->
         <Value>None</Value>                     <!-- Unused -->
-        <Value>Neut</Value>                     <!-- Other -->
-        <Value>Neut</Value>                     <!-- Creep -->
-        <Value>Neut</Value>                     <!-- Commoner -->
-        <Value>Neut</Value>                     <!-- Critter -->
-        <Value>Neut</Value>                     <!-- Naga -->
+        <Value>Other</Value>                     <!-- Other -->
+        <Value>Creep</Value>                     <!-- Creep -->
+        <Value>Commoner</Value>                     <!-- Commoner -->
+        <Value>Critter</Value>                     <!-- Critter -->
+        <Value>Naga</Value>                     <!-- Naga -->
     </PlayerRaces>
     
     <PlayerColors>
@@ -677,8 +677,9 @@
         <Value>0,0,0,0</Value>                  <!-- Neutral -->
     </PlayerColors>
     
-    <HeightBase>            <Value>0.0</Value>  </HeightBase>
-    <HeightScale>           <Value>0.01</Value> </HeightScale>
+    <HeightBase>            <Value>8.0</Value>  </HeightBase>
+    <HeightScale>           <Value>0.015</Value> </HeightScale>
+    <TerrainScale>           <Value>2</Value>   </TerrainScale>
     <HeightNoise>           <Value>0.0</Value>  </HeightNoise>
     <HeightSmoothingCount>  <Value>2</Value>    </HeightSmoothingCount>
     <HeightSmoothingWeight> <Value>0.5</Value>  </HeightSmoothingWeight>
@@ -687,41 +688,62 @@
     <TextureSmoothingWeight><Value>0.65</Value> </TextureSmoothingWeight>
     
     <Tilesets>
-        <Value>A,Aiur</Value>                   <!-- Ashenvale -->
-        <Value>B,Aiur</Value>                   <!-- Barrens -->
+        <Value>A,Ashen</Value>                  <!-- Ashenvale -->
+        <Value>B,Barrens</Value>                <!-- Barrens -->
         <Value>K,Aiur</Value>                   <!-- Black Citadel -->
         <Value>Y,Aiur</Value>                   <!-- Cityscape -->
         <Value>X,Aiur</Value>                   <!-- Dalaran -->
         <Value>J,Aiur</Value>                   <!-- Dalaran Ruins -->
         <Value>D,Char</Value>                   <!-- Dungeon -->
-        <Value>C,Char</Value>                   <!-- Felwood -->
-        <Value>I,Aiur</Value>                   <!-- Icecrown -->
+        <Value>C,Felwood</Value>                   <!-- Felwood -->
+        <Value>I,Ice</Value>               <!-- Icecrown -->
         <Value>F,Aiur</Value>                   <!-- Lordaeron Fall -->
-        <Value>L,Aiur</Value>                   <!-- Lordaeron Summer -->
+        <Value>L,LordaeronSummer</Value>                   <!-- Lordaeron Summer -->
         <Value>W,Aiur</Value>                   <!-- Lordaeron Winter -->
-        <Value>N,Aiur</Value>                   <!-- Northrend -->
-        <Value>O,Aiur</Value>                   <!-- Outland -->
-        <Value>Z,Aiur</Value>                   <!-- Ruins -->
+        <Value>N,North</Value>                   <!-- Northrend -->
+        <Value>O,Outland</Value>                   <!-- Outland -->
+        <Value>Z,Ruins</Value>                   <!-- Ruins -->
         <Value>G,Char</Value>                   <!-- Underground -->
         <Value>V,Aiur</Value>                   <!-- Village -->
         <Value>Q,Aiur</Value>                   <!-- Village Fall -->
     </Tilesets>
     
+    <Waters>
+        <Value>A,LordaeronSummer</Value>                   <!-- Ashenvale -->
+        <Value>B,LordaeronSummer</Value>                   <!-- Barrens -->
+        <Value>K,LordaeronSummer</Value>                   <!-- Black Citadel -->
+        <Value>Y,LordaeronSummer</Value>                   <!-- Cityscape -->
+        <Value>X,LordaeronSummer</Value>                   <!-- Dalaran -->
+        <Value>J,LordaeronSummer</Value>                   <!-- Dalaran Ruins -->
+        <Value>D,LordaeronSummer</Value>                   <!-- Dungeon -->
+        <Value>C,LordaeronSummer</Value>                   <!-- Felwood -->
+        <Value>I,LordaeronSummer</Value>                   <!-- Icecrown -->
+        <Value>F,LordaeronSummer</Value>                   <!-- Lordaeron Fall -->
+        <Value>L,LordaeronSummer</Value>                   <!-- Lordaeron Summer -->
+        <Value>W,LordaeronSummer</Value>                   <!-- Lordaeron Winter -->
+        <Value>N,LordaeronSummer</Value>                   <!-- Northrend -->
+        <!--Value>O,LordaeronSummer</Value-->              <!-- Outland --> <!-- Vashj drained all water of Outland! -->
+        <Value>Z,LordaeronSummer</Value>                   <!-- Ruins -->
+        <Value>G,LordaeronSummer</Value>                   <!-- Underground -->
+        <Value>V,LordaeronSummer</Value>                   <!-- Village -->
+        <Value>Q,LordaeronSummer</Value>                   <!-- Village Fall -->
+    </Waters>
+    
     <Cliffs>
-        <Value>CLdi,AiurCliff0</Value>
-        <Value>CLgr,AiurCliff1</Value>
+        <Value>CLdi,Lords_Dirt</Value>
+        <Value>CLgr,Lords_Grass</Value>
         <Value>CFdi,AiurCliff0</Value>
         <Value>CFgr,AiurCliff1</Value>
         <Value>CWgr,AiurCliff0</Value>
         <Value>CWsn,AiurCliff1</Value>
-        <Value>CBde,AiurCliff0</Value>
-        <Value>CBgr,AiurCliff1</Value>
-        <Value>CNdi,AiurCliff0</Value>
-        <Value>CNsn,AiurCliff1</Value>
-        <Value>CAgr,AiurCliff0</Value>
-        <Value>CAdi,AiurCliff1</Value>
-        <Value>CCgr,AiurCliff0</Value>
-        <Value>CCdi,AiurCliff1</Value>
+        <Value>CBde,Barrens@CliffDesert</Value>
+        <Value>CBgr,Barrens@CliffGrass</Value>
+        <Value>CNdi,North@CliffDirt</Value>
+        <Value>CNsn,North@CliffSnow</Value>
+        <Value>CAgr,Ashen@Cliff1</Value>
+        <Value>CAdi,Ashen@Cliff0</Value>
+        <Value>CCgr,Felwood@CliffGrass</Value>
+        <Value>CCdi,Felwood@CliffDirt</Value>
         <Value>CYdi,AiurCliff0</Value>
         <Value>CYsq,AiurCliff1</Value>
         <Value>CVdi,AiurCliff0</Value>
@@ -734,12 +756,12 @@
         <Value>CQgr,AiurCliff1</Value>
         <Value>CGdi,AiurCliff0</Value>
         <Value>CGsq,AiurCliff1</Value>
-        <Value>CZdi,AiurCliff0</Value>
-        <Value>CZlb,AiurCliff1</Value>
-        <Value>CIsn,AiurCliff0</Value>
-        <Value>CIrb,AiurCliff1</Value>
-        <Value>COdi,AiurCliff0</Value>
-        <Value>COrd,AiurCliff1</Value>
+        <Value>CZdi,Ruins@CliffDirt</Value>
+        <Value>CZlb,Ruins@CliffTempleWall</Value>
+        <Value>CIsn,Ice@CliffSnow</Value>
+        <Value>CIrb,Ice@CliffRuneBricks</Value>
+        <Value>COdi,OutlandCliffs0</Value>
+        <Value>COrd,OutlandCliffs0</Value>
         <Value>CKdi,AiurCliff0</Value>
         <Value>CKdt,AiurCliff1</Value>
         <Value>CJdi,AiurCliff0</Value>
@@ -748,23 +770,23 @@
 
     <Textures>
         <!-- Ashenvale -->
-        <Value>Adrt,AiurDirt</Value>            <!-- Ashen_Dirt -->
-        <Value>Adrd,AiurRoughDirt</Value>       <!-- Ashen_DirtRough -->
-        <Value>Agrs,AiurGrass</Value>           <!-- Ashen_Grass -->
-        <Value>Arck,AiurRock</Value>            <!-- Ashen_Rock -->
-        <Value>Agrd,AiurDarkGrass</Value>       <!-- Ashen_GrassLumpy -->
-        <Value>Avin,AiurBricks</Value>          <!-- Ashen_Vines -->
-        <Value>Adrg,AiurRockyGrass</Value>      <!-- Ashen_DirtGrass -->
-        <Value>Alvd,AiurDarkGrass</Value>       <!-- Ashen_leaves -->
+        <Value>Adrt,Ashen@Dirt</Value>          <!-- Ashen@Dirt -->
+        <Value>Adrd,Ashen@DirtRough</Value>     <!-- Ashen@DirtRough -->
+        <Value>Agrs,Ashen@Grass</Value>         <!-- Ashen@Grass -->
+        <Value>Arck,Ashen@Rock</Value>          <!-- Ashen@Rock -->
+        <Value>Agrd,Ashen@GrassLumpy</Value>    <!-- Ashen@GrassLumpy -->
+        <Value>Avin,Ashen@Vines</Value>         <!-- Ashen@Vines -->
+        <Value>Adrg,Ashen@DirtGrass</Value>     <!-- Ashen@DirtGrass -->
+        <Value>Alvd,Ashen@Leaves</Value>        <!-- Ashen@Leaves -->
         <!-- Barrens -->
-        <Value>Bdrt,AiurDirt</Value>            <!-- Barrens_Dirt -->
-        <Value>Bdrh,AiurRoughDirt</Value>       <!-- Barrens_DirtRough -->
-        <Value>Bdrr,AiurGrassyRock</Value>      <!-- Barrens_Pebbles -->
-        <Value>Bdrg,AiurRockyGrass</Value>      <!-- Barrens_DirtGrass -->
-        <Value>Bdsr,AiurDirt</Value>            <!-- Barrens_Desert -->
-        <Value>Bdsd,AiurRoughDirt</Value>       <!-- Barrens_DesertDark -->
-        <Value>Bflr,AiurRock</Value>            <!-- Barrens_Rock -->
-        <Value>Bgrr,AiurGrass</Value>           <!-- Barrens_Grass -->
+        <Value>Bdrt,Barrens@Dirt</Value>            <!-- Barrens@Dirt -->
+        <Value>Bdrh,Barrens@DirtRough</Value>       <!-- Barrens@DirtRough -->
+        <Value>Bdrr,Barrens@Pebbles</Value>      <!-- Barrens@Pebbles -->
+        <Value>Bdrg,Barrens@DirtGrass</Value>      <!-- Barrens@DirtGrass -->
+        <Value>Bdsr,Barrens@Desert</Value>            <!-- Barrens@Desert -->
+        <Value>Bdsd,Barrens@DesertDark</Value>       <!-- Barrens@DesertDark -->
+        <Value>Bflr,Barrens@Rock</Value>            <!-- Barrens@Rock -->
+        <Value>Bgrr,Barrens@Grass</Value>           <!-- Barrens@Grass -->
         <!-- Black Citadel -->
         <Value>Kdrt,AiurDirt</Value>            <!-- Citadel_Dirt -->
         <Value>Kfsl,AiurDirt</Value>            <!-- Citadel_DirtLight -->
@@ -814,23 +836,23 @@
         <Value>Dgrs,CharRock</Value>            <!-- Cave_GreyStones -->
         <Value>Dsqd,CharRock</Value>            <!-- Cave_SquareTiles -->
         <!-- Felwood -->
-        <Value>Cdrt,CharDirt</Value>            <!-- Felwood_Dirt -->
-        <Value>Cdrd,CharRoughDirt</Value>       <!-- Felwood_DirtRough -->
-        <Value>Cpos,CharLavaPebbles</Value>     <!-- Felwood_Poison -->
-        <Value>Crck,CharRock</Value>            <!-- Felwood_Rock -->
-        <Value>Cvin,CharLavaRocks</Value>       <!-- Felwood_Vines -->
-        <Value>Cgrs,CharDirt</Value>            <!-- Felwood_Grass -->
-        <Value>Clvg,CharRoughDirt</Value>       <!-- Felwood_Leaves -->
+        <Value>Cdrt,Felwood@Dirt</Value>            <!-- Felwood_Dirt -->
+        <Value>Cdrd,Felwood@DirtRough</Value>       <!-- Felwood_DirtRough -->
+        <Value>Cpos,Felwood@Poison</Value>     <!-- Felwood_Poison -->
+        <Value>Crck,Felwood@Rock</Value>            <!-- Felwood_Rock -->
+        <Value>Cvin,Felwood@Vines</Value>       <!-- Felwood_Vines -->
+        <Value>Cgrs,Felwood@Grass</Value>            <!-- Felwood_Grass -->
+        <Value>Clvg,Felwood@Leaves</Value>       <!-- Felwood_Leaves -->
         <!-- Icecrown -->
-        <Value>Idrt,AiurDirt</Value>            <!-- Ice_Dirt -->
-        <Value>Idtr,AiurRoughDirt</Value>       <!-- Ice_DirtRough -->
-        <Value>Idki,AiurRock</Value>            <!-- Ice_DarkIce -->
-        <Value>Ibkb,AiurBricks</Value>          <!-- Ice_BlackBricks -->
-        <Value>Irbk,AiurBricks</Value>          <!-- Ice_RuneBricks -->
-        <Value>Itbk,AiurBricks</Value>          <!-- Ice_TiledBricks -->
-        <Value>Iice,AiurRock</Value>            <!-- Ice_Ice -->
-        <Value>Ibsq,AiurBricks</Value>          <!-- Ice_BlackSquares -->
-        <Value>Isnw,AiurGrass</Value>           <!-- Ice_Snow -->
+        <Value>Idrt,Ice@Dirt</Value>            <!-- Ice_Dirt -->
+        <Value>Idtr,Ice@DirtRough</Value>       <!-- Ice_DirtRough -->
+        <Value>Idki,Ice@DarkIce</Value>            <!-- Ice_DarkIce -->
+        <Value>Ibkb,Ice@BlackBricks</Value>          <!-- Ice_BlackBricks -->
+        <Value>Irbk,Ice@RuneBricks</Value>          <!-- Ice_RuneBricks -->
+        <Value>Itbk,Ice@TiledBricks</Value>          <!-- Ice_TiledBricks -->
+        <Value>Iice,Ice@Ice</Value>            <!-- Ice_Ice -->
+        <Value>Ibsq,Ice@BlackSquares</Value>          <!-- Ice_BlackSquares -->
+        <Value>Isnw,Ice@Snow</Value>           <!-- Ice_Snow -->
         <!-- Lordaeron Fall -->
         <Value>Fdrt,AiurDirt</Value>            <!-- Lordf_Dirt -->
         <Value>Fdro,AiurRoughDirt</Value>       <!-- Lordf_DirtRough -->
@@ -839,12 +861,12 @@
         <Value>Fgrs,AiurGrass</Value>           <!-- Lordf_Grass -->
         <Value>Fgrd,AiurDarkGrass</Value>       <!-- Lordf_GrassDark -->
         <!-- Lordaeron Summer -->
-        <Value>Ldrt,AiurDirt</Value>            <!-- Lords_Dirt -->
-        <Value>Ldro,AiurDirt</Value>            <!-- Lords_DirtRough -->
-        <Value>Ldrg,AiurGrass</Value>           <!-- Lords_DirtGrass -->
-        <Value>Lrok,AiurRock</Value>            <!-- Lords_Rock -->
-        <Value>Lgrs,AiurGrass</Value>           <!-- Lords_Grass -->
-        <Value>Lgrd,AiurGrass</Value>           <!-- Lords_GrassDark -->
+        <Value>Ldrt,Lords_Dirt</Value>            <!-- Lords_Dirt -->
+        <Value>Ldro,Lords_DirtRough</Value>            <!-- Lords_DirtRough -->
+        <Value>Ldrg,Lords_DirtGrass</Value>           <!-- Lords_DirtGrass -->
+        <Value>Lrok,Lords_Rock</Value>            <!-- Lords_Rock -->
+        <Value>Lgrs,Lords_Grass</Value>           <!-- Lords_Grass -->
+        <Value>Lgrd,Lords_GrassDark</Value>           <!-- Lords_GrassDark -->
         <!-- Lordaeron Winter -->
         <Value>Wdrt,AiurDirt</Value>            <!-- Lordw_Dirt -->
         <Value>Wdro,AiurRoughDirt</Value>       <!-- Lordw_DirtRough -->
@@ -853,32 +875,32 @@
         <Value>Wgrs,AiurGrass</Value>           <!-- Lordw_Grass -->
         <Value>Wsnw,AiurDarkGrass</Value>       <!-- Lordw_Snow -->
         <!-- Northrend -->
-        <Value>Ndrt,AiurDirt</Value>            <!-- North_dirt -->
-        <Value>Ndrd,AiurRoughDirt</Value>       <!-- North_dirtdark -->
-        <Value>Nrck,AiurRock</Value>            <!-- North_rock -->
-        <Value>Ngrs,AiurGrass</Value>           <!-- North_Grass -->
-        <Value>Nice,AiurRock</Value>            <!-- North_ice -->
-        <Value>Nsnw,AiurDarkGrass</Value>       <!-- North_Snow -->
-        <Value>Nsnr,AiurRockyGrass</Value>      <!-- North_SnowRock -->
+        <Value>Ndrt,North@Dirt</Value>            <!-- North@dirt -->
+        <Value>Ndrd,North@DirtDark</Value>       <!-- North@dirtdark -->
+        <Value>Nrck,North@Rock</Value>            <!-- North@rock -->
+        <Value>Ngrs,North@Grass</Value>           <!-- North@Grass -->
+        <Value>Nice,North@Ice</Value>            <!-- North@ice -->
+        <Value>Nsnw,North@Snow</Value>       <!-- North@Snow -->
+        <Value>Nsnr,North@SnowRock</Value>      <!-- North@SnowRock -->
         <!-- Outland -->
-        <Value>Odrt,AiurDirt</Value>            <!-- Outland_Dirt -->
-        <Value>Odtr,AiurDirt</Value>            <!-- Outland_DirtLight -->
-        <Value>Osmb,AiurRoughDirt</Value>       <!-- Outland_RoughDirt -->
-        <Value>Ofst,AiurRoughDirt</Value>       <!-- Outland_DirtCracked -->
-        <Value>Olgb,AiurBricks</Value>          <!-- Outland_FlatStones -->
-        <Value>Orok,AiurRock</Value>            <!-- Outland_Rock -->
-        <Value>Ofsl,AiurBricks</Value>          <!-- Outland_FlatStonesLight -->
-        <Value>Oaby,AiurRock</Value>            <!-- Outland_Abyss -->
+        <Value>Odrt,Outland_Dirt</Value>            <!-- Outland_Dirt -->
+        <Value>Odtr,Outland_DirtLight</Value>            <!-- Outland_DirtLight -->
+        <Value>Osmb,Outland_RoughDirt</Value>       <!-- Outland_RoughDirt -->
+        <Value>Ofst,Outland_DirtCracked</Value>       <!-- Outland_DirtCracked -->
+        <Value>Olgb,Outland_FlatStones</Value>          <!-- Outland_FlatStones -->
+        <Value>Orok,Outland_Rock</Value>            <!-- Outland_Rock -->
+        <Value>Ofsl,Outland_FlatStonesLight</Value>          <!-- Outland_FlatStonesLight -->
+        <Value>Oaby,Outland_Abyss</Value>            <!-- Outland_Abyss -->
         <!-- Ruins -->
-        <Value>Zdrt,AiurDirt</Value>            <!-- Ruins_Dirt -->
-        <Value>Zdtr,AiurRoughDirt</Value>       <!-- Ruins_DirtRough -->
-        <Value>Zdrg,AiurRockyGrass</Value>      <!-- Ruins_DirtGrass -->
-        <Value>Zbks,AiurBricks</Value>          <!-- Ruins_SmallBricks -->
-        <Value>Zsan,AiurDirt</Value>            <!-- Ruins_Sand -->
-        <Value>Zbkl,AiurBricks</Value>          <!-- Ruins_LargeBricks -->
-        <Value>Ztil,AiurBricks</Value>          <!-- Ruins_RoundTiles -->
-        <Value>Zgrs,AiurGrass</Value>           <!-- Ruins_Grass -->
-        <Value>Zvin,AiurDarkGrass</Value>       <!-- Ruins_GrassDark -->
+        <Value>Zdrt,Ruins@Dirt</Value>            <!-- Ruins_Dirt -->
+        <Value>Zdtr,Ruins@DirtRough</Value>       <!-- Ruins_DirtRough -->
+        <Value>Zdrg,Ruins@DirtGrass</Value>      <!-- Ruins_DirtGrass -->
+        <Value>Zbks,Ruins@SmallBricks</Value>          <!-- Ruins_SmallBricks -->
+        <Value>Zsan,Ruins@Sand</Value>            <!-- Ruins_Sand -->
+        <Value>Zbkl,Ruins@LargeBricks</Value>          <!-- Ruins_LargeBricks -->
+        <Value>Ztil,Ruins@RoundTiles</Value>          <!-- Ruins_RoundTiles -->
+        <Value>Zgrs,Ruins@Grass</Value>           <!-- Ruins_Grass -->
+        <Value>Zvin,Ruins@GrassDark</Value>       <!-- Ruins_GrassDark -->
         <!-- Underground -->
         <Value>Gdrt,CharDirt</Value>            <!-- GDirt -->
         <Value>Gbrk,CharRock</Value>            <!-- GBrick -->

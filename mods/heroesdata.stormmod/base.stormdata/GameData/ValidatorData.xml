@@ -36,6 +36,14 @@
   <CValidatorUnitFilters default="1" id="SourceNotParentFilter">
     <WhichUnit Value="Source" />
   </CValidatorUnitFilters>
+  <CValidatorCombine id="CasterIsDazedOrDeadOrSilencedOrStasisOrStunnedOrRooted">
+    <CombineArray value="CasterIsStunned" />
+    <CombineArray value="CasterIsDead" />
+    <CombineArray value="CasterIsSilenced" />
+    <CombineArray value="CasterIsStasis" />
+    <CombineArray value="CasterIsDazed" />
+    <CombineArray value="CasterIsRooted" />
+  </CValidatorCombine>
   <CValidatorUnitAbil id="CasterHasMountAbility">
     <WhichUnit Value="Caster" />
     <Find value="1" />
@@ -158,6 +166,11 @@
     <Type value="Fraction" />
     <Value value="0.75" />
   </CValidatorUnitCompareVital>
+  <CValidatorCombine id="TargetNotInSpecialPreStasisRemovedStateCombine">
+    <CombineArray value="NoStageDiveChannel" />
+    <CombineArray value="NoCrusaderFallingSword" />
+    <Type value="And" />
+  </CValidatorCombine>
   <CValidatorUnitFilters id="TargetOnAirPlane">
     <Filters value="Air;-" />
   </CValidatorUnitFilters>
@@ -814,12 +827,6 @@
     <WhichUnit Value="Caster" />
     <Filters value="-;Hallucination" />
   </CValidatorUnitFilters>
-  <CValidatorUnitCompareTokenCount id="TinkerHasLT600TokensClockworkSteamfists">
-    <WhichUnit Value="Caster" />
-    <Compare value="LT" />
-    <Value value="600" />
-    <TokenId value="TinkerClockwerkSteamFistsToken" />
-  </CValidatorUnitCompareTokenCount>
   <CValidatorUnitDetected id="TargetIsDetected">
     <Detected value="1" />
     <Flags index="Normal" value="1" />
@@ -3512,8 +3519,6 @@
     <Vital value="Energy" />
   </CValidatorUnitCompareVital>
   <CValidatorUnitCompareBehaviorCount id="GenjiTargetDoesNotHaveDodgeBuffBehavior">
-    <Compare value="LT" />
-    <Value value="1" />
     <Behavior value="GenjiDodgeBuff" />
   </CValidatorUnitCompareBehaviorCount>
   <CValidatorUnitCompareVital id="CasterHasNoEnergy">
@@ -5844,8 +5849,6 @@
     <Type value="And" />
     <CombineArray value="CasterNotBlinded" />
     <CombineArray value="TargetNotEvading" />
-    <CombineArray value="VarianParryTargetDoesNotHaveBuff" />
-    <CombineArray value="GenjiTargetDoesNotHaveDodgeBuffBehavior" />
   </CValidatorCombine>
   <CValidatorCombine id="CasterIsBlindedOrTargetIsEvading">
     <CombineArray value="CasterIsBlinded" />
@@ -6615,6 +6618,8 @@
   <CValidatorCombine id="AbilButtonActiveQDamage">
     <CombineArray value="LeoricHasRoyalFocusDamageBuff" />
     <CombineArray value="WizardHasTeleportAetherWalkerDummyBehaviorAndAetherWalkerTalent" />
+    <CombineArray value="ChenStormStormEarthFireEmpoweredOtherButtonsUsedAndHas2StacksOfEmpoweredFinalAbilityCastStackingBehaviorCombine" />
+    <CombineArray value="ChenHasStormEarthFireCasterBehaviorAndElementalConduitAndStormButtonNotUsed" />
   </CValidatorCombine>
   <CValidatorCombine id="AbilButtonActiveQHealing">
     <CombineArray value="UtherHasHolyLightHolyShockTalentMarkerCaster" />
@@ -6635,6 +6640,8 @@
   <CValidatorCombine id="AbilButtonActiveWDamage">
     <CombineArray value="GreymaneInnerBeastCasterHasBuff" />
     <CombineArray value="HasCursedStrikesPrimed" />
+    <CombineArray value="ChenEarthStormEarthFireEmpoweredOtherButtonsUsedAndHas2StacksOfEmpoweredFinalAbilityCastStackingBehaviorCombine" />
+    <CombineArray value="ChenHasStormEarthFireCasterBehaviorAndElementalConduitAndEarthButtonNotUsed" />
   </CValidatorCombine>
   <CValidatorCombine id="AbilButtonActiveWHealing" />
   <CValidatorCombine id="AbilButtonActiveWMana" />
@@ -6647,7 +6654,10 @@
     <CombineArray value="RehgarTotemicProjectionCastEnabled" />
     <CombineArray value="HasAetherWalkerBuff" />
   </CValidatorCombine>
-  <CValidatorCombine id="AbilButtonActiveEDamage" />
+  <CValidatorCombine id="AbilButtonActiveEDamage">
+    <CombineArray value="ChenFireStormEarthFireEmpoweredOtherButtonsUsedAndHas2StacksOfEmpoweredFinalAbilityCastStackingBehaviorCombine" />
+    <CombineArray value="ChenHasStormEarthFireCasterBehaviorAndElementalConduitAndFireButtonNotUsed" />
+  </CValidatorCombine>
   <CValidatorCombine id="AbilButtonActiveEHealing" />
   <CValidatorCombine id="AbilButtonActiveEMana" />
   <CValidatorCombine id="AbilButtonAttentionRDamage" />

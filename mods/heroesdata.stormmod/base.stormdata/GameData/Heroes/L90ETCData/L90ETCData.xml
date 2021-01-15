@@ -42,7 +42,7 @@
     <Effect value="GuitarSoloInitialSet" />
     <Cost>
       <Vital index="Energy" value="40" />
-      <Cooldown TimeUse="8" />
+      <Cooldown TimeUse="9" />
     </Cost>
     <CmdButtonArray index="Execute" DefaultButtonFace="L90ETCGuitarSolo" />
     <PrepEffect value="DismountDecloakCasterSet" />
@@ -259,10 +259,12 @@
     <Preload index="0" value="FaceMeltCast" />
     <On Terms="Effect.FaceMeltEncoreMasterySearch.Start; At Effect" Send="Create" />
     <Model value="FaceMeltCast" />
+    <HostSiteOps Ops="SOpShadow" />
   </CActorModel>
   <CActorModel id="FaceMeltEncoreModel" parent="StormModelAnimationStyleContinuous">
     <On Terms="Effect.FaceMeltEncoreMasteryCreatePersistent.Start" Send="Create" />
     <On Terms="Effect.FaceMeltEncoreMasteryCreatePersistent.Stop" Send="AnimBracketStop BSD" />
+    <HostSiteOps Ops="SOpShadow" />
   </CActorModel>
   <CActorSound id="L90ETCGuitarSoloCast" parent="SoundOneShot">
     <Sound value="ETC_GuitarSolo_Cast" />
@@ -351,7 +353,7 @@
   <CActorModel id="ETCFaceMeltCast" parent="StormModelAnimationStyleOneShotUnit">
     <On Terms="Effect.FaceMeltSearch.Start" Send="Create" />
     <Host Subject="" />
-    <HostSiteOps Ops="SOpSourcePointStationary SOpAttachOrigin" />
+    <HostSiteOps Ops="SOpSourcePointStationary SOpAttachOrigin SOpShadow" />
     <Model value="FaceMeltCast" />
   </CActorModel>
   <CActorSound id="ETCFaceMeltImpactSound" parent="HeroAttackImpactSoundOneShot">
@@ -648,7 +650,7 @@
     <InfoIcon value="Assets\Textures\storm_ui_icon_etc_rockstar.dds" />
     <Aliases value="RangedDamageCrit" />
     <Modification>
-      <DamageDealtFraction index="Basic" value="0.35" />
+      <DamageDealtFraction index="Basic" value="0.4" />
     </Modification>
     <DamageResponse Chance="1" Handled="ETCHammerOnDamageResponseSet" Location="Attacker">
       <ValidatorArray value="CasterNotBlinded" />
@@ -682,7 +684,7 @@
     <BuffFlags index="RefreshStack" value="1" />
     <Duration value="2" />
     <Modification>
-      <UnifiedMoveSpeedFactor value="0.15" />
+      <UnifiedMoveSpeedFactor value="0.2" />
     </Modification>
   </CBehaviorBuff>
   <CBehaviorBuff id="FaceMeltMicCheckLimiter">
@@ -901,7 +903,7 @@
     <Duration value="8" />
     <ArmorModification>
       <ArmorSet index="Hero">
-        <ArmorMitigationTable index="Basic" value="50" />
+        <ArmorMitigationTable index="Basic" value="75" />
       </ArmorSet>
     </ArmorModification>
   </CBehaviorBuff>
@@ -1039,6 +1041,11 @@
     <Variations Model="L90ETCPortrait" Actor="L90ETCPortrait" />
     <Unit value="HeroL90ETC" />
   </CCharacter>
+  <CEffectModifyBehaviorBuffDuration id="ETCGuiltarSoloGuitarHeroModifyBuffDuration">
+    <ValidatorArray value="ETCHasGuitarHero" />
+    <Value value="0.25" />
+    <Behavior value="L90ETCGuitarSoloHeroHeal" />
+  </CEffectModifyBehaviorBuffDuration>
   <CEffectSet id="ETCMoshPitCancelDummySet" />
   <CEffectSet id="ETCMoshPitCancelSet">
     <EffectArray value="L90ETCMoshPitDestroyPersistent" />
@@ -1065,7 +1072,10 @@
   </CEffectApplyBehavior>
   <CEffectDamage id="ETCBlockPartyDummyDamage">
     <ImpactLocation Value="TargetUnit" />
+    <Flags index="NoScaledDealtBonus" value="1" />
     <Flags index="NoFractionDealtBonus" value="1" />
+    <Flags index="NoBehaviorResponse" value="1" />
+    <Flags index="NoDamageTimerReset" value="1" />
   </CEffectDamage>
   <CEffectRemoveBehavior id="ETCBlockPartyRemoveStack">
     <WhichUnit Value="Source" />
@@ -1807,6 +1817,7 @@
     <EffectArray value="L90ETCWeaponDamage" />
     <EffectArray value="GuitarSoloLifeStealVisualDummy" />
     <EffectArray value="ETCGuitarSoloAggressiveShreddingTalentModifyCooldown" />
+    <EffectArray value="ETCGuiltarSoloGuitarHeroModifyBuffDuration" />
   </CEffectSet>
   <CEffectDamage id="L90ETCWeaponDamage" parent="StormWeapon">
     <Amount value="99" />
@@ -1852,7 +1863,10 @@
   <CEffectDamage id="ETCBlockPartyDummyDamageTarget">
     <LaunchLocation Effect="ETCBlockPartyRemoveStackSet" Value="CasterUnit" />
     <ImpactLocation Value="TargetUnit" />
+    <Flags index="NoScaledDealtBonus" value="1" />
     <Flags index="NoFractionDealtBonus" value="1" />
+    <Flags index="NoBehaviorResponse" value="1" />
+    <Flags index="NoDamageTimerReset" value="1" />
   </CEffectDamage>
   <CEffectSet id="ETCBlockPartyRemoveStackSet">
     <EffectArray value="BlockDummyDamage" />
@@ -2636,7 +2650,7 @@
         <Catalog value="Behavior" />
         <Entry value="L90ETCGuitarSoloHeroHeal" />
         <Field value="Modification.VitalDamageLeechArray[Life].KindArray[Basic]" />
-        <Value value="0.500000" />
+        <Value value="0.600000" />
       </Modifications>
     </AbilityModificationArray>
     <Abil value="L90ETCGuitarSolo" />

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CLight id="WarChestSkinPreview_Umojan" parent="default">
         <EditorCategories value="LightGroup:C3UI"/>
@@ -1089,18 +1089,18 @@
         <EditorCategories value="LightGroup:C3PortraitsUnitsProtoss"/>
     </CLight>
     <CLight id="VoidRay_Golden_Portrait" parent="default">
-        <ToDInfoArray index="0" Id="VoidRay_Taldarim_Collection_Portrait" AmbientColor="0.337255,0.105882,0.043137">
+        <ToDInfoArray index="0" Id="VoidRay_Golden_Portrait" AmbientColor="0.337255,0.105882,0.043137">
             <Param index="HDRExposure" value="1.480000"/>
             <Param index="HDRBloomThreshold" value="1.950000"/>
             <DirectionalLight index="Key">
-                <Color value="0.615686,0.713726,0.933333"/>
-                <ColorMultiplier value="6.383000"/>
+                <Color value="0.611765,0.713726,0.929412"/>
+                <ColorMultiplier value="4.074000"/>
                 <SpecularColor value="0.819608,0.901961,1.000000"/>
-                <SpecColorMultiplier value="8.913000"/>
+                <SpecColorMultiplier value="1.622000"/>
                 <Direction value="-0.702987,0.439446,-0.559193"/>
             </DirectionalLight>
-            <DirectionalLight index="Fill" Color="1.000000,0.811765,0.643137" ColorMultiplier="0.000000" Direction="0.406722,0.552673,0.727413"/>
-            <DirectionalLight index="Back" Color="0.976471,0.803922,0.490196" ColorMultiplier="1.718000" Direction="0.385175,-0.679134,-0.624834"/>
+            <DirectionalLight index="Fill" Color="0.647059,0.937255,0.992157" ColorMultiplier="0.881000" Direction="-0.355891,0.892953,-0.275638"/>
+            <DirectionalLight index="Back" Color="0.976471,0.803922,0.486275" ColorMultiplier="1.413000" Direction="0.385175,-0.679134,-0.624834"/>
         </ToDInfoArray>
         <EditorCategories value="LightGroup:C3PortraitsUnitsProtoss"/>
     </CLight>
@@ -1302,6 +1302,15 @@
     <CLight id="StasisWard_Forged_Portrait" parent="default">
         <EditorCategories value="LightGroup:C4PortraitsUnitsProtoss"/>
     </CLight>
+    <CLight id="Ultralisk_Remastered_Portrait" parent="default">
+        <EditorCategories value="LightGroup:C4PortraitsUnitsZerg"/>
+    </CLight>
+    <CLight id="Carrier_Remastered_Portrait" parent="default">
+        <EditorCategories value="LightGroup:C4PortraitsUnitsProtoss"/>
+    </CLight>
+    <CLight id="Battlecruiser_Remastered_Portrait" parent="default">
+        <EditorCategories value="LightGroup:C4PortraitsUnitsTerran"/>
+    </CLight>
     <!--To DO Light End-->
     <!-- War Chest Season 3 Skin Licenses -->
     <CRewardIcon id="SC2SkinUmojanBanshee" parent="CollectionSkinLicenseBase"/>
@@ -1355,72 +1364,171 @@
     <CRewardIcon id="SC2SkinGoldenVoidRay" parent="CollectionSkinLicenseBase"/>
     <CRewardIcon id="SC2SkinGoldenWarpPrism" parent="CollectionSkinLicenseBase"/>
     <CRewardIcon id="SC2SkinGoldenZealot" parent="CollectionSkinLicenseBase"/>
-    <CRewardModel id="SkinBansheeUmojan" parent="SkinBansheeBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinBattlecruiserUmojan" parent="SkinBattlecruiserBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinCycloneUmojan" parent="SkinCycloneBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinGhostUmojan" parent="SkinGhostBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinHellionUmojan" parent="SkinHellionBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinLiberatorUmojan" parent="SkinLiberatorBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinMarauderUmojan" parent="SkinMarauderBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinMarineUmojan" parent="SkinMarineBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinMedivacUmojan" parent="SkinMedivacBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinRavenUmojan" parent="SkinRavenBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinReaperUmojan" parent="SkinReaperBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinSCVUmojan" parent="SkinSCVBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinSiegeTankUmojan" parent="SkinSiegeTankBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinThorUmojan" parent="SkinThorBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinVikingUmojan" parent="SkinVikingBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinWidowMineUmojan" parent="SkinWidowMineBase" collection="Umojan" fileindex="3"/>
-    <CRewardModel id="SkinBanelingMecha" parent="SkinBanelingBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinBroodLordMecha" parent="SkinBroodLordBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinCorruptorMecha" parent="SkinCorruptorBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinDroneMecha" parent="SkinDroneBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinHydraliskMecha" parent="SkinHydraliskBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinInfestorMecha" parent="SkinInfestorBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinLurkerMecha" parent="SkinLurkerBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinMutaliskMecha" parent="SkinMutaliskBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinOverlordMecha" parent="SkinOverlordBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinOverseerMecha" parent="SkinOverseerBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinQueenMecha" parent="SkinQueenBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinRavagerMecha" parent="SkinRavagerBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinRoachMecha" parent="SkinRoachBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinSwarmHostMecha" parent="SkinSwarmHostBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinUltraliskMecha" parent="SkinUltraliskBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinViperMecha" parent="SkinViperBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinZerglingMecha" parent="SkinZerglingBase" collection="Mecha" fileindex="3"/>
-    <CRewardModel id="SkinAdeptGolden" parent="SkinAdeptBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinCarrierGolden" parent="SkinCarrierBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinColossusGolden" parent="SkinColossusBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinDarkTemplarGolden" parent="SkinDarkTemplarBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinDisruptorGolden" parent="SkinDisruptorBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinHighTemplarGolden" parent="SkinHighTemplarBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinImmortalGolden" parent="SkinImmortalBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinMothershipGolden" parent="SkinMothershipBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinObserverGolden" parent="SkinObserverBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinOracleGolden" parent="SkinOracleBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinPhoenixGolden" parent="SkinPhoenixBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinProbeGolden" parent="SkinProbeBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinSentryGolden" parent="SkinSentryBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinStalkerGolden" parent="SkinStalkerBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinTempestGolden" parent="SkinTempestBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinVoidRayGolden" parent="SkinVoidRayBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinWarpPrismGolden" parent="SkinWarpPrismBase" collection="Golden" fileindex="3"/>
-    <CRewardModel id="SkinZealotGolden" parent="SkinZealotBase" collection="Golden" fileindex="3"/>
     <CRewardIcon id="SC2SkinRemasteredSCV" parent="CollectionSkinLicenseBase"/>
-    <CRewardModel id="SkinSCVRemastered" parent="SkinSCVBase" collection="Remastered">
-        <IconFile value="$Skins2"/>
-        <IconSlot value="45"/>
-    </CRewardModel>
     <CRewardIcon id="SC2SkinRemasteredProbe" parent="CollectionSkinLicenseBase"/>
-    <CRewardModel id="SkinProbeRemastered" parent="SkinProbeBase" collection="Remastered">
-        <IconFile value="$Skins2"/>
-        <IconSlot value="47"/>
-    </CRewardModel>
     <CRewardIcon id="SC2SkinRemasteredDrone" parent="CollectionSkinLicenseBase"/>
-    <CRewardModel id="SkinDroneRemastered" parent="SkinDroneBase" collection="Remastered">
-        <IconFile value="$Skins2"/>
-        <IconSlot value="46"/>
+    <CRewardIcon id="SC2SkinRemasteredUltralisk" parent="CollectionSkinLicenseBase"/>
+    <CRewardIcon id="SC2SkinRemasteredCarrier" parent="CollectionSkinLicenseBase"/>
+    <CRewardIcon id="SC2SkinRemasteredBattlecruiser" parent="CollectionSkinLicenseBase"/>
+    <CRewardModel id="SkinBansheeUmojan" parent="SkinBansheeBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
     </CRewardModel>
+    <CRewardModel id="SkinBattlecruiserUmojan" parent="SkinBattlecruiserBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinCycloneUmojan" parent="SkinCycloneBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinGhostUmojan" parent="SkinGhostBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinHellionUmojan" parent="SkinHellionBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinLiberatorUmojan" parent="SkinLiberatorBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinMarauderUmojan" parent="SkinMarauderBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinMarineUmojan" parent="SkinMarineBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinMedivacUmojan" parent="SkinMedivacBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinRavenUmojan" parent="SkinRavenBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinReaperUmojan" parent="SkinReaperBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinSCVUmojan" parent="SkinSCVBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinSiegeTankUmojan" parent="SkinSiegeTankBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinThorUmojan" parent="SkinThorBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinVikingUmojan" parent="SkinVikingBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinWidowMineUmojan" parent="SkinWidowMineBase" collection="Umojan" fileindex="3">
+        <ParentBundle value="WarChestSeason3TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinBanelingMecha" parent="SkinBanelingBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinBroodLordMecha" parent="SkinBroodLordBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinCorruptorMecha" parent="SkinCorruptorBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinDroneMecha" parent="SkinDroneBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinHydraliskMecha" parent="SkinHydraliskBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinInfestorMecha" parent="SkinInfestorBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinLurkerMecha" parent="SkinLurkerBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinMutaliskMecha" parent="SkinMutaliskBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinOverlordMecha" parent="SkinOverlordBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinOverseerMecha" parent="SkinOverseerBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinQueenMecha" parent="SkinQueenBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinRavagerMecha" parent="SkinRavagerBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinRoachMecha" parent="SkinRoachBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinSwarmHostMecha" parent="SkinSwarmHostBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinUltraliskMecha" parent="SkinUltraliskBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinViperMecha" parent="SkinViperBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinZerglingMecha" parent="SkinZerglingBase" collection="Mecha" fileindex="3">
+        <ParentBundle value="WarChestSeason3ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinAdeptGolden" parent="SkinAdeptBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinCarrierGolden" parent="SkinCarrierBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinColossusGolden" parent="SkinColossusBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinDarkTemplarGolden" parent="SkinDarkTemplarBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinDisruptorGolden" parent="SkinDisruptorBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinHighTemplarGolden" parent="SkinHighTemplarBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinImmortalGolden" parent="SkinImmortalBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinMothershipGolden" parent="SkinMothershipBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinObserverGolden" parent="SkinObserverBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinOracleGolden" parent="SkinOracleBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinPhoenixGolden" parent="SkinPhoenixBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinProbeGolden" parent="SkinProbeBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinSentryGolden" parent="SkinSentryBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinStalkerGolden" parent="SkinStalkerBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinTempestGolden" parent="SkinTempestBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinVoidRayGolden" parent="SkinVoidRayBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinWarpPrismGolden" parent="SkinWarpPrismBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinZealotGolden" parent="SkinZealotBase" collection="Golden" fileindex="3">
+        <ParentBundle value="WarChestSeason3ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinSCVRemastered" parent="SkinSCVBase" collection="Remastered" fileindex="0"/>
+    <CRewardModel id="SkinProbeRemastered" parent="SkinProbeBase" collection="Remastered" fileindex="0"/>
+    <CRewardModel id="SkinDroneRemastered" parent="SkinDroneBase" collection="Remastered" fileindex="0"/>
+    <CRewardModel id="SkinBattlecruiserRemastered" parent="SkinBattlecruiserBase" collection="Remastered" fileindex="0"/>
+    <CRewardModel id="SkinCarrierRemastered" parent="SkinCarrierBase" collection="Remastered" fileindex="0"/>
+    <CRewardModel id="SkinUltraliskRemastered" parent="SkinUltraliskBase" collection="Remastered" fileindex="0"/>
     <!-- War Chest Season 4 Skin Licenses -->
     <CRewardIcon id="SC2SkinDSFArmory" parent="CollectionSkinLicenseBase"/>
     <CRewardIcon id="SC2SkinDSFBarracks" parent="CollectionSkinLicenseBase"/>
@@ -1468,51 +1576,141 @@
     <CRewardIcon id="SC2SkinForgedTemplarArchives" parent="CollectionSkinLicenseBase"/>
     <CRewardIcon id="SC2SkinForgedTwilightCouncil" parent="CollectionSkinLicenseBase"/>
     <!-- War Chest Season 4 Web Icons -->
-    <CRewardModel id="SkinCommandCenterCovertOps" parent="SkinCommandCenterBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinRefineryCovertOps" parent="SkinRefineryBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinSupplyDepotCovertOps" parent="SkinSupplyDepotBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinBarracksCovertOps" parent="SkinBarracksBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinEngineeringBayCovertOps" parent="SkinEngineeringBayBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinBunkerCovertOps" parent="SkinBunkerBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinMissileTurretCovertOps" parent="SkinMissileTurretBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinReactorCovertOps" parent="SkinReactorBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinFactoryCovertOps" parent="SkinFactoryBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinArmoryCovertOps" parent="SkinArmoryBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinTechLabCovertOps" parent="SkinTechLabBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinStarportCovertOps" parent="SkinStarportBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinSensorTowerCovertOps" parent="SkinSensorTowerBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinGhostAcademyCovertOps" parent="SkinGhostAcademyBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinFusionCoreCovertOps" parent="SkinFusionCoreBase" collection="CovertOps" fileindex="4"/>
-    <CRewardModel id="SkinNexusForged" parent="SkinNexusBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinAssimilatorForged" parent="SkinAssimilatorBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinPylonForged" parent="SkinPylonBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinGatewayForged" parent="SkinGatewayBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinForgeForged" parent="SkinForgeBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinPhotonCannonForged" parent="SkinPhotonCannonBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinShieldBatteryForged" parent="SkinShieldBatteryBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinCyberneticsCoreForged" parent="SkinCyberneticsCoreBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinRoboticsFacilityForged" parent="SkinRoboticsFacilityBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinRoboticsBayForged" parent="SkinRoboticsBayBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinTwilightCouncilForged" parent="SkinTwilightCouncilBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinStargateForged" parent="SkinStargateBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinDarkShrineForged" parent="SkinDarkShrineBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinTemplarArchiveForged" parent="SkinTemplarArchiveBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinFleetBeaconForged" parent="SkinFleetBeaconBase" collection="Forged" fileindex="4"/>
-    <CRewardModel id="SkinBanelingNestMecha" parent="SkinBanelingNestBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinEvolutionChamberMecha" parent="SkinEvolutionChamberBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinExtractorMecha" parent="SkinExtractorBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinHatcheryMecha" parent="SkinHatcheryBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinHydraliskDenMecha" parent="SkinHydraliskDenBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinInfestationPitMecha" parent="SkinInfestationPitBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinLurkerDenMecha" parent="SkinLurkerDenBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinNydusNetworkMecha" parent="SkinNydusNetworkBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinRoachWarrenMecha" parent="SkinRoachWarrenBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinSpawningPoolMecha" parent="SkinSpawningPoolBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinSpineCrawlerMecha" parent="SkinSpineCrawlerBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinSporeCrawlerMecha" parent="SkinSporeCrawlerBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinSpireMecha" parent="SkinSpireBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinUltraliskCavernMecha" parent="SkinUltraliskCavernBase" collection="Mecha" fileindex="4"/>
-    <CRewardModel id="SkinLarvaMecha" parent="SkinLarvaBase" collection="Mecha" fileindex="4"/>
+    <CRewardModel id="SkinCommandCenterCovertOps" parent="SkinCommandCenterBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinRefineryCovertOps" parent="SkinRefineryBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinSupplyDepotCovertOps" parent="SkinSupplyDepotBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinBarracksCovertOps" parent="SkinBarracksBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinEngineeringBayCovertOps" parent="SkinEngineeringBayBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinBunkerCovertOps" parent="SkinBunkerBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinMissileTurretCovertOps" parent="SkinMissileTurretBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinReactorCovertOps" parent="SkinReactorBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinFactoryCovertOps" parent="SkinFactoryBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinArmoryCovertOps" parent="SkinArmoryBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinTechLabCovertOps" parent="SkinTechLabBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinStarportCovertOps" parent="SkinStarportBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinSensorTowerCovertOps" parent="SkinSensorTowerBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinGhostAcademyCovertOps" parent="SkinGhostAcademyBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinFusionCoreCovertOps" parent="SkinFusionCoreBase" collection="CovertOps" fileindex="4">
+        <ParentBundle value="WarChestSeason4TerranSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinNexusForged" parent="SkinNexusBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinAssimilatorForged" parent="SkinAssimilatorBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinPylonForged" parent="SkinPylonBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinGatewayForged" parent="SkinGatewayBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinForgeForged" parent="SkinForgeBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinPhotonCannonForged" parent="SkinPhotonCannonBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinShieldBatteryForged" parent="SkinShieldBatteryBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinCyberneticsCoreForged" parent="SkinCyberneticsCoreBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinRoboticsFacilityForged" parent="SkinRoboticsFacilityBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinRoboticsBayForged" parent="SkinRoboticsBayBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinTwilightCouncilForged" parent="SkinTwilightCouncilBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinStargateForged" parent="SkinStargateBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinDarkShrineForged" parent="SkinDarkShrineBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinTemplarArchiveForged" parent="SkinTemplarArchiveBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinFleetBeaconForged" parent="SkinFleetBeaconBase" collection="Forged" fileindex="4">
+        <ParentBundle value="WarChestSeason4ProtossSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinBanelingNestMecha" parent="SkinBanelingNestBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinEvolutionChamberMecha" parent="SkinEvolutionChamberBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinExtractorMecha" parent="SkinExtractorBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinHatcheryMecha" parent="SkinHatcheryBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinHydraliskDenMecha" parent="SkinHydraliskDenBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinInfestationPitMecha" parent="SkinInfestationPitBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinLurkerDenMecha" parent="SkinLurkerDenBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinNydusNetworkMecha" parent="SkinNydusNetworkBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinRoachWarrenMecha" parent="SkinRoachWarrenBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinSpawningPoolMecha" parent="SkinSpawningPoolBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinSpineCrawlerMecha" parent="SkinSpineCrawlerBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinSporeCrawlerMecha" parent="SkinSporeCrawlerBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinSpireMecha" parent="SkinSpireBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinUltraliskCavernMecha" parent="SkinUltraliskCavernBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
+    <CRewardModel id="SkinLarvaMecha" parent="SkinLarvaBase" collection="Mecha" fileindex="4">
+        <ParentBundle value="WarChestSeason4ZergSkinsBundle"/>
+    </CRewardModel>
     <CModel id="ZergLargeUnitDeath_Mecha" parent="RaceOneShotSpellFX" Race="Zerg">
         <SquibTypeDefault value="Metal"/>
     </CModel>
@@ -2111,6 +2309,7 @@
     <CModel id="Lurker_Mecha_Portrait" parent="LurkerPortraitBase">
         <SquibTypeDefault value="Metal"/>
     </CModel>
+    <CModel id="Lurker_Mecha_Missile" parent="RaceMissileFX" Race="Zerg"/>
     <CModel id="Mutalisk_Mecha" parent="MutaliskBase">
         <Events>
             <Anim value="Birth,00"/>
@@ -2895,7 +3094,7 @@
     <CModel id="SwarmHost_Mecha_Portrait" parent="SwarmHostPortraitBase">
         <SquibTypeDefault value="Metal"/>
     </CModel>
-    <CModel id="Ultralisk_Mecha" parent="UltraliskBase">
+    <CModel id="Ultralisk_Mecha" parent="UltraliskBaseNoAnims">
         <Events>
             <Anim value="Birth,00"/>
             <Name value="Ultralisk_Mecha_Birth"/>
@@ -2903,22 +3102,82 @@
             <Time value="0.007000"/>
             <Payload value="Ultralisk_Mecha_Birth"/>
         </Events>
+        <Events>
+            <Anim value="Burrow,00"/>
+            <Name value="Ultralisk_Mecha_Burrow"/>
+            <Type value="Sound"/>
+            <Time value="0.013000"/>
+            <Payload value="Ultralisk_Mecha_Burrow"/>
+        </Events>
+        <Events>
+            <Anim value="Unburrow,00"/>
+            <Name value="Ultralisk_SlowMv_Vox"/>
+            <Type value="Sound"/>
+            <Time value="0.048000"/>
+            <Payload value="Ultralisk_SlowMv_Vox"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,Left,00"/>
+            <Name value="Dehaka_Ultralisk_WalkMove"/>
+            <Type value="Sound"/>
+            <Time value="0.006000"/>
+            <Payload value="Dehaka_Ultralisk_WalkMove"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,Left,00"/>
+            <Name value="Dehaka_Ultralisk_WalkMove"/>
+            <Type value="Sound"/>
+            <Time value="0.486000"/>
+            <Payload value="Dehaka_Ultralisk_WalkMove"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,Right,00"/>
+            <Name value="Dehaka_Ultralisk_WalkMove"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Dehaka_Ultralisk_WalkMove"/>
+        </Events>
+        <Events>
+            <Anim value="Walk,Right,00"/>
+            <Name value="Dehaka_Ultralisk_WalkMove"/>
+            <Type value="Sound"/>
+            <Time value="0.463000"/>
+            <Payload value="Dehaka_Ultralisk_WalkMove"/>
+        </Events>
         <SquibTypeDefault value="Metal"/>
     </CModel>
     <CModel id="Ultralisk_Mecha_Death" parent="UltraliskDeathBase">
-        <!--Events>
+        <Events>
+            <Variation value="0"/>
             <Anim value="Death,00"/>
             <Name value="Ultralisk_Mecha_Death_Ragdoll"/>
             <Type value="Sound"/>
             <Time value="0.007000"/>
             <Payload value="Ultralisk_Mecha_Death_Ragdoll"/>
-        </Events>-->
+        </Events>
         <Events>
+            <Variation value="0"/>
             <Anim value="Death,00"/>
             <Name value="Zerg_Mecha_Death_VxFx"/>
             <Type value="Sound"/>
             <Time value="0.018000"/>
             <Payload value="Zerg_Mecha_Death_VxFx"/>
+        </Events>
+        <Events>
+            <Variation value="1"/>
+            <Anim value="Death,00"/>
+            <Name value="Ultralisk_Mecha_Death"/>
+            <Type value="Sound"/>
+            <Time value="0.085000"/>
+            <Payload value="Ultralisk_Mecha_Death"/>
+        </Events>
+        <Events>
+            <Variation value="1"/>
+            <Anim value="Death,00"/>
+            <Name value="Zerg_Mecha_FireSmall_Smolder"/>
+            <Type value="Sound"/>
+            <Time value="1.269000"/>
+            <Payload value="Zerg_Mecha_FireSmall_Smolder"/>
         </Events>
         <LowQualityModel value="ZergLargeUnitDeath_Mecha"/>
         <SquibTypeDefault value="Metal"/>
@@ -3447,6 +3706,46 @@
         <Flags index="Download" value="1"/>
         <Flags index="ForcePortraitModel" value="1"/>
     </CModel>
+    <CModel id="Battlecruiser_Remastered" parent="BattlecruiserBase"/>
+    <CModel id="Battlecruiser_Remastered_Death" parent="BattlecruiserDeathBase"/>
+    <CModel id="Battlecruiser_Remastered_DeathRagdoll" parent="BattlecruiserDeathRagdollBase"/>
+    <CModel id="Battlecruiser_Remastered_HyperjumpIn" parent="BattlecruiserHyperjumpInBase"/>
+    <CModel id="Battlecruiser_Remastered_HyperjumpOut" parent="BattlecruiserHyperjumpOutBase"/>
+    <CModel id="Battlecruiser_Remastered_Hyperjump_Placement" parent="BattlecruiserHyperjumpPlacementBase"/>
+    <CModel id="Battlecruiser_Remastered_Portrait" parent="BattlecruiserPortraitBase">
+        <Flags index="Download" value="1"/>
+        <Flags index="ForcePortraitModel" value="1"/>
+    </CModel>
+    <CModel id="Battlecruiser_Remastered_Yamato_Death" parent="BattlecruiserYamatoDeathBase"/>
+    <CModel id="Battlecruiser_Remastered_Yamato_HyperjumpIn" parent="BattlecruiserYamatoHyperjumpInBase"/>
+    <CModel id="Battlecruiser_Remastered_Yamato_HyperjumpOut" parent="BattlecruiserYamatoHyperjumpOutBase"/>
+    <CModel id="Battlecruiser_Remastered_Yamato_Hyperjump_Placement" parent="BattlecruiserYamatoHyperjumpPlacementBase"/>
+    <CModel id="Ultralisk_Remastered" parent="UltraliskBaseNoAnims"/>
+    <CModel id="Ultralisk_Remastered_Death" parent="UltraliskDeathBase"/>
+    <CModel id="Ultralisk_Remastered_DeathAcid" parent="UltraliskDeathAcidBase"/>
+    <CModel id="Ultralisk_Remastered_DeathFire" parent="UltraliskDeathFireBase"/>
+    <CModel id="Ultralisk_Remastered_DeathRagdoll" parent="UltraliskDeathRagdollBase"/>
+    <CModel id="Ultralisk_Remastered_Portrait" parent="UltraliskPortraitBase">
+        <Flags index="Download" value="1"/>
+        <Flags index="ForcePortraitModel" value="1"/>
+    </CModel>
+    <CModel id="Carrier_Remastered" parent="CarrierBase"/>
+    <CModel id="Carrier_Remastered_Death" parent="CarrierDeathBase"/>
+    <CModel id="Carrier_Remastered_DeathRagdoll" parent="CarrierDeathRagdollBase"/>
+    <CModel id="Carrier_Remastered_Portrait" parent="CarrierPortraitBase">
+        <Flags index="Download" value="1"/>
+        <Flags index="ForcePortraitModel" value="1"/>
+    </CModel>
+    <CModel id="Carrier_Remastered_WarpInStargate" parent="CarrierWarpInStargateBase"/>
+    <CModel id="Interceptor_Remastered" parent="InterceptorBase"/>
+    <CModel id="Interceptor_Remastered_Death" parent="InterceptorDeathBase">
+        <Model value="Assets\Effects\Protoss\ProtossSmallUnitDeath\ProtossSmallUnitDeath.m3"/>
+        <VariationCount value="1"/>
+    </CModel>
+    <CModel id="Interceptor_Remastered_DeathRagdoll" parent="InterceptorDeathRagdollBase">
+        <Model value="Assets\Effects\Protoss\ProtossSmallUnitDeath\ProtossSmallUnitDeath.m3"/>
+        <VariationCount value="1"/>
+    </CModel>
     <!-- War Chest 4 -->
     <CModel id="BanelingNest_Mecha" parent="BanelingNestBase">
         <SquibTypeDefault value="Metal"/>
@@ -3513,6 +3812,13 @@
     </CModel>
     <CModel id="EvolutionChamber_Mecha" parent="EvolutionChamberBase">
         <SquibTypeDefault value="Metal"/>
+        <Events>
+            <Anim value="Build,D,Start,00"/>
+            <Name value="EvolutionChamber_Mecha_Birth"/>
+            <Type value="Sound"/>
+            <Time value="0.267000"/>
+            <Payload value="EvolutionChamber_Mecha_Birth"/>
+        </Events>
     </CModel>
     <CModel id="EvolutionChamber_Mecha_Death" parent="EvolutionChamberDeathBase" low="ZergBuilding_Mecha_Large_Death_Low">
         <SquibTypeDefault value="Metal"/>
@@ -3624,6 +3930,34 @@
     </CModel>
     <CModel id="Hatchery_Mecha" parent="HatcheryBase">
         <SquibTypeDefault value="Metal"/>
+        <Events>
+            <Anim value="Morph,Start,A,00"/>
+            <Name value="Zerg_BuildingMorphStart"/>
+            <Type value="Sound"/>
+            <Time value="0.009000"/>
+            <Payload value="Zerg_BuildingMorphStart"/>
+        </Events>
+        <Events>
+            <Anim value="Morph,Start,B,00"/>
+            <Name value="Zerg_BuildingMorphEnd"/>
+            <Type value="Sound"/>
+            <Time value="0.006000"/>
+            <Payload value="Zerg_BuildingMorphEnd"/>
+        </Events>
+        <Events>
+            <Anim value="Morph,End,A,00"/>
+            <Name value="Extractor_Mecha_Birth"/>
+            <Type value="Sound"/>
+            <Time value="0.180000"/>
+            <Payload value="Extractor_Mecha_Birth"/>
+        </Events>
+        <Events>
+            <Anim value="Morph,End,B,00"/>
+            <Name value="Extractor_Mecha_Birth"/>
+            <Type value="Sound"/>
+            <Time value="0.208000"/>
+            <Payload value="Extractor_Mecha_Birth"/>
+        </Events>
     </CModel>
     <CModel id="Hatchery_Mecha_Death" parent="HatcheryDeathBase" low="ZergBuilding_Mecha_Large_Death_Low">
         <SquibTypeDefault value="Metal"/>
@@ -3800,8 +4134,25 @@
     <CModel id="HydraliskDen_Mecha_Placement" parent="HydraliskDenPlacementBase" low="HydraliskDen_Mecha">
         <SquibTypeDefault value="Metal"/>
     </CModel>
+    <CModel id="HydraliskDen_Mecha_Morph" parent="HydraliskDenMorphBase">
+        <SquibTypeDefault value="Metal"/>
+        <Events>
+            <Anim value="Morph,Start,00"/>
+            <Name value="Hatchery_Mecha_MorphEnd_A"/>
+            <Type value="Sound"/>
+            <Time value="0.187000"/>
+            <Payload value="Hatchery_Mecha_MorphEnd_A"/>
+        </Events>
+    </CModel>
     <CModel id="LurkerDen_Mecha" parent="LurkerDenBase">
         <SquibTypeDefault value="Metal"/>
+        <Events>
+            <Anim value="Morph,00"/>
+            <Name value="InfestationPit_Mecha_Birth"/>
+            <Type value="Sound"/>
+            <Time value="0.384000"/>
+            <Payload value="InfestationPit_Mecha_Birth"/>
+        </Events>
     </CModel>
     <CModel id="LurkerDen_Mecha_Placement" parent="LurkerDenPlacementBase" low="LurkerDen_Mecha">
         <SquibTypeDefault value="Metal"/>
@@ -4170,9 +4521,23 @@
         </Events>
         <Events>
             <Anim value="Morph,Start,00"/>
+            <Name value="Spire_Mecha_Morph_Whip"/>
+            <Type value="Sound"/>
+            <Time value="0.978000"/>
+            <Payload value="Spire_Mecha_Morph_Whip"/>
+        </Events>
+        <Events>
+            <Anim value="Morph,Start,00"/>
+            <Name value="Spire_Mecha_Morph_Whip"/>
+            <Type value="Sound"/>
+            <Time value="0.262000"/>
+            <Payload value="Spire_Mecha_Morph_Whip"/>
+        </Events>
+        <Events>
+            <Anim value="Morph,Start,00"/>
             <Name value="Zerg_Mecha_BuildStart_Med"/>
             <Type value="Sound"/>
-            <Time value="1.148000"/>
+            <Time value="1.292000"/>
             <Payload value="Zerg_Mecha_BuildStart_Med"/>
         </Events>
         <Events>
@@ -4182,13 +4547,13 @@
             <Time value="0.489000"/>
             <Payload value="Zerg_Mecha_Death_Goo"/>
         </Events>
-        <Events>
+        <!--Events>
             <Anim value="Morph,00"/>
             <Name value="Zerg_Mecha_Death_Goo"/>
             <Type value="Sound"/>
             <Time value="0.011000"/>
             <Payload value="Zerg_Mecha_Death_Goo"/>
-        </Events>
+        </Events-->
         <Events>
             <Anim value="Morph,End,00"/>
             <Name value="Zerg_Mecha_BuildStart_Lrg"/>
@@ -4909,6 +5274,13 @@
             <Time value="0.426000"/>
             <Payload value="LurkerDen_Mecha_Birth"/>
         </Events>
+        <Events>
+            <Anim value="Morph,00"/>
+            <Name value="LurkerDen_Mecha_Birth"/>
+            <Type value="Sound"/>
+            <Time value="0.278000"/>
+            <Payload value="LurkerDen_Mecha_Birth"/>
+        </Events>
     </CModel>
     <CModel id="NydusNetwork_Mecha_Build" parent="NydusNetworkBuildBase" name="ZergBuilding_Mecha_Build">
         <Events>
@@ -5057,7 +5429,6 @@
             <Anim value="Death,00"/>
             <Name value="Zerg_Mecha_BuildStart_Sml"/>
             <Type value="Sound"/>
-            <Time value="0.000000"/>
             <Payload value="Zerg_Mecha_BuildStart_Sml"/>
         </Events>
     </CModel>
@@ -6800,6 +7171,7 @@
         </Events>
     </CModel>
     <CModel id="ShieldBattery_Forged_Placement" parent="ShieldBatteryPlacementBase" low="ShieldBattery_Forged"/>
+    <CModel id="ShieldBattery_Forged_Placement_Overcharged" parent="ShieldBatteryPlacementBase" low="ShieldBattery_Forged_Placement_Overcharged"/>
     <CModel id="ShieldBattery_Forged_WarpIn" parent="ShieldBatteryWarpInBase"/>
     <CModel id="Pylon_Forged" parent="PylonBase"/>
     <CModel id="Pylon_Forged_Death" parent="PylonDeathBase">
@@ -7110,6 +7482,39 @@
     <CModel id="Stargate_Forged_Portrait" parent="ProtossBuilding_Forged_Portrait"/>
     <CModel id="TemplarArchive_Forged_Portrait" parent="ProtossBuilding_Forged_Portrait"/>
     <CModel id="TwilightCouncil_Forged_Portrait" parent="ProtossBuilding_Forged_Portrait"/>
+    <CModel id="DarkShrine_Forged_Build" parent="DarkShrineBuildBase"/>
+    <CModel id="ShieldBattery_Forged_Build" parent="DarkShrineBuildBase"/>
+    <CModel id="PhotonCannon_Forged_Build" parent="PhotonCannonBuildBase"/>
+    <CModel id="Pylon_Forged_Build" parent="PylonBuildBase"/>
+    <CModel id="Assimilator_Forged_Build" parent="AssimilatorBuildBase"/>
+    <CModel id="CyberneticsCore_Forged_Build" parent="CyberneticsCoreBuildBase"/>
+    <CModel id="FleetBeacon_Forged_Build" parent="FleetBeaconBuildBase"/>
+    <CModel id="Forge_Forged_Build" parent="ForgeBuildBase"/>
+    <CModel id="Gateway_Forged_Build" parent="GatewayBuildBase"/>
+    <CModel id="RoboticsBay_Forged_Build" parent="RoboticsBayBuildBase"/>
+    <CModel id="RoboticsFacility_Forged_Build" parent="RoboticsFacilityBuildBase"/>
+    <CModel id="Stargate_Forged_Build" parent="StargateBuildBase"/>
+    <CModel id="TemplarArchive_Forged_Build" parent="TemplarArchiveBuildBase"/>
+    <CModel id="TwilightCouncil_Forged_Build" parent="TwilightCouncilBuildBase"/>
+    <CModel id="AssimilatorRich_Forged_Build" parent="AssimilatorRichBuildBase"/>
+    <CModel id="Nexus_Forged_Build" parent="NexusBuildBase"/>
+    <CModel id="ProtossBuilding_Forged_Build_Death" parent="ProtossBuildingBuildDeath"/>
+    <CModel id="DarkShrine_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="ShieldBattery_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="PhotonCannon_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="Pylon_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="Assimilator_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="CyberneticsCore_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="FleetBeacon_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="Forge_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="Gateway_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="RoboticsBay_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="RoboticsFacility_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="Stargate_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="TemplarArchive_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="TwilightCouncil_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="AssimilatorRich_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
+    <CModel id="Nexus_Forged_DeathUnderConstruction" parent="ProtossBuilding_Forged_Build_Death"/>
     <CSkin id="BansheeUmojan" parent="BansheeBase" collection="Umojan"/>
     <CSkin id="BattlecruiserUmojan" parent="BattlecruiserBase" collection="Umojan"/>
     <CSkin id="CycloneUmojan" parent="CycloneBase" collection="Umojan"/>
@@ -7132,7 +7537,9 @@
     <CSkin id="DroneMecha" parent="DroneBase" collection="Mecha"/>
     <CSkin id="HydraliskMecha" parent="HydraliskBase" collection="Mecha"/>
     <CSkin id="InfestorMecha" parent="InfestorBase" collection="Mecha"/>
-    <CSkin id="LurkerMecha" parent="LurkerBase" collection="Mecha"/>
+    <CSkin id="LurkerMecha" parent="LurkerBase" collection="Mecha">
+        <ReplacementArray Catalog="Model" From="LurkerAttackSpikeEx2" To="Lurker_Mecha_Missile"/>
+    </CSkin>
     <CSkin id="MutaliskMecha" parent="MutaliskBase" collection="Mecha"/>
     <CSkin id="OverlordMecha" parent="OverlordBase" collection="Mecha"/>
     <CSkin id="OverseerMecha" parent="OverseerBase" collection="Mecha">
@@ -7176,6 +7583,9 @@
     <CSkin id="SCVRemastered" parent="SCVBase" collection="Remastered">
         <VariationIcon value="Assets\Textures\btn-unit-collection-scv-remastered.dds"/>
     </CSkin>
+    <CSkin id="CarrierRemastered" parent="CarrierBase" collection="Remastered"/>
+    <CSkin id="UltraliskRemastered" parent="UltraliskBase" collection="Remastered"/>
+    <CSkin id="BattlecruiserRemastered" parent="BattlecruiserBase" collection="Remastered"/>
     <!--War Chest 4-->
     <CSkin id="BanelingNestMecha" parent="BanelingNestBase" collection="Mecha"/>
     <CSkin id="EvolutionChamberMecha" parent="EvolutionChamberBase" collection="Mecha"/>
@@ -7191,7 +7601,16 @@
     <CSkin id="SporeCrawlerMecha" parent="SporeCrawlerBase" collection="Mecha"/>
     <CSkin id="SpireMecha" parent="SpireBase" collection="Mecha"/>
     <CSkin id="UltraliskCavernMecha" parent="UltraliskCavernBase" collection="Mecha"/>
-    <CSkin id="LarvaMecha" parent="LarvaBase" collection="Mecha"/>
+    <CSkin id="LarvaMecha" parent="LarvaBase" collection="Mecha">
+        <ReplacementArray Catalog="Model" From="Egg" To="Egg_Mecha"/>
+        <ReplacementArray Catalog="Model" From="EggsplosionGeneric" To="Egg_Mecha_Death"/>
+        <ReplacementArray Catalog="Model" From="EggsplosionGeneric0" To="Egg_Mecha_Death_00"/>
+        <ReplacementArray Catalog="Model" From="EggsplosionGeneric1" To="Egg_Mecha_Death_01"/>
+        <ReplacementArray Catalog="Model" From="EggsplosionGeneric2" To="Egg_Mecha_Death_02"/>
+        <ReplacementArray Catalog="Model" From="EggPortrait" To="Egg_Mecha_Portrait"/>
+        <ReplacementArray Catalog="Model" From="LarvaSuperEgg" To="Egg_Mecha_Super"/>
+        <CollectionDisplayModelAlternate value="Egg_Mecha"/>
+    </CSkin>
     <CSkin id="ArmoryCovertOps" parent="ArmoryBase" collection="CovertOps"/>
     <CSkin id="BarracksCovertOps" parent="BarracksBase" collection="CovertOps"/>
     <CSkin id="BunkerCovertOps" parent="BunkerBase" collection="CovertOps"/>
@@ -7229,6 +7648,10 @@
     <!--Blizcon18-->
     <CSkinPack default="1" id="Blizcon18Release" parent="CollectionSkinBase">
         <ReleaseDate value="11/3/2018"/>
+    </CSkinPack>
+    <!--Blizcon19-->
+    <CSkinPack default="1" id="Blizcon19Release" parent="CollectionSkinBase">
+        <ReleaseDate value="11/1/2019"/>
     </CSkinPack>
     <!--War Chest 4-->
     <CSkinPack default="1" id="C4Release" parent="CollectionSkinBase">
@@ -7392,55 +7815,153 @@
         <ProductId value="38251"/>
     </CSkinPack>
     <!--War Chest 4-->
-    <CSkinPack id="BanelingNestMecha" parent="C4Release" collection="Mecha" unit="BanelingNest"/>
-    <CSkinPack id="EvolutionChamberMecha" parent="C4Release" collection="Mecha" unit="EvolutionChamber"/>
-    <CSkinPack id="ExtractorMecha" parent="C4Release" collection="Mecha" unit="Extractor"/>
-    <CSkinPack id="HatcheryMecha" parent="C4Release" collection="Mecha" unit="Hatchery"/>
-    <CSkinPack id="HydraliskDenMecha" parent="C4Release" collection="Mecha" unit="HydraliskDen"/>
-    <CSkinPack id="InfestationPitMecha" parent="C4Release" collection="Mecha" unit="InfestationPit"/>
+    <CSkinPack id="BanelingNestMecha" parent="C4Release" collection="Mecha" unit="BanelingNest">
+        <ProductId value="46453"/>
+    </CSkinPack>
+    <CSkinPack id="EvolutionChamberMecha" parent="C4Release" collection="Mecha" unit="EvolutionChamber">
+        <ProductId value="46451"/>
+    </CSkinPack>
+    <CSkinPack id="ExtractorMecha" parent="C4Release" collection="Mecha" unit="Extractor">
+        <ProductId value="46411"/>
+    </CSkinPack>
+    <CSkinPack id="HatcheryMecha" parent="C4Release" collection="Mecha" unit="Hatchery">
+        <ProductId value="46410"/>
+    </CSkinPack>
+    <CSkinPack id="HydraliskDenMecha" parent="C4Release" collection="Mecha" unit="HydraliskDen">
+        <ProductId value="46472"/>
+    </CSkinPack>
+    <CSkinPack id="InfestationPitMecha" parent="C4Release" collection="Mecha" unit="InfestationPit">
+        <ProductId value="46475"/>
+    </CSkinPack>
     <CSkinPack id="LurkerDenMecha" parent="C4Release" collection="Mecha" unit="LurkerDen">
         <EntryArray index="0" Unit="LurkerDenMP" Reward="SkinLurkerDenMecha"/>
+        <ProductId value="46473"/>
     </CSkinPack>
-    <CSkinPack id="NydusNetworkMecha" parent="C4Release" collection="Mecha" unit="NydusNetwork"/>
-    <CSkinPack id="RoachWarrenMecha" parent="C4Release" collection="Mecha" unit="RoachWarren"/>
-    <CSkinPack id="SpawningPoolMecha" parent="C4Release" collection="Mecha" unit="SpawningPool"/>
-    <CSkinPack id="SpineCrawlerMecha" parent="C4Release" collection="Mecha" unit="SpineCrawler"/>
-    <CSkinPack id="SporeCrawlerMecha" parent="C4Release" collection="Mecha" unit="SporeCrawler"/>
-    <CSkinPack id="SpireMecha" parent="C4Release" collection="Mecha" unit="Spire"/>
-    <CSkinPack id="UltraliskCavernMecha" parent="C4Release" collection="Mecha" unit="UltraliskCavern"/>
-    <CSkinPack id="LarvaMecha" parent="C4Release" collection="Mecha" unit="Larva"/>
-    <CSkinPack id="CommandCenterCovertOps" parent="C4Release" collection="CovertOps" unit="CommandCenter"/>
-    <CSkinPack id="RefineryCovertOps" parent="C4Release" collection="CovertOps" unit="Refinery"/>
-    <CSkinPack id="SupplyDepotCovertOps" parent="C4Release" collection="CovertOps" unit="SupplyDepot"/>
-    <CSkinPack id="BarracksCovertOps" parent="C4Release" collection="CovertOps" unit="Barracks"/>
-    <CSkinPack id="EngineeringBayCovertOps" parent="C4Release" collection="CovertOps" unit="EngineeringBay"/>
-    <CSkinPack id="BunkerCovertOps" parent="C4Release" collection="CovertOps" unit="Bunker"/>
-    <CSkinPack id="MissileTurretCovertOps" parent="C4Release" collection="CovertOps" unit="MissileTurret"/>
-    <CSkinPack id="ReactorCovertOps" parent="C4Release" collection="CovertOps" unit="Reactor"/>
-    <CSkinPack id="FactoryCovertOps" parent="C4Release" collection="CovertOps" unit="Factory"/>
-    <CSkinPack id="ArmoryCovertOps" parent="C4Release" collection="CovertOps" unit="Armory"/>
-    <CSkinPack id="TechLabCovertOps" parent="C4Release" collection="CovertOps" unit="TechLab"/>
-    <CSkinPack id="StarportCovertOps" parent="C4Release" collection="CovertOps" unit="Starport"/>
-    <CSkinPack id="SensorTowerCovertOps" parent="C4Release" collection="CovertOps" unit="SensorTower"/>
-    <CSkinPack id="GhostAcademyCovertOps" parent="C4Release" collection="CovertOps" unit="GhostAcademy"/>
-    <CSkinPack id="FusionCoreCovertOps" parent="C4Release" collection="CovertOps" unit="FusionCore"/>
-    <CSkinPack id="NexusForged" parent="C4Release" collection="Forged" unit="Nexus"/>
-    <CSkinPack id="AssimilatorForged" parent="C4Release" collection="Forged" unit="Assimilator"/>
-    <CSkinPack id="PylonForged" parent="C4Release" collection="Forged" unit="Pylon"/>
-    <CSkinPack id="GatewayForged" parent="C4Release" collection="Forged" unit="Gateway"/>
-    <CSkinPack id="ForgeForged" parent="C4Release" collection="Forged" unit="Forge"/>
-    <CSkinPack id="PhotonCannonForged" parent="C4Release" collection="Forged" unit="PhotonCannon"/>
-    <CSkinPack id="ShieldBatteryForged" parent="C4Release" collection="Forged" unit="ShieldBattery"/>
-    <CSkinPack id="CyberneticsCoreForged" parent="C4Release" collection="Forged" unit="CyberneticsCore"/>
-    <CSkinPack id="RoboticsFacilityForged" parent="C4Release" collection="Forged" unit="RoboticsFacility"/>
-    <CSkinPack id="RoboticsBayForged" parent="C4Release" collection="Forged" unit="RoboticsBay"/>
-    <CSkinPack id="TwilightCouncilForged" parent="C4Release" collection="Forged" unit="TwilightCouncil"/>
-    <CSkinPack id="StargateForged" parent="C4Release" collection="Forged" unit="Stargate"/>
-    <CSkinPack id="TemplarArchiveForged" parent="C4Release" collection="Forged" unit="TemplarArchive"/>
-    <CSkinPack id="DarkShrineForged" parent="C4Release" collection="Forged" unit="DarkShrine"/>
-    <CSkinPack id="FleetBeaconForged" parent="C4Release" collection="Forged" unit="FleetBeacon"/>
+    <CSkinPack id="NydusNetworkMecha" parent="C4Release" collection="Mecha" unit="NydusNetwork">
+        <ProductId value="46474"/>
+    </CSkinPack>
+    <CSkinPack id="RoachWarrenMecha" parent="C4Release" collection="Mecha" unit="RoachWarren">
+        <ProductId value="46471"/>
+    </CSkinPack>
+    <CSkinPack id="SpawningPoolMecha" parent="C4Release" collection="Mecha" unit="SpawningPool">
+        <ProductId value="46450"/>
+    </CSkinPack>
+    <CSkinPack id="SpineCrawlerMecha" parent="C4Release" collection="Mecha" unit="SpineCrawler">
+        <ProductId value="46470"/>
+    </CSkinPack>
+    <CSkinPack id="SporeCrawlerMecha" parent="C4Release" collection="Mecha" unit="SporeCrawler">
+        <ProductId value="46452"/>
+    </CSkinPack>
+    <CSkinPack id="SpireMecha" parent="C4Release" collection="Mecha" unit="Spire">
+        <ProductId value="46454"/>
+    </CSkinPack>
+    <CSkinPack id="UltraliskCavernMecha" parent="C4Release" collection="Mecha" unit="UltraliskCavern">
+        <ProductId value="46476"/>
+    </CSkinPack>
+    <CSkinPack id="LarvaMecha" parent="C4Release" collection="Mecha" unit="Larva">
+        <ProductId value="46430"/>
+    </CSkinPack>
+    <CSkinPack id="CommandCenterCovertOps" parent="C4Release" collection="CovertOps" unit="CommandCenter">
+        <ProductId value="46330"/>
+    </CSkinPack>
+    <CSkinPack id="RefineryCovertOps" parent="C4Release" collection="CovertOps" unit="Refinery">
+        <ProductId value="46350"/>
+    </CSkinPack>
+    <CSkinPack id="SupplyDepotCovertOps" parent="C4Release" collection="CovertOps" unit="SupplyDepot">
+        <ProductId value="46331"/>
+    </CSkinPack>
+    <CSkinPack id="BarracksCovertOps" parent="C4Release" collection="CovertOps" unit="Barracks">
+        <ProductId value="46370"/>
+    </CSkinPack>
+    <CSkinPack id="EngineeringBayCovertOps" parent="C4Release" collection="CovertOps" unit="EngineeringBay">
+        <ProductId value="46371"/>
+    </CSkinPack>
+    <CSkinPack id="BunkerCovertOps" parent="C4Release" collection="CovertOps" unit="Bunker">
+        <ProductId value="46332"/>
+    </CSkinPack>
+    <CSkinPack id="MissileTurretCovertOps" parent="C4Release" collection="CovertOps" unit="MissileTurret">
+        <ProductId value="46333"/>
+    </CSkinPack>
+    <CSkinPack id="ReactorCovertOps" parent="C4Release" collection="CovertOps" unit="Reactor">
+        <ProductId value="46390"/>
+    </CSkinPack>
+    <CSkinPack id="FactoryCovertOps" parent="C4Release" collection="CovertOps" unit="Factory">
+        <ProductId value="46334"/>
+    </CSkinPack>
+    <CSkinPack id="ArmoryCovertOps" parent="C4Release" collection="CovertOps" unit="Armory">
+        <ProductId value="46335"/>
+    </CSkinPack>
+    <CSkinPack id="TechLabCovertOps" parent="C4Release" collection="CovertOps" unit="TechLab">
+        <ProductId value="46336"/>
+    </CSkinPack>
+    <CSkinPack id="StarportCovertOps" parent="C4Release" collection="CovertOps" unit="Starport">
+        <ProductId value="46391"/>
+    </CSkinPack>
+    <CSkinPack id="SensorTowerCovertOps" parent="C4Release" collection="CovertOps" unit="SensorTower">
+        <ProductId value="46337"/>
+    </CSkinPack>
+    <CSkinPack id="GhostAcademyCovertOps" parent="C4Release" collection="CovertOps" unit="GhostAcademy">
+        <ProductId value="46338"/>
+    </CSkinPack>
+    <CSkinPack id="FusionCoreCovertOps" parent="C4Release" collection="CovertOps" unit="FusionCore">
+        <ProductId value="46339"/>
+    </CSkinPack>
+    <CSkinPack id="NexusForged" parent="C4Release" collection="Forged" unit="Nexus">
+        <ProductId value="46455"/>
+    </CSkinPack>
+    <CSkinPack id="AssimilatorForged" parent="C4Release" collection="Forged" unit="Assimilator">
+        <ProductId value="46456"/>
+    </CSkinPack>
+    <CSkinPack id="PylonForged" parent="C4Release" collection="Forged" unit="Pylon">
+        <ProductId value="46457"/>
+    </CSkinPack>
+    <CSkinPack id="GatewayForged" parent="C4Release" collection="Forged" unit="Gateway">
+        <ProductId value="46477"/>
+    </CSkinPack>
+    <CSkinPack id="ForgeForged" parent="C4Release" collection="Forged" unit="Forge">
+        <ProductId value="46478"/>
+    </CSkinPack>
+    <CSkinPack id="PhotonCannonForged" parent="C4Release" collection="Forged" unit="PhotonCannon">
+        <ProductId value="46479"/>
+    </CSkinPack>
+    <CSkinPack id="ShieldBatteryForged" parent="C4Release" collection="Forged" unit="ShieldBattery">
+        <ProductId value="46480"/>
+    </CSkinPack>
+    <CSkinPack id="CyberneticsCoreForged" parent="C4Release" collection="Forged" unit="CyberneticsCore">
+        <ProductId value="46490"/>
+    </CSkinPack>
+    <CSkinPack id="RoboticsFacilityForged" parent="C4Release" collection="Forged" unit="RoboticsFacility">
+        <ProductId value="46482"/>
+    </CSkinPack>
+    <CSkinPack id="RoboticsBayForged" parent="C4Release" collection="Forged" unit="RoboticsBay">
+        <ProductId value="46481"/>
+    </CSkinPack>
+    <CSkinPack id="TwilightCouncilForged" parent="C4Release" collection="Forged" unit="TwilightCouncil">
+        <ProductId value="46483"/>
+    </CSkinPack>
+    <CSkinPack id="StargateForged" parent="C4Release" collection="Forged" unit="Stargate">
+        <ProductId value="46484"/>
+    </CSkinPack>
+    <CSkinPack id="TemplarArchiveForged" parent="C4Release" collection="Forged" unit="TemplarArchive">
+        <ProductId value="46492"/>
+    </CSkinPack>
+    <CSkinPack id="DarkShrineForged" parent="C4Release" collection="Forged" unit="DarkShrine">
+        <ProductId value="46491"/>
+    </CSkinPack>
+    <CSkinPack id="FleetBeaconForged" parent="C4Release" collection="Forged" unit="FleetBeacon">
+        <ProductId value="46493"/>
+    </CSkinPack>
     <!--Blizcon18-->
-    <CSkinPack id="SCVRemastered" parent="Blizcon18Release" collection="Remastered" unit="SCV"/>
-    <CSkinPack id="ProbeRemastered" parent="Blizcon18Release" collection="Remastered" unit="Probe"/>
-    <CSkinPack id="DroneRemastered" parent="Blizcon18Release" collection="Remastered" unit="Drone"/>
+    <CSkinPack id="SCVRemastered" parent="Blizcon18Release" collection="Remastered" unit="SCV">
+        <ProductId value="43691"/>
+    </CSkinPack>
+    <CSkinPack id="ProbeRemastered" parent="Blizcon18Release" collection="Remastered" unit="Probe">
+        <ProductId value="43690"/>
+    </CSkinPack>
+    <CSkinPack id="DroneRemastered" parent="Blizcon18Release" collection="Remastered" unit="Drone">
+        <ProductId value="43710"/>
+    </CSkinPack>
+    <CSkinPack id="UltraliskRemastered" parent="Blizcon19Release" collection="Remastered" unit="Ultralisk"/>
+    <CSkinPack id="CarrierRemastered" parent="Blizcon19Release" collection="Remastered" unit="Carrier"/>
+    <CSkinPack id="BattlecruiserRemastered" parent="Blizcon19Release" collection="Remastered" unit="Battlecruiser"/>
 </Catalog>

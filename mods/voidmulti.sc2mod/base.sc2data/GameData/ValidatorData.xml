@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CValidatorCombine id="ActivateStasisWardValidators">
         <CombineArray value="NotLarva"/>
@@ -23,13 +23,92 @@
         <Compare value="GT"/>
         <Behavior value="BattlecruiserChasing"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitOrderQueue id="BattlecruiserIsNotYamatoing">
-        <AbilLink value="Yamato"/>
-        <Find value="0"/>
+    <CValidatorCombine id="BattlecruiserIsNotYamatoing">
+        <CombineArray value="BattlecruiserIsYamatoing"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="CasterIsTimeWarpedMothership">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="TemporalField"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationPlacement id="BattlecruiserPlacementCheck">
+        <Range value="3"/>
+        <Unit value="Battlecruiser"/>
+    </CValidatorLocationPlacement>
+    <CValidatorCombine id="Casterhas10EnergyorCasterisBatteryOvercharged">
+        <CombineArray value="CasterHas10Energy"/>
+        <CombineArray value="CasterHasBatteryOverchargeBehavior"/>
+    </CValidatorCombine>
+    <CValidatorLocationEnumArea id="NexusBatteryOvercharge8RangePlacementVisual">
+        <ResultFailed value="TargetIsOutOfRange,Error/BatteryMustBeNearNexus"/>
+        <AreaArray>
+            <Compare value="GE"/>
+            <Count value="1"/>
+            <Radius value="10"/>
+            <Validator value="NexusBatteryOverchargeisNexus"/>
+        </AreaArray>
+        <Compare value="GE"/>
+        <Count value="1"/>
+        <SearchFilters value="Ground,Structure;Ally,Neutral,Enemy,Air,Worker,RawResource,HarvestableResource,Missile,Destructible,Dead"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorUnitType id="NexusBatteryOverchargeisNexus">
+        <ResultFailed value="Error,Error/IsNexus"/>
+        <Value value="Nexus"/>
+    </CValidatorUnitType>
+    <CValidatorLocationEnumArea id="NexusBatteryOvercharge8Range">
+        <ResultFailed value="TargetIsOutOfRange,Error/BatteryMustBeNearNexus"/>
+        <AreaArray>
+            <Compare value="GE"/>
+            <Count value="1"/>
+            <Radius value="10"/>
+            <Validator value="NexusBatteryOverchargeisNexus"/>
+        </AreaArray>
+        <Compare value="GE"/>
+        <Count value="1"/>
+        <SearchFilters value="Ground,Structure;Ally,Neutral,Enemy,Air,Worker,RawResource,HarvestableResource,Missile,Destructible,UnderConstruction,Dead"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorCombine id="NotHyperjumping">
+        <CombineArray value="ParasiticBombBattlecruiserHyperjumping"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="IsShieldBattery">
+        <Value value="ShieldBattery"/>
+        <ResultFailed value="Error,Error/MustTargetShieldBattery"/>
+    </CValidatorUnitType>
+    <CValidatorLocationComparePower id="HasAtLeastNormalPower">
+        <ResultFailed value="Error,Error/TargetIsUnpowered"/>
+        <PowerLink value="PowerSource"/>
+        <Compare value="GT"/>
+    </CValidatorLocationComparePower>
+    <CValidatorCombine id="TargetNotTacticalJumping">
+        <ResultFailed value="Error,Error/CantTargetBattlecruiserHyperjump"/>
+        <CombineArray value="TargetTacticalJumping"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorUnitOrderQueue id="TargetTacticalJumping">
+        <ResultFailed value="Error,Error/CantTargetBattlecruiserHyperjump"/>
+        <WhichUnit Value="Target"/>
+        <AbilLink value="Hyperjump"/>
     </CValidatorUnitOrderQueue>
+    <CValidatorPlayerRequirement id="ZealotSunderingImpactUpgraded">
+        <WhichPlayer Value="Caster"/>
+        <ResultNoPlayer value="Error"/>
+        <Find value="1"/>
+        <Value value="HaveSunderingImpact"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorCombine id="HarvestableResourceandNearbyTownhall">
+        <Type value="And"/>
+        <CombineArray value="HarvestableResources"/>
+        <CombineArray value="PlayerTownhallwithin10"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="LarvaNotConjoined">
         <Behavior value="SpawnLarvaConjoined"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationEnumArea id="PlayerTownhallwithin10">
+        <AreaArray Compare="GT" Radius="10" Validator="IsTownHall"/>
+        <SearchFilters value="Ground,Structure;Ally,Neutral,Enemy,Missile,Item,Dead"/>
+    </CValidatorLocationEnumArea>
     <CValidatorUnitCompareBehaviorCount id="TransientTrackedByBattlecruiser">
         <Compare value="GT"/>
         <Behavior value="BattlecruiserTransientTracker"/>
@@ -55,6 +134,18 @@
         <ResultNoPlayer value="Error"/>
         <Find value="1"/>
         <Value value="HaveResonatingGlaives"/>
+        <WhichPlayer Value="Caster"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="TempestGroundAttackUpgraded">
+        <ResultNoPlayer value="Error"/>
+        <Find value="1"/>
+        <Value value="HaveTempestGroundAttackUpgrade"/>
+        <WhichPlayer Value="Caster"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="GhostEnhancedShockewavesUpgraded">
+        <ResultNoPlayer value="Error"/>
+        <Find value="1"/>
+        <Value value="HaveEnhancedShockwaves"/>
         <WhichPlayer Value="Caster"/>
     </CValidatorPlayerRequirement>
     <CValidatorUnitFilters id="LockOnTargetNotDeadNew">
@@ -178,6 +269,19 @@
         <Value value="ShieldBattery"/>
         <Find value="0"/>
     </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="CasterHasBatteryOverchargeBehavior">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BatteryOvercharge"/>
+        <Compare value="GT"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="CasterIsNotBatteryOvercharged">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BatteryOvercharge"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="TargetNotHaveBatteryOvercharge">
+        <Behavior value="BatteryOvercharge"/>
+        <ResultFailed value="Error,Error/CantTargetOverchargedShieldBattery"/>
+    </CValidatorUnitCompareBehaviorCount>
     <!-- Balance change for balance patch of Nov 11th 2013 -->
     <CValidatorUnitCompareBehaviorCount id="NotRevealed">
         <Value value="1"/>
@@ -377,6 +481,11 @@
         <Behavior value="Charging"/>
         <Value value="1"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="CasterHasResonatingGlaivesBuff">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="ResonatingGlaivesPhaseShift"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareCooldown id="BarrierNotOnCooldown">
         <WhichUnit Value="Caster"/>
         <CooldownLink value="Abil/ImmortalOverload"/>
@@ -447,6 +556,10 @@
         <Value value="TempestDisruptionSphereAttackMissile"/>
         <Find value="0"/>
     </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="NotHaveBeamTargetCDBehavior">
+        <Behavior value="BeamTargetCD"/>
+        <RequireCasterUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="TimewarpResearch">
         <CombineArray value="IsDarkShrine"/>
     </CValidatorCombine>
@@ -497,6 +610,13 @@
         <CooldownLink value="Abil/WidowMineAttack"/>
         <Ability value="WidowMineAttack"/>
     </CValidatorUnitCompareCooldown>
+    <CValidatorPlayerRequirement id="NotHaveArmory">
+        <Value value="HaveArmory"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="HaveArmory">
+        <Value value="HaveArmory"/>
+        <Find value="1"/>
+    </CValidatorPlayerRequirement>
     <CValidatorUnitCompareCooldown id="WidowMineAttackOnCooldown">
         <CooldownLink value="Abil/WidowMineAttack"/>
         <Ability value="WidowMineAttack"/>
@@ -559,11 +679,7 @@
     </CValidatorPlayerRequirement>
     <CValidatorCombine id="UnitOrAttackingStructure">
         <CombineArray value="NotStructure"/>
-        <CombineArray value="IsPhotonCannon"/>
-        <CombineArray value="IsBunker"/>
-        <CombineArray value="IsMissileTurret"/>
-        <CombineArray value="IsSpineCrawler"/>
-        <CombineArray value="IsSporeCrawler"/>
+        <CombineArray value="TargetCanAttack"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="NotHaveScramblerMissileBehavior">
         <Behavior value="RavenScramblerMissile"/>
@@ -580,6 +696,9 @@
     <CValidatorUnitFilters id="InfestorEnsnareReheightSourceLaunchMissileCasterNotDead">
         <Filters value="-;Dead"/>
         <WhichUnit Effect="InfestorEnsnareLM"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="TargetIsNotGround">
+        <Filters value="-;Ground"/>
     </CValidatorUnitFilters>
     <CValidatorUnitCompareBehaviorCount id="NotHaveNexusShieldRechargeOnPylonBehavior">
         <ResultFailed value="CantTargetThatUnit"/>
@@ -680,4 +799,7 @@
         <Find value="1"/>
         <Value value="HaveCarrierLeashRangeUpgrade"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitFilters id="NotHeroic">
+        <Filters value="-;Heroic"/>
+    </CValidatorUnitFilters>
 </Catalog>

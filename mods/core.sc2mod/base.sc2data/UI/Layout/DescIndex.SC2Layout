@@ -20,6 +20,7 @@
     <Include path="UI/Layout/Common/StandardElementsTemplates.SC2Layout"/>
     <Include path="UI/Layout/Common/StandardUnitModelTemplates.SC2Layout"/>
     <Include path="UI/Layout/Common/StandardNavigationTemplates.SC2Layout"/>
+    <Include path="UI/Layout/Common/StandardDialogVarietyTemplates.SC2Layout"/>
     <Include path="UI/Layout/UI/EquipmentIcon.SC2Layout"/>
     <Include path="UI/Layout/UI/GameButton.SC2Layout"/>
     <Include path="UI/Layout/UI/CommandButton.SC2Layout"/>
@@ -41,6 +42,18 @@
     <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_Template.SC2Layout"/>
     <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_Forged.SC2Layout"/>
     <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_Simulant.SC2Layout"/>
+    <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_Nerazim.SC2Layout"/>
+    <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_ArcadeCabinet.SC2Layout"/>
+    <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_Imperial.SC2Layout"/>
+    <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_Alliance.SC2Layout"/>
+    <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_Horde.SC2Layout"/>
+    <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_Scourge.SC2Layout"/>
+    <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_Sentinels.SC2Layout"/>
+    <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_Ihanrii.SC2Layout"/>
+    <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_Cerberus.SC2Layout"/>
+    <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_Tyrador.SC2Layout"/>
+    <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_ProtoHuman.SC2Layout"/>
+    <Include path="UI/Layout/ConsoleSkins/ConsoleSkin_ProtoOrc.SC2Layout"/>
 
     <!-- Editor Layout -->
     <Include path="UI/Layout/Editor/Editor.SC2Layout"/>
@@ -121,6 +134,7 @@
     <Include path="UI/Layout/Glue/SelectToonDialog.SC2Layout"/>
     <Include path="UI/Layout/Glue/ChangeToonNameDialog.SC2Layout"/>
     <Include path="UI/Layout/Glue/SelectGameAccountDialog.SC2Layout"/>
+    <Include path="UI/Layout/Glue/SelectGameSiteDialog.SC2Layout"/>
     <Include path="UI/Layout/Glue/HelpPanel.SC2Layout"/>
     <Include path="UI/Layout/Glue/TechGlossaryPanel.SC2Layout"/>
     <Include path="UI/Layout/Glue/TechTreePanel.SC2Layout"/>
@@ -131,11 +145,14 @@
     <Include path="UI/Layout/Glue/CoopCampaignScoreStatsPanel.SC2Layout"/>
     <Include path="UI/Layout/Glue/CoopCampaignScoreSummaryPanel.SC2Layout"/>
     <Include path="UI/Layout/Glue/CoopCampaignScorePanel.SC2Layout"/>
+    <Include path="UI/Layout/Glue/CoopCampaignDifficultySelectionPanel.SC2Layout"/>
     <Include path="UI/Layout/Glue/CoopCampaignMapSelectionPanel.SC2Layout"/>
     <Include path="UI/Layout/Glue/CoopCampaignStandardInfoPanel.SC2Layout"/>
     <Include path="UI/Layout/Glue/CoopCampaignMutatorInfoPanel.SC2Layout"/>
     <Include path="UI/Layout/Glue/CoopCampaignCustomMutatorInfoPanel.SC2Layout"/>
+    <Include path="UI/Layout/Glue/CommanderPrestigeSelectionPanel.SC2Layout"/>
     <Include path="UI/Layout/Glue/CommanderMasterySelectionPanel.SC2Layout"/>
+    <Include path="UI/Layout/Glue/CommanderCustomizationSelectionPanel.SC2Layout"/>
     <Include path="UI/Layout/Glue/CommanderSelectionPopupContainers.SC2Layout"/>
     <Include path="UI/Layout/Glue/CommanderSelectionButtonsContainer.SC2Layout"/>
     <Include path="UI/Layout/Glue/CommanderSelectionInfoContainer.SC2Layout"/>
@@ -200,6 +217,7 @@
     <Include path="UI/Layout/Glue/WarChestExperienceFrame.SC2Layout"/>
     <Include path="UI/Layout/Glue/GameContentDialog.SC2Layout"/>
     <Include path="UI/Layout/Glue/WarChestPurchaseCelebrationDialog.SC2Layout"/>
+    <Include path="UI/Layout/Glue/CheckoutBrowserDialog.SC2Layout"/>
 
     <Include path="UI/Layout/Glue/CoopMutatorAdvertisementFrame.SC2Layout"/>
     <Include path="UI/Layout/Glue/TournamentPortalAdvertisementFrame.SC2Layout"/>
@@ -260,7 +278,7 @@
     <Include path="UI/Layout/Glue/CustomGamesLobbies.SC2Layout"/>
     <Include path="UI/Layout/Glue/CustomGamesMelee.SC2Layout"/>
     <Include path="UI/Layout/Glue/CustomGamesArcade.SC2Layout"/>
-    <Include path="UI/Layout/Glue/CustomGamesSingleplayer.SC2Layout"/>
+    <Include path="UI/Layout/Glue/CustomGamesCustomCampaigns.SC2Layout"/>
     
     <Include path="UI/Layout/Glue/MultiplayerMatchmakingFrame.SC2Layout"/>
     <Include path="UI/Layout/Glue/MultiplayerTournamentFrame.SC2Layout"/>
@@ -268,7 +286,7 @@
     <!-- Glue Screens-->
     <Include path="UI/Layout/Glue/ScreenBackgroundSC2.SC2Layout"/>
     <Include path="UI/Layout/Glue/ScreenNewUser.SC2Layout"/>
-    <Include path="UI/Layout/Glue/ScreenLoginSC2.SC2Layout"/>
+    <Include path="UI/Layout/Glue/ScreenLoginUnified.SC2Layout"/>
     <Include path="UI/Layout/Glue/ScreenMainMenu.SC2Layout" requiredtoload="IS_SCREEN_MAIN_MENU_ENABLED"/>
     <Include path="UI/Layout/Glue/ScreenSingle.SC2Layout"/>
     <Include path="UI/Layout/Glue/ScreenSkirmish.SC2Layout"/>
@@ -287,6 +305,7 @@
     <Include path="UI/Layout/Glue/ScreenCustom.SC2Layout"/>
     <Include path="UI/Layout/Glue/ScreenHome.SC2Layout"/>
     <Include path="UI/Layout/Glue/ScreenNavigationSC2.SC2Layout"/>
+    <Include path="UI/Layout/Glue/ScreenMapToMapTransition.SC2Layout"/>
     <Include path="UI/Layout/Glue/ScreenForegroundSC2.SC2Layout"/>
     <Include path="UI/Layout/Glue/ScreenScore.SC2Layout"/>
     <Include path="UI/Layout/Glue/ScreenBattleLobby.SC2Layout"/>

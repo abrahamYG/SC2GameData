@@ -816,6 +816,7 @@
     <Remove Terms="ActorDestruction" Target="Storm_HeroRing_Multi" Send="Destroy" />
     <Remove Terms="Behavior.VideoDebug.On" Target="Storm_HeroRing_Multi" Send="Destroy" />
     <Remove Terms="Behavior.VideoDebug.Off" Send="Create Storm_HeroRing_Multi" />
+    <WalkAnimMoveSpeed value="4" />
   </CActorUnit>
   <CActorSiteOpRotator id="HeroLostVikingsControllerRotator">
     <Rate value="-360.000000" />
@@ -2137,6 +2138,8 @@
     <InfoIcon value="Assets\Textures\storm_ui_icon_lostvikings_longboatraid.dds" />
     <BehaviorCategories index="Restorable" value="1" />
     <BehaviorCategories index="BuffUnstoppable" value="1" />
+    <BehaviorCategories index="ImmuneToAllyDisplacement" value="1" />
+    <BehaviorCategories index="ImmuneToEnemyDisplacement" value="1" />
     <Duration value="15" />
     <ExpireEffect value="LostVikingsLongboatRaidDeathDelay" />
     <DisableValidatorArray value="CasterNotStasis" />
@@ -5684,7 +5687,7 @@
         <Catalog value="Unit" />
         <Entry value="HeroErik" />
         <Field value="Speed" />
-        <Value value="0.500000" />
+        <Value value="0.556200" />
       </Modifications>
     </AbilityModificationArray>
   </CTalent>
@@ -5956,7 +5959,7 @@
     <EnergyStart value="0" />
     <EnergyMax value="0" />
     <EnergyRegenRate value="0" />
-    <Speed value="5" />
+    <Speed value="5.5664" />
     <Sight value="13" />
     <AbilArray Link="LostVikingsPlayAgain" />
     <AbilArray Link="LostVikingsGoGoGo" />

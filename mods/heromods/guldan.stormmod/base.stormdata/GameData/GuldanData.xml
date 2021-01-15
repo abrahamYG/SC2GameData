@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Catalog>
+  <CAbilEffectInstant id="GuldanLifeTapFree">
+    <Effect value="GuldanLifeTapCastSet" />
+    <Cost>
+      <Cooldown Link="Abil/GuldanLifeTap" TimeUse="0.5" />
+    </Cost>
+    <CmdButtonArray index="Execute">
+      <DefaultButtonFace value="GuldanLifeTapFree" />
+      <Requirements value="GuldanLifeTapManaControllerNotActive" />
+      <ShowValidator value="GuldanCasterHasGuldanLifeTapDarknessWithinReady" />
+      <UseValidator value="GuldanCasterHasGuldanLifeTapDarknessWithinReady" />
+    </CmdButtonArray>
+  </CAbilEffectInstant>
   <CAbilEffectInstant id="GuldanLifeTap">
     <Effect value="GuldanLifeTapCastSet" />
     <Cost>
@@ -109,23 +121,24 @@
     <Flags index="ClearLastMoveTarget" value="1" />
     <Flags index="RequireTargetVision" value="0" />
     <Cost>
-      <Vital index="Energy" value="90" />
-      <Cooldown TimeUse="100" />
+      <Vital index="Energy" value="80" />
+      <Cooldown TimeUse="70" />
     </Cost>
     <InterruptArray index="Cast" value="1" />
     <InterruptCost>
       <Cooldown Operation="Set" TimeUse="10" />
     </InterruptCost>
-    <Range value="15" />
-    <RangeSlop value="15" />
+    <Range value="10" />
+    <RangeSlop value="10" />
     <Arc value="360" />
     <ShowProgressArray index="Cast" value="1" />
     <CursorEffect value="GuldanRainOfDestructionSearchDummy" />
     <CmdButtonArray index="Execute" DefaultButtonFace="GuldanRainOfDestruction" Requirements="Ultimate2Unlocked" />
-    <UninterruptibleArray index="Cast" value="1" />
     <CancelableArray index="Channel" value="1" />
     <AutoQueueArray index="Channel" value="0" />
     <AutoQueueArray index="Finish" value="0" />
+    <CastIntroTime value="1.5" />
+    <CastOutroTime value="0.0625" />
   </CAbilEffectTarget>
   <CAbilEffectInstant id="GuldanRainOfDestructionCancel">
     <Effect value="GuldanRainOfDestructionRemoveChannelBehavior" />
@@ -248,9 +261,10 @@
     <On Terms="Abil.GuldanDemonicCircleSummon.SourceFinishStart" Send="Create" />
   </CActorSound>
   <CActorSound id="GuldanRainOfDestructionLaunchSound" parent="SoundOneShot">
-    <On Terms="Behavior.GuldanRainOfDestructionChannel.On" Send="Create" />
-    <On Terms="Behavior.GuldanRainOfDestructionChannel.Off" Send="Destroy" />
+    <On Terms="Effect.GuldanRainOfDestructionCreationPersistent.Start; At Effect" Send="Create" />
+    <On Terms="Effect.GuldanRainOfDestructionCreationPersistent.Stop" Send="Destroy" />
     <Sound value="GuldanRainofDestructionLaunchSound" />
+    <VisibilityShape Shape="GuldanRainOfDestructionVisibilityShape" />
   </CActorSound>
   <CActorSound id="HeroGuldanTauntVO" parent="SoundOneShot">
     <Sound value="GuldanBase_Taunt" />
@@ -344,6 +358,7 @@
     <On Terms="Effect.GuldanWeaponLaunchMissile.Start; At Caster" Send="StatusIncrement AttackSequence" />
     <On Terms="Effect.GuldanWeaponLaunchMissile.Start; At Caster; IsStatus AttackSequence 4" Send="StatusSet AttackSequence 0" />
     <On Terms="Abil.GuldanLifeTap.SourceCastStart" Send="AnimPlay Spell Spell,F" />
+    <On Terms="Abil.GuldanLifeTapFree.SourceCastStart" Send="AnimPlay Spell Spell,F" />
     <On Terms="Abil.GuldanFelFlame.SourceCastStart" Send="AnimPlay Spell Spell,A 0 -1.000000 -1.000000 1.000000 AsTimeScale" />
     <On Terms="Abil.GuldanFelFlameSecondCast.SourceCastStart" Send="AnimPlay Spell Spell,A 0 -1.000000 -1.000000 1.000000 AsTimeScale" />
     <On Terms="Behavior.GuldanDrainLifeChannel.On" Send="AnimBracketStart ChannelSpell Spell,B,Start Spell,B" />
@@ -356,9 +371,9 @@
     <On Terms="Signal.*.ShuffleLeft; !AnimPlaying Walk Spell,B,Left" Send="AnimPlay Walk Spell,B,Left AssetDrivenLooping 0.000000" />
     <On Terms="Abil.GuldanCorruption.SourceCastStart" Send="AnimPlay Spell Spell,C 0 -1.000000 -1.000000 1.000000 AsTimeScale" />
     <On Terms="Abil.GuldanHorrify.SourceCastStart" Send="AnimPlay Spell Spell,D 0 -1.000000 -1.000000 1.000000 AsTimeScale" />
-    <On Terms="Behavior.GuldanRainOfDestructionChannel.On" Send="AnimBracketStart Spell Spell,E,Start Spell,E" />
+    <On Terms="Abil.GuldanRainOfDestruction.SourceCastStart" Send="AnimPlay Spell Spell,H 0 -1.000000 -1.000000 0.660000 AsTimeScale" />
     <On Terms="Behavior.GuldanRainOfDestructionChannel.Off" Send="AnimBracketStop Spell" />
-    <On Terms="Effect.GuldanRainOfDestructionRemoveChannelBehavior.Start; At Caster" Send="AnimClear Spell" />
+    <On Terms="Abil.GuldanRainOfDestruction.SourceCancel" Send="AnimClear Spell" />
     <On Terms="Behavior.GuldanRainOfDestructionChannel.Off" Send="AnimGroupApply Ready" />
     <On Terms="Behavior.GuldanRainOfDestructionChannel.Off" Send="AnimClear Ready" />
     <On Terms="Behavior.GuldanRainOfDestructionChannel.Off" Send="TimerKill StandReadyOutroDuration" />
@@ -389,6 +404,7 @@
     <AbilSoundArray AbilCmd="GuldanHorrify,Execute" Sound="GuldanBase_Ultimate2Used" />
     <AbilSoundArray AbilCmd="GuldanFelFlame,Execute" Sound="GuldanBase_VOX_CastingQ" />
     <AbilSoundArray AbilCmd="GuldanLifeTap,Execute" Sound="GuldanBase_VOX_CastingD" />
+    <AbilSoundArray AbilCmd="GuldanLifeTapFree,Execute" Sound="GuldanBase_VOX_CastingD" />
     <AbilSoundArray AbilCmd="GuldanRainOfDestruction,Execute" Sound="GuldanBase_Ultimate1Used" />
     <ErrorArray Error="NotEnoughEnergy" Sound="GuldanBase_LowMana" />
     <SoundArray index="Yes" value="GuldanBase_Yes" />
@@ -397,7 +413,6 @@
     <GroupIcon>
       <Image value="Assets\Textures\storm_ui_ingame_partyframe_guldan.dds" />
     </GroupIcon>
-    <WalkAnimMoveSpeed value="4" />
   </CActorUnit>
   <CActorModel id="GuldanWeaponFX" parent="StormModelAnimationStyleOneShotUnit">
     <HostSiteOps Ops="SOpAttachWeapon" />
@@ -442,12 +457,14 @@
   </CActorAction>
   <CActorSound id="GuldanLifeTapCastSound" parent="SoundOneShot">
     <On Terms="Abil.GuldanLifeTap.SourceCastStart" Send="Create" />
+    <On Terms="Abil.GuldanLifeTapFree.SourceCastStart" Send="Create" />
     <Layers Sound="GuldanBase_VOX_CastingD" PlayDelay="0,250" PlayDelaySource="Actor" />
     <Layers Sound="GuldanLifeTapMidSound" PlayDelay="200,300" PlayDelaySource="Actor" />
     <Layers Sound="GuldanLifeTapEndSound" PlayDelay="0,350" PlayDelaySource="Actor" />
   </CActorSound>
   <CActorModel id="GuldanLifeTapFXImpact" parent="StormModelAnimationStyleOneShotUnit">
     <On Terms="Abil.GuldanLifeTap.SourceCastStart" Send="Create" />
+    <On Terms="Abil.GuldanLifeTapFree.SourceCastStart" Send="Create" />
     <HostSiteOps HoldRotation="1" />
   </CActorModel>
   <CActorArc id="GuldanFelFlameGuide" parent="StormGuideVisualArc" abil="GuldanFelFlame" />
@@ -665,7 +682,7 @@
   </CActorSound>
   <CActorRange id="GuldanRainOfDestructionRange" parent="StormRangeAbilPlusSplat" abil="GuldanRainOfDestruction" />
   <CActorSplat id="GuldanRainOfDestructionRangeSplat" parent="StormRangeSplat">
-    <Scale value="15.750000" />
+    <Scale value="10.750000" />
   </CActorSplat>
   <CActorSplat id="GuldanRainOfDestructionCursorSplat" parent="StormGuideVisualCircle" abil="GuldanRainOfDestruction">
     <Model value="GuldanRainOfDestructionCursorSplat" />
@@ -679,14 +696,14 @@
     <Flags index="VisionTestCenterOnly" value="1" />
   </CActorModel>
   <CActorModel id="GuldanRainOfDestructionCasterFXRight" parent="StormModelAnimationStyleContinuousUnit">
-    <On Terms="Behavior.GuldanRainOfDestructionChannel.On" Send="Create" />
-    <On Terms="Behavior.GuldanRainOfDestructionChannel.Off" Send="AnimBracketStop BSD" />
+    <On Terms="Abil.GuldanRainOfDestruction.SourceCastStart" Send="Create" />
+    <On Terms="Abil.GuldanRainOfDestruction.SourceCastStop" Send="AnimBracketStop BSD" />
     <HostSiteOps Ops="SOpAttachWeaponRight" />
     <Model value="GuldanRainOfDestructionCasterFX" />
   </CActorModel>
   <CActorModel id="GuldanRainOfDestructionCasterFXLeft" parent="StormModelAnimationStyleContinuousUnit">
-    <On Terms="Behavior.GuldanRainOfDestructionChannel.On" Send="Create" />
-    <On Terms="Behavior.GuldanRainOfDestructionChannel.Off" Send="AnimBracketStop BSD" />
+    <On Terms="Abil.GuldanRainOfDestruction.SourceCastStart" Send="Create" />
+    <On Terms="Abil.GuldanRainOfDestruction.SourceCastStop" Send="AnimBracketStop BSD" />
     <HostSiteOps Ops="SOpAttachWeaponLeft" />
     <Model value="GuldanRainOfDestructionCasterFX" />
   </CActorModel>
@@ -826,6 +843,27 @@
     <Driver value="GuldanWeaponLaunchMissile" />
     <Keyword value="CustomA" />
   </CAttachMethodPattern>
+  <CBehaviorBuff id="GuldanLifeTapDarknessWithinAbilityPowerBuff" parent="StormDamageIncrease">
+    <Alignment value="Positive" />
+    <InfoFlags index="Hidden" value="0" />
+    <InfoIcon value="Assets\Textures\storm_ui_icon_guldan_lifetap.dds" />
+    <BehaviorCategories index="BuffAbilityPower" value="1" />
+    <Aliases value="CritAliasSpellPower" />
+    <RemoveValidatorArray value="GuldanHasLifeTapDarknessWithinTalent" />
+    <Duration value="5" />
+    <Modification>
+      <HealDealtAdditiveMultiplier index="Life" value="0.25" />
+      <DamageDealtFraction index="Ability" value="0.25" />
+      <VitalDamageLeechScoreArray Value="SelfHealing" />
+    </Modification>
+    <DisplayDuration index="Self" value="1" />
+  </CBehaviorBuff>
+  <CBehaviorBuff id="GuldanLifeTapDarknessWithinReady">
+    <Alignment value="Positive" />
+    <InfoIcon value="Assets\Textures\storm_temp_war3_btnspellsteal.dds" />
+    <BehaviorFlags index="Permanent" value="1" />
+    <RemoveValidatorArray value="GuldanHasLifeTapDarknessWithinTalent" />
+  </CBehaviorBuff>
   <CBehaviorAbility id="GuldanConsumeSoul">
     <Buttons Face="GuldanConsumeSoul" Type="AbilCmd" AbilCmd="GuldanConsumeSoul,Execute" />
   </CBehaviorAbility>
@@ -843,11 +881,11 @@
   </CBehaviorBuff>
   <CBehaviorTokenCounter id="GuldanChaoticEnergyQuestToken" parent="StormQuestToken">
     <AtMaxEvents index="0" EventId="QuestComplete" Effect="GuldanChaoticEnergyModifyPlayerSpellCost" />
-    <Max value="20" />
+    <Max value="15" />
   </CBehaviorTokenCounter>
   <CBehaviorTokenCounter id="GuldanFelFlamePursuitOfFlameQuestToken" parent="StormQuestToken">
     <AtMaxEvents index="0" EventId="QuestComplete" Effect="GuldanFelFlamePursuitOfFlameQuestCompleteModifyPlayer" />
-    <Max value="40" />
+    <Max value="30" />
   </CBehaviorTokenCounter>
   <CBehaviorBuff id="GuldanHasMaxLife">
     <DisableValidatorArray value="CasterLifeFull" />
@@ -1056,20 +1094,12 @@
   <CBehaviorBuff id="GuldanRainOfDestructionChannel">
     <Alignment value="Positive" />
     <BehaviorCategories index="Restorable" value="1" />
-    <RemoveValidatorArray value="CasterNotDazedOrDeadOrSilencedOrStasisOrStunnedExceptTimeStop" />
     <Duration value="7" />
     <FinalEffect value="GuldanRainOfDestructionEndSet" />
-    <Modification>
-      <StateFlags index="SuppressCloak" value="1" />
-      <AbilClassDisableArray index="CAbilAttack" value="1" />
-      <AbilLinkDisableArray value="MapMechanicAbilityTarget" />
-      <AbilLinkDisableArray value="MapMechanicAbilityTarget2" />
-    </Modification>
-    <DisplayDuration index="Self" value="1" />
-    <DisplayDuration index="Ally" value="1" />
-    <DisplayDuration index="Enemy" value="1" />
     <InfoFlags index="AlwaysUseGameText" value="1" />
-    <TimeScaleSource Value="Caster" />
+    <TimeScaleSource Value="Global" />
+    <BehaviorFlags index="Permanent" value="1" />
+    <BehaviorFlags index="EnabledWhileDead" value="1" />
   </CBehaviorBuff>
   <CBehaviorBuff id="GuldanDrainLifeHealthFunnelDeathResponse">
     <Alignment value="Negative" />
@@ -1085,7 +1115,7 @@
   <CBehaviorBuff id="GuldanCorruptionCurseOfExhaustionSlow" parent="StormSlowParent">
     <Duration value="0.3125" />
     <Modification>
-      <UnifiedMoveSpeedFactor value="-0.35" />
+      <UnifiedMoveSpeedFactor value="-0.5" />
     </Modification>
   </CBehaviorBuff>
   <CBehaviorBuff id="GuldanLifeTapHungerforPowerBehavior" parent="StormDamageIncrease">
@@ -1199,19 +1229,6 @@
       <AbilLinkEnableArray value="GuldanDrainLife" />
     </Modification>
   </CBehaviorBuff>
-  <CBehaviorBuff id="GuldanLifeTapDarknessWithinAbilityPower" parent="StormDamageIncrease">
-    <Alignment value="Positive" />
-    <InfoFlags index="Hidden" value="0" />
-    <InfoIcon value="Assets\Textures\storm_temp_war3_btnspellsteal.dds" />
-    <BehaviorCategories index="Permanent" value="1" />
-    <BehaviorCategories index="BuffAbilityPower" value="1" />
-  </CBehaviorBuff>
-  <CBehaviorBuff id="GuldanLifeTapDarknessWithinFelFlame">
-    <BuffFlags index="RefreshStack" value="1" />
-  </CBehaviorBuff>
-  <CBehaviorBuff id="GuldanLifeTapDarknessWithinDrainLife" />
-  <CBehaviorBuff id="GuldanLifeTapDarknessWithinCorruption" />
-  <CBehaviorBuff id="GuldanLifeTapDarknessWithinRainOfDestruction" />
   <CBehaviorBuff id="GuldanHorrifyHauntArmorDecrease" parent="StormArmor">
     <BehaviorCategories index="DebuffVulnerable" value="1" />
     <RemoveValidatorArray value="TargetIsFeared" />
@@ -1296,8 +1313,18 @@
   <CButton id="GuldanHorrifyHaunt" parent="StormButtonParent">
     <Icon value="Assets\Textures\storm_ui_icon_guldan_horrify.dds" />
   </CButton>
+  <CButton id="GuldanLifeTapFree" parent="StormButtonParent">
+    <Tooltip value="Button/Tooltip/GuldanLifeTap" />
+    <TooltipAppender Validator="GuldanHasLifeTapDarknessWithinTalent" Text="Button/Tooltip/GuldanLifeTapDarknessWithinDamageTrackingAppender" />
+    <TooltipAppender Validator="GuldanHasLifeTapImprovedLifeTapTalent" Face="GuldanLifeTapImprovedLifeTap" />
+    <TooltipAppender Validator="GuldanHasLifeTapHungerforPowerTalent" Face="GuldanLifeTapHungerforPower" />
+    <TooltipAppender Validator="GuldanHasDarkBargainTalent" Face="GuldanDarkBargain" />
+    <TooltipAppender Validator="GuldanHasLifeTapDarknessWithinTalent" Face="GuldanLifeTapDarknessWithin" />
+    <Icon value="Assets\Textures\storm_ui_icon_guldan_lifetap.dds" />
+  </CButton>
   <CButton id="GuldanLifeTap" parent="StormButtonParent">
     <Icon value="Assets\Textures\storm_ui_icon_guldan_lifetap.dds" />
+    <TooltipAppender Validator="GuldanHasLifeTapDarknessWithinTalent" Text="Button/Tooltip/GuldanLifeTapDarknessWithinDamageTrackingAppender" />
     <TooltipAppender Validator="GuldanHasLifeTapImprovedLifeTapTalent" Face="GuldanLifeTapImprovedLifeTap" />
     <TooltipAppender Validator="GuldanHasLifeTapHungerforPowerTalent" Face="GuldanLifeTapHungerforPower" />
     <TooltipAppender Validator="GuldanHasDarkBargainTalent" Face="GuldanDarkBargain" />
@@ -1357,6 +1384,15 @@
     <Image value="Assets\Textures\ui_targetportrait_hero_guldan.dds" />
     <Variations Model="GuldanPortrait" Actor="GuldanPortrait" />
   </CCharacter>
+  <CEffectApplyBehavior id="GuldanLifeTapDarknessWithinApplyAbilityPowerBehavior">
+    <Behavior value="GuldanLifeTapDarknessWithinAbilityPowerBuff" />
+    <ValidatorArray value="GuldanHasLifeTapDarknessWithinTalent" />
+    <ValidatorArray value="GuldanCasterHasGuldanLifeTapDarknessWithinReady" />
+  </CEffectApplyBehavior>
+  <CEffectRemoveBehavior id="GuldanLifeTapDarknessWithinReadyRemoveBehavior">
+    <WhichUnit Value="Caster" />
+    <BehaviorLink value="GuldanLifeTapDarknessWithinReady" />
+  </CEffectRemoveBehavior>
   <CEffectApplyBehavior id="GuldanChaoticEnergyApplyBehavior">
     <Behavior value="GuldanChaoticEnergyRefundManaCostBehavior" />
     <Chance value="0" />
@@ -1467,9 +1503,7 @@
     <Cost Abil="GuldanRainOfDestructionCancel,Execute" CooldownTimeUse="0.5" />
   </CEffectModifyUnit>
   <CEffectSet id="GuldanRainOfDestructionPersistentPrepSet">
-    <EffectArray value="GuldanChannelInitialClearQueuedOrders" />
     <EffectArray value="DismountDecloakCasterSet" />
-    <EffectArray value="GuldanRainOfDestructionApplyGlobalCooldown" />
   </CEffectSet>
   <CEffectApplyBehavior id="GuldanRainOfDestructionApplyGlobalCooldown">
     <WhichUnit Value="Caster" />
@@ -1554,13 +1588,11 @@
   <CEffectDamage id="GuldanDrainLifeDamage" parent="StormSpell">
     <Amount value="33" />
     <MultiplicativeModifierArray index="CurseOfExhaustion" Validator="GuldanCurseOfExhaustionTalentProcCombine" Modifier="0.5" />
-    <MultiplicativeModifierArray index="GuldanLifeTapDarknessWithin" Validator="GuldanCasterHasGuldanLifeTapDarknessWithinDrainLife" Modifier="0.25" Crit="1" />
   </CEffectDamage>
   <CEffectCreateHealer id="GuldanDrainLifeCreateHealer" parent="StormSelfOnlyHealingSpell">
     <ValidatorArray value="NoJunglePassiveTarget" />
     <ImpactUnit Value="Caster" />
     <RechargeVitalRate value="47" />
-    <MultiplicativeModifierArray index="GuldanLifeTapDarknessWithin" Validator="GuldanCasterHasGuldanLifeTapDarknessWithinDrainLife" Modifier="0.25" Crit="1" />
     <MultiplicativeModifierArray index="HarvestLife" Validator="GuldanDrainLifeHarvestLifeCombine" Modifier="0.75" Crit="1" />
   </CEffectCreateHealer>
   <CEffectSet id="GuldanDrainLifeImpactSet">
@@ -1646,8 +1678,7 @@
   </CEffectSet>
   <CEffectDamage id="GuldanFelFlameDamage" parent="StormSpell">
     <Amount value="200" />
-    <CritValidatorArray index="0" value="GuldanHas3ormorestacksofFelFlameRampantHellfire" />
-    <MultiplicativeModifierArray index="GuldanDarknessWithin" Validator="GuldanCasterHasGuldanLifeTapDarknessWithinFelFlame" Modifier="0.25" Crit="1" />
+    <CritValidatorArray index="0" value="GuldanFelFlameCritValidatorCombine" />
     <MultiplicativeModifierArray index="RampantHellfire" Accumulator="GuldanRampantHellfireAccumulator" />
   </CEffectDamage>
   <CEffectCreatePersistent id="GuldanFelFlameInitialPersistent">
@@ -1709,7 +1740,6 @@
   </CEffectSet>
   <CEffectDamage id="GuldanHorrifyDamage" parent="StormSpell">
     <Amount value="120" />
-    <MultiplicativeModifierArray index="GuldanLifeTapDarknessWithin" Validator="GuldanCasterHasGuldanLifeTapDarknessWithin" Modifier="0.25" Crit="1" />
   </CEffectDamage>
   <CEffectApplyBehavior id="GuldanHorrifyFearApplyBehavior">
     <WhichUnit Effect="GuldanHorrifyFearCreateOffsetPersistent" />
@@ -1812,10 +1842,8 @@
   </CEffectApplyBehavior>
   <CEffectDamage id="GuldanCorruptionDoTDamage" parent="StormSpellDot">
     <Amount value="34" />
-    <MultiplicativeModifierArray index="GuldanLifeTapDarknessWithin" Validator="GuldanCasterHasGuldanLifeTapDarknessWithinCorruption" Modifier="0.25" Crit="1" />
   </CEffectDamage>
   <CEffectCreatePersistent id="GuldanRainOfDestructionCreationPersistent">
-    <Flags index="Channeled" value="1" />
     <Flags index="RandomOffset" value="1" />
     <InitialEffect value="GuldanRainOfDestructionPersistentInitialSet" />
     <ExpireDelay value="0.5" />
@@ -1868,7 +1896,6 @@
     <PeriodicOffsetArray X="7.2812" Y="-5.29" />
     <PeriodicOffsetArray X="8.5595" Y="-2.7812" />
     <PeriodicPeriodArray value="0.125" />
-    <TimeScaleSource Value="Caster" />
   </CEffectCreatePersistent>
   <CEffectCreatePersistent id="GuldanRainOfDestructionCreateDelayPersistent">
     <OffsetVectorStartLocation Value="OriginUnit" />
@@ -1876,7 +1903,6 @@
     <PeriodCount value="1" />
     <PeriodicEffectArray value="GuldanRainOfDestructionSearch" />
     <PeriodicPeriodArray value="0.375" />
-    <TimeScaleSource Value="Caster" />
     <AINotifySettings AreaEffect="GuldanRainOfDestructionSearch">
       <Flags index="Disabled" value="1" />
     </AINotifySettings>
@@ -1897,7 +1923,6 @@
   </CEffectSet>
   <CEffectDamage id="GuldanRainOfDestructionDamage" parent="StormSpell">
     <Amount value="165" />
-    <MultiplicativeModifierArray index="GuldanLifeTapDarknessWithin" Validator="GuldanCasterHasGuldanLifeTapDarknessWithinRainOfDestruction" Modifier="0.25" Crit="1" />
   </CEffectDamage>
   <CEffectEnumArea id="GuldanRainOfDestructionSearchDummy">
     <SearchFilters value="-;Player,Ally,Neutral,ImmuneToAOE,Missile,Item,Stasis,Dead,Hidden,Invulnerable" />
@@ -1964,59 +1989,18 @@
   </CEffectApplyBehavior>
   <CEffectSet id="GuldanLifeTapCastSet">
     <EffectArray value="GuldanLifeTapManaRestoreModifyUnit" />
-    <EffectArray value="GuldanLifeTapDarknessWithinApplyBehavior" />
+    <EffectArray value="GuldanLifeTapDarknessWithinApplyAbilityPowerBehavior" />
+    <EffectArray value="GuldanLifeTapDarknessWithinReadyRemoveBehavior" />
   </CEffectSet>
-  <CEffectApplyBehavior id="GuldanLifeTapDarknessWithinApplyBehavior">
-    <Chance value="0" />
-    <Behavior value="GuldanLifeTapDarknessWithinAbilityPower" />
-  </CEffectApplyBehavior>
-  <CEffectApplyBehavior id="GuldanLifeTapDarknessWithinFelFlameApplyBehavior">
-    <ValidatorArray value="GuldanCasterHasGuldanLifeTapDarknessWithin" />
-    <WhichUnit Value="Caster" />
-    <Behavior value="GuldanLifeTapDarknessWithinFelFlame" />
-  </CEffectApplyBehavior>
-  <CEffectApplyBehavior id="GuldanLifeTapDarknessWithinDrainLifeApplyBehavior">
-    <ValidatorArray value="GuldanCasterHasGuldanLifeTapDarknessWithin" />
-    <WhichUnit Value="Caster" />
-    <Behavior value="GuldanLifeTapDarknessWithinDrainLife" />
-  </CEffectApplyBehavior>
-  <CEffectApplyBehavior id="GuldanLifeTapDarknessWithinCorruptionApplyBehavior">
-    <ValidatorArray value="GuldanCasterHasGuldanLifeTapDarknessWithin" />
-    <WhichUnit Value="Caster" />
-    <Behavior value="GuldanLifeTapDarknessWithinCorruption" />
-  </CEffectApplyBehavior>
-  <CEffectApplyBehavior id="GuldanLifeTapDarknessWithinRainOfDestructionApplyBehavior">
-    <ValidatorArray value="GuldanCasterHasGuldanLifeTapDarknessWithin" />
-    <WhichUnit Value="Caster" />
-    <Behavior value="GuldanLifeTapDarknessWithinRainOfDestruction" />
-  </CEffectApplyBehavior>
-  <CEffectRemoveBehavior id="GuldanLifeTapDarknessWithinRemoveBehavior">
-    <WhichUnit Value="Caster" />
-    <BehaviorLink value="GuldanLifeTapDarknessWithinAbilityPower" />
-  </CEffectRemoveBehavior>
-  <CEffectRemoveBehavior id="GuldanLifeTapDarknessWithinFelFlameRemoveBehavior">
-    <WhichUnit Value="Caster" />
-    <BehaviorLink value="GuldanLifeTapDarknessWithinFelFlame" />
-  </CEffectRemoveBehavior>
-  <CEffectRemoveBehavior id="GuldanLifeTapDarknessWithinDrainLifeRemoveBehavior">
-    <WhichUnit Value="Caster" />
-    <BehaviorLink value="GuldanLifeTapDarknessWithinDrainLife" />
-  </CEffectRemoveBehavior>
-  <CEffectRemoveBehavior id="GuldanLifeTapDarknessWithinCorruptionRemoveBehavior">
-    <WhichUnit Value="Caster" />
-    <BehaviorLink value="GuldanLifeTapDarknessWithinCorruption" />
-  </CEffectRemoveBehavior>
-  <CEffectRemoveBehavior id="GuldanLifeTapDarknessWithinRainOfDestructionRemoveBehavior">
-    <WhichUnit Value="Caster" />
-    <BehaviorLink value="GuldanLifeTapDarknessWithinRainOfDestruction" />
-  </CEffectRemoveBehavior>
   <CEffectSwitch id="GuldanDrainLifeDamageSwitch">
     <CaseArray Validator="GuldanCurseOfExhaustionTalentProcCombine" Effect="GuldanDrainLifeCurseOfExhaustionTalentDamage" />
     <CaseDefault value="GuldanDrainLifeDamage" />
   </CEffectSwitch>
+  <CEffectDamage id="GuldanLifeTapDarknessWithinDamageThreshold">
+    <Amount value="600" />
+  </CEffectDamage>
   <CEffectDamage id="GuldanDrainLifeCurseOfExhaustionTalentDamage" parent="StormSpell">
     <Amount value="50" />
-    <MultiplicativeModifierArray index="GuldanLifeTapDarknessWithin" Validator="GuldanCasterHasGuldanLifeTapDarknessWithinDrainLife" Modifier="0.25" Crit="1" />
   </CEffectDamage>
   <CEffectApplyBehavior id="GuldanFelFlameFelArmorApplyActiveBehavior">
     <ValidatorArray index="0" removed="1" />
@@ -2031,7 +2015,6 @@
   <CEffectCreateHealer id="GuldanHealthstoneCreateHealer" parent="StormSelfOnlyHealingSpellPercent">
     <ImpactUnit Value="Caster" />
     <RechargeVitalFraction value="0.25" />
-    <MultiplicativeModifierArray index="GuldanLifeTapDarknessWithin" Validator="GuldanCasterHasGuldanLifeTapDarknessWithin" Modifier="0.25" Crit="1" />
     <FinalEffect value="GuldanLifeTapDarknessWithinRemoveBehavior" />
   </CEffectCreateHealer>
   <CEffectApplyBehavior id="GuldanHorrifyHauntVulnerableApplyBehavior">
@@ -2049,7 +2032,7 @@
   </CEffectApplyBehavior>
   <CEffectModifyUnit id="GuldanFelFlameBoundByShadowModifyCooldown">
     <ImpactUnit Value="Caster" />
-    <Cost Abil="GuldanCorruption,Execute" CooldownOperation="Add" CooldownTimeUse="-1" />
+    <Cost Abil="GuldanCorruption,Execute" CooldownOperation="Add" CooldownTimeUse="-1.5" />
   </CEffectModifyUnit>
   <CEffectSet id="GuldanFelFlameBoundByShadowSet">
     <ValidatorArray value="TargetIsHero" />
@@ -2081,7 +2064,6 @@
   <CEffectCreateHealer id="GuldanConsumeSoulCreateHealer" parent="StormSelfOnlyHealingSpell">
     <ImpactUnit Value="Caster" />
     <RechargeVitalRate value="365" />
-    <MultiplicativeModifierArray index="GuldanLifeTapDarknessWithin" Validator="GuldanCasterHasGuldanLifeTapDarknessWithin" Modifier="0.25" Crit="1" />
   </CEffectCreateHealer>
   <CEffectApplyBehavior id="GuldanCorruptionRuinousAfflictionApplyBehavior">
     <Chance value="0" />
@@ -2089,7 +2071,6 @@
   </CEffectApplyBehavior>
   <CEffectDamage id="GuldanCorruptionRuinousAfflictionThreeHitDamage" parent="StormSpell">
     <Amount value="233" />
-    <MultiplicativeModifierArray index="GuldanLifeTapDarknessWithin" Validator="GuldanCasterHasGuldanLifeTapDarknessWithinCorruption" Modifier="0.25" Crit="1" />
   </CEffectDamage>
   <CEffectSet id="GuldanCorruptionRuinousAfflictionImpactSet">
     <EffectArray value="GuldanCorruptionRuinousAfflictionThreeHitDamage" />
@@ -2167,7 +2148,6 @@
     <ValidatorArray value="GuldanHasCorruptionRuinousAfflictionTalent" />
     <ValidatorArray value="GuldanCorruptionRuinousAfflictionStackDummyBehaviorNE2" />
     <Amount value="78" />
-    <MultiplicativeModifierArray index="GuldanLifeTapDarknessWithin" Validator="GuldanCasterHasGuldanLifeTapDarknessWithinCorruption" Modifier="0.25" Crit="1" />
   </CEffectDamage>
   <CEffectModifyUnit id="GuldanDrainLifeCancelModifyCooldown">
     <ImpactUnit Value="Caster" />
@@ -2281,6 +2261,10 @@
       <Flags index="AffectedByCooldownReduction" value="1" />
       <Flags index="Trait" value="1" />
     </HeroAbilArray>
+    <HeroAbilArray Abil="GuldanLifeTapFree" Button="GuldanLifeTap">
+      <Flags index="AffectedByCooldownReduction" value="1" />
+      <Flags index="Trait" value="1" />
+    </HeroAbilArray>
     <HeroAbilArray Abil="GuldanHorrify" Button="GuldanHorrify">
       <Flags index="ShowInHeroSelect" value="1" />
       <Flags index="AffectedByCooldownReduction" value="1" />
@@ -2329,6 +2313,13 @@
         <Field value="Cost[0].Vital[Life]" />
         <Value value="0.040000" />
         <AffectedByAbilityPower value="1" />
+        <AffectedByOverdrive value="1" />
+      </Modifications>
+      <Modifications>
+        <Catalog value="Effect" />
+        <Entry value="GuldanLifeTapDarknessWithinDamageThreshold" />
+        <Field value="Amount" />
+        <Value value="0.040000" />
         <AffectedByOverdrive value="1" />
       </Modifications>
     </LevelScalingArray>
@@ -2601,6 +2592,10 @@
   <CRewardHero id="Guldan">
     <License value="16755" />
   </CRewardHero>
+  <CShapeArc id="GuldanRainOfDestructionVisibilityShape">
+    <Arc value="360" />
+    <Radius value="11" />
+  </CShapeArc>
   <CShapeArc id="GuldanFelFlameVisibilityArc">
     <Arc value="24.994" />
     <Radius value="11" />
@@ -2864,15 +2859,6 @@
   <CTalent id="GuldanLifeTapDarknessWithin">
     <Face value="GuldanLifeTapDarknessWithin" />
     <Abil value="GuldanLifeTap" />
-    <AbilityModificationArray>
-      <Modifications>
-        <Type value="FlatModification" />
-        <Catalog value="Effect" />
-        <Entry value="GuldanLifeTapDarknessWithinApplyBehavior" />
-        <Field value="Chance" />
-        <Value value="1.000000" />
-      </Modifications>
-    </AbilityModificationArray>
   </CTalent>
   <CTalent id="GuldanLifeTapHungerforPower">
     <Face value="GuldanLifeTapHungerforPower" />
@@ -2920,6 +2906,7 @@
     <AbilArray Link="GuldanCorruption" />
     <AbilArray Link="GuldanRainOfDestruction" />
     <AbilArray Link="GuldanRainOfDestructionCancel" />
+    <AbilArray Link="GuldanLifeTapFree" />
     <BehaviorArray Link="GuldanLifeTapManaController" />
     <BehaviorArray Link="GuldanVeterancyMana" />
     <BehaviorArray Link="GuldanHasMaxLife" />
@@ -2928,13 +2915,14 @@
     <InnerRadius value="0.8125" />
     <CardLayouts index="0">
       <LayoutButtons Face="GuldanHorrify" Type="AbilCmd" AbilCmd="GuldanHorrify,Execute" Slot="Heroic" />
-      <LayoutButtons Face="GuldanRainOfDestructionCancel" Type="AbilCmd" AbilCmd="GuldanRainOfDestructionCancel,Execute" Slot="Heroic" />
       <LayoutButtons Face="GuldanRainOfDestruction" Type="AbilCmd" AbilCmd="GuldanRainOfDestruction,Execute" Slot="Heroic" />
       <LayoutButtons Face="GuldanFelFlame" Type="AbilCmd" AbilCmd="GuldanFelFlame,Execute" Slot="Ability1" />
       <LayoutButtons Face="GuldanDrainLifeCancel" Type="AbilCmd" AbilCmd="GuldanDrainLifeCancel,Execute" Slot="Ability2" />
       <LayoutButtons Face="GuldanDrainLife" Type="AbilCmd" AbilCmd="GuldanDrainLife,Execute" Slot="Ability2" />
       <LayoutButtons Face="GuldanCorruption" Type="AbilCmd" AbilCmd="GuldanCorruption,Execute" Slot="Ability3" />
+      <LayoutButtons Face="GuldanLifeTapFree" Type="AbilCmd" AbilCmd="GuldanLifeTapFree,Execute" Slot="Trait" />
       <LayoutButtons Face="GuldanLifeTap" Type="AbilCmd" AbilCmd="GuldanLifeTap,Execute" Slot="Trait" />
+      <LayoutButtons />
     </CardLayouts>
     <EnergyRegenRate value="0" />
     <InitializerFunction value="libHGUL_gf_HeroGuldanIncrementHeroCountFunction" />
@@ -2959,6 +2947,28 @@
     <Radius value="0" />
     <TacticalAIFilters value="-;Player,Neutral,Enemy" />
   </CUnit>
+  <CValidatorCombine id="GuldanFelFlameCritValidatorCombine">
+    <CombineArray value="CritAliasSpellPower" />
+    <CombineArray value="GuldanHas3ormorestacksofFelFlameRampantHellfire" />
+  </CValidatorCombine>
+  <CValidatorCombine id="AbilButtonActiveDDamage">
+    <CombineArray value="GuldanCasterHasGuldanLifeTapDarknessWithinReady" />
+  </CValidatorCombine>
+  <CValidatorUnitCompareBehaviorCount id="GuldanCasterHasGuldanLifeTapDarknessWithinAbilityPowerBuff">
+    <WhichUnit Value="Caster" />
+    <Compare value="GT" />
+    <Behavior value="GuldanLifeTapDarknessWithinAbilityPowerBuff" />
+  </CValidatorUnitCompareBehaviorCount>
+  <CValidatorUnitCompareBehaviorCount id="GuldanCasterHasGuldanLifeTapDarknessWithinReady">
+    <WhichUnit Value="Caster" />
+    <Compare value="GT" />
+    <Behavior value="GuldanLifeTapDarknessWithinReady" />
+  </CValidatorUnitCompareBehaviorCount>
+  <CValidatorUnitCompareBehaviorCount id="GuldanCasterDoesNotHaveGuldanLifeTapDarknessWithinReady">
+    <WhichUnit Value="Caster" />
+    <Compare value="LE" />
+    <Behavior value="GuldanLifeTapDarknessWithinReady" />
+  </CValidatorUnitCompareBehaviorCount>
   <CValidatorCombine id="GuldanCurseOfExhaustionTalentProcCombine">
     <Type value="And" />
     <CombineArray value="GuldanHasCorruptionCurseOfExhaustionTalent" />
@@ -2988,7 +2998,7 @@
   </CValidatorUnitOrderQueue>
   <CValidatorUnitCompareBehaviorCount id="GuldanChaoticEnergyHasLTMaxStacks">
     <Compare value="LT" />
-    <Value value="20" />
+    <Value value="15" />
     <Behavior value="GuldanChaoticEnergyQuestToken" />
   </CValidatorUnitCompareBehaviorCount>
   <CValidatorUnitCompareBehaviorCount id="GuldanCorruptionEchoedCorruptionComplete">
@@ -3004,12 +3014,12 @@
   </CValidatorUnitCompareBehaviorCount>
   <CValidatorUnitCompareBehaviorCount id="GuldanFelFlamePursuitOfFlameComplete">
     <WhichUnit Value="Caster" />
-    <Value value="40" />
+    <Value value="30" />
     <Behavior value="GuldanFelFlamePursuitOfFlameQuestToken" />
   </CValidatorUnitCompareBehaviorCount>
   <CValidatorUnitCompareBehaviorCount id="GuldanFelFlamePursuitOfFlameNotComplete">
     <WhichUnit Value="Caster" />
-    <Value value="40" />
+    <Value value="30" />
     <Behavior value="GuldanFelFlamePursuitOfFlameQuestToken" />
     <Compare value="LT" />
   </CValidatorUnitCompareBehaviorCount>
@@ -3142,37 +3152,12 @@
     <Behavior value="GuldanCorruptionDoTBehavior" />
     <RequireCasterUnit Value="Caster" />
   </CValidatorUnitCompareBehaviorCount>
-  <CValidatorUnitCompareBehaviorCount id="GuldanCasterHasGuldanLifeTapDarknessWithin">
-    <WhichUnit Value="Caster" />
-    <Compare value="GT" />
-    <Behavior value="GuldanLifeTapDarknessWithinAbilityPower" />
-  </CValidatorUnitCompareBehaviorCount>
-  <CValidatorUnitCompareBehaviorCount id="GuldanCasterHasGuldanLifeTapDarknessWithinFelFlame">
-    <WhichUnit Value="Caster" />
-    <Compare value="GT" />
-    <Behavior value="GuldanLifeTapDarknessWithinFelFlame" />
-  </CValidatorUnitCompareBehaviorCount>
   <CValidatorUnitOrderQueue id="CasterCastingGuldanFelFlame">
     <AbilLink value="GuldanFelFlame" />
   </CValidatorUnitOrderQueue>
   <CValidatorCombine id="RemoveSuppressTurningBehavior">
     <CombineArray value="CasterCastingGuldanFelFlame" />
   </CValidatorCombine>
-  <CValidatorUnitCompareBehaviorCount id="GuldanCasterHasGuldanLifeTapDarknessWithinDrainLife">
-    <WhichUnit Value="Caster" />
-    <Compare value="GT" />
-    <Behavior value="GuldanLifeTapDarknessWithinDrainLife" />
-  </CValidatorUnitCompareBehaviorCount>
-  <CValidatorUnitCompareBehaviorCount id="GuldanCasterHasGuldanLifeTapDarknessWithinCorruption">
-    <WhichUnit Value="Caster" />
-    <Compare value="GT" />
-    <Behavior value="GuldanLifeTapDarknessWithinCorruption" />
-  </CValidatorUnitCompareBehaviorCount>
-  <CValidatorUnitCompareBehaviorCount id="GuldanCasterHasGuldanLifeTapDarknessWithinRainOfDestruction">
-    <WhichUnit Value="Caster" />
-    <Compare value="GT" />
-    <Behavior value="GuldanLifeTapDarknessWithinRainOfDestruction" />
-  </CValidatorUnitCompareBehaviorCount>
   <CValidatorUnitCompareTokenCount id="GuldanHas1FelFlameRampantHellfireTokenBehavior">
     <WhichUnit Value="Caster" />
     <Value value="1" />

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <!--                                                                                         -->
     <!-- Zerg                                                                                    -->
@@ -231,6 +231,10 @@
         <On Terms="ActorCreation" Send="AnimCopy ::Creator"/>
         <On Terms="AnimDone; AnimName Death" Send="Destroy"/>
     </CActorModel>
+    <CActorSound id="ForceField_Inhibitor_Impacts_Loop_AS">
+        <Sound value="ForceField_Emitter_OneShots"/>
+        <Layers index="0" Sound="ForceField_Energy_Loop"/>
+    </CActorSound>
     <CActorSound id="Kasai_SpaceWhale_Loop_AS" parent="SoundContinuous">
         <EditorCategories value=""/>
         <FogVisibility value="Visible"/>
@@ -252,6 +256,14 @@
     <CActorDoodad id="Korhal_Platform_CliffTower">
         <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
+    <CActorSound id="Map_Emitter_ElectricArcs_Loop_AS" parent="SoundContinuous">
+        <EditorCategories value=""/>
+        <Sound value="Map_Emitter_ElectricArcs_Loop"/>
+        <Layers Sound="Map_Emitter_ElectricArcs_OneShots"/>
+    </CActorSound>
+    <CActorModel id="OverseerOversightMode">
+        <Inherits index="Visibility" value="1"/>
+    </CActorModel>
     <CActorSound id="Purifier_CentralCoreMatrix_Pulse_MP_01" parent="SoundOneShot">
         <Host Subject="::Creator"/>
     </CActorSound>
@@ -2564,6 +2576,7 @@
         <HostSiteOps Ops="SOpAttachCenter"/>
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
         <On Terms="ActorCreation; ValidatePlayer BattlecruiserUpgraded" Send="ModelSwap BattlecruiserYamatoHyperjumpPlacement"/>
         <Model value="BattlecruiserHyperjumpPlacement"/>
@@ -2575,6 +2588,7 @@
         <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1"/>
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
     <CActorModel id="HyperjumpLaunch" parent="ModelAnimationStyleOneShot">
@@ -2584,6 +2598,7 @@
         <HostSiteOps Ops="SOpAttachCenter" HoldPosition="1"/>
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
         <Flags index="SuppressCreationErrors" value="1"/>
     </CActorModel>
@@ -5023,10 +5038,12 @@
         <HostSiteOps Ops="SOpAttachOriginStationary"/>
         <Host Subject="_Selectable"/>
         <On Terms="Effect.AdeptPhaseShiftTeleport.Start; At Effect" Send="Create"/>
+        <Inherits index="Visibility" value="1"/>
     </CActorModel>
     <CActorModel id="AdeptSpiritSpawn" parent="ModelAnimationStyleOneShot">
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOrigin"/>
+        <Inherits index="Visibility" value="1"/>
     </CActorModel>
     <!-- Shade versus Neural parasite tentacle-->
     <CActorSite id="SiphonTentacleImpactHoldingSite">
@@ -6724,4 +6741,15 @@
         <Sound value="Amon_Amb_Panning_Master_Lp"/>
         <Layers Sound="Amon_Amb_Whispers_Master_Lp"/>
     </CActorSound>
+    <CActorDoodad id="SpacePlatformSignVoidMulti">
+        <On Terms="ActorCreation; ModelVariation 9" Send="Create SoundEmitter Doodad_SpacePlatformSign_SuperNova"/>
+        <On Terms="ActorCreation; ModelVariation 0" Send="Create SoundEmitter Doodad_SpacePlatformSign"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
+        <TexSets value="Avernus"/>
+        <TexSets value="BraxisAlpha"/>
+        <TexSets value="Castanar"/>
+        <TexSets value="PortZion"/>
+        <Footprint value="FootprintDoodad1x1"/>
+        <RandomScaleRange value="1.000000,1.000000"/>
+    </CActorDoodad>
 </Catalog>

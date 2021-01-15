@@ -246,6 +246,7 @@
   <Constant name="PingEnemy" val="db0040" />
   <Style requiredtoload="DEBUG" name="zz_DebugGlyphType" font="DebugGlyphTypeFontGroup" height="80" textcolor="FFFFFFFF" styleflags="Shadow" shadowoffset="3" />
   <Style name="aa_Test" template="HeaderExtendedTemplate" height="80" textcolor="2E5E8A-FFFFFF" vjustify="Middle" hjustify="Center" styleflags="Outline" outlinewidth="2" outlinecolor="7F3F3F3F" glowcolor="2F2CB1" glowmode="Add" />
+  <Style name="CheckoutBrowserErrorMessage" template="StandardTemplate" height="25" textcolor="dcd4ff-ffffff" vjustify="Middle" hjustify="Center" styleflags="!Shadow|!Glow" glowcolor="#GlowColorBlue" />
   <Style name="Storm_Tradeshow_ModeTitle" template="HeaderExtendedTemplate" height="96" textcolor="2E5E8A-FFFFFF" vjustify="Middle" hjustify="Center" styleflags="Outline|Glow" outlinewidth="2" outlinecolor="000000" glowcolor="2F2CB1" glowmode="Add" />
   <Style name="Storm_Tradeshow_Thankyou" template="HomePageTitle" height="100" textcolor="cbe8ff-ffffff" vjustify="Middle" hjustify="Center" styleflags="Outline|Glow|Uppercase|TightGradient" outlinewidth="1" outlinecolor="0063c8" glowmode="Normal" glowcolor="0063c8" />
   <Style name="Storm_Tutorial_ExtraLarge_Centered" template="HeaderTemplate" height="60" vjustify="Middle" hjustify="Center" styleflags="Shadow | InlineJustification" textcolor="255,255,255,255" highlightcolor="0,0,0,0" disabledcolor="0,0,0,0" hotkeycolor="0,0,0,0" hyperlinkcolor="0,0,0,0" glowcolor="0,0,0,0" highlightglowcolor="0,0,0,0" disabledglowcolor="0,0,0,0" shadowoffset="1" />
@@ -448,7 +449,7 @@
   <Style name="HeroSelectNameplatePartyNameLeftLabelReady" height="18" template="HeroSelectSlotNameLabel" hjustify="Left" />
   <Style name="HeroSelectSlotDescLeftLabelReady" template="HeroSelectNameplatePartyNameLeftLabelReady" height="14" styleflags="Uppercase|!Shadow|Glow" />
   <Style name="HeroSelectNameplatePartyNameLeftLabel" template="HeroSelectNameplatePartyNameLabel" hjustify="Left" />
-  <Style name="HeroSelectPanelButtonLabel" template="HeaderExtendedTemplate" height="14" vjustify="Top" hjustify="Center" textcolor="6b70b7" highlightcolor="9ca1e0" disabledColor="373960" styleflags="Shadow" />
+  <Style name="HeroSelectPanelButtonLabel" template="HeaderExtendedTemplate" height="16" vjustify="Top" hjustify="Center" textcolor="6b70b7" highlightcolor="9ca1e0" disabledColor="373960" styleflags="Shadow" />
   <Style name="HeroSelectPanelButtonActiveLabel" template="HeroSelectPanelButtonLabel" styleflags="Shadow|Glow|TightGradient" textcolor="ffffff" glowcolor="000cff" highlightcolor="ffffff" highlightglowcolor="000cff" glowMode="Add" />
   <Style name="HeroDraftTooltipHeroName" template="HeaderExtendedTemplate" height="15" textcolor="ffffff-a3ffff" glowcolor="009cff" vjustify="Middle" hjustify="Left" styleflags="!Shadow" highlightglowcolor="#GlowColorBlue" />
   <Style name="HeroDraftTooltipBluePlayerName" template="HeroDraftTooltipHeroName" textcolor="83c0ff-5993f4" highlightglowcolor="#GlowColorBlue" />
@@ -891,6 +892,12 @@
   <Style name="BreakingNewsText" template="StandardTemplate" height="16" textcolor="7999f5" vjustify="Middle" hjustify="Left" styleflags="Shadow" />
   <Style name="QuestLogNewIntro" template="PlayerProfileProgressNameLabelComplete" height="44" styleflags="Glow|Shadow" characterSpacing="0" />
   <Style name="QuestLogNewBadge" template="PlayerProfileProgressNameLabelComplete" height="15" styleflags="Shadow|Glow|Uppercase" shadowoffset="1" vjustify="Middle" hjustify="Center" />
+  <Style name="RankedQuestTitle" template="PopUpHeaderSmall" height="21" hjustify="Left" />
+  <Style name="RankedQuestProgressDescription" template="PopUpHeaderSmall" styleflags="!Shadow|Glow" />
+  <Style name="RankedQuestProgressDescription_Disabled" template="RankedQuestProgressDescription" styleflags="!Glow" textcolor="A08c82be" />
+  <Style name="RankedQuestRewardLabel" template="HeaderExtendedTemplate" height="19" styleflags="!Shadow|Glow" glowcolor="#ColorGold" textcolor="#ColorLightGoldGradient" vjustify="Middle" hjustify="Center" />
+  <Style name="RankedQuestRewardLabel_Disabled" template="RankedQuestRewardLabel" styleflags="!Glow" textcolor="A08c82be" />
+  <Style name="RankedQuestCompletionLabel" template="HeaderExtendedTemplate" height="19" styleflags="!Shadow|Glow|Uppercase" glowcolor="#ColorGold" textcolor="#ColorLightGoldGradient" vjustify="Middle" hjustify="Center" />
   <Style name="EventQuestChooseLabel" template="HeaderExtendedTemplate" height="60" styleflags="Uppercase|Outline|Italic" vjustify="Middle" hjustify="Center" textcolor="e2564c" outlinecolor="372d21" outlinewidth="3" />
   <Style name="EventQuestDialogTitleLabel" template="HeaderExtendedTemplate" height="60" styleflags="Outline|Italic" vjustify="Middle" hjustify="Left" textcolor="6cf7e1" outlinecolor="47403b" outlinewidth="3" />
   <Style name="EventQuestDialogText" template="HeaderExtendedTemplate" height="24" styleflags="!Shadow" vjustify="Top" hjustify="Left" textcolor="0a0724" />
@@ -969,6 +976,20 @@
   <Style name="ToyEvent_ErrorDialogTitle" template="ToyEvent_EmceeName" hjustify="Center" />
   <Style name="ToyEvent_ErrorDialogText" template="ToyEvent_EmceeText" hjustify="Center" />
   <Style name="ToyEvent_QuestLogEmptyText" template="ToyEvent_QuestLogItemTitleText" hjustify="Center" />
+  <Style name="MechaEvent_QuestLogItemTitleText_Unique" template="HeaderExtendedTemplate" height="18" styleflags="!Shadow|Glow" vjustify="Middle" hjustify="Left" textcolor="#ColorWhite" glowcolor="ff8400" disabledcolor="6f6f6f" />
+  <Style name="MechaEvent_QuestLogNotification" template="MechaEvent_QuestLogItemTitleText_Unique" hjustify="Center" />
+  <Style name="MechaEvent_QuestLogItemDescription_Unique" template="HeaderExtendedTemplate" height="16" styleflags="!Shadow|Outline" vjustify="Top" hjustify="Left" textcolor="ffb502" outlinewidth="1" outlinecolor="1b1306" />
+  <Style name="MechaEvent_QuestLogItemProgressLabel_Unique" template="MechaEvent_QuestLogItemTitleText_Unique" height="14" hjustify="Center" />
+  <Style name="MechaEvent_QuestLogItemTimeRemaining" template="AlteracEventQuestLogItemTitleText" height="16" hjustify="Right" />
+  <Style name="MechaEvent_QuestLogItemTitleText_Repeatable" template="HeaderExtendedTemplate" height="18" styleflags="!Shadow|Glow" vjustify="Middle" hjustify="Left" textcolor="ffffff" glowcolor="00aeff" disabledcolor="6f6f6f" />
+  <Style name="MechaEvent_QuestLogItemDescription_Repeatable" template="HeaderExtendedTemplate" height="16" styleflags="!Shadow|Outline" vjustify="Top" hjustify="Left" textcolor="2ea4ff" outlinewidth="1" outlinecolor="060c1b" />
+  <Style name="MechaEvent_QuestLogItemProgressLabel_Repeatable" template="MechaEvent_QuestLogItemTitleText_Repeatable" height="14" hjustify="Center" />
+  <Style name="MechaEventPopupButtonLabel" template="HeaderExtendedTemplate" height="18" styleflags="!Shadow" hjustify="Center" vjustify="Middle" textcolor="00d8ff" />
+  <Style name="MechaEventIntroSubtitles" template="HeaderExtendedTemplate" height="28" textcolor="ffffff" styleflags="Shadow|Outline" fontflags="Bold" vJustify="Bottom" hjustify="Left" outlinewidth="2" outlinecolor="000000" />
+  <Style name="MechaEventQuestNameTooltipText" template="StandardTemplate" height="19" fontflags="Bold" hjustify="Left" vjustify="Top" textcolor="00d8ff" />
+  <Style name="MechaEventQuestNameTooltipTextComplete" template="MechaEventQuestNameTooltipText" height="18" textcolor="#ColorGreen" />
+  <Style name="MechaEventQuestDescTooltipText" template="StandardTemplate" height="17" hjustify="Left" vjustify="Top" textcolor="ffb502" />
+  <Style name="MechaEventQuestProgTooltipText" template="StandardTemplate" height="17" styleflags="Glow" hjustify="Left" vjustify="Top" textcolor="#ColorWhite" glowcolor="ff8400" />
   <Style name="CyberpunkEvent_QuestName_Dragons" template="HeaderExtendedTemplate" height="20" styleflags="!Shadow|Glow" hjustify="Left" vjustify="Bottom" textcolor="00d8ff" glowcolor="2400ff" />
   <Style name="CyberpunkEvent_QuestName_Turtles" template="CyberpunkEvent_QuestName_Dragons" textcolor="81fe2c" glowcolor="00a345" />
   <Style name="CyberpunkEvent_QuestName_Tigers" template="CyberpunkEvent_QuestName_Dragons" textcolor="ffffff" glowcolor="dddddd" />
@@ -1015,6 +1036,7 @@
   <Style name="PlayerProfileStatName" template="PlayerProfileText" height="18" styleflags="!Uppercase" hjustify="Left" />
   <Style name="PlayerProfileStatValue" template="PlayerProfileText" height="18" textcolor="c8d6ff" styleflags="Shadow" hjustify="Right" />
   <Style name="PlayerProfileStatBarValue" template="HeaderExtendedTemplate" height="20" textcolor="c0c0ff" hjustify="Center" styleflags="!Shadow" fontflags="Outline" outlinecolor="45348b" outlinewidth="2" />
+  <Style name="PlayerProfileGamesPlayedCount" template="PlayerProfileStatName" height="16" />
   <Style name="PlayerProfileProgressBadgePlayerLabel" template="HeaderExtendedTemplate" height="30" textcolor="#ColorLightCyanGradient" glowColor="ff00de" styleflags="Shadow|Glow" vjustify="Middle" hjustify="Center" />
   <Style name="PlayerProfileProgressBadgeHeroLabel" template="PlayerProfileProgressBadgePlayerLabel" glowColor="00aeff" />
   <Style name="PlayerProfileProgressBadgeHeroLabelGold" template="PlayerProfileProgressBadgePlayerLabel" textcolor="#ColorLightGoldGradient" styleflags="!Shadow|Glow" glowcolor="#GlowColorGold" />

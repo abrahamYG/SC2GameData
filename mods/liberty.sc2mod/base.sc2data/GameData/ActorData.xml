@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <const id="$BuildingDamageTransition" value="AMNodeOccupancyTerranFlames"/>
     <const id="$BuildingDamageNew" value="AMFilterDamage AMRandomUniformAll AMReductionFire"/>
@@ -15,6 +15,7 @@
         <Inherits index="Visibility" value="1"/>
         <Inherits index="WarpGroup" value="1"/>
         <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On Terms="ActorCreation" Send="Create ForceField_Inhibitor_Loop_AS"/>
         <On Terms="ActorOrphan" Send="Destroy"/>
         <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
         <!--On Terms="ActorCreation" Send="SetTintColor 255,0,0"/-->
@@ -48,6 +49,21 @@
         <Footprint value="Footprint2x2PlacementOnly"/>
         <RandomScaleRange value="1.000000,1.000000"/>
     </CActorDoodad>
+    <CActorUnit default="1" id="SprayDefault">
+        <?token id="sprayIndex" value="0"?>
+        <On Terms="UnitBirth.##id##" Send="Create"/>
+        <On Terms="ActorCreation" Send="SpraySwapByPlayerIndex Unknown ##sprayIndex##"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="UnitDeath" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <On Terms="TextureUpdate; TextureUpdateSlot decal" Send="TextureSelectByUpdateLink background Replace Decal Background"/>
+        <Model value="Invisible"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <ModelFlags index="SuppressTextureErrors" value="1"/>
+        <ModelFlags index="UseSyncSeed" value="1"/>
+        <SnapshotActor value="Snapshot"/>
+    </CActorUnit>
     <!--                                                                                         -->
     <!--                                                                                         -->
     <!-- Added For Wizards ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -569,8 +585,9 @@
         <Macros value="BuildingFlattenTerrainMacro"/>
         <Macros value="SnowVisualBuildingMacroMP"/>
         <BuildModel value="##unitName##Birth"/>
+        <On Terms="UnitConstruction.##unitName##.Start" Send="Create ##unitName##Build"/>
         <DeathArray index="Normal" ModelLink="##unitName##Death" SoundLink="##unitName##_Explode"/>
-        <DeathArray index="UnderConstruction" ModelLink="ProtossWarpInDeath" SoundLink="##unitName##_Explode"/>
+        <DeathArray index="UnderConstruction" ModelLink="##unitName##DeathUnderConstruction" SoundLink="##unitName##_Explode"/>
         <EventDataSound Name="BuildingWarpIn" Actor="UnitSound" Sound="Protoss_BuildingWarpIn"/>
         <PlacementModel value="##unitName##Placement"/>
         <PlacementSound value="Protoss_BuildingPlacement"/>
@@ -818,13 +835,13 @@
         <StatusBarFlags index="Progress" value="0"/>
         <StatusBarFlags index="Duration" value="0"/>
         <StatusBarFlags index="Magazine" value="0"/>
-        <UnitIcon value="Assets\Textures\Wireframe-General-XelNagaInhibitor.dds"/>
-        <HeroIcon value="Assets\Textures\Wireframe-General-XelNagaInhibitor.dds"/>
+        <UnitIcon value="Assets\Textures\wireframe-neutral-xelnagainhibitor.dds"/>
+        <HeroIcon value="Assets\Textures\wireframe-neutral-xelnagainhibitor.dds"/>
         <GroupIcon>
-            <Image value="Assets\Textures\wireframe-general-xelnagaInhibitor.dds"/>
+            <Image value="Assets\Textures\wireframe-neutral-xelnagainhibitor.dds"/>
         </GroupIcon>
         <Wireframe>
-            <Image value="Assets\Textures\Wireframe-General-XelNagaInhibitor.dds"/>
+            <Image value="Assets\Textures\wireframe-neutral-xelnagainhibitor.dds"/>
         </Wireframe>
         <SoundArray index="What" value="XelNagaTower_WhatActivated"/>
         <GroupSoundArray index="What" value="XelNagaTower_WhatActivated"/>
@@ -835,6 +852,276 @@
         <DeathArray index="Normal" ModelLink="InhibitorZoneDeath"/>
         <PlacementModel value="InhibitorZone"/>
         <On Terms="ActorCreation" Send="Create ##id##Radius"/>
+        <MinimapRenderPriority value="ObjectGroup"/>
+    </CActorUnit>
+    <CActorUnit default="1" id="AccelerationZoneBase" parent="GenericUnitStandard">
+        <ModelFlags index="OutlineOccluder" value="1"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <UnitIcon value="Assets\Textures\wireframe-neutral-xelnagainhibitor.dds"/>
+        <HeroIcon value="Assets\Textures\wireframe-neutral-xelnagainhibitor.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-neutral-xelnagainhibitor.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-neutral-xelnagainhibitor.dds"/>
+        </Wireframe>
+        <SoundArray index="What" value="XelNagaTower_WhatActivated"/>
+        <GroupSoundArray index="What" value="XelNagaTower_WhatActivated"/>
+        <HighlightTooltip value="Actor/HighlightTooltip/AccelerationZone"/>
+        <MinimapIcon value="Assets\Textures\ui_minimap_icon_xelnagaacceleration.dds"/>
+        <Model value="AccelerationZone"/>
+        <BuildModel value="AccelerationZone"/>
+        <DeathArray index="Normal" ModelLink="AccelerationZoneDeath"/>
+        <PlacementModel value="AccelerationZone"/>
+        <On Terms="ActorCreation" Send="Create ##id##Radius"/>
+        <MinimapRenderPriority value="ObjectGroup"/>
+    </CActorUnit>
+    <CActorModel default="1" id="AccelerationZoneRadiusBase">
+        <Aliases value="_Snapshot"/>
+        <Inherits index="CastShadows" value="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="CreepEngulfment" value="1"/>
+        <Inherits index="Decal" value="1"/>
+        <Inherits index="Opacity" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <Inherits index="TimeScale" value="1"/>
+        <Inherits index="TintColor" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <Inherits index="WarpGroup" value="1"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On Terms="ActorCreation" Send="Create ForceField_Inhibitor_Loop_AS"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <!--On Terms="ActorCreation" Send="SetTintColor 255,0,0"/-->
+        <Host Subject="_Selectable"/>
+        <Model value="AccelerationZoneRadius"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <ModelFlags index="UseSyncSeed" value="1"/>
+    </CActorModel>
+    <CActorUnit default="1" id="AccelerationZoneFlyingBase" parent="GenericUnitStandard">
+        <ModelFlags index="OutlineOccluder" value="1"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <UnitIcon value="Assets\Textures\Wireframe-General-XelNagaInhibitor-Flying.dds"/>
+        <HeroIcon value="Assets\Textures\Wireframe-General-XelNagaInhibitor-Flying.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-General-XelNagaInhibitor-Flying.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-General-XelNagaInhibitor-Flying.dds"/>
+        </Wireframe>
+        <SoundArray index="What" value="XelNagaTower_WhatActivated"/>
+        <GroupSoundArray index="What" value="XelNagaTower_WhatActivated"/>
+        <HighlightTooltip value="Actor/HighlightTooltip/AccelerationZone"/>
+        <MinimapIcon value="Assets\Textures\ui_minimap_icon_xelnagaacceleration.dds"/>
+        <Model value="AccelerationZoneFlying"/>
+        <BuildModel value="AccelerationZoneFlying"/>
+        <DeathArray index="Normal" ModelLink="AccelerationZoneFlyingDeath"/>
+        <PlacementModel value="AccelerationZoneFlying"/>
+        <On Terms="ActorCreation" Send="Create ##id##Radius"/>
+        <MinimapRenderPriority value="ObjectGroup"/>
+    </CActorUnit>
+    <CActorModel default="1" id="AccelerationZoneFlyingRadiusBase">
+        <Aliases value="_Snapshot"/>
+        <Inherits index="CastShadows" value="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="CreepEngulfment" value="1"/>
+        <Inherits index="Decal" value="1"/>
+        <Inherits index="Opacity" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <Inherits index="TimeScale" value="1"/>
+        <Inherits index="TintColor" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <Inherits index="WarpGroup" value="1"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On Terms="ActorCreation" Send="Create ForceField_Inhibitor_Loop_AS"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <!--On Terms="ActorCreation" Send="SetTintColor 255,0,0"/-->
+        <Host Subject="_Selectable"/>
+        <Model value="AccelerationZoneFlyingRadius"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <ModelFlags index="UseSyncSeed" value="1"/>
+    </CActorModel>
+    <CActorUnit default="1" id="InhibitorZoneFlyingBase" parent="GenericUnitStandard">
+        <ModelFlags index="OutlineOccluder" value="1"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <UnitIcon value="Assets\Textures\Wireframe-General-XelNagaInhibitor-Flying.dds"/>
+        <HeroIcon value="Assets\Textures\Wireframe-General-XelNagaInhibitor-Flying.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-General-XelNagaInhibitor-Flying.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-General-XelNagaInhibitor-Flying.dds"/>
+        </Wireframe>
+        <SoundArray index="What" value="XelNagaTower_WhatActivated"/>
+        <GroupSoundArray index="What" value="XelNagaTower_WhatActivated"/>
+        <HighlightTooltip value="Actor/HighlightTooltip/InhibitorZone"/>
+        <MinimapIcon value="Assets\Textures\ui_minimap_icon_xelnagainhibitor.dds"/>
+        <Model value="InhibitorZoneFlying"/>
+        <BuildModel value="InhibitorZoneFlying"/>
+        <DeathArray index="Normal" ModelLink="InhibitorZoneFlyingDeath"/>
+        <PlacementModel value="InhibitorZoneFlying"/>
+        <On Terms="ActorCreation" Send="Create ##id##Radius"/>
+        <MinimapRenderPriority value="ObjectGroup"/>
+    </CActorUnit>
+    <CActorModel default="1" id="InhibitorZoneFlyingRadiusBase">
+        <Aliases value="_Snapshot"/>
+        <Inherits index="CastShadows" value="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="CreepEngulfment" value="1"/>
+        <Inherits index="Decal" value="1"/>
+        <Inherits index="Opacity" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <Inherits index="TimeScale" value="1"/>
+        <Inherits index="TintColor" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <Inherits index="WarpGroup" value="1"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death Instant"/>
+        <On Terms="ActorCreation" Send="Create ForceField_Inhibitor_Loop_AS"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <!--On Terms="ActorCreation" Send="SetTintColor 255,0,0"/-->
+        <Host Subject="_Selectable"/>
+        <Model value="InhibitorZoneFlyingRadius"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <ModelFlags index="UseSyncSeed" value="1"/>
+    </CActorModel>
+    <CActorModel default="1" id="ProtossBuildingBuild" parent="ModelConstruction">
+        <Aliases value="_ProtossBuildModel"/>
+        <On Terms="ActorCreation" Send="Create ProtossConstructionAttached"/>
+    </CActorModel>
+    <CActorSimple id="LoadOutSpray@Anim">
+        <On Terms="Abil.LoadOutSpray.Start" Send="Create"/>
+        <On Terms="ActorCreation; ValidateUnit IsProtoss" Send="Create Spray_Protoss_ActorSound"/>
+        <On Terms="ActorCreation; ValidateUnit IsZerg" Send="Create Spray_Zerg_ActorSound"/>
+        <On Terms="ActorCreation; ValidateUnit IsTerran" Send="Create Spray_Terran_ActorSound"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimPlay BSD Work NonLooping -1.000000 -1.000000 1.000000 AsDuration"/>
+    </CActorSimple>
+    <CActorUnit id="LoadOutSpray@1" parent="SprayDefault"/>
+    <CActorUnit id="LoadOutSpray@2" parent="SprayDefault" sprayIndex="1"/>
+    <CActorUnit id="LoadOutSpray@3" parent="SprayDefault" sprayIndex="2"/>
+    <CActorUnit id="LoadOutSpray@4" parent="SprayDefault" sprayIndex="3"/>
+    <CActorUnit id="LoadOutSpray@5" parent="SprayDefault" sprayIndex="4"/>
+    <CActorUnit id="LoadOutSpray@6" parent="SprayDefault" sprayIndex="5"/>
+    <CActorUnit id="LoadOutSpray@7" parent="SprayDefault" sprayIndex="6"/>
+    <CActorUnit id="LoadOutSpray@8" parent="SprayDefault" sprayIndex="7"/>
+    <CActorUnit id="LoadOutSpray@9" parent="SprayDefault" sprayIndex="8"/>
+    <CActorUnit id="LoadOutSpray@10" parent="SprayDefault" sprayIndex="9"/>
+    <CActorUnit id="LoadOutSpray@11" parent="SprayDefault" sprayIndex="10"/>
+    <CActorUnit id="LoadOutSpray@12" parent="SprayDefault" sprayIndex="11"/>
+    <CActorUnit id="LoadOutSpray@13" parent="SprayDefault" sprayIndex="12"/>
+    <CActorUnit id="LoadOutSpray@14" parent="SprayDefault" sprayIndex="13"/>
+    <CActorModel id="DarkShrineBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="ShieldBatteryBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="PhotonCannonBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="PylonBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="AssimilatorBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="CyberneticsCoreBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="FleetBeaconBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="ForgeBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="GatewayBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="RoboticsBayBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="RoboticsFacilityBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="StargateBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="TemplarArchiveBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="TwilightCouncilBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="AssimilatorRichBuild" parent="ProtossBuildingBuild"/>
+    <CActorModel id="NexusBuild" parent="ProtossBuildingBuild"/>
+    <CActorUnit id="AccelerationZoneSmall" parent="AccelerationZoneBase" unitName="AccelerationZoneSmall"/>
+    <CActorUnit id="AccelerationZoneMedium" parent="AccelerationZoneBase" unitName="AccelerationZoneMedium"/>
+    <CActorUnit id="AccelerationZoneLarge" parent="AccelerationZoneBase" unitName="AccelerationZoneLarge"/>
+    <CActorModel id="AccelerationZoneSmallRadius" parent="AccelerationZoneRadiusBase">
+        <Scale value="0.666667"/>
+    </CActorModel>
+    <CActorModel id="AccelerationZoneMediumRadius" parent="AccelerationZoneRadiusBase">
+        <Scale value="0.833333"/>
+        <!--On Terms="ActorCreation" Send="Create ForceField_Inhibitor_Loop_AS"/>-->
+    </CActorModel>
+    <CActorModel id="AccelerationZoneLargeRadius" parent="AccelerationZoneRadiusBase"/>
+    <CActorModel id="AccelerationZoneTemporalFieldImpactModel" parent="ModelAnimationStyleContinuous">
+        <Terms value="Cap 1"/>
+        <Inherits index="CastShadows" value="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Behavior.AccelerationZoneTemporalField.On" Send="Create"/>
+        <On Terms="Behavior.AccelerationZoneTemporalField.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="0.500000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorUnit id="AccelerationZoneFlyingSmall" parent="AccelerationZoneFlyingBase" unitName="AccelerationZoneFlyingSmall"/>
+    <CActorUnit id="AccelerationZoneFlyingMedium" parent="AccelerationZoneFlyingBase" unitName="AccelerationZoneFlyingMedium"/>
+    <CActorUnit id="AccelerationZoneFlyingLarge" parent="AccelerationZoneFlyingBase" unitName="AccelerationZoneFlyingLarge"/>
+    <CActorModel id="AccelerationZoneFlyingTemporalFieldImpactModel" parent="ModelAnimationStyleContinuous">
+        <Terms value="Cap 1"/>
+        <Inherits index="CastShadows" value="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Behavior.AccelerationZoneFlyingTemporalField.On" Send="Create"/>
+        <On Terms="Behavior.AccelerationZoneFlyingTemporalField.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="0.500000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorModel id="AccelerationZoneFlyingSmallRadius" parent="AccelerationZoneFlyingRadiusBase">
+        <Scale value="0.666667"/>
+    </CActorModel>
+    <CActorModel id="AccelerationZoneFlyingMediumRadius" parent="AccelerationZoneFlyingRadiusBase">
+        <Scale value="0.833333"/>
+        <!--On Terms="ActorCreation" Send="Create ForceField_Inhibitor_Loop_AS"/>-->
+    </CActorModel>
+    <CActorModel id="AccelerationZoneFlyingLargeRadius" parent="AccelerationZoneFlyingRadiusBase"/>
+    <CActorModel id="InhibitorZoneFlyingTemporalFieldImpactModel" parent="ModelAnimationStyleContinuous">
+        <Terms value="Cap 1"/>
+        <Inherits index="CastShadows" value="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Behavior.InhibitorZoneFlyingTemporalField.On" Send="Create"/>
+        <On Terms="Behavior.InhibitorZoneFlyingTemporalField.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="0.500000"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorUnit id="InhibitorZoneFlyingSmall" parent="InhibitorZoneFlyingBase" unitName="InhibitorZoneFlyingSmall"/>
+    <CActorUnit id="InhibitorZoneFlyingMedium" parent="InhibitorZoneFlyingBase" unitName="InhibitorZoneFlyingMedium"/>
+    <CActorUnit id="InhibitorZoneFlyingLarge" parent="InhibitorZoneFlyingBase" unitName="InhibitorZoneFlyingLarge"/>
+    <CActorModel id="InhibitorZoneFlyingSmallRadius" parent="InhibitorZoneFlyingRadiusBase">
+        <Scale value="0.666667"/>
+    </CActorModel>
+    <CActorModel id="InhibitorZoneFlyingMediumRadius" parent="InhibitorZoneFlyingRadiusBase">
+        <Scale value="0.833333"/>
+        <!--On Terms="ActorCreation" Send="Create ForceField_Inhibitor_Loop_AS"/>-->
+    </CActorModel>
+    <CActorModel id="InhibitorZoneFlyingLargeRadius" parent="InhibitorZoneFlyingRadiusBase"/>
+    <CActorUnit id="MissileTurretMengskACGluescreenDummy" parent="GenericUnitStandard" unitName="MissileTurretMengskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-building-terran-missileturretmengsk.dds"/>
     </CActorUnit>
     <CActorUnit id="AssimilatorRich" parent="ProtossBuildingEx" unitName="AssimilatorRich">
         <Aliases value="_UnitHuge"/>
@@ -894,6 +1181,18 @@
         <Radius value="1.900000,0.300000"/>
     </CActorForceSphere>
     <CActorSound id="Baneling_Land" parent="SoundOneShot"/>
+    <CActorUnit id="BunkerDepotMengskACGluescreenDummy" parent="GenericUnitStandard" unitName="BunkerDepotMengskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-building-terran-supplybunkermengsk.dds"/>
+    </CActorUnit>
+    <CActorUnit id="ArtilleryMengskACGluescreenDummy" parent="GenericUnitStandard" unitName="ArtilleryMengskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-building-terran-artillerymengsk.dds"/>
+    </CActorUnit>
+    <CActorUnit id="SiegeTankMengskACGluescreenDummy" parent="GenericUnitStandard" unitName="SiegeTankMengskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-terran-siegetankmengsk.dds"/>
+    </CActorUnit>
+    <CActorUnit id="MarauderMengskACGluescreenDummy" parent="GenericUnitStandard" unitName="MarauderMengskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-terran-maraudermengsk.dds"/>
+    </CActorUnit>
     <CActorModel id="BroodLordDeathRagdoll" parent="UnitDeathRagdollFlier">
         <On Terms="ActorCreation" Send="Create BroodLordDeathRagdollDetonationForce"/>
     </CActorModel>
@@ -958,6 +1257,16 @@
         <On Terms="ActorCreation; ModelName SpineCrawlerPlacement" Send="Create SpineCrawlerProtectRange"/>
         <On Terms="ActorCreation; ModelName SpineCrawler" Send="Create SpineCrawlerProtectRange"/>
         <On Terms="ActorDestruction" Target="SpineCrawlerProtectRange" Send="Destroy"/>
+    </CActorModel>
+    <CActorModel id="SpineCrawlerPlacementModel" parent="PlacementModel">
+        <On Terms="ActorCreation" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
+        <On Terms="ActorCreation" Send="Create SpineCrawlerProtectRange"/>
+        <On Terms="ActorDestruction" Target="SpineCrawlerProtectRange" Send="Destroy"/>
+    </CActorModel>
+    <CActorModel id="SporeCrawlerPlacementModel" parent="PlacementModel">
+        <On Terms="ActorCreation" Send="AnimBracketStart Burrow Burrow IGNORE Unburrow ClosingFull,OpeningPlayForever,Instant"/>
+        <On Terms="ActorCreation" Send="Create SporeCrawlerProtectRange"/>
+        <On Terms="ActorDestruction" Target="SporeCrawlerProtectRange" Send="Destroy"/>
     </CActorModel>
     <CActorQuad id="CreepSprayGuide" parent="ZergGuideVisualQuadDown" abil="DigesterCreepSpray">
         <Height value="29.000000"/>
@@ -1388,6 +1697,51 @@
         <Sound value="Lurker_Death"/>
     </CActorSound>
     <CActorSound id="Lurker_Land" parent="SoundOneShot"/>
+    <CActorUnit id="GhostMengskACGluescreenDummy" parent="GenericUnitStandard" unitName="GhostMengskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-terran-ghostmengsk.dds"/>
+    </CActorUnit>
+    <CActorUnit id="MechaBanelingACGluescreenDummy" parent="GenericUnitStandard" unitName="MechaBanelingACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-baneling-mecha.dds"/>
+    </CActorUnit>
+    <CActorUnit id="BlimpMengskACGluescreenDummy" parent="GenericUnitStandard" unitName="BlimpMengskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-terran-blimpmengsk.dds"/>
+    </CActorUnit>
+    <CActorUnit id="ThorMengskACGluescreenDummy" parent="GenericUnitStandard" unitName="ThorMengskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-terran-thormengsk.dds"/>
+    </CActorUnit>
+    <CActorUnit id="VikingMengskACGluescreenDummy" parent="GenericUnitStandard" unitName="VikingMengskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-terran-vikingmengskfighter.dds"/>
+    </CActorUnit>
+    <CActorUnit id="TrooperMengskACGluescreenDummy" parent="GenericUnitStandard" unitName="TrooperMengskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-terran-troopermengsk.dds"/>
+    </CActorUnit>
+    <CActorUnit id="MechaBattlecarrierLordACGluescreenDummy" parent="GenericUnitStandard" unitName="MechaBattlecarrierLordACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-broodlord-mecha.dds"/>
+    </CActorUnit>
+    <CActorUnit id="MechaOverseerACGluescreenDummy" parent="GenericUnitStandard" unitName="MechaOverseerACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-overseer-mecha.dds"/>
+    </CActorUnit>
+    <CActorUnit id="MechaSpineCrawlerACGluescreenDummy" parent="GenericUnitStandard" unitName="MechaSpineCrawlerACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-building-zerg-spinecrawler-mecha.dds"/>
+    </CActorUnit>
+    <CActorUnit id="MechaHydraliskACGluescreenDummy" parent="GenericUnitStandard" unitName="MechaHydraliskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-collection-hydralisk-mecha.dds"/>
+    </CActorUnit>
+    <CActorUnit id="MechaSporeCrawlerACGluescreenDummy" parent="GenericUnitStandard" unitName="MechaSporeCrawlerACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-building-zerg-sporecrawler-mecha.dds"/>
+    </CActorUnit>
+    <CActorUnit id="MechaUltraliskACGluescreenDummy" parent="GenericUnitStandard" unitName="MechaUltraliskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-ultralisk-mecha.dds"/>
+    </CActorUnit>
+    <CActorUnit id="MechaLurkerACGluescreenDummy" parent="GenericUnitStandard" unitName="MechaLurkerACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-lurker-mecha.dds"/>
+    </CActorUnit>
+    <CActorUnit id="MechaInfestorACGluescreenDummy" parent="GenericUnitStandard" unitName="MechaInfestorACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-infestor-mecha.dds"/>
+    </CActorUnit>
+    <CActorUnit id="MechaCorruptorACGluescreenDummy" parent="GenericUnitStandard" unitName="MechaCorruptorACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-corruptor-mecha.dds"/>
+    </CActorUnit>
     <CActorForceSphere id="MissileAttackForce">
         <Host Subject="_ImpactGuide"/>
         <HostSiteOps Ops="SOpRandomPointInSphereDot25"/>
@@ -2080,6 +2434,9 @@
         <HostSiteOps Ops="SOpAttachOriginStationary"/>
         <Model value="OverlordCocoon"/>
     </CActorModel>
+    <CActorUnit id="MedivacMengskACGluescreenDummy" parent="GenericUnitStandard" unitName="MedivacMengskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-terran-medivacmengsk.dds"/>
+    </CActorUnit>
     <!-- NOTE:  This does not prevent blood impacts from physics bodies in non-ragdoll deaths.
          Those are minor enough that we are leaving them in. -->
     <CActorModel id="UnitDeathRagdollBloodPrevent" parent="UnitDeathRagdoll">
@@ -2354,6 +2711,7 @@
         <EditorCategories value="DoodadType:Environment"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Aiur_City_Ramps">
         <Aliases value="_CreepEngulfable"/>
@@ -2752,12 +3110,14 @@
         <EditorCategories value="DoodadType:Structures"/>
         <CreepHeightClass value="Small"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Aiur_Temple_BridgeSection">
         <Aliases value="_CreepEngulfable"/>
         <EditorCategories value="DoodadType:Structures"/>
         <CreepHeightClass value="Small"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Aiur_Temple_Bridge_Destructible">
         <Macros value="DoodadDeathMacro"/>
@@ -2777,6 +3137,7 @@
         <EditorCategories value="DoodadType:CliffRamps"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Aiur_Temple_GiantWalls">
         <RandomScaleRange value="1.000000,1.000000"/>
@@ -2832,10 +3193,12 @@
         <EditorCategories value="DoodadType:Structures"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Aiur_Temple_Small_Pillar">
         <EditorCategories value="DoodadType:Environment"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Aiur_Temple_Small_Pillar_Destroyed">
         <EditorCategories value="DoodadType:Environment"/>
@@ -2854,6 +3217,7 @@
         <EditorFlags index="NoAutoRotate" value="1"/>
         <Footprint value="FootprintDoodadContour4x4"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Aiur_Temple_Statue_Large">
         <EditorCategories value="DoodadType:Structures"/>
@@ -2870,6 +3234,7 @@
         <EditorCategories value="DoodadType:Structures"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Aiur_Tree_Large">
         <EditorCategories value="DoodadType:Environment"/>
@@ -2907,6 +3272,7 @@
     </CActorDoodad>
     <CActorDoodad id="Aiur_Vines_Cliff">
         <EditorCategories value="DoodadType:Environment"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Aiur_VoidSeeker_Destroyed">
         <RandomScaleRange value="1.000000,1.000000"/>
@@ -3256,6 +3622,7 @@
     </CActorDoodad>
     <CActorDoodad id="ChiseledRockEx1Large">
         <Footprint value="FootprintDoodad2x2"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="ChiseledRockLarge">
         <EditorCategories value="DoodadType:Environment"/>
@@ -3484,6 +3851,7 @@
         <On Terms="ActorCreation; ModelVariation 6" Send="Create SoundEmitter Doodad_CompoundSewer_Pipes"/>
         <On Terms="ActorCreation; ModelVariation 8" Send="Create SoundEmitter Doodad_CompoundSewer_Pipes"/>
         <On Terms="ActorCreation; ModelVariation 9" Send="Create SoundEmitter Doodad_CompoundSewer_Pipes"/>
+        <On Terms="ActorCreation; ModelVariation 10" Send="Create SoundEmitter Doodad_CompoundSewer_Lg_Drain"/>
         <On Terms="ActorCreation; ModelVariation 11" Send="Create SoundEmitter Doodad_CompoundSewer_Lg_Drain"/>
         <On Terms="ActorCreation; ModelVariation 13" Send="Create SoundEmitter Doodad_CompoundSewer_Pipes"/>
         <On Terms="ActorCreation; ModelVariation 14" Send="Create SoundEmitter Doodad_CompoundSewer_Pipes"/>
@@ -3795,6 +4163,7 @@
         <EditorCategories value="DoodadType:Environment"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="DOM_Walkways">
         <EditorCategories value="DoodadType:Structures"/>
@@ -3881,6 +4250,7 @@
     <CActorDoodad id="DefendersCity_Buildings_Municiple">
         <EditorCategories value="DoodadType:Environment"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="DefendersCity_Buildings_Pipes_Tanks_Industrial">
         <EditorCategories value="DoodadType:Structures"/>
@@ -5127,6 +5497,7 @@
         <EditorCategories value="DoodadType:CliffRamps"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="IceWorldRock">
         <EditorCategories value="DoodadType:Environment"/>
@@ -5178,6 +5549,8 @@
         <Aliases value="_Doodad"/>
         <Aliases value="_Selectable"/>
         <Aliases value="_EditorHelper"/>
+        <Aliases value="_CreepEngulfable"/>
+        <CreepHeightClass value="Huge"/>
         <EditorCategories value="DoodadType:CliffRamps"/>
         <On Terms="ActorCreation" Send="Create SoundEmitter Doodad_InvisibleWalkablePlatform4x4"/>
         <On Terms="ActorCreation" Send="$Stand PlayForever,RandomStartOffset"/>
@@ -5610,6 +5983,7 @@
         <TexSets value="KorhalCity"/>
         <Footprint value="FootprintDoodad4x4"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="KorhalSkyScrapersSmall">
         <TexSets value="Korhal"/>
@@ -5618,6 +5992,7 @@
         <TexSets value="KorhalCity"/>
         <Footprint value="FootprintDoodad2x2"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="KorhalStreet_Props">
         <RandomScaleRange value="1.000000,1.000000"/>
@@ -6160,6 +6535,7 @@
     <CActorDoodad id="MoebiusLabGlassWalls">
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="MoebiusLabHornet">
         <EditorFlags index="NoAutoRotate" value="1"/>
@@ -6452,46 +6828,55 @@
         <EditorCategories value="DoodadType:Environment"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <On Terms="ActorCreation" Send="Attach SoundEmitter Center"/>
     </CActorDoodad>
     <CActorDoodad id="PortCity_CarTraffic_b">
         <EditorCategories value="DoodadType:Environment"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <On Terms="ActorCreation" Send="Attach SoundEmitter Center"/>
     </CActorDoodad>
     <CActorDoodad id="PortCity_CarTraffic_c">
         <EditorCategories value="DoodadType:Environment"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <On Terms="ActorCreation" Send="Attach SoundEmitter Center"/>
     </CActorDoodad>
     <CActorDoodad id="PortCity_CarTraffic_d">
         <EditorCategories value="DoodadType:Environment"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <On Terms="ActorCreation" Send="Attach SoundEmitter Center"/>
     </CActorDoodad>
     <CActorDoodad id="PortCity_CarTraffic_e">
         <EditorCategories value="DoodadType:Environment"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <On Terms="ActorCreation" Send="Attach SoundEmitter Center"/>
     </CActorDoodad>
     <CActorDoodad id="PortCity_CarTraffic_f">
         <EditorCategories value="DoodadType:Environment"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <On Terms="ActorCreation" Send="Attach SoundEmitter Center"/>
     </CActorDoodad>
     <CActorDoodad id="PortCity_CarTraffic_g">
         <EditorCategories value="DoodadType:Environment"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <On Terms="ActorCreation" Send="Attach SoundEmitter Center"/>
     </CActorDoodad>
     <CActorDoodad id="PortCity_CarTraffic_h">
         <EditorCategories value="DoodadType:Environment"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <On Terms="ActorCreation" Send="Attach SoundEmitter Center"/>
     </CActorDoodad>
     <CActorDoodad id="PortCity_CarTraffic_i">
         <EditorCategories value="DoodadType:Environment"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <On Terms="ActorCreation" Send="Attach SoundEmitter Center"/>
     </CActorDoodad>
     <CActorDoodad id="PortCity_Cargo">
         <EditorCategories value="DoodadType:Environment"/>
@@ -6647,7 +7032,7 @@
     <CActorDoodad id="PortCity_Trims">
         <Aliases value="_CreepEngulfable"/>
         <EditorCategories value="DoodadType:Environment"/>
-        <CreepHeightClass value="Small"/>
+        <CreepHeightClass value="Huge"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
     </CActorDoodad>
@@ -6913,6 +7298,7 @@
         <CreepHeightClass value="Small"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Protoss_Base_Railings">
         <EditorCategories value="DoodadType:NotDoodad"/>
@@ -7072,6 +7458,8 @@
         <EditorCategories value="DoodadType:Structures"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <Aliases value="_CreepEngulfable"/>
+        <CreepHeightClass value="Small"/>
     </CActorDoodad>
     <CActorDoodad id="Purifier_City_Decals">
         <Aliases value="_EditorHelper"/>
@@ -7144,6 +7532,7 @@
     <CActorDoodad id="Purifier_Drill_GroundPieces">
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Purifier_Energy_Generator">
         <On Terms="ActorCreation" Send="AnimPlay GL GLstand PlayForever"/>
@@ -7174,6 +7563,7 @@
     <CActorDoodad id="Purifier_Foliage">
         <EditorCategories value="DoodadType:Environment"/>
         <RandomScaleRange value="0.950000,1.050000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Purifier_Foliage_Clumps">
         <EditorFlags index="NoAutoRotate" value="1"/>
@@ -7346,6 +7736,7 @@
         <EditorFlags index="NoAutoRotate" value="1"/>
         <Footprint value="Purifier_Platform"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Purifier_Terminals">
         <EditorFlags index="NoAutoRotate" value="1"/>
@@ -7377,6 +7768,7 @@
     <CActorDoodad id="Purifier_WallPost">
         <EditorCategories value="DoodadType:Environment"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Purifier_Wall_Machinery">
         <EditorCategories value="DoodadType:CliffRamps"/>
@@ -7392,6 +7784,7 @@
         <On Terms="ActorCreation" Send="Create Purifier_WarpPad_Halo_Loop"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="RedStorm_TarPits">
         <EditorCategories value="DoodadType:Environment"/>
@@ -8229,6 +8622,8 @@
     <CActorDoodad id="Shakuras_XelNaga_Temple_CenterRing">
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <Aliases value="_CreepEngulfable"/>
+        <CreepHeightClass value="Huge"/>
     </CActorDoodad>
     <CActorDoodad id="SharpRidges">
         <EditorCategories value="DoodadType:Environment"/>
@@ -8321,6 +8716,7 @@
         <EditorCategories value="DoodadType:Structures"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Slayn_GiantWalls">
         <EditorCategories value="DoodadType:Structures"/>
@@ -8588,11 +8984,13 @@
         <EditorCategories value="DoodadType:Environment"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <DoodadFlags index="DefaultToModelAABBBounds" value="0"/>
     </CActorDoodad>
     <CActorDoodad id="SnowBase_Fog_Mountain_Upper">
         <EditorCategories value="DoodadType:Environment"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <DoodadFlags index="DefaultToModelAABBBounds" value="0"/>
     </CActorDoodad>
     <CActorDoodad id="SnowBase_Snow_Drifting">
         <Macros value="DoodadFidgetFastMacro"/>
@@ -10416,6 +10814,7 @@
     <CActorDoodad id="UmojanLabWeaponCase">
         <TexSets value="DominionLab"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="UmojanLabZergCage">
         <Flags index="SuppressSaveLoad" value="0"/>
@@ -10492,6 +10891,9 @@
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
     </CActorDoodad>
+    <CActorUnit id="BattlecruiserMengskACGluescreenDummy" parent="GenericUnitStandard" unitName="BattlecruiserMengskACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-terran-battlecruisermengsk.dds"/>
+    </CActorUnit>
     <CActorDoodad id="VoidAmonCrystalCatalystFloatingDoodad">
         <Model value="Void_Amon_CrystalCatalystFloating"/>
     </CActorDoodad>
@@ -10692,6 +11094,7 @@
     <CActorDoodad id="Void_Temple_Small">
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="Void_Temple_Small_Destroyed">
         <EditorCategories value="DoodadType:Structures"/>
@@ -11492,6 +11895,7 @@
     <CActorDoodad id="XelNaga_Crystal_Patch">
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="XelNaga_Curb">
         <Aliases value="_CreepEngulfable"/>
@@ -11575,13 +11979,16 @@
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
     </CActorDoodad>
-    <CActorDoodad id="XelNaga_LargeCrates_Cliff_Amon"/>
+    <CActorDoodad id="XelNaga_LargeCrates_Cliff_Amon">
+        <ModelFlags index="OutlineOccluder" value="1"/>
+    </CActorDoodad>
     <CActorDoodad id="XelNaga_LargeCrates_Flat">
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
     </CActorDoodad>
     <CActorDoodad id="XelNaga_LargeCrates_Temple_Cliff">
         <RandomScaleRange value="1.000000,1.000000"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="XelNaga_Library">
         <EditorCategories value="DoodadType:Structures"/>
@@ -12098,6 +12505,82 @@
             <Image value="Assets\Textures\Wireframe-General-MineralField.dds"/>
         </Wireframe>
         <UnitFlags index="ShowBlobShadow" value="0"/>
+    </CActorUnit>
+    <CActorUnit id="MineralFieldOpaque" parent="MineralBase" unitName="MineralFieldOpaque">
+        <!--On Terms="ActorCreation; Option Shader Ultra" Send="ModelSwap MineralFieldHigh"/>
+        <On Terms="ActorCreation; Option Shader Extreme" Send="ModelSwap MineralFieldHigh"/-->
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Start; Level 0" Send="AnimGroupApply A"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Stop; Level 0" Send="AnimGroupRemove A"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Start; Level 1" Send="AnimGroupApply B"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Stop; Level 1" Send="AnimGroupRemove B"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Start; Level 2" Send="AnimGroupApply C"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Stop; Level 2" Send="AnimGroupRemove C"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Start; Level 3" Send="AnimGroupApply D"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Stop; Level 3" Send="AnimGroupRemove D"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Start; Level 0" Send="Create MineralFieldSplatSmall"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Stop; Level 0" Target="MineralFieldSplatSmall" Send="Destroy"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Start; Level 1" Send="Create MineralFieldSplatSmall"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Stop; Level 1" Target="MineralFieldSplatSmall" Send="Destroy"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Start; Level 2" Send="Create MineralFieldSplat"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Stop; Level 2" Target="MineralFieldSplat" Send="Destroy"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Start; Level 3" Send="Create MineralFieldSplat"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque.Stop; Level 3" Target="MineralFieldSplat" Send="Destroy"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-General-MineralField.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\Wireframe-General-MineralField.dds"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <UnitIcon value="Assets\Textures\Wireframe-General-MineralField.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-General-MineralField.dds"/>
+        </Wireframe>
+        <HighlightTooltip value="Unit/Name/MineralField"/>
+        <CantSelectUncontrollableTooltip value="Unit/Name/MineralField"/>
+    </CActorUnit>
+    <CActorUnit id="MineralFieldOpaque900" parent="MineralBase" unitName="MineralFieldOpaque900">
+        <!--On Terms="ActorCreation; Option Shader Ultra" Send="ModelSwap MineralFieldHigh"/>
+        <On Terms="ActorCreation; Option Shader Extreme" Send="ModelSwap MineralFieldHigh"/-->
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Start; Level 0" Send="AnimGroupApply A"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Stop; Level 0" Send="AnimGroupRemove A"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Start; Level 1" Send="AnimGroupApply B"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Stop; Level 1" Send="AnimGroupRemove B"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Start; Level 2" Send="AnimGroupApply C"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Stop; Level 2" Send="AnimGroupRemove C"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Start; Level 3" Send="AnimGroupApply D"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Stop; Level 3" Send="AnimGroupRemove D"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Start; Level 0" Send="Create MineralFieldSplatSmall"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Stop; Level 0" Target="MineralFieldSplatSmall" Send="Destroy"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Start; Level 1" Send="Create MineralFieldSplatSmall"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Stop; Level 1" Target="MineralFieldSplatSmall" Send="Destroy"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Start; Level 2" Send="Create MineralFieldSplat"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Stop; Level 2" Target="MineralFieldSplat" Send="Destroy"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Start; Level 3" Send="Create MineralFieldSplat"/>
+        <On Terms="BehaviorLevel.MineralFieldMineralsOpaque900.Stop; Level 3" Target="MineralFieldSplat" Send="Destroy"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-General-MineralField.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\Wireframe-General-MineralField.dds"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <UnitIcon value="Assets\Textures\Wireframe-General-MineralField.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-General-MineralField.dds"/>
+        </Wireframe>
+        <HighlightTooltip value="Unit/Name/MineralField"/>
+        <CantSelectUncontrollableTooltip value="Unit/Name/MineralField"/>
     </CActorUnit>
     <CActorUnit id="RichMineralField" parent="MineralBase" unitName="RichMineralField">
         <Model value="HighYieldMineralField"/>
@@ -12774,6 +13257,7 @@
         <On Terms="Abil.TowerCapture.SourceStart" Send="Create XelNagaTower_PowerUp"/>
         <On Terms="Abil.TowerCapture.SourceStop" Send="AnimBracketStop Work"/>
         <On Terms="Abil.TowerCapture.SourceStop" Send="Create XelNagaTower_PowerDown"/>
+        <On Terms="ActorCreation; !IsInEditor; ModelName XelNagaTower" Send="ModelSwap XelNagaTower_Memorial"/>
         <ModelFlags index="OutlineOccluder" value="1"/>
         <UnitFlags index="ShowBlobShadow" value="0"/>
         <StatusBarFlags index="Shields" value="0"/>
@@ -12808,6 +13292,7 @@
     <CActorModel id="InhibitorZoneLargeRadius" parent="InhibitorZoneRadiusBase"/>
     <CActorModel id="InhibitorZoneMediumRadius" parent="InhibitorZoneRadiusBase">
         <Scale value="0.833333"/>
+        <!--On Terms="ActorCreation" Send="Create ForceField_Inhibitor_Loop_AS"/>-->
     </CActorModel>
     <CActorModel id="InhibitorZoneSmallRadius" parent="InhibitorZoneRadiusBase">
         <Scale value="0.666667"/>
@@ -14211,6 +14696,9 @@
         <EditorFlags index="NoAutoRotate" value="1"/>
         <RandomScaleRange value="1.000000,1.000000"/>
     </CActorDoodad>
+    <CActorUnit id="MechaZerglingACGluescreenDummy" parent="GenericUnitStandard" unitName="MechaZerglingACGluescreenDummy">
+        <UnitIcon value="Assets\Textures\btn-unit-collection-zergling-mecha.dds"/>
+    </CActorUnit>
     <CActorDoodad id="ZerusBrambles">
         <EditorCategories value="DoodadType:Environment"/>
         <TexSets value="Zerus"/>
@@ -14333,6 +14821,7 @@
         <Aliases value="_EditorHelper"/>
         <EditorCategories value="DoodadType:Environment"/>
         <TexSets value="Zerus"/>
+        <DoodadFlags index="DefaultToModelAABBBounds" value="0"/>
     </CActorDoodad>
     <CActorDoodad id="ZerusRockCliffMedium">
         <EditorCategories value="DoodadType:CliffRamps"/>
@@ -14801,7 +15290,7 @@
         <CreepHeightClass value="Small"/>
         <DeathArray index="UnderConstruction" ModelLink="TerranBuildingDeath" SoundLink="MissileTurret_Explode"/>
         <PlacementSound value="Terran_BuildingPlacementSmall"/>
-        <PlacementActorModel value="MissileTurretPlacementModel"/>
+        <PlacementActorModel value="MissileTurretSkinnablePlacementModel"/>
         <BarOffset value="90"/>
         <GroupIcon>
             <Image value="Assets\Textures\Wireframe-Terran-MissileTurret.dds"/>
@@ -16148,10 +16637,10 @@
         <Supporter Subject="_ProtossBuildModel"/>
     </CActorProgress>
     <CActorProgress id="ProtossConstructionAttached">
-        <On Terms="ProgressLevel.ProtossConstructionAttached.Start; Level 0" Target="ProtossBuildingBirth" Send="SetTransferOverrideAnim Stand,Build"/>
-        <On Terms="ProgressLevel.ProtossConstructionAttached.Stop; Level 0" Target="ProtossBuildingBirth" Send="SetTransferOverrideAnim Stand,Build"/>
-        <On Terms="ProgressLevel.ProtossConstructionAttached.Start; Level 2" Target="ProtossBuildingBirth" Send="SetTransferOverrideAnim Stand,Build"/>
-        <On Terms="ProgressLevel.ProtossConstructionAttached.Stop; Level 2" Target="ProtossBuildingBirth" Send="SetTransferOverrideAnim Stand,Build"/>
+        <On Terms="ProgressLevel.ProtossConstructionAttached.Start; Level 0" Target="_ProtossBuildModel" Send="SetTransferOverrideAnim Stand,Build"/>
+        <On Terms="ProgressLevel.ProtossConstructionAttached.Stop; Level 0" Target="_ProtossBuildModel" Send="SetTransferOverrideAnim Stand,Build"/>
+        <On Terms="ProgressLevel.ProtossConstructionAttached.Start; Level 2" Target="_ProtossBuildModel" Send="SetTransferOverrideAnim Stand,Build"/>
+        <On Terms="ProgressLevel.ProtossConstructionAttached.Stop; Level 2" Target="_ProtossBuildModel" Send="SetTransferOverrideAnim Stand,Build"/>
         <StageArray AnimProps="Stand,Build,Start" BlendTime="0.000000"/>
         <StageArray AnimProps="Stand,Build"/>
         <StageArray AnimProps="Stand,Build,End"/>
@@ -16171,29 +16660,14 @@
         <Aliases value="_ProtossBuildModel"/>
         <On Terms="ActorCreation" Send="Create ProtossConstructionAttachedSmall"/>
         <On Terms="UnitConstruction.Obelisk.Start" Send="Create"/>
-        <On Terms="UnitConstruction.DarkShrine.Start" Send="Create"/>
-        <On Terms="UnitConstruction.PhotonCannon.Start" Send="Create"/>
-        <On Terms="UnitConstruction.Pylon.Start" Send="Create"/>
     </CActorModel>
     <CActorModel id="ProtossBuildingBirth" parent="ModelConstruction">
         <Aliases value="_ProtossBuildModel"/>
         <On Terms="ActorCreation" Send="Create ProtossConstructionAttached"/>
-        <On Terms="UnitConstruction.Assimilator.Start" Send="Create"/>
-        <On Terms="UnitConstruction.CyberneticsCore.Start" Send="Create"/>
-        <On Terms="UnitConstruction.FleetBeacon.Start" Send="Create"/>
-        <On Terms="UnitConstruction.Forge.Start" Send="Create"/>
-        <On Terms="UnitConstruction.Gateway.Start" Send="Create"/>
-        <On Terms="UnitConstruction.RoboticsBay.Start" Send="Create"/>
-        <On Terms="UnitConstruction.RoboticsFacility.Start" Send="Create"/>
-        <On Terms="UnitConstruction.Stargate.Start" Send="Create"/>
-        <On Terms="UnitConstruction.TemplarArchive.Start" Send="Create"/>
-        <On Terms="UnitConstruction.TwilightCouncil.Start" Send="Create"/>
-        <On Terms="UnitConstruction.AssimilatorRich.Start" Send="Create"/>
     </CActorModel>
     <CActorModel id="ProtossBuildingBirthLarge" parent="ModelConstruction">
         <Aliases value="_ProtossBuildModel"/>
         <On Terms="ActorCreation" Send="Create ProtossConstructionAttachedLarge"/>
-        <On Terms="UnitConstruction.Nexus.Start" Send="Create"/>
     </CActorModel>
     <CActorProgress id="ProtossWarpIn">
         <On Terms="Abil.WarpGateTrain.TargetStart" Send="Create"/>
@@ -16858,6 +17332,7 @@
         <AutoScaleFactor value="1.000000"/>
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
         <On Terms="Behavior.Hallucination.On; !ValidateUnit CasterIsColossus" Send="Create"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
@@ -16866,6 +17341,7 @@
         <AutoScaleFactor value="1.000000"/>
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
         <On Terms="Behavior.Hallucination.On; ValidateUnit CasterIsColossus" Send="Create"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachCenter"/>
@@ -21459,7 +21935,7 @@
         <AnimBlendTime value="0.400000"/>
         <WalkAnimMoveSpeed value="0.7968"/>
         <PlacementSound value="Zerg_BuildingPlacementSmall"/>
-        <PlaceholderActorModel value="CrawlerPlacementModel"/>
+        <PlaceholderActorModel value="SporeCrawlerPlacementModel"/>
         <!-- Burrow FX -->
         <On Terms="AbilMorph.*.Start; AbilKey Root" Send="Create LargeBurrowDownEffects"/>
         <On Terms="AbilMorph.*.Start; AbilKey Root" Send="Create BurrowDownLarge"/>
@@ -21519,7 +21995,7 @@
         <ErrorArray Error="CantLandTooFarFromCreepSource" Sound="Alert_ZergPlaceOnCreep" GroupSound="Alert_ZergPlaceOnCreep"/>
         <Aliases value="_UnitLarge"/>
         <Macros value="TerrainSquibAnimations"/>
-        <PlacementActorModel value="CrawlerPlacementModel"/>
+        <PlacementActorModel value="SporeCrawlerPlacementModel"/>
         <TerrainSquibs>
             <GroupName value="RippleStandard"/>
             <MovementDistance value="0.150000,0.150000"/>
@@ -21569,7 +22045,7 @@
         <AnimBlendTime value="0.400000"/>
         <WalkAnimMoveSpeed value="0.7968"/>
         <PlacementSound value="Zerg_BuildingPlacementSmall"/>
-        <PlaceholderActorModel value="CrawlerPlacementModel"/>
+        <PlaceholderActorModel value="SpineCrawlerPlacementModel"/>
         <On Terms="UnitBirth.SpineCrawler" Send="AnimGroupApply Burrow {} {} Instant"/>
         <!-- Burrow FX -->
         <On Terms="AbilMorph.*.Start; AbilKey Root" Send="Create LargeBurrowDownEffects"/>
@@ -21662,7 +22138,7 @@
         <ErrorArray Error="CantLandTooFarFromCreepSource" Sound="Alert_ZergPlaceOnCreep" GroupSound="Alert_ZergPlaceOnCreep"/>
         <Aliases value="_UnitLarge"/>
         <Macros value="TerrainSquibAnimations"/>
-        <PlacementActorModel value="CrawlerPlacementModel"/>
+        <PlacementActorModel value="SpineCrawlerPlacementModel"/>
         <TerrainSquibs>
             <GroupName value="RippleStandard"/>
             <MovementDistance value="0.150000,0.150000"/>
@@ -23752,6 +24228,7 @@
         <On Terms="Signal.*.TreeFire" Send="AnimBracketStart Death Death,Fire Dead,Fire IGNORE"/>
         <On Terms="Signal.*.TreeCreep" Send="ModelSwap AiurTreeDeath"/>
         <On Terms="Signal.*.TreeCreep" Send="AnimBracketStart Death Death,Creep Dead,Creep IGNORE"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="AiurProtossBuildings">
         <TexSets value="Aiur"/>
@@ -23899,6 +24376,7 @@
         <On Terms="Signal.*.TreeFire" Send="AnimBracketStart Death Death,Fire Dead,Fire IGNORE"/>
         <On Terms="Signal.*.TreeCreep" Send="ModelSwap BelShirTreeDeath"/>
         <On Terms="Signal.*.TreeCreep" Send="AnimBracketStart Death Death,Creep Dead,Creep IGNORE"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="BillboardDestroyed">
         <Footprint value="FootprintDoodad2x2"/>
@@ -24678,6 +25156,27 @@
     </CActorDoodad>
     <CActorDoodad id="ForceFieldWall">
         <RandomScaleRange value="1.000000,1.000000"/>
+    </CActorDoodad>
+    <CActorSound id="ForceField_Inhibitor_Impacts_Loop_AS" parent="SoundContinuous">
+        <EditorCategories value=""/>
+        <Sound value="ForceField_Inhibitor_Impacts_Loop_Alt"/>
+        <On Terms="Behavior.InhibitorZoneTemporalField.On" Send="Create"/>
+        <On Terms="Behavior.InhibitorZoneTemporalField.Off" Send="Destroy"/>
+        <Layers Sound="ForceField_Inhibitor_Impacts_Loop"/>
+    </CActorSound>
+    <CActorSound id="ForceField_Inhibitor_Loop_AS" parent="SoundContinuous">
+        <EditorCategories value=""/>
+        <Sound value="ForceField_Inhibitor_Loop"/>
+    </CActorSound>
+    <CActorDoodad id="DiscoFloorLarge">
+        <RandomScaleRange value="1.000000,1.000000"/>
+    </CActorDoodad>
+    <CActorDoodad id="DiscoFloorMed">
+        <RandomScaleRange value="1.000000,1.000000"/>
+    </CActorDoodad>
+    <CActorDoodad id="DiscoFloorSmall">
+        <RandomScaleRange value="1.000000,1.000000"/>
+        <DoodadFlags index="DefaultToModelAABBBounds" value="0"/>
     </CActorDoodad>
     <CActorDoodad id="Garage">
         <TexSets value="MarSara"/>
@@ -25821,6 +26320,7 @@
         <RandomScaleRange value="1.000000,1.000000"/>
         <EditorFlags index="NoAutoRotate" value="1"/>
         <TexSets value="Tars"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="RubbleWall45">
         <EditorCategories value="DoodadType:Structures"/>
@@ -26255,6 +26755,7 @@
         <TexSets value="BraxisAlpha"/>
         <TexSets value="Castanar"/>
         <TexSets value="PortZion"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="SpacePlatformSignDestructible">
         <Footprint value="FootprintDoodad1x5"/>
@@ -26385,6 +26886,7 @@
     <CActorDoodad id="StoreFrontWindows">
         <RandomScaleRange value="1.000000,1.000000"/>
         <EditorCategories value="DoodadType:CliffRamps"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="StoreFrontWindows2Story">
         <RandomScaleRange value="1.000000,1.000000"/>
@@ -26502,6 +27004,9 @@
         <TexSets value="Monlyth"/>
         <TexSets value="Shakuras"/>
         <TexSets value="ZhakulDas"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
+        <Aliases value="_CreepEngulfable"/>
+        <CreepHeightClass value="Huge"/>
     </CActorDoodad>
     <CActorDoodad id="TempleColumnWalls">
         <Footprint value="FootprintDoodad2x2"/>
@@ -26510,6 +27015,7 @@
         <TexSets value="Monlyth"/>
         <TexSets value="Shakuras"/>
         <TexSets value="ZhakulDas"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="TempleDebris">
         <RandomScaleRange value="1.000000,1.000000"/>
@@ -26688,6 +27194,7 @@
         <On Terms="Signal.*.TreeCreep; !AnimPlaying Death" Send="AliasRemove _Burnable"/>
         <On Terms="Signal.*.TreeFire" Send="AnimBracketStart Death Death,Fire Dead IGNORE"/>
         <On Terms="Signal.*.TreeCreep" Send="AnimBracketStart Death Death Dead IGNORE"/>
+        <ModelFlags index="OutlineOccluder" value="1"/>
     </CActorDoodad>
     <CActorDoodad id="WallDockingBay">
         <RandomScaleRange value="1.000000,1.000000"/>
@@ -26947,6 +27454,10 @@
     <CActorModel id="MissileTurretPlacementModel" parent="PlacementModel">
         <On Terms="ActorCreation; ModelName MissileTurretPlacement" Send="Create MissileTurretProtectRange"/>
         <On Terms="ActorCreation; ModelName MissileTurret; ModelIsLowQuality" Send="Create MissileTurretProtectRange"/>
+        <On Terms="ActorDestruction" Target="MissileTurretProtectRange" Send="Destroy"/>
+    </CActorModel>
+    <CActorModel id="MissileTurretSkinnablePlacementModel" parent="PlacementModel">
+        <On Terms="ActorCreation" Send="Create MissileTurretProtectRange"/>
         <On Terms="ActorDestruction" Target="MissileTurretProtectRange" Send="Destroy"/>
     </CActorModel>
     <CActorModel id="PhotonCannonPlacementModel" parent="PlacementModel">
@@ -29582,4 +30093,48 @@
             <Volume value="0.000000,0.000000"/>
         </Layers>
     </CActorSound>
+    <CUnit default="1" id="CoopGlobalCaster">
+        <DeathRevealRadius value="3"/>
+        <Race value="Terr"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="PenaltyRevealed" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="TownAlert" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="RoachBurrow" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Structure" value="1"/>
+        <LifeStart value="500000"/>
+        <LifeMax value="500000"/>
+        <LifeArmor value="1"/>
+        <ShieldsStart value="500000"/>
+        <ShieldsMax value="500000"/>
+        <ShieldRegenRate value="500000"/>
+        <Sight value="0.5"/>
+        <CostResource index="Minerals" value="150"/>
+        <AttackTargetPriority value="11"/>
+        <Radius value="1.75"/>
+        <SeparationRadius value="1.75"/>
+        <Footprint value="Footprint3x3Contour"/>
+        <PlacementFootprint value="Footprint3x3"/>
+        <SubgroupPriority value="2"/>
+        <MinimapRadius value="1.75"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
+        <!--DeathTime value="-1"/>
+        <EffectArray index="Revive" value="SelfRevive"/-->
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="BuildInProgress"/>
+        <!--Higher Regen cause overflow, when damaged, they would be instantly killed-->
+        <LifeRegenRate value="100000"/>
+    </CUnit>
 </Catalog>

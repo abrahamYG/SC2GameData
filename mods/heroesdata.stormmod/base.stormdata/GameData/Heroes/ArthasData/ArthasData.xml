@@ -913,7 +913,7 @@
     <FinalEffect value="ArthasFrozenTempestModifyCooldown" />
     <Modification>
       <StateFlags index="SuppressCloak" value="1" />
-      <VitalRegenArray index="Energy" value="-15" />
+      <VitalRegenArray index="Energy" value="-13" />
     </Modification>
   </CBehaviorBuff>
   <CButton id="ArthasAntiMagicShellTalent">
@@ -1120,12 +1120,14 @@
   <CEffectDamage id="ArthasRimeDummyDamageTarget">
     <LaunchLocation Effect="TalentBucketBlockChargedRemoveSet" Value="CasterUnit" />
     <ImpactLocation Value="TargetUnit" />
+    <Flags index="NoScaledDealtBonus" value="1" />
     <Flags index="NoFractionDealtBonus" value="1" />
     <Flags index="NoBehaviorResponse" value="1" />
     <Flags index="NoDamageTimerReset" value="1" />
   </CEffectDamage>
   <CEffectDamage id="ArthasRimeDummyDamage">
     <ImpactLocation Value="TargetUnit" />
+    <Flags index="NoScaledDealtBonus" value="1" />
     <Flags index="NoFractionDealtBonus" value="1" />
     <Flags index="NoBehaviorResponse" value="1" />
     <Flags index="NoDamageTimerReset" value="1" />
@@ -1275,14 +1277,14 @@
     <Behavior value="ArthasFrostmourneHungersPrimed" />
   </CEffectApplyBehavior>
   <CEffectSet id="ArthasFrostmourneHungersPreImpactSet">
-    <EffectArray value="BlindMissedDummy" />
+    <EffectArray value="BlindMissedDummySet" />
     <EffectArray value="ArthasFrostmourneHungersRemoveBehavior" />
   </CEffectSet>
   <CEffectSet id="ArthasFrostmourneHungersAttackSet">
     <EffectArray value="ArthasFrostmourneHungersFrostStrikeApplySlow" />
     <EffectArray value="ArthasFrostmourneHungersCreateManaHealer" />
-    <EffectArray value="ArthasFrostmourneHungersEternalHungerIncrementQuestToken" />
     <EffectArray value="ArthasFrostmourneHungersDamage" />
+    <EffectArray value="ArthasFrostmourneHungersEternalHungerIncrementQuestToken" />
     <EffectArray value="ArthasFrostmourneHungersRemoveBehavior" />
     <EffectArray value="ArthasFrostmourneHungersImpactModifyWeaponCooldown" />
     <EffectArray value="ApplyAbilityImpactReveal" />
@@ -2463,7 +2465,7 @@
         <Catalog value="Behavior" />
         <Entry value="ArthasFrozenTempestCaster" />
         <Field value="Modification.VitalRegenArray[Energy]" />
-        <Value value="4.000000" />
+        <Value value="2.000000" />
       </Modifications>
       <Modifications>
         <Type value="FlatModification" />

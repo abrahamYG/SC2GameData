@@ -481,6 +481,7 @@
             <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
             <AcceptsMouse val="true"/>
             <RequireSelection val="true"/>
+            <ScrollStepValue val="3"/>
 
             <Frame type="UnitSkinSelectionTileListItem" name="Item0" template="SkinPackUnitSelectionFrame/UnitSkinSelectionTileListItemTemplate">
                 <Frame type="Frame" name="AnchorFrame">
@@ -688,6 +689,7 @@
             <PresenceId val="{$parent/ContentContainer/SecondaryPanel/UnitSkinSelectionFrame/@PresenceId}"/>
             <Reward val="{$parent/ContentContainer/SecondaryPanel/UnitSkinSelectionFrame/@SelectedReward}"/>
             <Text val="@UI/ScreenCollection/Buttons/EquipSet"/>
+            <Tooltip val="@UI/ScreenCollection/Buttons/EquipSetTooltip"/>
             <!-- TODO => Enable button based on SelectedCollectionId (if has value or not) -->
             
             <StateGroup name="PurchasableState">
@@ -721,7 +723,7 @@
         
         <Frame type="Button" name="ViewBundleButton" template="StandardBattlenetTemplates/BattlenetStandardButtonTemplate">
             <Anchor side="Bottom" relative="$Anchor_ActionButton" pos="Min" offset="0"/>
-            <Anchor side="Left" relative="$parent/BuyButton" pos="Max" offset="5"/>
+            <Anchor side="Left" relative="$parent/BuyButton" pos="Max" offset="20"/>
             <CollapseLayout val="true"/>
             <Text val="@UI/ScreenCollection/Buttons/ViewBundle"/>
 

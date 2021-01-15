@@ -1,5 +1,14 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CAbilBattery default="1" id="SC2_Battery">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="##id##">
+            <Flags index="UseDefaultButton" value="1"/>
+            <Flags index="CreateDefaultButton" value="1"/>
+        </CmdButtonArray>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <EnumRange value="0"/>
+    </CAbilBattery>
     <CAbilResearch id="ArmoryResearch">
         <InfoArray index="Research9">
             <Resource index="Minerals" value="100"/>
@@ -35,6 +44,9 @@
     <CAbilMorph id="BarracksLiftOff">
         <ValidatorArray value="AddonIsNotWorking"/>
     </CAbilMorph>
+    <CAbilResearch id="BarracksTechLabResearch">
+        <InfoArray index="Research1" Time="140"/>
+    </CAbilResearch>
     <CAbilAttack id="BattlecruiserAttack">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <TargetMessage value="Abil/TargetMessage/attack"/>
@@ -69,9 +81,17 @@
     <CAbilStop id="BattlecruiserStop">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
     </CAbilStop>
+    <CAbilArmMagazine id="BroodLordHangar">
+        <Leash value="9"/>
+    </CAbilArmMagazine>
     <CAbilEffectTarget id="BuildAutoTurret">
         <Range index="0" value="2"/>
     </CAbilEffectTarget>
+    <CAbilBuild id="BuildNydusCanal">
+        <InfoArray index="Build1">
+            <Cooldown TimeUse="20"/>
+        </InfoArray>
+    </CAbilBuild>
     <CAbilMorph id="BurrowBanelingDown">
         <Flags index="IgnoreFood" value="1"/>
         <Flags index="IgnoreUnitCost" value="1"/>
@@ -108,7 +128,7 @@
         </CmdButtonArray>
     </CAbilMorph>
     <CAbilMorph id="BurrowHydraliskUp">
-        <InfoArray index="0" Unit="Hydralisk" RandomDelayMax="0.1125">
+        <InfoArray index="0" RandomDelayMax="0.1125">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="0.5"/>
             </SectionArray>
@@ -216,7 +236,7 @@
         <Flags index="IgnoreUnitCost" value="1"/>
     </CAbilMorph>
     <CAbilMorph id="BurrowZerglingUp">
-        <InfoArray index="0" Unit="Zergling" RandomDelayMax="0.1125">
+        <InfoArray index="0" RandomDelayMax="0.1125">
             <SectionArray index="Abils">
                 <DurationArray index="Delay" value="0.5625"/>
             </SectionArray>
@@ -230,6 +250,9 @@
             <Flags index="ShowInGlossary" value="0"/>
         </CmdButtonArray>
     </CAbilMorph>
+    <CAbilEffectTarget id="CalldownMULE">
+        <Effect index="0" value="OrbitalCommandCreateMuleSwitch"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="Corruption">
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
@@ -247,6 +270,10 @@
         <ValidatorArray value="AddonIsNotWorking"/>
     </CAbilMorph>
     <CAbilResearch id="FactoryTechLabResearch">
+        <InfoArray index="Research2">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+        </InfoArray>
         <InfoArray index="Research5">
             <Resource index="Minerals" value="75"/>
             <Resource index="Vespene" value="75"/>
@@ -281,6 +308,37 @@
     <CAbilTrain id="FactoryTrain">
         <InfoArray index="Train25" Time="30"/>
     </CAbilTrain>
+    <CAbilEffectTarget id="Feedback">
+        <Range index="0" value="10"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="BatteryOvercharge">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="BatteryOverchargeAB"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Cooldown Location="Player" TimeUse="84"/>
+        </Cost>
+        <TargetFilters value="Visible;Self,Ally,Neutral,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <AINotifyEffect value="BatteryOverchargeCreateHealer"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BatteryOvercharge"/>
+    </CAbilEffectTarget>
+    <CAbilResearch id="FleetBeaconResearch">
+        <InfoArray index="Research5" Time="80" Upgrade="VoidRaySpeedUpgrade">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ResearchVoidRaySpeedUpgrade" Requirements="LearnVoidRaySpeedUpgrade">
+                <Flags index="ShowInGlossary" value="1"/>
+            </Button>
+        </InfoArray>
+        <InfoArray index="Research6" Time="140" Upgrade="TempestGroundAttackUpgrade">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="TempestResearchGroundAttackUpgrade" Requirements="LearnTempestGroundAttackUpgrade"/>
+        </InfoArray>
+    </CAbilResearch>
     <CAbilResearch id="ForgeResearch">
         <InfoArray index="Research1" Time="180"/>
         <InfoArray index="Research2" Time="215"/>
@@ -299,15 +357,29 @@
     </CAbilEffectTarget>
     <CAbilResearch id="FusionCoreResearch">
         <InfoArray index="Research1" Time="140"/>
-        <InfoArray index="Research2" Time="0" Upgrade="">
-            <Resource index="Minerals" value="0"/>
-            <Resource index="Vespene" value="0"/>
-            <Button DefaultButtonFace="" Requirements=""/>
+        <InfoArray index="Research2" Time="110" Upgrade="LiberatorAGRangeUpgrade">
+            <Button DefaultButtonFace="ResearchBallisticRange" State="Available" Requirements="LearnLiberatorRange"/>
+        </InfoArray>
+        <InfoArray index="Research3" Time="80" Upgrade="MedivacIncreaseSpeedBoost">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ResearchRapidReignitionSystem" Requirements="LearnMedivacSpeedBoostUpgrade">
+                <Flags index="ShowInGlossary" value="1"/>
+            </Button>
         </InfoArray>
     </CAbilResearch>
     <CAbilTrain id="GatewayTrain">
         <InfoArray index="Train7" Time="42"/>
     </CAbilTrain>
+    <CAbilResearch id="GhostAcademyResearch">
+        <InfoArray index="Research3" Time="110" Upgrade="EnhancedShockwaves">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="ResearchEnhancedShockwaves" State="Restricted" Requirements="LearnEnhancedShockwaves">
+                <Flags index="ShowInGlossary" value="1"/>
+            </Button>
+        </InfoArray>
+    </CAbilResearch>
     <CAbilEffectInstant id="HallucinationAdept">
         <Cost index="0">
             <Vital index="Energy" value="75"/>
@@ -428,6 +500,16 @@
             <Vital index="Energy" value="0"/>
             <Cooldown TimeUse="100"/>
         </Cost>
+        <InterruptCost>
+            <Cooldown TimeUse="120"/>
+        </InterruptCost>
+        <ProgressButtonArray index="Prep" value="Hyperjump"/>
+        <CancelEffect index="Prep" value="BattlecruiserTacticalJumpCD"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <Effect index="0" value="HyperjumpInitialCP"/>
+        <CastOutroTime index="0" value="1.4"/>
+        <FinishTime value="6"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="ImmortalOverload">
         <Flags index="AutoCast" value="1"/>
@@ -439,8 +521,10 @@
         </Cost>
     </CAbilEffectInstant>
     <CAbilResearch id="InfestationPitResearch">
-        <InfoArray index="Research6" Time="0" Upgrade="">
-            <Button DefaultButtonFace="" Requirements="">
+        <InfoArray index="Research6" Time="110" Upgrade="MicrobialShroud">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="EvolveAmorphousArmorcloud" Requirements="LearnAmorphousArmorcloud">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
         </InfoArray>
@@ -450,10 +534,13 @@
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
         <Range index="0" value="8"/>
+        <Cost index="0">
+            <Vital index="Energy" value="50"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="KD8Charge">
         <Cost index="0">
-            <Cooldown Link="KD8Charge" TimeUse="20"/>
+            <Cooldown TimeUse="20"/>
         </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="LaunchInterceptors">
@@ -503,9 +590,10 @@
     <CAbilTransport id="MedivacTransport">
         <!--UnloadCargoEffect value="MedivacUnloadCargoSetEffect"/-->
         <UnloadCargoEffect value="SiegeTankUnloadDelayAB"/>
+        <TargetFilters value="Worker,Visible;Self,Ally,Neutral,Enemy,Buried,UnderConstruction,Dead,Hidden"/>
     </CAbilTransport>
     <CAbilMorph id="MorphBackToGateway">
-        <InfoArray index="0" Unit="Gateway">
+        <InfoArray index="0">
             <SectionArray index="Abils">
                 <EffectArray index="Finish" value="UpgradeToWarpGateAutoCastDisabler"/>
             </SectionArray>
@@ -560,7 +648,7 @@
         <Flags index="AllowMovement" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="NeuralParasite">
-        <Range index="0" value="9"/>
+        <Range index="0" value="8"/>
         <CmdButtonArray index="Execute">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
@@ -570,21 +658,25 @@
     </CAbilEffectTarget>
     <CAbilTransport id="NydusCanalTransport">
         <MaxUnloadRange value="4"/>
-        <InitialUnloadDelay value="0.25"/>
+        <!--InitialUnloadDelay value="0.25"/>
         <LoadPeriod value="0.125"/>
-        <UnloadPeriod value="0.25"/>
+        <UnloadPeriod value="0.25"/-->
     </CAbilTransport>
     <CAbilTransport id="NydusWormTransport">
         <MaxUnloadRange value="4"/>
-        <InitialUnloadDelay value="0.25"/>
+        <!--InitialUnloadDelay value="0.25"/>
         <LoadPeriod value="0.125"/>
-        <UnloadPeriod value="0.25"/>
+        <UnloadPeriod value="0.25"/-->
     </CAbilTransport>
     <CAbilEffectTarget id="OraclePhaseShift">
         <Arc value="360"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="OracleRevelation">
         <Range index="0" value="12"/>
+        <Cost index="0">
+            <Vital index="Energy" value="25"/>
+            <Cooldown TimeUse="14"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilTransport id="OverlordTransport">
         <CmdButtonArray index="Load" Requirements="UseSingleOverlordTransport"/>
@@ -594,6 +686,21 @@
         <Cost index="0">
             <Vital index="Energy" value="125"/>
         </Cost>
+        <TargetFilters index="0" value="Air,Visible;Self,Player,Ally,Neutral,Structure,Stasis,Invulnerable"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="AmorphousArmorcloud">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Effect index="0" value="AmorphousArmorcloudCP"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+        </Cost>
+        <Range value="9"/>
+        <CursorEffect value="AmorphousArmorcloudSearch"/>
+        <AINotifyEffect value="AmorphousArmorcloudCP"/>
+        <!--CmdButtonArray index="Execute" DefaultButtonFace="AmorphousArmorcloud" Requirements="UseAmorphousArmorcloud"/-->
+        <CmdButtonArray index="Execute" DefaultButtonFace="AmorphousArmorcloud"/>
     </CAbilEffectTarget>
     <CAbilBuild id="ProtossBuild">
         <InfoArray index="Build16" Unit="ShieldBattery" Time="40">
@@ -628,6 +735,41 @@
             <Vital index="Energy" value="125"/>
         </Cost>
     </CAbilEffectTarget>
+    <CAbilEffectTarget id="ShieldBatteryRechargeEx5">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="CancelResetAutoCast" value="0"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <TargetFilters value="Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSAlliancePassive"/>
+            <SortArray value="TSShieldsFraction"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <Range value="6"/>
+        <Arc value="360"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Visible;Self,Neutral,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="Casterhas10EnergyorCasterisBatteryOvercharged"/>
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
+        <UseMarkerArray index="Approach" value="0"/>
+        <UseMarkerArray index="Prep" value="0"/>
+        <CancelableArray index="Channel" value="1"/>
+        <DefaultError value="RequiresHealTarget"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ShieldBatteryRecharge">
+            <Flags index="UseDefaultButton" value="1"/>
+            <Flags index="CreateDefaultButton" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Stop">
+            <Flags index="ToSelection" value="1"/>
+            <Flags index="UseDefaultButton" value="1"/>
+            <Flags index="CreateDefaultButton" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
     <CAbilMorph id="SiegeMode">
         <InfoArray index="0">
             <SectionArray index="Facing">
@@ -653,7 +795,7 @@
         </CmdButtonArray>
     </CAbilEffectTarget>
     <CAbilMorphPlacement id="SporeCrawlerRoot">
-        <InfoArray index="0" Unit="SporeCrawler" CollideRange="0">
+        <InfoArray index="0">
             <SectionArray index="Abils">
                 <DurationArray index="Delay" value="4"/>
             </SectionArray>
@@ -670,6 +812,7 @@
     </CAbilMorphPlacement>
     <CAbilTrain id="StargateTrain">
         <InfoArray index="Train3" Time="90"/>
+        <InfoArray index="Train5" Time="52"/>
         <InfoArray index="Train9" Time="52"/>
     </CAbilTrain>
     <CAbilMorph id="StarportLiftOff">
@@ -743,7 +886,7 @@
         <CursorEffect index="0" value="TemporalFieldAfterBubbleSearchArea"/>
     </CAbilEffectTarget>
     <CAbilMorph id="ThorAPMode">
-        <InfoArray index="0" Unit="ThorAP" RandomDelayMax="0.25">
+        <InfoArray index="0" RandomDelayMax="0.25">
             <SectionArray index="Abils">
                 <DurationArray index="Delay" value="2.5"/>
             </SectionArray>
@@ -756,7 +899,7 @@
         </InfoArray>
     </CAbilMorph>
     <CAbilMorph id="ThorNormalMode">
-        <InfoArray index="0" Unit="Thor" RandomDelayMax="0.25">
+        <InfoArray index="0" RandomDelayMax="0.25">
             <SectionArray index="Abils">
                 <DurationArray index="Delay" value="2.5"/>
             </SectionArray>
@@ -780,6 +923,27 @@
         <InfoArray index="Research3" Upgrade="AdeptPiercingAttack">
             <Button DefaultButtonFace="AdeptResearchPiercingUpgrade" Requirements="LearnAdeptPiercingAttack"/>
         </InfoArray>
+        <InfoArray index="Research4" Time="140" Upgrade="SunderingImpact">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ResearchPsionicSurge" State="Restricted" Requirements="LearnSunderingImpact">
+                <Flags index="ShowInGlossary" value="1"/>
+            </Button>
+        </InfoArray>
+        <InfoArray index="Research5" Time="140" Upgrade="AmplifiedShielding">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ResearchAmplifiedShielding" State="Restricted" Requirements="LearnAdeptAmplifiedShielding">
+                <Flags index="ShowInGlossary" value="1"/>
+            </Button>
+        </InfoArray>
+        <InfoArray index="Research6" Time="140" Upgrade="PsionicAmplifiers">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ResearchPsionicAmplifiers" State="Restricted" Requirements="LearnAdeptPsionicAmplifiers">
+                <Flags index="ShowInGlossary" value="1"/>
+            </Button>
+        </InfoArray>
     </CAbilResearch>
     <CAbilResearch id="UltraliskCavernResearch">
         <InfoArray index="Research1" Time="60" Upgrade="AnabolicSynthesis">
@@ -789,7 +953,7 @@
         </InfoArray>
     </CAbilResearch>
     <CAbilMorph id="Unsiege">
-        <InfoArray index="0" Unit="SiegeTank" RandomDelayMax="0.5">
+        <InfoArray index="0">
             <SectionArray index="Abils">
                 <EffectArray index="Start" value="SiegeTankUnmorphDisableDummyWeaponAB"/>
             </SectionArray>
@@ -797,7 +961,7 @@
     </CAbilMorph>
     <CAbilMorph id="UpgradeToLurkerDenMP">
         <CmdButtonArray index="Execute" DefaultButtonFace="MutateintoLurkerDen" Requirements="HaveLair"/>
-        <InfoArray index="0" Score="1" Unit="LurkerDenMP">
+        <InfoArray index="0">
             <SectionArray index="Abils">
                 <DurationArray index="Delay" value="120"/>
             </SectionArray>
@@ -842,7 +1006,7 @@
         <InfoArray index="Train7" Time="16"/>
     </CAbilWarpTrain>
     <CAbilTransport id="WarpPrismTransport">
-        <Range value="6"/>
+        <Range value="5"/>
         <!--UnloadCargoEffect value="WarpPrismUnloadCargoSetEffect"/-->
         <UnloadCargoEffect value="WarpPrismUnloadCargoSetEffect"/>
         <LoadCargoEffect value="WarpPrismLoadDummy"/>
@@ -968,7 +1132,7 @@
         <CastIntroTime value="6"/>
     </CAbilEffectTarget>
     <CAbilArmMagazine id="CarrierHangar">
-        <InfoArray index="Ammo1" Time="16">
+        <InfoArray index="Ammo1" Time="12">
             <Flags index="AutoBuildOn" value="1"/>
         </InfoArray>
     </CAbilArmMagazine>
@@ -999,25 +1163,36 @@
     </CAbilResearch>
     <CAbilEffectTarget id="Yamato">
         <Flags index="AbortOnAllianceChange" value="0"/>
+        <Flags index="IgnoreOrderPlayerIdInStageValidate" value="1"/>
         <Cost index="0">
             <Vital index="Energy" value="0"/>
-            <Cooldown Link="Yamato" TimeUse="100"/>
+            <Cooldown TimeUse="100"/>
         </Cost>
-        <ValidatedArray index="Prep" value="0"/>
         <ValidatedArray index="Cast" value="0"/>
         <ValidatedArray index="Channel" value="0"/>
+        <InterruptCost>
+            <Cooldown TimeUse="100"/>
+        </InterruptCost>
+        <CancelEffect index="Prep" value="BattlecruiserYamatoCD"/>
     </CAbilEffectTarget>
     <CAbilBuild id="ZergBuild">
-        <InfoArray index="Build12" Unit="LurkerDenMP" Time="120">
+        <InfoArray index="Build12" Unit="LurkerDenMP" Time="80">
             <Button DefaultButtonFace="MutateintoLurkerDen" Requirements="HaveHydraliskDen"/>
         </InfoArray>
     </CAbilBuild>
     <CAbilResearch id="LurkerDenResearch">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
-        <InfoArray index="Research1" Time="75" Upgrade="DiggingClaws">
+        <InfoArray index="Research1" Time="80" Upgrade="DiggingClaws">
             <Resource index="Minerals" value="150"/>
             <Resource index="Vespene" value="150"/>
             <Button DefaultButtonFace="EvolveDiggingClaws" State="Restricted" Requirements="LearnEvolveDiggingClaws">
+                <Flags index="ShowInGlossary" value="1"/>
+            </Button>
+        </InfoArray>
+        <InfoArray index="Research2" Time="80" Upgrade="LurkerRange">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="ResearchLurkerRange" State="Restricted" Requirements="LearnEvolveSeismicSpines">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
         </InfoArray>
@@ -1126,11 +1301,11 @@
         <Alignment value="Negative"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <InfoTooltipPriority value="1"/>
-        <Effect index="0" value="RavenScramblerMissileLM"/>
+        <Effect index="0" value="RavenScramblerSwitchInitial"/>
         <Flags index="AllowMovement" value="1"/>
         <Flags index="ChannelingMinimum" value="0"/>
         <Cost>
-            <Vital index="Energy" value="50"/>
+            <Vital index="Energy" value="75"/>
         </Cost>
         <TargetFilters value="Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Invulnerable"/>
         <Range value="9"/>
@@ -1223,7 +1398,7 @@
         <Effect index="0" value="NexusMassRecallSearch"/>
         <Cost>
             <Vital index="Energy" value="50"/>
-            <Cooldown Location="Player" TimeUse="119"/>
+            <Cooldown Location="Player" TimeUse="182"/>
         </Cost>
         <Range value="500"/>
         <Arc value="360"/>
@@ -1290,7 +1465,7 @@
         <AutoCastAcquireLevel value="Defensive"/>
         <AutoCastFilters value="Visible;Self,Neutral,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
         <AutoCastRange value="6"/>
-        <AutoCastValidatorArray value="CasterHas10Energy"/>
+        <AutoCastValidatorArray value="Casterhas10EnergyorCasterisBatteryOvercharged"/>
         <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
         <UseMarkerArray index="Approach" value="0"/>
         <UseMarkerArray index="Prep" value="0"/>
@@ -1301,6 +1476,7 @@
             <SortArray value="TSShieldsFraction"/>
             <SortArray value="TSDistance"/>
         </TargetSorts>
+        <Effect index="0" value="ShieldBatteryRechargeChanneledSet"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="NexusShieldOvercharge">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -1337,6 +1513,15 @@
         </CmdButtonArray-->
         <!--InfoTooltipPriority value="1"/-->
     </CAbilEffectInstant>
+    <CAbilResearch id="evolutionchamberresearch">
+        <InfoArray index="Research10" Time="80" Upgrade="SecretedCoating">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="EvolvePropulsivePeristalsis" State="Restricted" Requirements="LearnEvolveSecretedCoating">
+                <Flags index="ShowInGlossary" value="1"/>
+            </Button>
+        </InfoArray>
+    </CAbilResearch>
     <CAbilMove id="move">
         <AbilSetId value="Move"/>
     </CAbilMove>

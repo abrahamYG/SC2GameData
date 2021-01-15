@@ -1080,7 +1080,6 @@
     <GroupIcon>
       <Image value="Assets\Textures\storm_ui_ingame_partyframe_genji.dds" />
     </GroupIcon>
-    <WalkAnimMoveSpeed value="4" />
   </CActorUnit>
   <CActorSound id="GenjiDragonbladeAttackVOX" parent="SoundOneShot">
     <Sound value="GenjiBase_VOX_CastingR" />
@@ -1686,7 +1685,6 @@
     <WhichUnit Value="Caster" />
     <Behavior value="GenjiSwiftStrikeCooldownRefundUIBehavior" />
     <ValidatorArray index="0" value="TargetIsHero" />
-    <Chance value="0" />
   </CEffectApplyBehavior>
   <CEffectApplyBehavior id="GenjiDragonBladeSwiftStrikeCooldownRefundApplyUIBehavior">
     <WhichUnit Value="Caster" />
@@ -2784,6 +2782,7 @@
     <VariationArray value="GenjiBaseVar3" />
     <VariationArray value="GenjiBaseVar4" />
     <VariationArray value="GenjiBaseVar5" />
+    <VariationArray value="GenjiBaseVar6" />
     <SkinArray value="GenjiOni" />
     <SkinArray value="GenjiUltimate" />
     <SkinArray value="GenjiArmy18" />

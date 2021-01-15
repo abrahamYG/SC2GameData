@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CConfig id="Config">
         <CommanderMastery value="Mastery"/>
@@ -7,15 +7,22 @@
             <Name value="CommanderDifficultyLevel/Name/Casual"/>
             <Description value="CommanderDifficultyLevel/Description/Casual"/>
             <IsDefault value="1"/>
+            <AISkillLevel value="1"/>
         </CommanderDifficultyLevels>
         <!--Icon value="Assets\Textures\UI_commanderdifficulty_Recruit.dds"/-->
-        <CommanderDifficultyLevels DifficultyLevel="2" Name="CommanderDifficultyLevel/Name/Normal" Description="CommanderDifficultyLevel/Description/Normal"/>
+        <CommanderDifficultyLevels>
+            <DifficultyLevel value="2"/>
+            <Name value="CommanderDifficultyLevel/Name/Normal"/>
+            <Description value="CommanderDifficultyLevel/Description/Normal"/>
+            <AISkillLevel value="2"/>
+        </CommanderDifficultyLevels>
         <!--Icon value="Assets\Textures\UI_commanderdifficulty_Soldier.dds"/-->
         <CommanderDifficultyLevels>
             <DifficultyLevel value="3"/>
             <CommanderLevel value="7"/>
             <Name value="CommanderDifficultyLevel/Name/Hard"/>
             <Description value="CommanderDifficultyLevel/Description/Hard"/>
+            <AISkillLevel value="3"/>
         </CommanderDifficultyLevels>
         <!--Icon value="Assets\Textures\UI_commanderdifficulty_Veteran.dds"/-->
         <CommanderDifficultyLevels>
@@ -23,6 +30,74 @@
             <CommanderLevel value="15"/>
             <Name value="CommanderDifficultyLevel/Name/Brutal"/>
             <Description value="CommanderDifficultyLevel/Description/Brutal"/>
+            <AISkillLevel value="4"/>
+        </CommanderDifficultyLevels>
+        <!--Icon value="Assets\Textures\UI_commanderdifficulty_Commander.dds"/-->
+        <CommanderDifficultyLevels>
+            <DifficultyLevel value="5"/>
+            <CommanderLevel value="15"/>
+            <Name value="CommanderDifficultyLevel/Name/Brutal+"/>
+            <Description value="CommanderDifficultyLevel/Description/Brutal+"/>
+            <AISkillLevel value="4"/>
+            <BeyondBrutalLevel value="1"/>
+        </CommanderDifficultyLevels>
+        <!--Icon value="Assets\Textures\UI_commanderdifficulty_Commander.dds"/-->
+        <CommanderDifficultyLevels>
+            <DifficultyLevel value="6"/>
+            <CommanderLevel value="15"/>
+            <Name value="CommanderDifficultyLevel/Name/Brutal+2"/>
+            <Description value="CommanderDifficultyLevel/Description/Brutal+2"/>
+            <AISkillLevel value="4"/>
+            <BeyondBrutalLevel value="2"/>
+            <RequirePartyToQueue value="1"/>
+        </CommanderDifficultyLevels>
+        <!--Icon value="Assets\Textures\UI_commanderdifficulty_Commander.dds"/-->
+        <CommanderDifficultyLevels>
+            <DifficultyLevel value="7"/>
+            <CommanderLevel value="15"/>
+            <Name value="CommanderDifficultyLevel/Name/Brutal+3"/>
+            <Description value="CommanderDifficultyLevel/Description/Brutal+3"/>
+            <AISkillLevel value="4"/>
+            <BeyondBrutalLevel value="3"/>
+            <RequirePartyToQueue value="1"/>
+        </CommanderDifficultyLevels>
+        <!--Icon value="Assets\Textures\UI_commanderdifficulty_Commander.dds"/-->
+        <CommanderDifficultyLevels>
+            <DifficultyLevel value="8"/>
+            <CommanderLevel value="15"/>
+            <Name value="CommanderDifficultyLevel/Name/Brutal+4"/>
+            <Description value="CommanderDifficultyLevel/Description/Brutal+4"/>
+            <AISkillLevel value="4"/>
+            <BeyondBrutalLevel value="4"/>
+            <RequirePartyToQueue value="1"/>
+        </CommanderDifficultyLevels>
+        <!--Icon value="Assets\Textures\UI_commanderdifficulty_Commander.dds"/-->
+        <CommanderDifficultyLevels>
+            <DifficultyLevel value="9"/>
+            <CommanderLevel value="15"/>
+            <Name value="CommanderDifficultyLevel/Name/Brutal+5"/>
+            <Description value="CommanderDifficultyLevel/Description/Brutal+5"/>
+            <AISkillLevel value="4"/>
+            <BeyondBrutalLevel value="5"/>
+            <RequirePartyToQueue value="1"/>
+        </CommanderDifficultyLevels>
+        <!--Icon value="Assets\Textures\UI_commanderdifficulty_Commander.dds"/-->
+        <CommanderDifficultyLevels>
+            <DifficultyLevel value="10"/>
+            <CommanderLevel value="15"/>
+            <Name value="CommanderDifficultyLevel/Name/Brutal+6"/>
+            <Description value="CommanderDifficultyLevel/Description/Brutal+6"/>
+            <AISkillLevel value="4"/>
+            <BeyondBrutalLevel value="6"/>
+            <RequirePartyToQueue value="1"/>
+        </CommanderDifficultyLevels>
+        <CommanderDifficultyLevels>
+            <DifficultyLevel value="11"/>
+            <Name value="CommanderDifficultyLevel/Name/Retry"/>
+            <Description value="CommanderDifficultyLevel/Description/Retry"/>
+            <AISkillLevel value="4"/>
+            <RequirePartyToQueue value="1"/>
+            <IsRetry value="1"/>
         </CommanderDifficultyLevels>
         <!--Icon value="Assets\Textures\UI_commanderdifficulty_Commander.dds"/-->
         <CommanderAchievementCategoryId value="4386911"/>
@@ -46,6 +121,8 @@
         <GameContentArray value="Commander,Horner"/>
         <GameContentArray value="Commander,Tychus"/>
         <GameContentArray value="Commander,Zeratul"/>
+        <GameContentArray value="Commander,Stetmann"/>
+        <GameContentArray value="Commander,Mengsk"/>
         <GameContentArray value="Commander,Random"/>
         <GameContentArray value="EmoticonPack,Default"/>
         <GameContentArray value="EmoticonPack,WingsOfLiberty"/>
@@ -82,6 +159,16 @@
         <GameContentArray value="EmoticonPack,WarChest4Zerg"/>
         <GameContentArray value="EmoticonPack,WarChest4Protoss"/>
         <GameContentArray value="EmoticonPack,TwitchPrime2019"/>
+        <GameContentArray value="EmoticonPack,CommanderStetmann"/>
+        <GameContentArray value="EmoticonPack,WarChest5Terran"/>
+        <GameContentArray value="EmoticonPack,WarChest5Zerg"/>
+        <GameContentArray value="EmoticonPack,WarChest5Protoss"/>
+        <GameContentArray value="EmoticonPack,WarChest5Free"/>
+        <GameContentArray value="EmoticonPack,CommanderMengsk"/>
+        <GameContentArray value="EmoticonPack,WarChest6Terran"/>
+        <GameContentArray value="EmoticonPack,WarChest6Zerg"/>
+        <GameContentArray value="EmoticonPack,WarChest6Protoss"/>
+        <GameContentArray value="EmoticonPack,WarChest6Free"/>
         <GameContentArray value="VoicePack,Default"/>
         <GameContentArray value="VoicePack,Day9"/>
         <GameContentArray value="VoicePack,Dehaka"/>
@@ -107,6 +194,16 @@
         <GameContentArray value="VoicePack,Zeratul"/>
         <GameContentArray value="VoicePack,Lowko"/>
         <GameContentArray value="VoicePack,MrSheng"/>
+        <GameContentArray value="VoicePack,Vorazun"/>
+        <GameContentArray value="VoicePack,Stetmann"/>
+        <GameContentArray value="VoicePack,eSports"/>
+        <GameContentArray value="VoicePack,Um"/>
+        <GameContentArray value="VoicePack,Jeon"/>
+        <GameContentArray value="VoicePack,Kim"/>
+        <GameContentArray value="VoicePack,Winter"/>
+        <GameContentArray value="VoicePack,Mengsk"/>
+        <GameContentArray value="VoicePack,Stone"/>
+        <GameContentArray value="VoicePack,WhiteRa"/>
         <GameContentArray value="SkinPack,WoLCESkinPack"/>
         <GameContentArray value="SkinPack,HotSCESkinPack"/>
         <GameContentArray value="SkinPack,LotVCEAdeptSkinPack"/>
@@ -337,20 +434,133 @@
         <GameContentArray value="SkinPack,TemplarArchiveForged"/>
         <GameContentArray value="SkinPack,DarkShrineForged"/>
         <GameContentArray value="SkinPack,FleetBeaconForged"/>
-        <GameContentArray value="Bundle,SwannTwitchPrimeBundle"/>
-        <GameContentArray value="Bundle,MrShengAnnouncerBundle"/>
-        <GameContentArray value="Bundle,ZeratulCommander"/>
+        <GameContentArray value="SkinPack,BanelingRCZ"/>
+        <GameContentArray value="SkinPack,BansheeSilver"/>
+        <GameContentArray value="SkinPack,BattlecruiserSilver"/>
+        <GameContentArray value="SkinPack,BroodLordRCZ"/>
+        <GameContentArray value="SkinPack,CorruptorRCZ"/>
+        <GameContentArray value="SkinPack,CycloneSilver"/>
+        <GameContentArray value="SkinPack,DroneRCZ"/>
+        <GameContentArray value="SkinPack,GhostSilver"/>
+        <GameContentArray value="SkinPack,HellionSilver"/>
+        <GameContentArray value="SkinPack,HydraliskRCZ"/>
+        <GameContentArray value="SkinPack,InfestorRCZ"/>
+        <GameContentArray value="SkinPack,LiberatorSilver"/>
+        <GameContentArray value="SkinPack,LurkerRCZ"/>
+        <GameContentArray value="SkinPack,MarauderSilver"/>
+        <GameContentArray value="SkinPack,MarineSilver"/>
+        <GameContentArray value="SkinPack,MedivacSilver"/>
+        <GameContentArray value="SkinPack,MutaliskRCZ"/>
+        <GameContentArray value="SkinPack,OverlordRCZ"/>
+        <GameContentArray value="SkinPack,OverseerRCZ"/>
+        <GameContentArray value="SkinPack,QueenRCZ"/>
+        <GameContentArray value="SkinPack,RavagerRCZ"/>
+        <GameContentArray value="SkinPack,RavenSilver"/>
+        <GameContentArray value="SkinPack,ReaperSilver"/>
+        <GameContentArray value="SkinPack,RoachRCZ"/>
+        <GameContentArray value="SkinPack,SCVSilver"/>
+        <GameContentArray value="SkinPack,SiegeTankSilver"/>
+        <GameContentArray value="SkinPack,SwarmHostRCZ"/>
+        <GameContentArray value="SkinPack,ThorSilver"/>
+        <GameContentArray value="SkinPack,UltraliskRCZ"/>
+        <GameContentArray value="SkinPack,VikingSilver"/>
+        <GameContentArray value="SkinPack,ViperRCZ"/>
+        <GameContentArray value="SkinPack,WidowMineSilver"/>
+        <GameContentArray value="SkinPack,ZerglingRCZ"/>
+        <GameContentArray value="SkinPack,AdeptIhanrii"/>
+        <GameContentArray value="SkinPack,CarrierIhanrii"/>
+        <GameContentArray value="SkinPack,ColossusIhanrii"/>
+        <GameContentArray value="SkinPack,DarkTemplarIhanrii"/>
+        <GameContentArray value="SkinPack,DisruptorIhanrii"/>
+        <GameContentArray value="SkinPack,HighTemplarIhanrii"/>
+        <GameContentArray value="SkinPack,ImmortalIhanrii"/>
+        <GameContentArray value="SkinPack,MothershipIhanrii"/>
+        <GameContentArray value="SkinPack,ObserverIhanrii"/>
+        <GameContentArray value="SkinPack,OracleIhanrii"/>
+        <GameContentArray value="SkinPack,PhoenixIhanrii"/>
+        <GameContentArray value="SkinPack,ProbeIhanrii"/>
+        <GameContentArray value="SkinPack,SentryIhanrii"/>
+        <GameContentArray value="SkinPack,StalkerIhanrii"/>
+        <GameContentArray value="SkinPack,TempestIhanrii"/>
+        <GameContentArray value="SkinPack,VoidRayIhanrii"/>
+        <GameContentArray value="SkinPack,WarpPrismIhanrii"/>
+        <GameContentArray value="SkinPack,ZealotIhanrii"/>
+        <GameContentArray value="SkinPack,MarineRemastered"/>
+        <GameContentArray value="SkinPack,ZealotRemastered"/>
+        <GameContentArray value="SkinPack,HydraliskRemastered"/>
+        <GameContentArray value="SkinPack,BattlecruiserRemastered"/>
+        <GameContentArray value="SkinPack,CarrierRemastered"/>
+        <GameContentArray value="SkinPack,UltraliskRemastered"/>
+        <GameContentArray value="SkinPack,BanelingNestRCZ"/>
+        <GameContentArray value="SkinPack,EvolutionChamberRCZ"/>
+        <GameContentArray value="SkinPack,ExtractorRCZ"/>
+        <GameContentArray value="SkinPack,HatcheryRCZ"/>
+        <GameContentArray value="SkinPack,HydraliskDenRCZ"/>
+        <GameContentArray value="SkinPack,InfestationPitRCZ"/>
+        <GameContentArray value="SkinPack,LurkerDenRCZ"/>
+        <GameContentArray value="SkinPack,NydusNetworkRCZ"/>
+        <GameContentArray value="SkinPack,RoachWarrenRCZ"/>
+        <GameContentArray value="SkinPack,SpawningPoolRCZ"/>
+        <GameContentArray value="SkinPack,SpineCrawlerRCZ"/>
+        <GameContentArray value="SkinPack,SporeCrawlerRCZ"/>
+        <GameContentArray value="SkinPack,SpireRCZ"/>
+        <GameContentArray value="SkinPack,UltraliskCavernRCZ"/>
+        <GameContentArray value="SkinPack,LarvaRCZ"/>
+        <GameContentArray value="SkinPack,CommandCenterSilver"/>
+        <GameContentArray value="SkinPack,RefinerySilver"/>
+        <GameContentArray value="SkinPack,SupplyDepotSilver"/>
+        <GameContentArray value="SkinPack,BarracksSilver"/>
+        <GameContentArray value="SkinPack,EngineeringBaySilver"/>
+        <GameContentArray value="SkinPack,BunkerSilver"/>
+        <GameContentArray value="SkinPack,MissileTurretSilver"/>
+        <GameContentArray value="SkinPack,ReactorSilver"/>
+        <GameContentArray value="SkinPack,FactorySilver"/>
+        <GameContentArray value="SkinPack,ArmorySilver"/>
+        <GameContentArray value="SkinPack,TechLabSilver"/>
+        <GameContentArray value="SkinPack,StarportSilver"/>
+        <GameContentArray value="SkinPack,SensorTowerSilver"/>
+        <GameContentArray value="SkinPack,GhostAcademySilver"/>
+        <GameContentArray value="SkinPack,FusionCoreSilver"/>
+        <GameContentArray value="SkinPack,NexusIhanrii"/>
+        <GameContentArray value="SkinPack,AssimilatorIhanrii"/>
+        <GameContentArray value="SkinPack,PylonIhanrii"/>
+        <GameContentArray value="SkinPack,GatewayIhanrii"/>
+        <GameContentArray value="SkinPack,ForgeIhanrii"/>
+        <GameContentArray value="SkinPack,PhotonCannonIhanrii"/>
+        <GameContentArray value="SkinPack,ShieldBatteryIhanrii"/>
+        <GameContentArray value="SkinPack,CyberneticsCoreIhanrii"/>
+        <GameContentArray value="SkinPack,RoboticsFacilityIhanrii"/>
+        <GameContentArray value="SkinPack,RoboticsBayIhanrii"/>
+        <GameContentArray value="SkinPack,TwilightCouncilIhanrii"/>
+        <GameContentArray value="SkinPack,StargateIhanrii"/>
+        <GameContentArray value="SkinPack,TemplarArchiveIhanrii"/>
+        <GameContentArray value="SkinPack,DarkShrineIhanrii"/>
+        <GameContentArray value="SkinPack,FleetBeaconIhanrii"/>
+        <GameContentArray value="SkinPack,CommandCenterRemastered"/>
+        <GameContentArray value="SkinPack,HatcheryRemastered"/>
+        <GameContentArray value="SkinPack,NexusRemastered"/>
+        <GameContentArray value="Bundle,MengskCommander"/>
+        <GameContentArray value="Bundle,WhiteRaAnnouncerBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason5TerranSkinsBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason5ZergSkinsBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason5ProtossSkinsBundle"/>
+        <GameContentArray value="Bundle,NovaCovertOpsBundle"/>
         <GameContentArray value="Bundle,CompleteCollectionStandard"/>
         <GameContentArray value="Bundle,CompleteCollectionDeluxe"/>
-        <GameContentArray value="Bundle,WarChestSeason3TerranSkinsBundle"/>
-        <GameContentArray value="Bundle,WarChestSeason3ZergSkinsBundle"/>
-        <GameContentArray value="Bundle,WarChestSeason3ProtossSkinsBundle"/>
-        <GameContentArray value="Bundle,WarChestSeason1ProtossSkinsBundle"/>
         <GameContentArray value="Bundle,WarChestSeason1TerranSkinsBundle"/>
-        <GameContentArray value="Bundle,PomfThudAnnouncerBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason2TerranSkinsBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason3TerranSkinsBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason4TerranSkinsBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason1ZergSkinsBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason2ZergSkinsBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason3ZergSkinsBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason4ZergSkinsBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason1ProtossSkinsBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason2ProtossSkinsBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason3ProtossSkinsBundle"/>
+        <GameContentArray value="Bundle,WarChestSeason4ProtossSkinsBundle"/>
         <GameContentArray value="Bundle,PremiumMapARKStar"/>
         <GameContentArray value="Bundle,PremiumMapDirectStrike"/>
-        <GameContentArray value="Bundle,TychusCommander"/>
         <GameContentArray value="ConsoleSkin,ConsoleProtoss_Default"/>
         <GameContentArray value="ConsoleSkin,ConsoleTerran_Default"/>
         <GameContentArray value="ConsoleSkin,ConsoleZerg_Default"/>
@@ -368,6 +578,25 @@
         <GameContentArray value="ConsoleSkin,ConsoleZerg_Mecha"/>
         <GameContentArray value="ConsoleSkin,ConsoleZerg_Abathur"/>
         <GameContentArray value="ConsoleSkin,ConsoleTerran_Swann"/>
+        <GameContentArray value="ConsoleSkin,ConsoleProtoss_Nerazim"/>
+        <GameContentArray value="ConsoleSkin,ConsoleTerran_ArcadePurple"/>
+        <GameContentArray value="ConsoleSkin,ConsoleZerg_ArcadePurple"/>
+        <GameContentArray value="ConsoleSkin,ConsoleProtoss_ArcadePurple"/>
+        <GameContentArray value="ConsoleSkin,ConsoleTerran_Alliance"/>
+        <GameContentArray value="ConsoleSkin,ConsoleZerg_Alliance"/>
+        <GameContentArray value="ConsoleSkin,ConsoleProtoss_Alliance"/>
+        <GameContentArray value="ConsoleSkin,ConsoleTerran_Horde"/>
+        <GameContentArray value="ConsoleSkin,ConsoleZerg_Horde"/>
+        <GameContentArray value="ConsoleSkin,ConsoleProtoss_Horde"/>
+        <GameContentArray value="ConsoleSkin,ConsoleTerran_Scourge"/>
+        <GameContentArray value="ConsoleSkin,ConsoleZerg_Scourge"/>
+        <GameContentArray value="ConsoleSkin,ConsoleProtoss_Scourge"/>
+        <GameContentArray value="ConsoleSkin,ConsoleTerran_Sentinels"/>
+        <GameContentArray value="ConsoleSkin,ConsoleZerg_Sentinels"/>
+        <GameContentArray value="ConsoleSkin,ConsoleProtoss_Sentinels"/>
+        <GameContentArray value="ConsoleSkin,ConsoleTerran_Silver"/>
+        <GameContentArray value="ConsoleSkin,ConsoleZerg_RCZ"/>
+        <GameContentArray value="ConsoleSkin,ConsoleProtoss_Ihanrii"/>
         <GameContentArray value="WarChest,WarChestSeason1Terran"/>
         <GameContentArray value="WarChest,WarChestSeason1Zerg"/>
         <GameContentArray value="WarChest,WarChestSeason1Protoss"/>
@@ -384,5 +613,13 @@
         <GameContentArray value="WarChest,WarChestSeason4Zerg"/>
         <GameContentArray value="WarChest,WarChestSeason4Protoss"/>
         <GameContentArray value="WarChest,WarChestSeason4Complete"/>
+        <GameContentArray value="WarChest,WarChestSeason5Terran"/>
+        <GameContentArray value="WarChest,WarChestSeason5Zerg"/>
+        <GameContentArray value="WarChest,WarChestSeason5Protoss"/>
+        <GameContentArray value="WarChest,WarChestSeason5Complete"/>
+        <GameContentArray value="WarChest,WarChestSeason6Terran"/>
+        <GameContentArray value="WarChest,WarChestSeason6Zerg"/>
+        <GameContentArray value="WarChest,WarChestSeason6Protoss"/>
+        <GameContentArray value="WarChest,WarChestSeason6Complete"/>
     </CConfig>
 </Catalog>

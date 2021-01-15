@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CCommander id="Abathur">
         <UserReference value="PlayerCommanders;ZergAbathur"/>
@@ -21,6 +21,9 @@
     <CCommander id="Kerrigan">
         <UserReference value="PlayerCommanders;ZergKerrigan"/>
     </CCommander>
+    <CCommander id="Mengsk">
+        <UserReference value="PlayerCommanders;TerranMengsk"/>
+    </CCommander>
     <CCommander id="Nova">
         <UserReference value="PlayerCommanders;TerranNova"/>
     </CCommander>
@@ -32,14 +35,30 @@
     </CCommander>
     <CCommander id="Vorazun">
         <UserReference value="PlayerCommanders;ProtossVorazun"/>
+        <ConsoleSkin value="ConsoleProtoss_Nerazim"/>
     </CCommander>
     <CCommander id="Zagara">
         <UserReference value="PlayerCommanders;ZergZagara"/>
+        <MasteryTalentArray index="2">
+            <Talent value="MasteryZagaraMassFrenzySpeedBoost"/>
+            <ValuePerRank value="1.500000"/>
+            <Type value="Percent"/>
+            <Bucket value="2"/>
+        </MasteryTalentArray>
+        <MasteryTalentArray index="5">
+            <Talent value="MasteryZagaraBanelingsDamage"/>
+            <ValuePerRank value="1.000000"/>
+            <Type value="None"/>
+            <Bucket value="1"/>
+        </MasteryTalentArray>
     </CCommander>
     <CCommander id="Stukov">
         <UserReference value="PlayerCommanders;ZergStukov"/>
     </CCommander>
     <CCommander id="Fenix">
         <UserReference value="PlayerCommanders;ProtossFenix"/>
+    </CCommander>
+    <CCommander id="Stetmann">
+        <UserReference value="PlayerCommanders;ZergStetmann"/>
     </CCommander>
 </Catalog>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CVoicePack id="Default">
         <Default value="1"/>
@@ -24,7 +24,7 @@
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine2" Sound="AbathurA_NeedMoreFoodPreview"/>
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="AbathurA_NeedMoreFoodProtossPreview"/>
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="AbathurA_MutationComplete_Preview"/>
-        <ParentBundle value="AnnouncerBundle"/>
+        <!-- <ParentBundle value="AnnouncerBundle"/> -->
     </CVoicePack>
     <CVoicePack id="Artanis">
         <ReleaseDate value="10/17/2016"/>
@@ -37,7 +37,7 @@
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="ArtanisA_NeedMoreFoodPreview"/>
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="ArtanisA_MULEDeployedPreview"/>
         <ProductId value="22293"/>
-        <ParentBundle value="AnnouncerBundle"/>
+        <!-- <ParentBundle value="AnnouncerBundle"/> -->
     </CVoicePack>
     <CVoicePack id="Alarak">
         <ReleaseDate value="10/17/2016"/>
@@ -50,7 +50,7 @@
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="AlarakA_NeedMoreFoodPreview"/>
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="AlarakA_BuildErrorPreview"/>
         <ProductId value="22296"/>
-        <ParentBundle value="AnnouncerBundle"/>
+        <!-- <ParentBundle value="AnnouncerBundle"/> -->
     </CVoicePack>
     <CVoicePack id="BlizzConDVa">
         <TypeName value="VoicePack/TypeName/Female"/>
@@ -65,7 +65,7 @@
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="DVaA_NeedMoreFoodProtossPreview"/>
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="DVaA_NukeReady_Preview"/>
         <ProductId value="22562"/>
-        <ParentBundle value="AnnouncerBundle"/>
+        <!-- <ParentBundle value="AnnouncerBundle"/> -->
     </CVoicePack>
     <CVoicePack id="Kerrigan">
         <TypeName value="VoicePack/TypeName/Female"/>
@@ -79,7 +79,7 @@
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="KerriganA_NeedMoreFoodProtossPreview"/>
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="KerriganA_NukeReady_Preview"/>
         <ProductId value="22294"/>
-        <ParentBundle value="AnnouncerBundle"/>
+        <!-- <ParentBundle value="AnnouncerBundle"/> -->
     </CVoicePack>
     <CVoicePack id="Nova">
         <TypeName value="VoicePack/TypeName/Female"/>
@@ -93,7 +93,7 @@
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="NovaA_NeedMoreFoodProtoss_Preview"/>
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="NovaA_MutationComplete_Preview"/>
         <ProductId value="22864"/>
-        <ParentBundle value="AnnouncerBundle"/>
+        <!-- <ParentBundle value="AnnouncerBundle"/> -->
     </CVoicePack>
     <CVoicePack id="Raynor">
         <ReleaseDate value="10/17/2016"/>
@@ -106,7 +106,7 @@
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="RaynorA_NeedMoreFoodProtossPreview"/>
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="RaynorA_NeedCreep_Preview"/>
         <ProductId value="22292"/>
-        <ParentBundle value="AnnouncerBundle"/>
+        <!-- <ParentBundle value="AnnouncerBundle"/> -->
     </CVoicePack>
     <CVoicePack id="Swann">
         <ReleaseDate value="10/17/2016"/>
@@ -119,7 +119,7 @@
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="SwannA_NeedMoreFoodProtossPreview"/>
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="SwannA_MutationComplete_Preview"/>
         <ProductId value="22295"/>
-        <ParentBundle value="AnnouncerBundle"/>
+        <!-- <ParentBundle value="AnnouncerBundle"/> -->
     </CVoicePack>
     <CVoicePack id="TotalBiscuit">
         <ReleaseDate value="1/24/2017"/>
@@ -145,7 +145,7 @@
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="FenixA_Protoss_Preview"/>
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="FenixA_Phrase_Preview"/>
         <ProductId value="25492"/>
-        <ParentBundle value="FenixBundle"/>
+        <!-- <ParentBundle value="FenixBundle"/> -->
     </CVoicePack>
     <CVoicePack id="Tastosis">
         <ReleaseDate value="5/22/2017"/>
@@ -197,7 +197,7 @@
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="DehakaA_Preview_Protoss"/>
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="DehakaA_Preview_Phrase"/>
         <ProductId value="30470"/>
-        <ParentBundle value="DehakaBundle"/>
+        <!-- <ParentBundle value="DehakaBundle"/> -->
     </CVoicePack>
     <CVoicePack id="scboy">
         <ImageTexture value="Assets/Textures/SC2_UI_Collection_Announcers_Large_SCBoy.dds"/>
@@ -223,7 +223,7 @@
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="iNcontrolA_Preview_Phrase"/>
         <ReleaseDate value="8/28/2017"/>
         <LocaleRestriction value="enUS"/>
-        <ProductId value="30489"/>
+        <!-- <ProductId value="30489"/> -->
     </CVoicePack>
     <CVoicePack id="Day9">
         <ImageTexture value="Assets/Textures/SC2_UI_Collection_Announcers_Large_Day9.dds"/>
@@ -256,11 +256,11 @@
         <UnlockedRewardArray value="VoicePackTerranStone"/>
         <UnlockedRewardArray value="VoicePackZergStone"/>
         <UnlockedRewardArray value="VoicePackProtossStone"/>
-        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine1" Sound="Stone_Preview_Terran"/>
-        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine2" Sound="Stone_Preview_Zerg"/>
-        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="Stone_Preview_Protoss"/>
-        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="Stone_Preview_Phrase"/>
-        <!--ReleaseDate value="8/28/2017"/-->
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine1" Sound="StoneAnnouncer_Preview_Terran"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine2" Sound="StoneAnnouncer_Preview_Zerg"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="StoneAnnouncer_Preview_Protoss"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="StoneAnnouncer_Preview_Phrase"/>
+        <ReleaseDate value="7/27/2020"/>
         <!--ProductId value="30489"/-->
     </CVoicePack>
     <CVoicePack id="Alex007">
@@ -338,5 +338,125 @@
         <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="MrSheng_Preview_Phrase"/>
         <LocaleRestriction value="zhTW"/>
         <ProductId value="53150"/>
+    </CVoicePack>
+    <CVoicePack id="Vorazun">
+        <ImageTexture value="Assets/Textures/SC2_UI_Collection_Announcers_Large_Vorazun.dds"/>
+        <UnlockedRewardArray value="VoicePackTerranVorazun"/>
+        <UnlockedRewardArray value="VoicePackZergVorazun"/>
+        <UnlockedRewardArray value="VoicePackProtossVorazun"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine1" Sound="VorazunA_Preview_Terran"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine2" Sound="VorazunA_Preview_Zerg"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="VorazunA_Preview_Protoss"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="VorazunA_Preview_Phrase"/>
+        <ReleaseDate value="5/21/2019"/>
+        <ProductId value="48613"/>
+    </CVoicePack>
+    <CVoicePack id="Stetmann">
+        <ImageTexture value="Assets/Textures/SC2_UI_Collection_Announcers_Large_Stetmann.dds"/>
+        <UnlockedRewardArray value="VoicePackTerranStetmann"/>
+        <UnlockedRewardArray value="VoicePackZergStetmann"/>
+        <UnlockedRewardArray value="VoicePackProtossStetmann"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine1" Sound="StetmannA_Preview_Terran"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine2" Sound="StetmannA_Preview_Zerg"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="StetmannA_Preview_Protoss"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="StetmannA_Preview_Phrase"/>
+        <ReleaseDate value="5/21/2019"/>
+        <ProductId value="55436"/>
+    </CVoicePack>
+    <CVoicePack id="Um">
+        <ImageTexture value="Assets/Textures/SC2_UI_Collection_Announcers_Large_Um.dds"/>
+        <UnlockedRewardArray value="VoicePackTerranUm"/>
+        <UnlockedRewardArray value="VoicePackZergUm"/>
+        <UnlockedRewardArray value="VoicePackProtossUm"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine1" Sound="UmA_Preview_Terran"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine2" Sound="UmA_Preview_Zerg"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="UmA_Preview_Protoss"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="UmA_Preview_Phrase"/>
+        <ReleaseDate value="6/18/2019"/>
+        <LocaleRestriction value="koKR"/>
+        <ProductId value="59031"/>
+        <ParentBundle value="VoicesOfLegendAnnouncerBundle"/>
+    </CVoicePack>
+    <CVoicePack id="Jeon">
+        <ImageTexture value="Assets/Textures/SC2_UI_Collection_Announcers_Large_Jeon.dds"/>
+        <UnlockedRewardArray value="VoicePackTerranJeon"/>
+        <UnlockedRewardArray value="VoicePackZergJeon"/>
+        <UnlockedRewardArray value="VoicePackProtossJeon"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine1" Sound="JeonA_Preview_Terran"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine2" Sound="JeonA_Preview_Zerg"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="JeonA_Preview_Protoss"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="JeonA_Preview_Phrase"/>
+        <ReleaseDate value="6/18/2019"/>
+        <LocaleRestriction value="koKR"/>
+        <ProductId value="59010"/>
+        <ParentBundle value="VoicesOfLegendAnnouncerBundle"/>
+    </CVoicePack>
+    <CVoicePack id="Kim">
+        <ImageTexture value="Assets/Textures/SC2_UI_Collection_Announcers_Large_Kim.dds"/>
+        <UnlockedRewardArray value="VoicePackTerranKim"/>
+        <UnlockedRewardArray value="VoicePackZergKim"/>
+        <UnlockedRewardArray value="VoicePackProtossKim"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine1" Sound="KimA_Preview_Terran"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine2" Sound="KimA_Preview_Zerg"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="KimA_Preview_Protoss"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="KimA_Preview_Phrase"/>
+        <ReleaseDate value="6/18/2019"/>
+        <LocaleRestriction value="koKR"/>
+        <ProductId value="59030"/>
+        <ParentBundle value="VoicesOfLegendAnnouncerBundle"/>
+    </CVoicePack>
+    <CVoicePack id="eSports">
+        <Icon value="Assets\Textures\SC2_UI_Collection_Announcers_Thumb_UmJeonKim.dds"/>
+        <ImageTexture value="Assets/Textures/SC2_UI_Collection_Announcers_Large_UmJeonKim.dds"/>
+        <UnlockedRewardArray value="VoicePackTerraneSports"/>
+        <UnlockedRewardArray value="VoicePackZergeSports"/>
+        <UnlockedRewardArray value="VoicePackProtosseSports"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine1" Sound="eSportsA_Preview_Terran"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine2" Sound="eSportsA_Preview_Zerg"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="eSportsA_Preview_Protoss"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="eSportsA_Preview_Phrase"/>
+        <ReleaseDate value="6/18/2019"/>
+        <LocaleRestriction value="koKR"/>
+        <ProductId value="59032"/>
+        <IsPurchaseHidden value="1"/>
+        <ParentBundle value="VoicesOfLegendAnnouncerBundle"/>
+    </CVoicePack>
+    <CVoicePack id="Winter">
+        <ReleaseDate value="10/15/2019"/>
+        <ImageTexture value="Assets/Textures/SC2_UI_Collection_Announcers_Large_Winter.dds"/>
+        <UnlockedRewardArray value="VoicePackTerranWinter"/>
+        <UnlockedRewardArray value="VoicePackZergWinter"/>
+        <UnlockedRewardArray value="VoicePackProtossWinter"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine1" Sound="WinterGamingA_Preview_Terran"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine2" Sound="WinterGamingA_Preview_Zerg"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="WinterGamingA_Preview_Protoss"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="WinterGamingA_Preview_Phrase"/>
+        <LocaleRestriction value="enUS"/>
+        <ProductId value="64311"/>
+    </CVoicePack>
+    <CVoicePack id="Mengsk">
+        <ImageTexture value="Assets/Textures/SC2_UI_Collection_Announcers_Large_Mengsk.dds"/>
+        <UnlockedRewardArray value="VoicePackTerranMengsk"/>
+        <UnlockedRewardArray value="VoicePackZergMengsk"/>
+        <UnlockedRewardArray value="VoicePackProtossMengsk"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine1" Sound="MengskA_Preview_Terran"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine2" Sound="MengskA_Preview_Zerg"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="MengskA_Preview_Protoss"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="MengskA_Preview_Phrase"/>
+        <ReleaseDate value="11/26/2019"/>
+        <ProductId value="71074"/>
+    </CVoicePack>
+    <CVoicePack id="WhiteRa">
+        <ImageTexture value="Assets/Textures/SC2_UI_Collection_Announcers_Large_WhiteRa.dds"/>
+        <UnlockedRewardArray value="VoicePackTerranWhiteRa"/>
+        <UnlockedRewardArray value="VoicePackZergWhiteRa"/>
+        <UnlockedRewardArray value="VoicePackProtossWhiteRa"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine1" Sound="WhiteRa_Preview_Terran"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine2" Sound="WhiteRa_Preview_Zerg"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine3" Sound="WhiteRa_Preview_Protoss"/>
+        <ExampleLineArray Description="VoicePack/VoicePackDefault/ExampleLine4" Sound="WhiteRa_Preview_Phrase"/>
+        <LocaleRestriction value="enUS"/>
+        <ReleaseDate value="7/27/2020"/>
+        <ProductId value="74957"/>
     </CVoicePack>
 </Catalog>

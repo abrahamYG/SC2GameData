@@ -90,6 +90,10 @@
             <State name="Tychus">
                 <Action type="SetProperty" frame="$this" customSoundtrack="Music_Silence"/>
             </State>
+            
+            <State name="Stetmann">
+                <Action type="SetProperty" frame="$this" customSoundtrack="Music_Silence"/>
+            </State>
 
             <State name="WCS2017">
                 <!-- "WCS 2017" in the Background Model pulldown -->
@@ -115,6 +119,19 @@
 
             <State name="WCS2018">
                 <!-- "WCS 2018" in the Background Model pulldown -->
+                <Action type="SetProperty" frame="$this" customSoundtrack="Music_Silence"/>
+            </State>
+
+            <State name="WCS2019">
+                <!-- "WCS 2019" in the Background Model pulldown -->
+                <Action type="SetProperty" frame="$this" customSoundtrack="Music_Silence"/>
+            </State>
+            
+            <State name="Mengsk">
+                <Action type="SetProperty" frame="$this" customSoundtrack="Music_Silence"/>
+            </State>
+            
+            <State name="10thAnniversary">
                 <Action type="SetProperty" frame="$this" customSoundtrack="Music_Silence"/>
             </State>
         </StateGroup>

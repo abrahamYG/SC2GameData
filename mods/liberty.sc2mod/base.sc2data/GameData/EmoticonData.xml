@@ -837,4 +837,208 @@
         <Image TextureSheet="EmoticonsSheet3" Index="34"/>
         <RequiredReward value="Emoticon_KappaRoss"/>
     </CEmoticon>
+    <CEmoticon id="cheesehand">
+        <Image TextureSheet="EmoticonsSheet3" Index="35"/>
+        <RequiredReward value="Emoticon_CheeseHand"/>
+    </CEmoticon>
+    <CEmoticon id="goodgary">
+        <Image TextureSheet="EmoticonsSheet3" Index="36"/>
+        <RequiredReward value="Emoticon_GoodGary"/>
+    </CEmoticon>
+    <CEmoticon id="badgary">
+        <Image TextureSheet="EmoticonsSheet3" Index="37"/>
+        <RequiredReward value="Emoticon_BadGary"/>
+    </CEmoticon>
+    <CEmoticon id="shield">
+        <Image TextureSheet="EmoticonsSheet3" Index="38"/>
+        <RequiredReward value="Emoticon_Shield"/>
+    </CEmoticon>
+    <CEmoticon id="sword">
+        <Image TextureSheet="EmoticonsSheet3" Index="39"/>
+        <RequiredReward value="Emoticon_Sword"/>
+    </CEmoticon>
+    <CEmoticon id="pickaxe">
+        <Image TextureSheet="EmoticonsSheet3" Index="40"/>
+        <RequiredReward value="Emoticon_Pickaxe"/>
+    </CEmoticon>
+    <CEmoticon id="shovel">
+        <Image TextureSheet="EmoticonsSheet3" Index="41"/>
+        <RequiredReward value="Emoticon_Shovel"/>
+    </CEmoticon>
+    <CEmoticon id="hammer">
+        <Image TextureSheet="EmoticonsSheet3" Index="42"/>
+        <RequiredReward value="Emoticon_Hammer"/>
+    </CEmoticon>
+    <CEmoticon id="saw">
+        <Image TextureSheet="EmoticonsSheet3" Index="43"/>
+        <RequiredReward value="Emoticon_Saw"/>
+    </CEmoticon>
+    <CEmoticon id="wrench">
+        <Image TextureSheet="EmoticonsSheet3" Index="44"/>
+        <RequiredReward value="Emoticon_Wrench"/>
+    </CEmoticon>
+    <CEmoticon id="pliers">
+        <Image TextureSheet="EmoticonsSheet3" Index="45"/>
+        <RequiredReward value="Emoticon_Pliers"/>
+    </CEmoticon>
+    <CEmoticon id="drill">
+        <Image TextureSheet="EmoticonsSheet3" Index="46"/>
+        <RequiredReward value="Emoticon_Drill"/>
+    </CEmoticon>
+    <CEmoticon id="screwdriver">
+        <Image TextureSheet="EmoticonsSheet3" Index="47"/>
+        <RequiredReward value="Emoticon_Screwdriver"/>
+    </CEmoticon>
+    <CEmoticon id="crowbar">
+        <Image TextureSheet="EmoticonsSheet3" Index="48"/>
+        <RequiredReward value="Emoticon_Crowbar"/>
+    </CEmoticon>
+    <CEmoticon id="vice">
+        <Image TextureSheet="EmoticonsSheet3" Index="49"/>
+        <RequiredReward value="Emoticon_Vice"/>
+    </CEmoticon>
+    <CEmoticon id="classicterran">
+        <Image TextureSheet="EmoticonsSheet3" Index="50"/>
+        <RequiredReward value="Emoticon_ClassicTerran"/>
+    </CEmoticon>
+    <CEmoticon id="classiczerg">
+        <Image TextureSheet="EmoticonsSheet3" Index="51"/>
+        <RequiredReward value="Emoticon_ClassicZerg"/>
+    </CEmoticon>
+    <CEmoticon id="classicprotoss">
+        <Image TextureSheet="EmoticonsSheet3" Index="52"/>
+        <RequiredReward value="Emoticon_ClassicProtoss"/>
+    </CEmoticon>
+    <CEmoticon id="slaproof">
+        <Image TextureSheet="EmoticonsSheet3" Index="53"/>
+        <RequiredReward value="Emoticon_SlapRoof"/>
+    </CEmoticon>
+    <CEmoticon id="whatsthis">
+        <Image TextureSheet="EmoticonsSheet3" Index="54"/>
+        <RequiredReward value="Emoticon_WhatsThis"/>
+    </CEmoticon>
+    <CEmoticon id="npc">
+        <Image TextureSheet="EmoticonsSheet3" Index="55"/>
+        <RequiredReward value="Emoticon_NPC"/>
+    </CEmoticon>
+    <CEmoticon id="thumbtack">
+        <Image TextureSheet="EmoticonsSheet3" Index="56"/>
+        <RequiredReward value="Emoticon_Thumbtack"/>
+    </CEmoticon>
+    <CEmoticon id="browncat">
+        <Image TextureSheet="EmoticonsSheet3" Index="57"/>
+        <RequiredReward value="Emoticon_BrownCat"/>
+    </CEmoticon>
+    <CEmoticon id="cheesemouse">
+        <Image TextureSheet="EmoticonsSheet3" Index="58"/>
+        <RequiredReward value="Emoticon_CheeseMouse"/>
+    </CEmoticon>
+    <CEmoticon id="cookierat">
+        <Image TextureSheet="EmoticonsSheet3" Index="59"/>
+        <RequiredReward value="Emoticon_CookieRat"/>
+    </CEmoticon>
+    <CEmoticon id="contaminated">
+        <Image TextureSheet="EmoticonsSheet3" Index="60"/>
+        <RequiredReward value="Emoticon_Contaminated"/>
+    </CEmoticon>
+    <CEmoticon id="royal">
+        <Image TextureSheet="EmoticonsSheet3" Index="61"/>
+        <RequiredReward value="Emoticon_Royal"/>
+    </CEmoticon>
+    <CEmoticon id="pie">
+        <Image TextureSheet="EmoticonsSheet3" Index="62"/>
+        <RequiredReward value="Emoticon_Pie"/>
+    </CEmoticon>
+    <CEmoticon id="cookie">
+        <Image TextureSheet="EmoticonsSheet3" Index="63"/>
+        <RequiredReward value="Emoticon_Cookie"/>
+    </CEmoticon>
+    <CEmoticon id="coffee">
+        <Image TextureSheet="EmoticonsSheet3" Index="64"/>
+        <RequiredReward value="Emoticon_Coffee"/>
+    </CEmoticon>
+    <CEmoticon id="juicebox">
+        <Image TextureSheet="EmoticonsSheet3" Index="65"/>
+        <RequiredReward value="Emoticon_JuiceBox"/>
+    </CEmoticon>
+    <CEmoticon id="donut">
+        <Image TextureSheet="EmoticonsSheet3" Index="66"/>
+        <RequiredReward value="Emoticon_Donut"/>
+    </CEmoticon>
+    <CEmoticon id="pancakes">
+        <Image TextureSheet="EmoticonsSheet3" Index="67"/>
+        <RequiredReward value="Emoticon_Pancakes"/>
+    </CEmoticon>
+    <CEmoticon id="broccoli">
+        <Image TextureSheet="EmoticonsSheet3" Index="68"/>
+        <RequiredReward value="Emoticon_Broccoli"/>
+    </CEmoticon>
+    <CEmoticon id="apple">
+        <Image TextureSheet="EmoticonsSheet3" Index="69"/>
+        <RequiredReward value="Emoticon_Apple"/>
+    </CEmoticon>
+    <CEmoticon id="toasted">
+        <Image TextureSheet="EmoticonsSheet3" Index="70"/>
+        <RequiredReward value="Emoticon_Toasted"/>
+    </CEmoticon>
+    <CEmoticon id="steak">
+        <Image TextureSheet="EmoticonsSheet3" Index="71"/>
+        <RequiredReward value="Emoticon_Steak"/>
+    </CEmoticon>
+    <CEmoticon id="cherries">
+        <Image TextureSheet="EmoticonsSheet3" Index="72"/>
+        <RequiredReward value="Emoticon_Cherries"/>
+    </CEmoticon>
+    <CEmoticon id="garlic">
+        <Image TextureSheet="EmoticonsSheet3" Index="73"/>
+        <RequiredReward value="Emoticon_Garlic"/>
+    </CEmoticon>
+    <CEmoticon id="carrot">
+        <Image TextureSheet="EmoticonsSheet3" Index="74"/>
+        <RequiredReward value="Emoticon_Carrot"/>
+    </CEmoticon>
+    <CEmoticon id="strawberry">
+        <Image TextureSheet="EmoticonsSheet3" Index="75"/>
+        <RequiredReward value="Emoticon_Strawberry"/>
+    </CEmoticon>
+    <CEmoticon id="croissant">
+        <Image TextureSheet="EmoticonsSheet3" Index="76"/>
+        <RequiredReward value="Emoticon_Croissant"/>
+    </CEmoticon>
+    <CEmoticon id="lobster">
+        <Image TextureSheet="EmoticonsSheet3" Index="77"/>
+        <RequiredReward value="Emoticon_Lobster"/>
+    </CEmoticon>
+    <CEmoticon id="lemon">
+        <Image TextureSheet="EmoticonsSheet3" Index="78"/>
+        <RequiredReward value="Emoticon_Lemon"/>
+    </CEmoticon>
+    <CEmoticon id="pepper">
+        <Image TextureSheet="EmoticonsSheet3" Index="79"/>
+        <RequiredReward value="Emoticon_Pepper"/>
+    </CEmoticon>
+    <CEmoticon id="onion">
+        <Image TextureSheet="EmoticonsSheet3" Index="80"/>
+        <RequiredReward value="Emoticon_Onion"/>
+    </CEmoticon>
+    <CEmoticon id="banana">
+        <Image TextureSheet="EmoticonsSheet3" Index="81"/>
+        <RequiredReward value="Emoticon_Banana"/>
+    </CEmoticon>
+    <CEmoticon id="muffin">
+        <Image TextureSheet="EmoticonsSheet3" Index="82"/>
+        <RequiredReward value="Emoticon_Muffin"/>
+    </CEmoticon>
+    <CEmoticon id="shrimp">
+        <Image TextureSheet="EmoticonsSheet3" Index="83"/>
+        <RequiredReward value="Emoticon_Shrimp"/>
+    </CEmoticon>
+    <CEmoticon id="grapes">
+        <Image TextureSheet="EmoticonsSheet3" Index="84"/>
+        <RequiredReward value="Emoticon_Grapes"/>
+    </CEmoticon>
+    <CEmoticon id="mushroom">
+        <Image TextureSheet="EmoticonsSheet3" Index="85"/>
+        <RequiredReward value="Emoticon_Mushroom"/>
+    </CEmoticon>
 </Catalog>
